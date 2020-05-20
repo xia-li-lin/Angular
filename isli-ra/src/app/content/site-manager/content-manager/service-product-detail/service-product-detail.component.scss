@@ -1,0 +1,155 @@
+.login-box {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  .login {
+    padding-top: 15px;
+  }
+
+  dl,
+  dt,
+  dd {
+    float: left;
+  }
+
+  dl {
+    width: 100%;
+    height: auto;
+    padding-bottom: 18px;
+
+    dt {
+      width: 120px;
+      line-height: 31px;
+      text-align: right;
+      padding-right: 6px;
+
+      span {
+        color: #f40;
+      }
+    }
+
+    dd {
+      --width: 570px;
+      width: var(--width);
+      position: relative;
+      input {
+        width: var(--width);
+        padding: 0 10px;
+        height: 31px;
+        margin-right: 10px;
+        vertical-align: middle;
+        border: 1px solid #c4cbd0;
+
+        &.ng-dirty.ng-invalid {
+          border: 1px solid #eb4d4d;
+        }
+      }
+      &.thumbnailUrl {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .thumbnailUrl-tip {
+          width: 410px;
+          color: #9ea6ac;
+        }
+      }
+      textarea {
+        width: var(--width);
+        height: 100px;
+        padding: 0 10px;
+      }
+      &.textarea {
+        ::ng-deep {
+          .error {
+            top: 100px;
+          }
+        }
+      }
+      ::ng-deep {
+        .error {
+          position: absolute;
+          width: 100%;
+          left: 0;
+          top: 31px;
+        }
+        .ui-dropdown {
+          width: var(--width);
+          height: 32px;
+          margin-right: 10px;
+          border: 1px solid #c4cbd0;
+        }
+
+        .ui-dropdown .ui-dropdown-label {
+          height: 29px;
+          line-height: 29px;
+          padding: 0 10px;
+        }
+        .ui-tabview .ui-tabview-panels {
+          padding: 0;
+          border: none;
+        }
+        p-radiobutton {
+          display: inline-flex;
+          align-items: center;
+          margin-right: 15px;
+          line-height: 31px;
+        }
+      }
+
+      &.ueditor {
+        ::ng-deep {
+          .error {
+            top: 462px;
+          }
+        }
+      }
+    }
+  }
+}
+.login-box-en {
+  dl {
+    dt {
+      width: 220px;
+    }
+  }
+}
+.btn-group {
+  display: flex;
+  padding-left: 150px;
+  button {
+    width: 100px;
+    height: 32px;
+    line-height: 32px;
+    border: none;
+    border-radius: 4px;
+    &:first-child {
+      margin-right: 20px;
+      color: #fff;
+      background: #007bd8;
+      &:hover {
+        background: #32a7ff;
+      }
+    }
+    &:last-child {
+      border: 1px solid #007bd8;
+      color: #007bd8;
+      background: #fff;
+      &:hover {
+        background: #e5f4ff;
+      }
+    }
+  }
+}
+.upload-warp {
+  width: 150px;
+  height: 150px;
+  ::ng-deep {
+    .error {
+      top: 151px !important;
+    }
+  }
+}
+a,
+button {
+  cursor: pointer;
+}

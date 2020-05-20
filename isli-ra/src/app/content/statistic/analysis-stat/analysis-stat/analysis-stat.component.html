@@ -1,0 +1,74 @@
+<div class="analysis-stat statistic">
+  <h2 class="nav-name">{{ "statistic.nav.analysis" | translate }}</h2>
+  <div class="clearfix statistic-content">
+    <app-analysis-stat-search
+      [searchParams]="searchParams"
+      (searchClick)="handleSearchClick($event)"
+      (selectButtonChange)="handleSelectButtonChange($event)"
+      (typeChange)="handleTypeChange($event)"
+    ></app-analysis-stat-search>
+    <app-analysis-stat-time
+      *ngIf="searchParams.type == searchType.YEAR"
+      [dateType]="dateType"
+      [analysisStatList]="analysisStatList"
+    ></app-analysis-stat-time>
+    <app-analysis-stat-area
+      *ngIf="searchParams.type == searchType.AREA"
+      [dateType]="dateType"
+      [analysisStatList]="analysisStatList"
+    ></app-analysis-stat-area>
+    <app-analysis-stat-service
+      *ngIf="searchParams.type == searchType.RELATIONTYPE"
+      [analysisStatList]="analysisStatList"
+    ></app-analysis-stat-service>
+    <app-excel
+      *ngIf="
+        searchParams.type == searchType.TOP100 &&
+        analysisStatList &&
+        analysisStatList.length
+      "
+      (exportTable)="handleExportTableClick()"
+    ></app-excel>
+    <app-analysis-stat-top
+      *ngIf="searchParams.type == searchType.TOP100"
+      [pagingBoxObj]="pagingBoxObj"
+      [analysisStatList]="analysisStatList"
+    ></app-analysis-stat-top>
+    <div
+      class="clearfix toggle"
+      *ngIf="
+        analysisStatList &&
+        analysisStatList.length &&
+        searchParams.type != searchType.TOP100
+      "
+    >
+      <button
+        class="toggleBtn"
+        [ngClass]="{ toggleBtnActive: onoff }"
+        (click)="handleToggleClick()"
+      ></button>
+    </div>
+    <app-excel
+      *ngIf="
+        onoff &&
+        analysisStatList &&
+        analysisStatList.length &&
+        searchParams.type != searchType.TOP100
+      "
+      (exportTable)="handleExportTableClick()"
+    ></app-excel>
+    <app-analysis-stat-table
+      *ngIf="
+        onoff &&
+        analysisStatList &&
+        analysisStatList.length &&
+        searchParams.type != searchType.TOP100
+      "
+      [pagingBoxObj]="pagingBoxObj"
+      [analysisStatList]="analysisStatList"
+      [tableTotal]="tableTotal"
+      [type]="searchParams.type"
+      [dateType]="dateType"
+    ></app-analysis-stat-table>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="form clearfix">
+  <form [isliFormValidMsg]="errorMsg">
+    <dl>
+      <dt><span>*</span>邮件主題：</dt>
+      <dd>
+        <input
+          required
+          type="text"
+          name="emailTitle"
+          class="emailTitle"
+          maxlength="20"
+          [(ngModel)]="info.emailTitle"
+          placeholder="邮件主題"
+          pInputText
+        />
+        <mpr-form-control-valid
+          controlName="emailTitle"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt><span>*</span>邮件类型：</dt>
+      <dd>
+        <p-dropdown
+          required
+          name="emailType"
+          [options]="emailTypeArray"
+          placeholder="- 请选择 - "
+          [(ngModel)]="info.emailType"
+          [filter]="emailTypeArray && emailTypeArray.length > 15 ? true : false"
+          (ngModelChange)="handleEmailTypeChange($event)"
+        >
+        </p-dropdown>
+        <mpr-form-control-valid
+          controlName="emailType"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt><span>*</span>状态：</dt>
+      <dd>
+        <p-dropdown
+          required
+          appTemplateStatus
+          name="operatingStatus"
+          [options]="operatingStatusArray"
+          placeholder="- 请选择 - "
+          [(ngModel)]="info.operatingStatus"
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          [oldStatus]="oldInfo.operatingStatus"
+          [filter]="
+            operatingStatusArray && operatingStatusArray.length > 15
+              ? true
+              : false
+          "
+        >
+        </p-dropdown>
+        <mpr-form-control-valid
+          controlName="operatingStatus"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt><span>*</span>邮件拟定人：</dt>
+      <dd>
+        <input
+          required
+          type="text"
+          name="creatorName"
+          class="creatorName"
+          [(ngModel)]="info.creatorName"
+          maxlength="20"
+          placeholder="邮件拟定人姓名"
+          pInputText
+        />
+        <mpr-form-control-valid
+          controlName="creatorName"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt><span>*</span>邮件正文：</dt>
+      <dd class="ueditor">
+        <ueditor
+          required
+          [(ngModel)]="info.emailTemplate"
+          name="emailTemplate"
+          maxlength="10000"
+          [config]="config"
+        ></ueditor>
+        <mpr-form-control-valid
+          controlName="emailTemplate"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>备注：</dt>
+      <dd>
+        <input
+          type="text"
+          name="marks"
+          class="marks"
+          [(ngModel)]="info.marks"
+          placeholder="简要描述邮件使用的情景。"
+          pInputText
+        />
+      </dd>
+    </dl>
+  </form>
+</div>

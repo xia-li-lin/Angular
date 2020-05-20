@@ -1,0 +1,22 @@
+<div class="dialog-box">
+    <div class="header">
+        <h5>{{'common.allocation' | translate}}</h5>
+        <a class="close" (click)="handleCloseClick()">×</a>
+    </div>
+    <div class="center">
+        <span>{{ 'systemShared.selectRole' | translate }}：</span>
+        <div class="list">
+            <ul>
+                <li *ngFor="let item of roleLimitsData">
+                    <p-checkbox name="{{item.value}}" value="{{item.value}}" label="{{item.label}}"
+                        [(ngModel)]="roleLimitSelected" inputId="">
+                    </p-checkbox>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <button (click)="handleSaveRolePermissionClick()">{{'common.sure' | translate}}</button>
+    </div>
+</div>
+<div class="dialog-box-bg"></div>

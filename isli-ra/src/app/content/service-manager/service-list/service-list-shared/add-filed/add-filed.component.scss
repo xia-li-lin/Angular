@@ -1,0 +1,26 @@
+.add-filed {
+  .filed-item {
+    float: left;
+    margin-top: 12px;
+    input {
+      float: left;
+      display: block;
+      width: 60px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      border: 1px solid #d5dce2;
+      &.ng-dirty.ng-invalid {
+        border: 1px solid #eb4d4d;
+      }
+    }
+    span {
+      float: left;
+      width: 20px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      display: block;
+    }
+  }
+}

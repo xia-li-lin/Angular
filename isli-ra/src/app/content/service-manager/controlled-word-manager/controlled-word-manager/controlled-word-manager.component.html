@@ -1,0 +1,139 @@
+<div class="controlled-word-manager content-container">
+  <div class="header">
+    <p class="title">
+      {{ "service.controlledWordManagement.title" | translate }}
+    </p>
+    <button
+      pButton
+      label="{{ 'service.controlledWordManagement.add' | translate }}"
+      (click)="handleAddClick()"
+    ></button>
+  </div>
+  <div class="body">
+    <!-- 搜索 -->
+    <div class="bd-search">
+      <div class="p-grid search-bd">
+        <div
+          class="p-col-4 item"
+          [ngClass]="{
+            'p-col-4': language !== 'EN_US',
+            'p-col-5': language === 'EN_US'
+          }"
+        >
+          <label class="wid-70"
+            >{{
+              "service.controlledWordManagement.controlledName" | translate
+            }}：</label
+          >
+          <span class="item-bd">
+            <input
+              type="text"
+              name="keywords"
+              appTrim
+              pInputText
+              [(ngModel)]="controllWordSearch.keywords"
+            />
+          </span>
+        </div>
+        <div class="p-col-2 item item-search">
+          <span class="item-bd">
+            <button
+              pButton
+              label="{{ 'service.common.search' | translate }}"
+              (click)="handleSearchClick()"
+            ></button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- 列表 -->
+    <div class="table">
+      <p-table [value]="controllWordList">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 15%;">
+              {{
+                "service.controlledWordManagement.table.serialNumber"
+                  | translate
+              }}
+            </th>
+            <th style="width: 50%;">
+              {{
+                "service.controlledWordManagement.table.controlledName"
+                  | translate
+              }}
+            </th>
+            <th style="width: 20%;">
+              {{
+                "service.controlledWordManagement.table.creationDate"
+                  | translate
+              }}
+            </th>
+            <th style="width: 15%;">
+              {{
+                "service.controlledWordManagement.table.operations" | translate
+              }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+          <tr class="table-tr">
+            <td>
+              {{ (pagingBoxObj.page - 1) * pagingBoxObj.rows + rowIndex + 1 }}
+            </td>
+            <td>
+              {{ rowData?.controlledName }}
+            </td>
+            <td>{{ rowData?.createTime | date: "yyyy-MM-dd" }}</td>
+            <td class="operation">
+              <a
+                class="delete"
+                href="javascript:;"
+                title="{{
+                  'service.controlledWordManagement.operations.delete'
+                    | translate
+                }}"
+                (click)="handleDeleteClick(rowData)"
+              ></a>
+              <a
+                class="configService"
+                href="javascript:;"
+                title="{{
+                  'service.controlledWordManagement.operations.config'
+                    | translate
+                }}"
+                (click)="handleConfigClick(rowData)"
+              ></a>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-loaing-data [data]="controllWordList"></app-loaing-data>
+      <app-paging-box
+        *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+        [pagingBoxObj]="pagingBoxObj"
+        (OnPageChange)="handlePageChange($event)"
+      ></app-paging-box>
+    </div>
+    <!--  -->
+  </div>
+</div>
+
+<!-- 删除 -->
+<app-shared-dialog
+  *ngIf="dialogOnOff"
+  cancelTxt="{{ 'service.common.cancel' | translate }}"
+  confirmTxt="{{ 'service.common.sure' | translate }}"
+  [validFunc]="validFunc"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <div>{{ "service.common.deleteDialogTips" | translate }}</div>
+</app-shared-dialog>
+
+<!-- 新增 -->
+<app-controlled-word-add
+  *ngIf="addOnOff"
+  [title]="title"
+  (cancel)="handleCancelClick()"
+  (save)="handleSaveClick($event)"
+></app-controlled-word-add>

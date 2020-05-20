@@ -1,0 +1,86 @@
+.dialog-box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba($color: #fff, $alpha: 0);
+    left: 0;
+    top: 0;
+    z-index: 999;
+    .dialog {
+        width: 440px;
+        height: 320px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: #FFFFFF;
+        border: 1px solid #E0E1E8;
+        box-shadow: 0 8px 18px 0 rgba(50,82,106,0.10);
+        .dialog-title {
+            background: #007BD8;
+            h5 {
+                height: 40px;
+                line-height: 40px;
+                padding-left: 13px;
+                font-family: SourceHanSansSC-Medium;
+                font-size: 14px;
+                color: #FFFFFF;
+                font-weight: normal;
+            }
+            a {
+                position: absolute;
+                right: 13px;
+                top: 12px;
+                width: 16px;
+                height: 16px;
+                cursor: pointer;
+                background: url(/assets/images/close.png) no-repeat;
+                background-position: 0 0;
+                &:hover {
+                    background-position: 0 -16px;
+                }
+            }
+        }
+        .dialog-content {
+            width: 100%;
+            dl{
+                margin-top: 20px;
+                padding:0 20px;
+                width: 100%;
+                box-sizing: content-box;
+                dt{
+                    width: 100%;
+                    font-family: SourceHanSansSC-Medium;
+                    font-size: 14px;
+                    line-height: 14px;
+                    color: #354754;
+                    letter-spacing: 0;
+                    padding-left: 8px;
+                    border-left: 4px solid #007BD8;
+                }
+                dd{
+                    width: 100%;
+                    margin-top: 10px;
+                    font-family: SourceHanSansSC-Regular;
+                    font-size: 13px;
+                    color: #677D8D;
+                    word-break: break-all;
+                    span{
+                        padding-left: 12px;
+                    }
+                    span,a{
+                        display: inline-block;
+                    }
+                    a{
+                        margin-left: 10px;
+                        color: #677D8D;
+                        cursor: pointer;
+                        &:hover{
+                            color: #007BD8;
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }

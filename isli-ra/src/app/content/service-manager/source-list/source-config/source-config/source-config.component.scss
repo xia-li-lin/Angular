@@ -1,0 +1,18 @@
+::ng-deep {
+  .right-bd .content-container.source-config {
+    &.search-zh {
+      .item .item-bd {
+        .ui-inputtext {
+          width: 270px;
+        }
+      }
+    }
+    &.search-en {
+      .item .item-bd {
+        .ui-inputtext {
+          width: 310px;
+        }
+      }
+    }
+  }
+}

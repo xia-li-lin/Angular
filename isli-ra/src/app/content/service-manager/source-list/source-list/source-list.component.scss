@@ -1,0 +1,35 @@
+.content-container {
+  .header {
+    position: relative;
+    button {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+    }
+  }
+  .body {
+    padding: 0 30px;
+    .wid-70 {
+      width: 70px;
+    }
+  }
+}
+
+::ng-deep {
+  .right-bd .content-container.source-list .item {
+    &.p-col-5 {
+      .item-bd {
+        .ui-inputtext {
+          width: 320px;
+        }
+      }
+    }
+    &.p-col-4 {
+      .item-bd {
+        .ui-inputtext {
+          width: 270px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.table-box {
+    padding-top: 60px;
+    text-align: center;
+
+    p {
+        line-height: 25px;
+        font-family: SourceHanSansSC-Regular;
+        font-size: 18px;
+        color: #9EA6AC;
+    }
+
+    .tips {
+        height: 64px;
+        line-height: 40px;
+        padding-bottom: 24px;
+
+        a {
+            height: 40px;
+            display: inline-block;
+            font-family: SourceHanSansSC-Medium;
+            font-size: 26px;
+            color: #354754;
+            background: url(/assets/images/complete.png) left center no-repeat;
+            padding-left: 60px;
+        }
+    }
+
+    .btn-box {
+        padding-top: 30px;
+
+        button {
+            width: 120px;
+            height: 32px;
+            line-height: 30px;
+            margin: 0 10px;
+            border-radius: 4px;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+<div class="create">
+  <div class="header">
+    <h5>{{ "systemMessage.create.create" | translate }}</h5>
+    <a (click)="handleCancelClick()">×</a>
+  </div>
+  <div class="scroll">
+    <div class="tips">
+      <p class="icon">{{ "systemMessage.create.tips" | translate }}</p>
+      <p>{{ "systemMessage.create.tipsOne" | translate }}</p>
+      <p>{{ "systemMessage.create.tipsTwo" | translate }}</p>
+    </div>
+    <div class="send-obj clearfix">
+      <span>{{ "systemMessage.create.sendObj" | translate }}：</span>
+      <div class="select">
+        <p-multiSelect
+          [options]="spAccountData"
+          [(ngModel)]="selectedAccount"
+          defaultLabel="{{ 'systemMessage.create.select' | translate }}"
+          [panelStyle]="{ width: '268px' }"
+          [selectedItemsLabel]=""
+        >
+        </p-multiSelect>
+      </div>
+    </div>
+    <div class="title">
+      <h5>繁体中文</h5>
+    </div>
+    <app-message-form-tw [info]="infoTw"></app-message-form-tw>
+    <div class="border"></div>
+    <div class="title">
+      <h5>English</h5>
+    </div>
+    <app-message-form-en [info]="infoEn"></app-message-form-en>
+  </div>
+  <div class="footer">
+    <button (click)="handleSendClick()">
+      {{ "systemMessage.create.send" | translate }}
+    </button>
+    <button (click)="handleCancelClick()">
+      {{ "systemMessage.create.return" | translate }}
+    </button>
+  </div>
+</div>
+<div class="bg"></div>

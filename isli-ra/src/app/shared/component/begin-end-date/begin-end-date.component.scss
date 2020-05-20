@@ -1,0 +1,27 @@
+.date-wrap {
+  display: inline-block;
+  .p-grid {
+    // width: 430px;
+    position: relative;
+    display: inline-block;
+    line-height: 28px;
+    .p-col {
+      display: inline-block;
+      color: #354558;
+    }
+  }
+  .grap {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+  }
+}
+
+::ng-deep {
+  .right-bd .content-container .item .item-bd .date-wrap .ui-inputtext {
+    min-width: 200px;
+  }
+}

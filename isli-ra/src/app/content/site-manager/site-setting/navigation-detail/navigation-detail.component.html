@@ -1,0 +1,110 @@
+<div class="login-box">
+  <form class="login clearfix" [isliFormValidMsg]="errorMsg">
+    <h1>{{ "siteManager.navs.detail.navigationType" | translate }}</h1>
+    <dl>
+      <dt>{{ "siteManager.navs.detail.navigationType" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="menuType"
+          [(ngModel)]="navigationNode.menuType"
+          [options]="navTypes"
+          placeholder="{{ 'siteManager.common.pleasePlaceholder' | translate }}"
+          [disabled]="modify"
+        ></p-dropdown>
+      </dd>
+    </dl>
+    <div *ngIf="languageEnable('ZH_TW')">
+      <h1>中文繁體</h1>
+      <dl>
+        <dt><span>*</span>導航名稱：</dt>
+        <dd>
+          <input
+            required
+            type="navigationName"
+            placeholder="{{
+              'siteManager.navs.detail.navNamePlaceholder' | translate
+            }}"
+            name="nameZH"
+            maxlength="100"
+            [(ngModel)]="nodeI18nZh.navigationName"
+            [ngModelOptions]="{ updateOn: 'blur' }"
+            appValidNacName
+            [i18nId]="nodeI18nZh.i18nId"
+            langCode="ZH_TW"
+            pInputText
+            appTrim
+          />
+          <mpr-form-control-valid name="nameZH"></mpr-form-control-valid>
+        </dd>
+      </dl>
+      <dl>
+        <dt>導航描述：</dt>
+        <dd>
+          <input
+            type="text"
+            placeholder="{{
+              'siteManager.navs.detail.navDescPlaceholder' | translate
+            }}"
+            name="navigationDescZH"
+            [(ngModel)]="nodeI18nZh.navigationDesc"
+            maxlength="250"
+            pInputText
+            appTrim
+          />
+        </dd>
+      </dl>
+    </div>
+    <div *ngIf="languageEnable('EN_US')">
+      <h1>English</h1>
+      <dl>
+        <dt><span>*</span>Navigation name：</dt>
+        <dd>
+          <input
+            required
+            type="navigationName"
+            placeholder="{{
+              'siteManager.navs.detail.navNamePlaceholder' | translate
+            }}"
+            name="nameEN"
+            maxlength="100"
+            [(ngModel)]="nodeI18nEn.navigationName"
+            [ngModelOptions]="{ updateOn: 'blur' }"
+            appValidNacName
+            [i18nId]="nodeI18nEn.i18nId"
+            langCode="EN_US"
+            pInputText
+            appTrim
+          />
+          <mpr-form-control-valid name="nameEN"></mpr-form-control-valid>
+        </dd>
+      </dl>
+      <dl>
+        <dt>Navigation description：</dt>
+        <dd>
+          <input
+            type="text"
+            placeholder="{{
+              'siteManager.navs.detail.navDescPlaceholder' | translate
+            }}"
+            name="navigationDescEN"
+            maxlength="250"
+            [(ngModel)]="nodeI18nEn.navigationDesc"
+            pInputText
+            appTrim
+          />
+        </dd>
+      </dl>
+    </div>
+    <dl>
+      <dt>&nbsp;</dt>
+      <dd class="btn-group">
+        <button (click)="handleCommitClick()">
+          {{ "siteManager.common.commit" | translate }}
+        </button>
+        <button (click)="handleCancleClick()">
+          {{ "siteManager.common.cancle" | translate }}
+        </button>
+      </dd>
+    </dl>
+  </form>
+</div>

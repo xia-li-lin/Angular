@@ -1,0 +1,81 @@
+.form {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  dl {
+    color: #354754;
+    font-family: SourceHanSansSC-Regular;
+    font-size: 14px;
+    width: 100%;
+    height: auto;
+    dt {
+      float: left;
+      width: 200px;
+      text-align: right;
+      letter-spacing: 0;
+    }
+    dd {
+      float: left;
+      width: calc(100% - 200px);
+      position: relative;
+      input {
+        width: 450px;
+        height: 32px;
+        line-height: 32px;
+        border: 1px solid #d5dce2;
+        box-sizing: border-box;
+        float: left;
+      }
+      textarea {
+        width: 450px;
+        height: 186px;
+        padding: 5px;
+        border: 1px solid #d5dce2;
+        line-height: 18px;
+        box-sizing: border-box;
+        float: left;
+      }
+      input,
+      textarea {
+        &.ng-dirty.ng-invalid.ui-inputtext,
+        &.ng-dirty.ng-invalid {
+          border: 1px solid #eb4d4d;
+        }
+      }
+    }
+    clear: both;
+    line-height: 32px;
+    margin-bottom: 12px;
+  }
+}
+
+.target-form ::ng-deep {
+  .error {
+    position: absolute;
+    line-height: 32px;
+    left: 460px;
+    top: 0;
+
+    p {
+      color: #eb4d4d;
+      height: 32px;
+      line-height: 32px;
+    }
+  }
+  .ui-state-disabled,
+  body .ui-widget:disabled {
+    opacity: 1;
+  }
+  .ui-corner-all {
+    border-radius: 0;
+  }
+  .ui-inputtext {
+    width: 448px;
+    border-radius: 0;
+    height: auto;
+    box-sizing: border-box;
+  }
+  .ui-inputtext {
+    padding: 0 0.5em;
+  }
+}

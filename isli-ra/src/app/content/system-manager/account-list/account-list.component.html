@@ -1,0 +1,105 @@
+<div class="account-box">
+  <div class="create">
+    <h6>{{ "systemAccount.create.systemAccount" | translate }}</h6>
+    <button appPermission="MM.ZH.CJ" (click)="handleCreateClick()">
+      {{ "systemAccount.create.create" | translate }}
+    </button>
+  </div>
+  <div class="table">
+    <p-table [value]="accountListData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="6%">{{ "systemAccount.list.no" | translate }}</th>
+          <th width="8%">{{ "systemAccount.list.username" | translate }}</th>
+          <th width="9%">{{ "systemAccount.list.jobNo" | translate }}</th>
+          <th width="10%">{{ "systemAccount.list.roleType" | translate }}</th>
+          <th width="7%">{{ "systemAccount.list.name" | translate }}</th>
+          <th width="10%">{{ "systemAccount.list.telephone" | translate }}</th>
+          <th width="8%">{{ "systemAccount.list.email" | translate }}</th>
+          <th width="11%">{{ "systemAccount.list.addTime" | translate }}</th>
+          <th width="11%">{{ "systemAccount.list.stopTime" | translate }}</th>
+          <th width="6%">{{ "systemAccount.list.status" | translate }}</th>
+          <th width="14%">{{ "common.operation" | translate }}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>
+            {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+          </td>
+          <td title="{{ rowData.username }}">{{ rowData.username }}</td>
+          <td title="{{ rowData.jobNo }}">{{ rowData.jobNo }}</td>
+          <td title="{{ rowData.roleNames }}">{{ rowData.roleNames }}</td>
+          <td title="{{ rowData.name }}">{{ rowData.name }}</td>
+          <td title="{{ rowData.mobile }}">{{ rowData.mobile }}</td>
+          <td title="{{ rowData.email }}">{{ rowData.email }}</td>
+          <td title="{{ rowData.createTime | date: 'yyyy-MM-dd' }}">
+            {{ rowData.createTime | date: "yyyy-MM-dd" }}
+          </td>
+          <td title="{{ rowData.forbiddenTime | date: 'yyyy-MM-dd' }}">
+            {{ rowData.forbiddenTime | date: "yyyy-MM-dd" || "-" }}
+          </td>
+          <td
+            [class.red]="rowData.status != '1'"
+            title="{{ rowData.status | accountStatus }}"
+          >
+            {{ rowData.status | accountStatus }}
+          </td>
+          <td class="operation">
+            <a
+              class="modify"
+              (click)="handleEditClick(rowData)"
+              title="{{ 'service.common.modify' | translate }}"
+            ></a>
+            <a
+              class="stop"
+              (click)="handleStopClick(rowData)"
+              *ngIf="rowData.status == '1' && rowData.adminId != adminId"
+              title="{{ 'common.stop' | translate }}"
+            ></a>
+            <a
+              class="enable"
+              (click)="handleStartClick(rowData)"
+              *ngIf="rowData.status != '1' && rowData.adminId != adminId"
+              title="{{ 'common.enable' | translate }}"
+            ></a>
+            <a
+              *ngIf="rowData.adminId != adminId"
+              class="assignRoles"
+              (click)="handleAllocationClick(rowData)"
+              title="{{ 'common.allocation' | translate }}"
+            ></a>
+            <a
+              *ngIf="rowData.adminId != adminId"
+              class="delete"
+              (click)="handleDeleteClick(rowData)"
+              title="{{ 'common.delete' | translate }}"
+            ></a>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <app-loaing-data [data]="accountListData"></app-loaing-data>
+    <app-paging-box
+      *ngIf="pageInfo.totalRecords"
+      [pagingBoxObj]="pageInfo"
+      (OnPageChange)="handlePageChange($event)"
+    >
+    </app-paging-box>
+    <p-confirmDialog
+      acceptIcon=""
+      rejectIcon=""
+      acceptLabel="{{ 'common.sure' | translate }}"
+      rejectLabel="{{ 'common.cancel' | translate }}"
+    >
+    </p-confirmDialog>
+    <app-account-role-limits
+      *ngIf="showRoleDialogFlag"
+      [roleLimitsData]="roleLimitsData"
+      [roleLimitSelected]="roleLimitSelected"
+      (OnSaveClick)="handleSaveRoleLimitsClick($event)"
+      (OnCloseClick)="handleCloseRoleLimitsClick()"
+    >
+    </app-account-role-limits>
+  </div>
+</div>

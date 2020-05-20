@@ -1,0 +1,37 @@
+<div class="detail-item">
+  <div class="operation">
+    <a
+      [ngClass]="{
+        exhibition: fqManagerReplay.isShow == 1,
+        conceal: fqManagerReplay.isShow == 0
+      }"
+      title="{{ fqManagerReplay.isShow == 1 ? '顯示' : '隱藏' }}"
+      (click)="handleHideShow()"
+    ></a>
+    <a
+      class="modify"
+      title="{{ 'siteManager.fqmanagers.detail.modify' | translate }}"
+      (click)="handleEditClick()"
+    ></a>
+    <a
+      class="delete"
+      title="{{ 'siteManager.common.delete' | translate }}"
+      (click)="handleDeleteClick()"
+    ></a>
+  </div>
+  <h5>{{ fqManagerReplay.replayContent }}</h5>
+  <p>
+    {{ fqManagerReplay.createTime | date: "yyyy-MM-dd HH:mm:ss" }}
+    <span
+      >{{ "siteManager.fqmanagers.detail.from" | translate }} “{{
+        fqManagerReplay.replayer
+      }}”</span
+    >
+  </p>
+</div>
+<app-question-editor
+  *ngIf="questionReplay"
+  (save)="handleSave($event)"
+  (cancel)="handleCancel()"
+  [content]="fqManagerReplay.replayContent"
+></app-question-editor>

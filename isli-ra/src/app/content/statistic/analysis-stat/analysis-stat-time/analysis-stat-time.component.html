@@ -1,0 +1,15 @@
+<div class="analysis-stat-time chart-box">
+  <div *ngIf="analysisStatList && analysisStatList.length">
+    <app-export-view (exportView)="handleExportViewClick()"></app-export-view>
+    <div
+      echarts
+      [options]="chartOption"
+      class="demo-chart"
+      (chartInit)="handleChartInit($event)"
+    >
+      <div class="data-loading"></div>
+    </div>
+  </div>
+
+  <app-loaing-data [data]="analysisStatList"></app-loaing-data>
+</div>

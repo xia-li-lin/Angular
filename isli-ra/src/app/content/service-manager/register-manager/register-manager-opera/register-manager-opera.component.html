@@ -1,0 +1,156 @@
+<div class="register-manager-opera operation">
+  <!-- 预审 -->
+  <div
+    class="item"
+    *ngIf="registerManager.applicationStatus === status.PRE_AUDIT"
+  >
+    <a
+      class="check"
+      href="javascript:;"
+      title="{{ 'service.register.operation.viewDetail' | translate }}"
+      (click)="handleViewDetailClick()"
+    ></a>
+  </div>
+  <!-- 正常 -->
+  <div class="item" *ngIf="registerManager.applicationStatus === status.NORMAL">
+    <a
+      class="check"
+      href="javascript:;"
+      title="{{ 'service.register.operation.viewDetail' | translate }}"
+      (click)="handleViewDetailClick()"
+    ></a>
+    <a
+      class="viewSystemData"
+      href="javascript:;"
+      title="{{ 'service.register.operation.viewSystemData' | translate }}"
+      (click)="handleViewSystemDataClick()"
+    ></a>
+    <a
+      class="forzen"
+      href="javascript:;"
+      title="{{ 'service.register.operation.forzen' | translate }}"
+      (click)="handleForzenClick()"
+    ></a>
+  </div>
+  <!-- 凍結 -->
+  <div class="item" *ngIf="registerManager.applicationStatus === status.FORZEN">
+    <a
+      class="check"
+      href="javascript:;"
+      title="{{ 'service.register.operation.viewDetail' | translate }}"
+      (click)="handleViewDetailClick()"
+    ></a>
+    <a
+      class="viewSystemData"
+      href="javascript:;"
+      title="{{ 'service.register.operation.viewSystemData' | translate }}"
+      (click)="handleViewSystemDataClick()"
+    ></a>
+    <a
+      class="enable"
+      href="javascript:;"
+      title="{{ 'service.register.operation.enable' | translate }}"
+      (click)="handleEnableClick()"
+    ></a>
+    <a
+      class="stop"
+      href="javascript:;"
+      title="{{ 'service.register.operation.stop' | translate }}"
+      (click)="handleStopClick()"
+    ></a>
+    <a
+      [ngClass]="{
+        'audit-disabled': !registerManager.frozenAppeal,
+        'audit-opear': registerManager.frozenAppeal
+      }"
+      href="javascript:;"
+      title="{{ 'service.register.operation.appealAudit' | translate }}"
+      (click)="handleAppealReviewClick(registerManager.frozenAppeal)"
+    ></a>
+  </div>
+  <!-- 停止 -->
+  <div class="item" *ngIf="registerManager.applicationStatus === status.STOP">
+    <a
+      class="check"
+      href="javascript:;"
+      title="{{ 'service.register.operation.viewDetail' | translate }}"
+      (click)="handleViewDetailClick()"
+    ></a>
+    <a
+      class="viewSystemData"
+      href="javascript:;"
+      title="{{ 'service.register.operation.viewSystemData' | translate }}"
+      (click)="handleViewSystemDataClick()"
+    ></a>
+    <a
+      class="enable"
+      href="javascript:;"
+      title="{{ 'service.register.operation.enable' | translate }}"
+      (click)="handleEnableClick()"
+    ></a>
+  </div>
+  <!-- 待初審 -->
+  <div
+    class="item"
+    *ngIf="registerManager.applicationStatus === status.PEND_TRIAL"
+  >
+    <a
+      class="check"
+      href="javascript:;"
+      title="{{ 'service.register.operation.viewDetail' | translate }}"
+      (click)="handleViewDetailClick()"
+    ></a>
+    <!-- 
+        <a class="pendTrial" 
+            href="javascript:;" 
+            title="{{ 'service.register.operation.pendTrial' | translate }}" 
+            (click)="handleAppealAuditClick()"
+        ></a> 
+    -->
+  </div>
+  <!-- 待复审 -->
+  <div
+    class="item"
+    *ngIf="registerManager.applicationStatus === status.PEND_REVIEW"
+  >
+    <a
+      class="check"
+      href="javascript:;"
+      title="{{ 'service.register.operation.viewDetail' | translate }}"
+      (click)="handleViewDetailClick()"
+    ></a>
+    <a
+      class="pendReview"
+      href="javascript:;"
+      title="{{ 'service.register.operation.pendReview' | translate }}"
+      (click)="handleAppealAuditClick()"
+    ></a>
+  </div>
+  <!-- 未通過 -->
+  <div
+    class="item"
+    *ngIf="registerManager.applicationStatus === status.NOT_PASS"
+  >
+    <a
+      class="check"
+      href="javascript:;"
+      title="{{ 'service.register.operation.viewDetail' | translate }}"
+      (click)="handleViewDetailClick()"
+    ></a>
+  </div>
+  <!-- 建設中 -->
+  <div class="item" *ngIf="registerManager.applicationStatus === status.BUILD">
+    <a
+      class="check"
+      href="javascript:;"
+      title="{{ 'service.register.operation.viewDetail' | translate }}"
+      (click)="handleViewDetailClick()"
+    ></a>
+    <a
+      class="audit"
+      href="javascript:;"
+      title="{{ 'service.register.operation.toExamine' | translate }}"
+      (click)="handleAppealAuditClick()"
+    ></a>
+  </div>
+</div>

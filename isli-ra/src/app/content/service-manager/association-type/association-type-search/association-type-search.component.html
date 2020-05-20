@@ -1,0 +1,159 @@
+<div
+  class="association-type-search bd-search"
+  [ngClass]="{
+    'search-en': language === 'EN_US',
+    'search-zh': language !== 'EN_US'
+  }"
+>
+  <div class="p-grid search-bd">
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-4': language !== 'EN_US',
+        'p-col-6': language === 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-84': language !== 'EN_US',
+          'wid-130': language === 'EN_US'
+        }"
+        >{{ "service.associationType.search.state" | translate }}：</label
+      >
+      <span class="item-bd">
+        <p-dropdown
+          [options]="statusList"
+          [(ngModel)]="assicuationSearch.enabledFlag"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-4': language !== 'EN_US',
+        'p-col-6': language === 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-70': language !== 'EN_US',
+          'wid-130': language === 'EN_US'
+        }"
+        >{{ "service.associationType.search.linkType" | translate }}：</label
+      >
+      <span class="item-bd">
+        <input
+          type="text"
+          name="relevanceTypeNameZh"
+          appTrim
+          pInputText
+          [(ngModel)]="assicuationSearch.relevanceTypeNameZh"
+        />
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-4': language !== 'EN_US',
+        'p-col-6': language === 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-70': language !== 'EN_US',
+          'wid-130': language === 'EN_US'
+        }"
+        >{{ "service.associationType.search.sourceType" | translate }}：</label
+      >
+      <span class="item-bd">
+        <p-dropdown
+          [options]="sourceTypeList"
+          [(ngModel)]="assicuationSearch.sourceTypeEn"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-4': language !== 'EN_US',
+        'p-col-6': language === 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-70': language !== 'EN_US',
+          'wid-130': language === 'EN_US'
+        }"
+        >{{ "service.associationType.search.targetType" | translate }}：</label
+      >
+      <span class="item-bd">
+        <p-dropdown
+          [options]="targetTypeList"
+          [(ngModel)]="assicuationSearch.targetTypeEn"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-6': language !== 'EN_US',
+        'p-col-7': language === 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-70': language !== 'EN_US',
+          'wid-130': language === 'EN_US'
+        }"
+        >{{
+          "service.associationType.search.creationDate" | translate
+        }}：</label
+      >
+      <span class="item-bd date">
+        <app-begin-end-date [(ngModel)]="registerData"></app-begin-end-date>
+      </span>
+    </div>
+    <div class="p-col-2 item item-search">
+      <span class="item-bd">
+        <button
+          pButton
+          label="{{ 'service.common.search' | translate }}"
+          (click)="handleSearchClick()"
+        ></button>
+      </span>
+    </div>
+  </div>
+</div>

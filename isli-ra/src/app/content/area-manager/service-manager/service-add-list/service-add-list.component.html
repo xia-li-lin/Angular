@@ -1,0 +1,91 @@
+<div class="content-container">
+  <div class="header">
+    <p class="title">{{ "areaManager.serviceManager" | translate }}</p>
+    <button
+      pButton
+      label="{{ 'common.backBtn' | translate }}"
+      (click)="handleBackClick()"
+    ></button>
+  </div>
+  <div class="body">
+    <div class="bd-search">
+      <div class="p-grid search-bd">
+        <div class="p-col-4 item">
+          <label>{{ "areaManager.service.servceName" | translate }}</label>
+          <span class="item-bd">
+            <input pInputText name="name" [(ngModel)]="search.serviceName" />
+          </span>
+        </div>
+        <div class="p-col-4 item">
+          <label>{{ "areaManager.search.serviceCode" | translate }}</label>
+          <span class="item-bd">
+            <input pInputText [(ngModel)]="search.serviceCode" />
+          </span>
+        </div>
+        <div class="p-col-4 item item-search">
+          <span class="item-bd">
+            <button
+              pButton
+              label="{{ 'areaManager.search.searchBtn' | translate }}"
+              (click)="handleSearchClick()"
+            ></button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table">
+      <p-table [value]="blockServiceList">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 8%;">{{ "areaManager.table.no" | translate }}</th>
+            <th>{{ "areaManager.table.serviceName" | translate }}</th>
+            <th style="width: 15%;">
+              {{ "areaManager.table.serviceCode" | translate }}
+            </th>
+            <th style="width: 22%;">
+              {{ "areaManager.table.relevanceType" | translate }}
+            </th>
+            <th style="width: 15%;">
+              {{ "areaManager.table.createTime" | translate }}
+            </th>
+            <th style="width: 15%;">
+              {{ "areaManager.table.operation" | translate }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+          <tr>
+            <td>
+              {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+            </td>
+            <td>
+              {{ rowData.serviceName }}
+            </td>
+            <td>
+              {{ rowData.serviceCode }}
+            </td>
+            <td>
+              {{ rowData.relevanceTypeName }}
+            </td>
+            <td>
+              {{ rowData.createDateTime | date: "yyyy-MM-dd" }}
+            </td>
+            <td class="operation">
+              <a
+                class="add"
+                (click)="handleAddService(rowData)"
+                title="{{ 'common.addBtn' | translate }}"
+              ></a>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-paging-box
+        *ngIf="pageInfo.totalRecords > pageInfo.rows"
+        [pagingBoxObj]="pageInfo"
+        (OnPageChange)="handlePageChange($event)"
+      ></app-paging-box>
+      <app-loaing-data [data]="blockServiceList"></app-loaing-data>
+    </div>
+  </div>
+</div>

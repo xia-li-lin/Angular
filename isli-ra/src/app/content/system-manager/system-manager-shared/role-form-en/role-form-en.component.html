@@ -1,0 +1,27 @@
+<div class="role-form clearfix">
+    <form [isliFormValidMsg]="errorMsg">
+        <dl>
+            <dt><span>*</span>Region：</dt>
+            <dd>
+                <p-dropdown required name="areaId" placeholder="- select -" [options]="areaArray" [ngModel]="info.areaId"
+                    [autoDisplayFirst]="false" [filter]="areaArray&&areaArray.length>15?true:false" (ngModelChange)="areaChange($event)">
+                </p-dropdown>
+                <mpr-form-control-valid controlName="areaId"></mpr-form-control-valid>
+            </dd>
+        </dl>
+        <dl>
+            <dt><span>*</span>Role name：</dt>
+            <dd>
+                <input required  pInputText appRoleNameExist type="text" name="roleName" class="roleName" langCode='EN_US'
+                 [roleId]="info.roleId" [(ngModel)]="info.roleName"  />
+                <mpr-form-control-valid controlName="roleName"></mpr-form-control-valid>
+            </dd>
+        </dl>
+        <dl>
+            <dt>describe：</dt>
+            <dd>
+                <input type="text" name="description" class="description" [(ngModel)]="info.description" pInputText />
+            </dd>
+        </dl>
+    </form>
+</div>

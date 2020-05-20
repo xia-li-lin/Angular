@@ -1,0 +1,103 @@
+.statistic-search {
+  min-height: 120px;
+  background: #f6f8f9;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 21px;
+  .item {
+    font-family: SourceHanSansSC-Regular;
+    font-size: 14px;
+    line-height: 28px;
+    color: #677d8d;
+    letter-spacing: 0;
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    .itemL {
+      float: left;
+      .search-btn {
+        width: 100px;
+        height: 32px;
+      }
+    }
+    .itemR {
+      float: left;
+      p-dropdown {
+        float: left;
+      }
+      .line {
+        float: left;
+        height: 28px;
+        line-height: 28px;
+        width: 30px;
+        text-align: center;
+      }
+    }
+  }
+}
+::ng-deep {
+  body .statistic-search .ui-button.ui-button-text-only .ui-button-text {
+    padding: 0;
+    display: block;
+    height: inherit;
+    line-height: 28px;
+  }
+  body .statistic-search .ui-selectbutton .ui-button.ui-state-active {
+    background: #007bd8;
+    border-top: 1px solid #007bd8;
+    border-bottom: 1px solid #007bd8;
+    border-left: 1px solid #007bd8;
+    border-right: none;
+    color: #ffffff;
+  }
+  body .statistic-search .ui-selectbutton .ui-button {
+    width: 100px;
+    height: 28px;
+    line-height: 28px;
+    background: rgba(255, 255, 255, 0.40);
+    border-top: 1px solid #dadbe0;
+    border-bottom: 1px solid #dadbe0;
+    border-left: 1px solid #dadbe0;
+    border-right: none;
+    font-family: SourceHanSansSC-Regular;
+    font-size: 13px;
+    color: #354754;
+    letter-spacing: 0;
+    text-align: center;
+    -webkit-transition: background-color 0.2s, box-shadow 0.2s;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    border-radius: 0;
+  }
+  body .statistic-search .ui-selectbutton .ui-button:last-child,
+  body .statistic-search .ui-selectbutton .ui-button:first-child {
+    border-radius: 0;
+  }
+  body .statistic-search .ui-selectbutton .ui-button:last-child {
+    border-right: 1px solid #dadbe0;
+  }
+  body .statistic-search .ui-selectbutton .ui-button.ui-state-active:last-child {
+    border-right: 1px solid #007bd8;
+  }
+  .item .itemR .ui-inputtext {
+    width: 231px;
+    padding: 0 0.5em;
+    line-height: 28px;
+  }
+  .calendar-dropdown .pi-chevron-down:before {
+    content: '';
+    border: 0;
+  }
+  .calendar-dropdown .ui-inputtext {
+    background: url(/assets/images/date/datePickerDefault.png) 205px center no-repeat;
+    &:hover {
+      background: url(/assets/images/date/datePickerDefaultDown.png) 205px center no-repeat;
+    }
+  }
+  .calendar-dropdown .ui-dropdown .ui-dropdown-trigger {
+    width: 0;
+    height: 0;
+  }
+  .statistic-search .ui-calendar .ui-datepicker .ui-datepicker-year {
+    float: none;
+  }
+}

@@ -1,0 +1,30 @@
+input {
+    width: 450px;
+    padding: 0 10px;
+    height: 32px;
+    margin-right: 10px;
+    vertical-align: middle;
+    border: 1px solid #D5DCE2;
+    font-size: 14px;
+    color: #354754;
+
+    // &.ng-dirty.ng-invalid {
+    //     border: 1px solid #EB4D4D;
+    // }
+
+    &.mobile {
+        width: 258px;
+    }
+
+    &.telephone-code {
+        width: 64px;
+    }
+
+    &.telephone-number {
+        width: 126px;
+    }
+
+    &.telephone-ext {
+        width: 74px;
+    }
+}

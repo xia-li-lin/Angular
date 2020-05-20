@@ -1,0 +1,79 @@
+.language-box {
+    .create {
+        width: 100%;
+        height: 50px;
+        padding: 10px 20px 8px 20px;
+        text-align: right;
+        line-height: 32px;
+        border-bottom: 1px solid #F0F4F8;
+        font-size: 0;
+
+        h6 {
+            float: left;
+            font-family: SourceHanSansSC-Medium;
+            font-size: 16px;
+            line-height: 32px;
+            color: #354754;
+            letter-spacing: 0;
+        }
+
+    }
+
+    .step {
+        width: 100%;
+        padding-left: 30px;
+        padding-top: 40px;
+
+        ul li {
+            width: 264px;
+            // height: 100px;
+            display: inline-block;
+            text-align: center;
+            background: url(/assets/images/step.png) top center no-repeat;
+
+            .number {
+                line-height: 44px;
+                opacity: 0.8;
+                font-family: SourceHanSansSC-Medium;
+                font-size: 20px;
+                color: #FFFFFF;
+            }
+
+            .txt {
+                line-height: 24px;
+                padding-top: 10px;
+                font-family: SourceHanSansSC-Medium;
+                font-size: 16px;
+                color: #CCCCCC;
+            }
+
+            &.active {
+                background: url(/assets/images/stepActive.png) top center no-repeat;
+
+                .txt {
+                    color: #93C61F;
+                }
+            }
+        }
+    }
+
+    .btn-box {
+        text-align: center;
+        margin: 0 auto;
+
+        button {
+            width: 120px;
+            height: 32px;
+            line-height: 32px;
+            font-family: SourceHanSansSC-Regular;
+            font-size: 14px;
+            color: #FFFFFF;
+            background: #007BD8;
+            border-radius: 4px;
+            border: 0 none;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    }
+
+}

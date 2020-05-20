@@ -1,0 +1,44 @@
+<div class="servicecode-stat statistic">
+  <h2 class="nav-name">{{ "statistic.nav.serviceCodeAnsys" | translate }}</h2>
+  <div class="clearfix statistic-content">
+    <app-servicecode-stat-search
+      [spUserList]="spUserList"
+      (searchClick)="handleSearchClick($event)"
+      (typeChange)="handleTypeChange($event)"
+    ></app-servicecode-stat-search>
+    <app-servicecode-stat-sp
+      *ngIf="serviceCodeSearchParams.dataType == dataType.SP"
+      [serviceCodeList]="serviceCodeList"
+    ></app-servicecode-stat-sp>
+    <app-servicecode-stat-time
+      *ngIf="serviceCodeSearchParams.dataType == dataType.TIME"
+      [serviceCodeList]="serviceCodeList"
+    ></app-servicecode-stat-time>
+    <app-servicecode-stat-area
+      *ngIf="serviceCodeSearchParams.dataType == dataType.AREA"
+      [serviceCodeList]="serviceCodeList"
+    ></app-servicecode-stat-area>
+    <div
+      class="clearfix toggle"
+      *ngIf="serviceCodeList && serviceCodeList.length"
+    >
+      <button
+        class="toggleBtn"
+        [ngClass]="{ toggleBtnActive: onoff }"
+        (click)="handleToggleClick()"
+      ></button>
+    </div>
+    <app-excel
+      *ngIf="onoff"
+      (exportTable)="handleExportTableClick()"
+    ></app-excel>
+    <app-servicecode-stat-table
+      *ngIf="onoff"
+      [type]="serviceCodeSearchParams.dataType"
+      [pagingBoxObj]="pagingBoxObj"
+      [serviceCodeTotal]="serviceCodeTotal"
+      [serviceCodeList]="serviceCodeList"
+      (OnPage)="handlePageClick($event)"
+    ></app-servicecode-stat-table>
+  </div>
+</div>

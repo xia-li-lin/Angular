@@ -1,0 +1,100 @@
+.register-detail {
+  margin-bottom: 30px;
+  .aBtn {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    button {
+      padding: 0 30px;
+      text-align: center;
+      height: 32px;
+    }
+    .back {
+      height: 32px;
+      margin-left: 20px;
+    }
+  }
+  .item {
+    border-bottom: 1px solid #f0f4f8;
+    padding-bottom: 30px;
+    overflow: hidden;
+    .title {
+      font-family: SourceHanSansSC-Medium;
+      font-size: 14px;
+      color: #354754;
+      letter-spacing: 0;
+      border-left: 4px solid #007bd8;
+      padding-left: 8px;
+      margin-bottom: 20px;
+      margin-top: 28px;
+    }
+    table {
+      font-family: SourceHanSansSC-Regular;
+      font-size: 14px;
+      line-height: 30px;
+      letter-spacing: 0;
+      overflow: hidden;
+      tr {
+        td {
+          vertical-align: top;
+          word-break: break-all;
+          &:nth-of-type(1) {
+            color: #9ea6ac;
+            text-align: right;
+            width: 340px;
+          }
+          &:nth-of-type(2) {
+            color: #354754;
+          }
+          &.normal {
+            color: #93c61f;
+          }
+          &.forzen {
+            color: #ff9e36;
+          }
+          &.stop {
+            color: #ff3636;
+          }
+          &.pendTrial {
+            color: #677d8d;
+          }
+          &.pendReview {
+            color: #677d8d;
+          }
+          &.notPass {
+            color: #ff3636;
+          }
+          &.build {
+            color: #677d8d;
+          }
+          .oSpan {
+            display: inline-block;
+          }
+          .copy {
+            display: inline-block;
+            margin-left: 20px;
+          }
+          &.operation {
+            span {
+              float: left;
+              display: block;
+              margin-right: 20px;
+            }
+            a {
+              float: left;
+              display: block;
+              margin-top: 6px;
+              &.putGrayCheck {
+                cursor: not-allowed;
+              }
+              &.check,
+              &.download {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

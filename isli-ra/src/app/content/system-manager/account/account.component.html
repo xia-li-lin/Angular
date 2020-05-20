@@ -1,0 +1,173 @@
+<div class="login-box">
+  <div class="create">
+    <h6>{{ createTxt }}</h6>
+  </div>
+  <form class="login clearfix" [isliFormValidMsg]="errorMsg">
+    <dl>
+      <dt><span>*</span>{{ "systemAccount.create.username" | translate }}：</dt>
+      <dd>
+        <input
+          required
+          appJobNoExist
+          [adminId]="id"
+          [account]="info.username"
+          type="text"
+          placeholder="{{ 'systemAccount.create.usernameHolder' | translate }}"
+          name="username"
+          [(ngModel)]="info.username"
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          pInputText
+          appTrim
+          maxlength="64"
+        />
+        <mpr-form-control-valid controlName="username"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt><span>*</span>{{ "systemAccount.create.jobNo" | translate }}：</dt>
+      <dd>
+        <input
+          required
+          appValidJobNo
+          appJobNoExist
+          [adminId]="id"
+          type="text"
+          placeholder="{{ 'systemAccount.create.jobNoHolder' | translate }}"
+          name="jobNo"
+          [(ngModel)]="info.jobNo"
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          pInputText
+          maxlength="6"
+          appPatternInput="^[0-9A-Za-z]+$"
+        />
+        <mpr-form-control-valid controlName="jobNo"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt><span>*</span>{{ "systemAccount.create.name" | translate }}：</dt>
+      <dd>
+        <input
+          required
+          type="text"
+          placeholder="{{ 'systemAccount.create.nameHolder' | translate }}"
+          name="name"
+          [(ngModel)]="info.name"
+          pInputText
+          appTrim
+          maxlength="100"
+        />
+        <mpr-form-control-valid controlName="name"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "systemAccount.create.telephone" | translate }}：
+      </dt>
+      <dd>
+        <app-tele-phone
+          name="telephone"
+          [(ngModel)]="info.telephone"
+        ></app-tele-phone>
+        <!-- <mpr-form-control-valid controlName="telephone"></mpr-form-control-valid> -->
+      </dd>
+    </dl>
+    <dl>
+      <dt><span>*</span>{{ "systemAccount.create.mobile" | translate }}：</dt>
+      <dd class="mobile">
+        <p-dropdown
+          name="mobileType"
+          [options]="telephonePreArray"
+          [(ngModel)]="info.mobileType"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span>{{ item.label | translate }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span>{{ item.label | translate }}</span>
+          </ng-template>
+        </p-dropdown>
+        <input
+          required
+          appVaileMobile
+          type="text"
+          placeholder="{{ 'systemAccount.create.mobileHolder' | translate }}"
+          name="mobile"
+          class="mobile"
+          [(ngModel)]="info.mobile"
+          pInputText
+          appPatternInput="^\d+$"
+          maxlength="11"
+        />
+        <mpr-form-control-valid controlName="mobile"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt><span>*</span>{{ "systemAccount.create.email" | translate }}：</dt>
+      <dd>
+        <input
+          required
+          appValidEmail
+          type="text"
+          placeholder="{{ 'systemAccount.create.emailHolder' | translate }}"
+          name="email"
+          [(ngModel)]="info.email"
+          pInputText
+          appTrim
+          maxlength="64"
+        />
+        <mpr-form-control-valid controlName="email"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl *ngIf="createPageFlag">
+      <dt><span>*</span>{{ "systemAccount.create.password" | translate }}：</dt>
+      <dd>
+        <input
+          #newPwd
+          required
+          appTrim
+          appPwdFormat
+          pInputText
+          type="password"
+          placeholder="{{ 'systemAccount.create.passwordHolder' | translate }}"
+          name="password"
+          [(ngModel)]="info.password"
+          minlength="6"
+          maxlength="20"
+        />
+        <mpr-form-control-valid controlName="password"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl *ngIf="createPageFlag">
+      <dt>
+        <span>*</span>{{ "systemAccount.create.passwordConfirm" | translate }}：
+      </dt>
+      <dd>
+        <input
+          #newPwdEq
+          required
+          appTrim
+          minlength="6"
+          maxlength="20"
+          pInputText
+          type="password"
+          placeholder="{{ 'systemAccount.create.passwordHolder' | translate }}"
+          name="confirmPassword"
+          [(ngModel)]="info.confirmPassword"
+          [appEq]="info.password"
+          [eqControl]="newPwdControl"
+        />
+        <mpr-form-control-valid
+          controlName="confirmPassword"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>&nbsp;</dt>
+      <dd>
+        <button (click)="handleSaveClick()">
+          {{ "common.sure" | translate }}
+        </button>
+      </dd>
+    </dl>
+  </form>
+</div>

@@ -1,0 +1,36 @@
+<div class="lc-stat statistic">
+  <h2 class="nav-name">{{ "statistic.nav.lcAnsys" | translate }}</h2>
+  <div class="clearfix statistic-content">
+    <app-lc-stat-search
+      (searchClick)="handleSearchClick($event)"
+      (typeChange)="handleTypeChange($event)"
+    ></app-lc-stat-search>
+    <app-lc-stat-chart
+      [type]="lcSearchParams.type"
+      [lcServiceList]="lcServiceList"
+      [lcTimeList]="lcTimeList"
+    ></app-lc-stat-chart>
+    <div class="clearfix toggle" *ngIf="lcServiceList && lcServiceList.length">
+      <button
+        class="toggleBtn"
+        [ngClass]="{ toggleBtnActive: onoff }"
+        (click)="handleToggleClick()"
+      ></button>
+    </div>
+    <app-excel
+      *ngIf="onoff"
+      (exportTable)="handleExportTableClick()"
+    ></app-excel>
+    <app-lc-stat-table
+      *ngIf="onoff"
+      [type]="lcSearchParams.type"
+      [lcList]="
+        lcSearchParams.type == dataType.SERVICE ? lcServiceList : lcTimeList
+      "
+      [lcTotal]="
+        lcSearchParams.type == dataType.SERVICE ? lcServiceTotal : lcTimeTotal
+      "
+      [pagingBoxObj]="pagingBoxObj"
+    ></app-lc-stat-table>
+  </div>
+</div>

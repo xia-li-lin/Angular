@@ -1,0 +1,187 @@
+<div>
+  <div class="search-title">
+    <span>{{ "siteManager.products.list.search.title" | translate }}</span>
+    <button (click)="handleAddClick()">
+      {{ "siteManager.products.list.search.create" | translate }}
+    </button>
+  </div>
+  <div [class]="'search search-content' + lang">
+    <dl>
+      <dt>{{ "siteManager.products.list.search.sppStatus" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="sppStatus"
+          [options]="sppStatusList"
+          [(ngModel)]="serviceProductSearch.sppStatus"
+          [autoDisplayFirst]="false"
+          placeholder="{{ 'siteManager.common.all' | translate }}"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+      </dd>
+    </dl>
+    <dl>
+      <dt>{{ "siteManager.products.list.search.sppTitle" | translate }}：</dt>
+      <dd>
+        <input
+          pInputText
+          appTrim
+          [(ngModel)]="serviceProductSearch.title"
+          placeholder="{{
+            'siteManager.products.list.search.titlePlaceholder' | translate
+          }}"
+        />
+      </dd>
+    </dl>
+    <dl>
+      <dt class="minw42">{{ "siteManager.common.langCode" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="langCode"
+          [options]="langList"
+          [(ngModel)]="serviceProductSearch.langCode"
+          [autoDisplayFirst]="false"
+          placeholder="{{ 'siteManager.common.all' | translate }}"
+        >
+        </p-dropdown>
+      </dd>
+    </dl>
+    <dl class="time">
+      <dt>{{ "siteManager.products.list.search.searchDate" | translate }}</dt>
+      <dd>
+        <app-begin-end-date
+          [(ngModel)]="searchDate"
+          (ngModelChange)="handleDateChange($event)"
+        ></app-begin-end-date>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <button (click)="handleSearch()">
+          {{ "siteManager.common.search" | translate }}
+        </button>
+      </dt>
+    </dl>
+  </div>
+  <div class="table">
+    <p-table [value]="serviceProductListData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="10%">
+            {{ "siteManager.products.list.table.no" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.products.list.table.title" | translate }}
+          </th>
+          <th width="10%">{{ "siteManager.common.langCode" | translate }}</th>
+          <th width="10%">
+            {{ "siteManager.products.list.table.sort" | translate }}
+          </th>
+          <th>
+            {{ "siteManager.products.list.table.updateTime" | translate }}
+          </th>
+          <th width="10%">
+            {{ "siteManager.products.list.table.editor" | translate }}
+          </th>
+          <th width="8%">
+            {{
+              "siteManager.products.list.table.sppStatussppStatus" | translate
+            }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.products.list.table.operat" | translate }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>
+            {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+          </td>
+          <td title="{{ rowData.title }}">
+            {{ rowData.title }}
+          </td>
+          <td title="{{ rowData.langDesc }}">
+            {{ rowData.langDesc }}
+          </td>
+          <td>
+            <input
+              #sort
+              type="text"
+              value="{{ rowData.sort }}"
+              appPatternInput="^\d+$"
+              maxlength="1"
+              (blur)="handleSort(rowData.id, sort.value, rowData.sort)"
+            />
+          </td>
+          <td title="{{ rowData.updateTime | date: 'yyyy-MM-dd' }}">
+            {{ rowData.updateTime | date: "yyyy-MM-dd" }}
+          </td>
+          <td title="{{ rowData.editor }}">
+            {{ rowData.editor }}
+          </td>
+          <td
+            [ngClass]="{
+              blue: rowData.sppStatus == 0,
+              green: rowData.sppStatus == 1
+            }"
+            title="{{ rowData.sppStatus | showHideTrans: 1 }}"
+          >
+            {{ rowData.sppStatus | showHideTrans: 1 }}
+          </td>
+          <td class="operation">
+            <a
+              [ngClass]="{
+                exhibition: rowData.sppStatus == 1,
+                conceal: rowData.sppStatus == 0
+              }"
+              title="{{ rowData.sppStatus | showHideTrans }}"
+              (click)="handlehideOrShow(rowData.id, rowData.sppStatus)"
+            ></a>
+            <a
+              class="modify"
+              title="{{ 'siteManager.common.modify' | translate }}"
+              (click)="handleModifyClick(rowData)"
+            ></a>
+            <a
+              class="delete"
+              title="{{ 'siteManager.common.delete' | translate }}"
+              (click)="handleDeleteClick(rowData.id)"
+            ></a>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <app-paging-box
+      *ngIf="pageInfo.totalRecords"
+      [pagingBoxObj]="pageInfo"
+      (OnPageChange)="handlePageChange($event)"
+    >
+    </app-paging-box>
+    <app-loaing-data [data]="serviceProductListData"></app-loaing-data>
+  </div>
+</div>
+<app-shared-dialog
+  *ngIf="dialogOnOff"
+  cancelTxt="{{ 'siteManager.common.cancle' | translate }}"
+  [validFunc]="validFunc"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <div>{{ "siteManager.common.cancelContent" | translate }}</div>
+</app-shared-dialog>
+
+<app-shared-dialog
+  *ngIf="sortOnOff"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <div>{{ "siteManager.common.sortTips" | translate }}</div>
+</app-shared-dialog>

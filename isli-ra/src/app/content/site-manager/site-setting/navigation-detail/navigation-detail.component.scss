@@ -1,0 +1,103 @@
+.login-box {
+  padding-bottom: 30px;
+
+  .login {
+    padding-top: 15px;
+    h1 {
+      margin: 20px 20px;
+      padding-left: 8px;
+      border-left: 4px solid #007bd8;
+      font-size: 14px;
+      color: #354754;
+    }
+  }
+
+  dl,
+  dt,
+  dd {
+    float: none;
+  }
+
+  dl {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding-bottom: 18px;
+    align-items: center;
+    dt {
+      width: 176px;
+      line-height: 31px;
+      text-align: right;
+      padding-right: 6px;
+
+      span {
+        color: #f40;
+      }
+    }
+
+    dd {
+      width: 450px;
+      position: relative;
+      input {
+        width: 450px;
+        padding: 0 10px;
+        height: 31px;
+        margin-right: 10px;
+        vertical-align: middle;
+        border: 1px solid #c4cbd0;
+
+        &.ng-dirty.ng-invalid {
+          border: 1px solid #eb4d4d;
+        }
+      }
+      ::ng-deep {
+        .ui-dropdown {
+          width: 450px;
+          height: 32px;
+          margin-right: 10px;
+          border: 1px solid #c4cbd0;
+        }
+
+        .ui-dropdown .ui-dropdown-label {
+          height: 29px;
+          line-height: 29px;
+          padding: 0 10px;
+        }
+        .error p {
+          position: absolute;
+        }
+      }
+    }
+  }
+}
+.btn-group {
+  display: flex;
+  padding-left: 150px;
+  button {
+    width: 100px;
+    height: 32px;
+    line-height: 32px;
+    border: none;
+    border-radius: 4px;
+    &:first-child {
+      margin-right: 20px;
+      color: #fff;
+      background: #007bd8;
+      &:hover {
+        background: #32a7ff;
+      }
+    }
+    &:last-child {
+      border: 1px solid #007bd8;
+      color: #007bd8;
+      background: #fff;
+      &:hover {
+        background: #e5f4ff;
+      }
+    }
+  }
+}
+a,
+button {
+  cursor: pointer;
+}

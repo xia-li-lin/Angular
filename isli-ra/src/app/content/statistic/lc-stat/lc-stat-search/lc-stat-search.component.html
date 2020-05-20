@@ -1,0 +1,92 @@
+<div class="lc-stat-search statistic-search">
+  <div class="item">
+    <div class="itemL">{{ "statistic.typeSelection" | translate }}：</div>
+    <div class="itemR">
+      <p-selectButton
+        [options]="types"
+        styleClass="selectButton"
+        [(ngModel)]="lcSearchParams.type"
+        (ngModelChange)="handleTypeChange($event)"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-selectButton>
+    </div>
+  </div>
+  <div class="item" *ngIf="lcSearchParams.type !== dataType.TIME">
+    <div class="itemL">{{ "statistic.selectTime" | translate }}：</div>
+    <div class="itemR calendar-dropdown">
+      <p-dropdown
+        [options]="timesList"
+        [filter]="timesList && timesList.length > 15 ? true : false"
+        [(ngModel)]="lcSearchParams.startYear"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="item" *ngIf="lcSearchParams.type === dataType.TIME">
+    <div class="itemL">{{ "statistic.selectTime" | translate }}：</div>
+    <div class="itemR calendar-dropdown">
+      <p-dropdown
+        [options]="startTimesList"
+        [filter]="startTimesList && startTimesList.length > 15 ? true : false"
+        [(ngModel)]="lcSearchParams.startYear"
+        (ngModelChange)="handleStartTimeChange($event)"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-dropdown>
+      <span class="line">-</span>
+      <p-dropdown
+        [options]="endTimesList"
+        [filter]="endTimesList && endTimesList.length > 15 ? true : false"
+        [(ngModel)]="lcSearchParams.endYear"
+        (ngModelChange)="handleEndTimeChange($event)"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="item">
+    <div class="itemL">
+      <button class="search-btn" (click)="handleSearchClick()">
+        {{ "statistic.common.search" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

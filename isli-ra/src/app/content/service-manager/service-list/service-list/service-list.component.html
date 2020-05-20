@@ -1,0 +1,29 @@
+<div class="service-list content-container">
+  <div class="header">
+    <p class="title">{{ "service.nav.serviceList" | translate }}</p>
+    <button
+      pButton
+      label="{{ 'service.serviceList.add' | translate }}"
+      (click)="handleAddServiceClick()"
+    ></button>
+  </div>
+  <div class="body">
+    <app-service-search
+      [serviceCodeList]="serviceCodeList"
+      (searchClick)="handleSearchClick($event)"
+    ></app-service-search>
+    <!-- app-service-table (OnServicePushClick)="handleServicePushClick($event)" -->
+    <app-service-table
+      [pagingBoxObj]="pagingBoxObj"
+      [serviceList]="serviceList"
+      (pageChange)="handlePageChange($event)"
+    ></app-service-table>
+  </div>
+</div>
+
+<app-service-push
+  *ngIf="districtRowOnOff"
+  [districtRowList]="districtRowList"
+  (cancelClick)="handleCancelClick()"
+  (sureClick)="handleSureClick($event)"
+></app-service-push>

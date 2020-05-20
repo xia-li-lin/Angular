@@ -1,0 +1,176 @@
+<div class="login-box">
+  <form class="login clearfix" [isliFormValidMsg]="errorMsg">
+    <dl>
+      <dt><span>*</span>{{ "siteManager.common.langCode" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="language"
+          [(ngModel)]="info.langCode"
+          [options]="langList"
+          placeholder="{{ 'siteManager.common.pleasePlaceholder' | translate }}"
+          [autoDisplayFirst]="false"
+          required
+        ></p-dropdown>
+        <mpr-form-control-valid controlName="language"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.examples.detail.title" | translate }}：
+      </dt>
+      <dd>
+        <input
+          required
+          type="text"
+          placeholder="{{
+            'siteManager.examples.detail.titlePlaceholder' | translate
+          }}"
+          name="title"
+          [(ngModel)]="info.title"
+          maxlength="100"
+          pInputText
+        />
+        <mpr-form-control-valid controlName="title"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.examples.detail.thumbnailUrl" | translate }}：
+      </dt>
+      <dd class="thumbnailUrl">
+        <div class="upload-warp">
+          <app-file-upload
+            name="thumbnailUrl"
+            url="/isli/irms/manage-provider/base/serviceProviderAccount/v1/registerFile"
+            [ngModel]="info.thumbnailUrl"
+            (ngModelChange)="handleThumbnailChange($event)"
+            [maxFileSzie]="100 * 1024"
+            [widthHeight]="[{ width: 363, height: 207, max: false }]"
+            [all]="true"
+            required
+          ></app-file-upload>
+          <mpr-form-control-valid
+            controlName="thumbnailUrl"
+          ></mpr-form-control-valid>
+        </div>
+        <div class="thumbnailUrl-tip">
+          {{ "siteManager.common.thumbnailUrlTip" | translate }}
+        </div>
+      </dd>
+    </dl>
+    <!-- <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.examples.detail.createTime" | translate }}：
+      </dt>
+      <dd>
+        <app-calendar
+          name="createTime"
+          [(ngModel)]="info.createTime"
+          required
+        ></app-calendar>
+        <mpr-form-control-valid
+          controlName="createTime"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl> -->
+    <dl>
+      <dt>
+        <span>*</span
+        >{{
+          "siteManager.examples.detail.applicationExampleStatus" | translate
+        }}：
+      </dt>
+      <dd>
+        <p-radioButton
+          name="applicationExampleStatus"
+          value="0"
+          label="{{ 'siteManager.common.show' | translate }}"
+          [(ngModel)]="info.applicationExampleStatus"
+        ></p-radioButton>
+        <p-radioButton
+          name="applicationExampleStatus"
+          value="1"
+          label="{{ 'siteManager.common.hide' | translate }}"
+          [(ngModel)]="info.applicationExampleStatus"
+        ></p-radioButton>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.examples.detail.sort" | translate }}：
+      </dt>
+      <dd>
+        <input
+          required
+          type="text "
+          name="sort"
+          placeholder="{{
+            'siteManager.examples.detail.sortPlaceholder' | translate
+          }}"
+          [(ngModel)]="info.sort"
+          maxlength="1"
+          pInputText
+          appPatternInput="^\d+$"
+        />
+        <mpr-form-control-valid controlName="sort"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.examples.detail.summary" | translate }}：
+      </dt>
+      <dd class="textarea">
+        <textarea
+          required
+          placeholder="{{
+            'siteManager.examples.detail.summaryPlaceholder' | translate
+          }}"
+          name="summary"
+          [(ngModel)]="info.summary"
+          maxlength="200"
+          pInputText
+        ></textarea>
+        <mpr-form-control-valid controlName="summary"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.examples.detail.exampleContent" | translate }}：
+      </dt>
+      <dd class="ueditor">
+        <ueditor
+          name="exampleContent"
+          [(ngModel)]="info.exampleContent"
+          [config]="config"
+          required
+        ></ueditor>
+        <mpr-form-control-valid
+          controlName="exampleContent"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>{{ "siteManager.common.uploadAffix" | translate }}：</dt>
+      <dd>
+        <app-upload-affix
+          [(ngModel)]="filePaths"
+          name="filePaths"
+        ></app-upload-affix>
+      </dd>
+    </dl>
+    <dl>
+      <dt>&nbsp;</dt>
+      <dd class="btn-group">
+        <button (click)="handleCommit()">
+          {{ "siteManager.common.commit" | translate }}
+        </button>
+        <button (click)="handleCancle()">
+          {{ "siteManager.common.cancle" | translate }}
+        </button>
+      </dd>
+    </dl>
+  </form>
+</div>

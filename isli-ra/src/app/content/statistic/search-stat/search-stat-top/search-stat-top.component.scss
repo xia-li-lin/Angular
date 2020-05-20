@@ -1,0 +1,32 @@
+.statistic-top{
+    width: 100%;
+    table{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border:1px solid #E8E8E8;
+        font-family: SourceHanSansSC-Medium;
+        font-size: 13px;
+        line-height: 21px;
+        tr{
+            th,td{
+                padding: 0 16px;
+                text-align: left; 
+            }
+            th{
+                background: #eef8ff;
+                height: 54px;
+                line-height: 54px;
+                font-family: SourceHanSansSC-Medium;
+                color: #354754;
+            }
+            td{
+                font-family: SourceHanSansSC-Regular;
+                color: #677D8D;
+                border-top: 1px solid #E8E8E8;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+    }
+}

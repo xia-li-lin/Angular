@@ -1,0 +1,12 @@
+{
+  "*": {
+    "target": "https://172.16.2.43:8443",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "headers": {
+      "Referer": "https://172.16.2.43:8443",
+      "Origin": "https://172.16.2.43:8443"
+    }
+  }
+}

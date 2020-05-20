@@ -1,0 +1,17 @@
+.auto-warp {
+  z-index: 11111111111;
+  position: fixed;
+  bottom: 60px;
+  right: 30px;
+  .auto-img {
+    background: #fff url(/assets/images/top.png) no-repeat;
+    background-position: 0 0;
+    width: 44px;
+    height: 44px;
+    box-shadow: 0px 0px 3px #ccc;
+    cursor: pointer;
+    &:hover {
+      background-position: 0 -44px;
+    }
+  }
+}

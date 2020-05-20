@@ -1,0 +1,46 @@
+body .ui-multiselect {
+  // height: 32px;
+  line-height: 32px;
+}
+
+body .ui-multiselect .ui-multiselect-label {
+  width: 450px;
+  box-sizing: border-box;
+}
+
+body
+  .ui-multiselect-panel
+  .ui-multiselect-header
+  .ui-multiselect-filter-container
+  .ui-inputtext {
+  height: 32px;
+}
+
+body
+  .ui-multiselect-panel
+  .ui-multiselect-items
+  .ui-multiselect-item.ui-state-highlight {
+  color: #007ad9;
+  background: #fff;
+}
+
+body .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-close {
+  top: 35%;
+}
+
+body .ui-chkbox .ui-chkbox-box .ui-chkbox-icon {
+  font-size: 12px;
+  line-height: 14px;
+  vertical-align: top;
+}
+
+body .ui-chkbox {
+  width: 14px;
+  height: 14px;
+}
+
+body .ui-chkbox .ui-chkbox-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 0;
+}

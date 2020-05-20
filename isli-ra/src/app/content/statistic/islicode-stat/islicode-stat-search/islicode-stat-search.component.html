@@ -1,0 +1,146 @@
+<div class="islicode-stat-search statistic-search">
+  <div class="item">
+    <div class="itemL">{{ "statistic.typeSelection" | translate }}：</div>
+    <div class="itemR">
+      <p-selectButton
+        [options]="types"
+        styleClass="selectButton"
+        [(ngModel)]="searchParams.typeSelection"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-selectButton>
+    </div>
+  </div>
+  <div class="item">
+    <div class="itemL">{{ "statistic.dateSelection" | translate }}：</div>
+    <div class="itemR">
+      <p-selectButton
+        [options]="dates"
+        styleClass="selectButton"
+        [(ngModel)]="searchParams.type"
+        (ngModelChange)="handleDateChange($event)"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-selectButton>
+    </div>
+  </div>
+  <div class="item">
+    <div class="itemL">{{ "statistic.selectSpUser" | translate }}：</div>
+    <div class="itemR">
+      <p-dropdown
+        [options]="spUserList"
+        [filter]="spUserList && spUserList.length > 15 ? true : false"
+        [(ngModel)]="searchParams.provider"
+        [autoDisplayFirst]="false"
+        placeholder="{{ 'statistic.common.all' | translate }}"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="item" *ngIf="dateSelection.YEAR == searchParams.type">
+    <div class="itemL">{{ "statistic.selectTime" | translate }}：</div>
+    <div class="itemR calendar-dropdown">
+      <p-dropdown
+        [options]="startTimesList"
+        [filter]="startTimesList && startTimesList.length > 15 ? true : false"
+        [(ngModel)]="searchParams.startYear"
+        (ngModelChange)="handleStartYearChange($event)"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-dropdown>
+      <span class="line">-</span>
+      <p-dropdown
+        [options]="endTimesList"
+        [(ngModel)]="searchParams.prm"
+        [filter]="endTimesList && endTimesList.length > 15 ? true : false"
+        (ngModelChange)="handlePrmChange($event)"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="item" *ngIf="dateSelection.MONTH == searchParams.type">
+    <div class="itemL">{{ "statistic.selectTime" | translate }}：</div>
+    <div class="itemR calendar-dropdown">
+      <p-dropdown
+        [options]="timesList"
+        [filter]="timesList && timesList.length > 15 ? true : false"
+        [(ngModel)]="searchParams.startYear"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="item" *ngIf="dateSelection.DAY == searchParams.type">
+    <div class="itemL">{{ "statistic.selectTime" | translate }}：</div>
+    <div class="itemR">
+      <app-calendar
+        [calendarObj]="calendarObj"
+        [(ngModel)]="searchParams.date"
+        (ngModelChange)="handleCalendarChange($event)"
+      ></app-calendar>
+    </div>
+  </div>
+  <div class="item">
+    <div class="itemL">
+      <button class="search-btn" (click)="handleSearchClick()">
+        {{ "statistic.common.search" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<div
+  class="dialog-box service-manager-dialog"
+  ngForm
+  [isliFormValidMsg]="errorMsg"
+  [ngClass]="{
+    'dialog-box-zh': language !== 'EN_US',
+    'dialog-box-en': language === 'EN_US'
+  }"
+>
+  <div class="dialog" #dialog>
+    <div class="dialog-title">
+      <h5>{{ "service.register.dialog.operationTip" | translate }}</h5>
+      <a (click)="cancelClick.emit($event)"></a>
+    </div>
+    <div class="dialog-content">
+      <div class="content clearfix">
+        <!-- 申诉审核 -->
+        <dl class="clearfix">
+          <!-- <dt>凍結日期：</dt> -->
+          <dd style="margin-top: 0;">
+            <p>
+              <span
+                >{{ "service.register.dialog.freezeDate" | translate }}：</span
+              >
+              <span>{{
+                serviceRegisterInfo?.frozenDatetime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}</span>
+            </p>
+            <p>
+              <span
+                >{{ "service.register.dialog.appealDate" | translate }}：</span
+              >
+              <span>{{
+                serviceRegisterInfo?.appealDatetime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}</span>
+            </p>
+            <p>
+              <span
+                >{{
+                  "service.register.dialog.reasonsToAppeal" | translate
+                }}：</span
+              >
+              <span>{{ serviceRegisterInfo?.frozenAppeal }}</span>
+            </p>
+          </dd>
+        </dl>
+        <dl class="clearfix">
+          <dt>{{ "service.register.dialog.handleAppeal" | translate }}:</dt>
+          <dd>
+            <div class="item">
+              <div class="itemL">
+                {{ "service.register.dialog.appeal" | translate }}：
+              </div>
+              <div class="itemR">
+                <p-radioButton
+                  name="groupname"
+                  value="3"
+                  label="{{ 'service.register.dialog.pass' | translate }}"
+                  [(ngModel)]="approvalOperation"
+                ></p-radioButton>
+                <p-radioButton
+                  name="groupname"
+                  value="4"
+                  label="{{ 'service.register.dialog.notPass' | translate }}"
+                  [(ngModel)]="approvalOperation"
+                ></p-radioButton>
+              </div>
+            </div>
+            <div class="item">
+              <div class="itemL">
+                {{ "service.register.dialog.submitReason" | translate }}：
+              </div>
+              <div class="itemR submitReason">
+                <textarea
+                  name="reason"
+                  cols="30"
+                  rows="10"
+                  required
+                  [(ngModel)]="approvalOpinion"
+                  appTrim
+                ></textarea>
+                <mpr-form-control-valid
+                  controlName="reason"
+                ></mpr-form-control-valid>
+              </div>
+            </div>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="dialog-footer">
+      <button class="blue" (click)="handleSubmitClick()">
+        {{ "service.register.dialog.submit" | translate }}
+      </button>
+      <button class="return" (click)="cancelClick.emit($event)">
+        {{ "service.register.dialog.leave" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

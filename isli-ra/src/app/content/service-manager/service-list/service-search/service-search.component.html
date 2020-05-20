@@ -1,0 +1,110 @@
+<div class="service-search bd-search">
+  <div class="p-grid search-bd">
+    <div
+      class="p-col-6 item"
+      [ngClass]="{
+        'p-col-7': language === 'EN_US',
+        'p-col-6': language !== 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US'
+        }"
+        >{{ "service.serviceList.search.createTime" | translate }}：</label
+      >
+      <span class="item-bd">
+        <app-begin-end-date
+          [(ngModel)]="createTime"
+          (ngModelChange)="handleDateChange($event)"
+        ></app-begin-end-date>
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-5': language === 'EN_US',
+        'p-col-4': language !== 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US'
+        }"
+        >{{ "service.serviceList.search.serviceCode" | translate }}：</label
+      >
+      <span class="item-bd">
+        <p-dropdown
+          [options]="serviceCodeList"
+          [(ngModel)]="serviceSearch.serviceCodeZh"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-5': language === 'EN_US',
+        'p-col-4': language !== 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US'
+        }"
+        >{{ "service.serviceList.search.services" | translate }}：</label
+      >
+      <span class="item-bd">
+        <input
+          type="text"
+          name="services"
+          appTrim
+          pInputText
+          [(ngModel)]="serviceSearch.serviceNameZh"
+        />
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-5': language === 'EN_US',
+        'p-col-4': language !== 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US'
+        }"
+        >{{ "service.serviceList.search.associationType" | translate }}：</label
+      >
+      <span class="item-bd">
+        <input
+          type="text"
+          appTrim
+          pInputText
+          name="associationType"
+          [(ngModel)]="serviceSearch.relevanceTypeNameZh"
+        />
+      </span>
+    </div>
+    <div class="p-col-2 item item-search">
+      <span class="item-bd">
+        <button
+          pButton
+          label="{{ 'service.common.search' | translate }}"
+          (click)="handleSearchClick()"
+        ></button>
+      </span>
+    </div>
+  </div>
+</div>

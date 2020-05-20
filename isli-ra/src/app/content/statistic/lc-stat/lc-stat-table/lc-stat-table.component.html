@@ -1,0 +1,47 @@
+<div class="lc-stat-table list-box">
+  <div class="list-header clearfix">
+    <div>
+      <span *ngIf="type == dataType.SERVICE">{{
+        "statistic.service" | translate
+      }}</span>
+      <span *ngIf="type == dataType.TIME">{{
+        "statistic.year" | translate
+      }}</span>
+    </div>
+    <div>{{ "statistic.lcRegisterNum" | translate }}</div>
+    <div>{{ "statistic.total" | translate }}:</div>
+  </div>
+  <ul class="list-body clearfix" *ngIf="lcPageList && lcPageList.length">
+    <li *ngFor="let statistic of lcPageList">
+      <div class="row first-row">
+        <span
+          *ngIf="type == dataType.SERVICE"
+          title="{{ statistic?.publisherType }}"
+        >
+          {{ statistic?.publisherType }}
+        </span>
+        <span *ngIf="type == dataType.TIME" title="{{ statistic?.year }}">{{
+          statistic?.year
+        }}</span>
+      </div>
+      <div class="row second-row">
+        {{ statistic?.num }}
+      </div>
+    </li>
+  </ul>
+  <div
+    *ngIf="lcPageList && lcPageList.length"
+    class="list-num-total"
+    [ngStyle]="{ width: totalWidth }"
+  >
+    {{ lcTotal }}
+  </div>
+  <div class="no-data clearfix" *ngIf="!(lcPageList && lcPageList.length)">
+    {{ "common.noData" | translate }}
+  </div>
+  <app-paging-box
+    *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+    [pagingBoxObj]="pagingBoxObj"
+    (OnPageChange)="handlePageChange($event)"
+  ></app-paging-box>
+</div>

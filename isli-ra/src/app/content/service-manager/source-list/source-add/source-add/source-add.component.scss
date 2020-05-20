@@ -1,0 +1,40 @@
+.content-container{
+    .body{
+        h2{
+            &.form-header{
+                margin: 20px 0;
+                font-family: SourceHanSansSC-Medium;
+                font-size: 14px;
+                font-weight: normal;
+                line-height: 14px;
+                color: #354754;
+                letter-spacing: 0;
+                border-left: 4px solid #007BD8;
+                padding-left: 8px;
+            }
+        }
+        .aBtn{
+            display: flex;
+            justify-content: center;
+            margin: 10px 0 20px 0;
+            .return,
+            .blue{
+                width: 100px;
+                height: 30px;
+                box-sizing: border-box;
+            }
+            button{
+                margin-left: 20px;
+                &:nth-of-type(1){
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+::ng-deep{
+    .right-bd .content-container.association-type-form .body{
+        padding: 0 20px;
+    }
+}

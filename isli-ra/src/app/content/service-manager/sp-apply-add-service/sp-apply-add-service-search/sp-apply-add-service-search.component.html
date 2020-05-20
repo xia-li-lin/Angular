@@ -1,0 +1,70 @@
+<div class="sp-apply-add-service-search bd-search">
+  <div class="p-grid search-bd">
+    <div class="item p-col-6">
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US',
+          'wid-84': language !== 'EN_US'
+        }"
+        >{{
+          "service.sPServiceAdd.search.serviceProvider" | translate
+        }}：</label
+      >
+      <span class="item-bd">
+        <p-dropdown
+          [options]="serviceProviderList"
+          [(ngModel)]="serviceSpApplySearch.spId"
+        ></p-dropdown>
+      </span>
+    </div>
+    <div class="p-col-6 item">
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US',
+          'wid-70': language !== 'EN_US'
+        }"
+        >{{ "service.sPServiceAdd.search.service" | translate }}：</label
+      >
+      <span class="item-bd">
+        <p-dropdown
+          [options]="servicesList"
+          [(ngModel)]="serviceSpApplySearch.serviceNameId"
+        ></p-dropdown>
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-7': language === 'EN_US',
+        'P-col-6': language !== 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US',
+          'wid-70': language !== 'EN_US'
+        }"
+        >{{
+          "service.sPServiceAdd.search.applicationDate" | translate
+        }}：</label
+      >
+      <span class="item-bd date">
+        <app-begin-end-date [(ngModel)]="registerData"></app-begin-end-date>
+      </span>
+    </div>
+    <div
+      class="p-col-4 item item-search"
+      [ngClass]="{
+        'item-search-zh': language !== 'EN_US'
+      }"
+    >
+      <span class="item-bd">
+        <button
+          pButton
+          label="{{ 'service.common.search' | translate }}"
+          (click)="handleSearchClick()"
+        ></button>
+      </span>
+    </div>
+  </div>
+</div>

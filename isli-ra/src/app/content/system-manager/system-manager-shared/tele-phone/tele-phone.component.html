@@ -1,0 +1,41 @@
+<div
+  class="telephone"
+  [formGroup]="telephoneGroup"
+  [isliFormValidMsg]="formErrorMsg"
+>
+  <p-dropdown formControlName="telType" [options]="TelephonePreArray">
+    <ng-template let-item pTemplate="selectedItem">
+      <span>{{ item.label | translate }}</span>
+    </ng-template>
+    <ng-template let-item pTemplate="item">
+      <span>{{ item.label | translate }}</span>
+    </ng-template>
+  </p-dropdown>
+  <input
+    type="text"
+    placeholder="{{ 'systemShared.area' | translate }}"
+    formControlName="telArea"
+    class="telephone-code"
+    pInputText
+    appPatternInput="^\d+$"
+  />
+  <input
+    required
+    type="text"
+    placeholder="{{ 'systemShared.telNumber' | translate }}"
+    formControlName="telNumber"
+    class="telephone-number"
+    pInputText
+    appPatternInput="^\d+$"
+  />
+  <input
+    required
+    type="text"
+    placeholder="{{ 'systemShared.ext' | translate }}"
+    formControlName="telExt"
+    class="telephone-ext"
+    pInputText
+    appPatternInput="^\d+$"
+  />
+  <mpr-form-control-valid controlName="telephoneGroup"></mpr-form-control-valid>
+</div>

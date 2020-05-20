@@ -1,0 +1,63 @@
+<div class="service-table table">
+  <p-table [value]="serviceList">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 10%;">
+          {{ "service.serviceList.table.serialNumber" | translate }}
+        </th>
+        <th style="width: 30%;">
+          {{ "service.serviceList.table.services" | translate }}
+        </th>
+        <th style="width: 30%;">
+          {{ "service.serviceList.table.associationType" | translate }}
+        </th>
+        <th style="width: 15%;">
+          {{ "service.serviceList.table.createTime" | translate }}
+        </th>
+        <th style="width: 15%;">
+          {{ "service.common.operation" | translate }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+      <tr class="table-tr">
+        <td>
+          {{ (pagingBoxObj.page - 1) * pagingBoxObj.rows + rowIndex + 1 }}
+        </td>
+        <td>
+          {{ rowData?.serviceName }}
+        </td>
+        <td>
+          {{ rowData?.relevanceTypeName }}
+        </td>
+        <td>{{ rowData?.createDateTime | date: "yyyy-MM-dd" }}</td>
+        <td class="operation">
+          <a
+            class="check"
+            href="javascript:;"
+            title="{{ 'service.common.view' | translate }}"
+            (click)="handleViewDetailClick(rowData)"
+          ></a>
+          <a
+            class="modify"
+            href="javascript:;"
+            title="{{ 'service.common.modify' | translate }}"
+            (click)="handleModifyClick(rowData)"
+          ></a>
+          <!-- <a
+            class="enable"
+            href="javascript:;"
+            title="{{ 'service.register.operation.servicePush' | translate }}"
+            (click)="handleServicePushClick(rowData)"
+          ></a> -->
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <app-loaing-data [data]="serviceList"></app-loaing-data>
+  <app-paging-box
+    *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+    [pagingBoxObj]="pagingBoxObj"
+    (OnPageChange)="pageChange.emit($event)"
+  ></app-paging-box>
+</div>

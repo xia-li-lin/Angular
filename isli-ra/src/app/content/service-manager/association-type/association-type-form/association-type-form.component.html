@@ -1,0 +1,63 @@
+<div class="association-type-form content-container">
+  <div class="header">
+    <p class="title">
+      {{ title | translate }}
+    </p>
+  </div>
+  <div class="body">
+    <h2 class="form-header" *ngIf="languageEnable('ZH_TW')">繁体中文</h2>
+    <app-association-type-form-cn
+      *ngIf="languageEnable('ZH_TW')"
+      [associationTypeCn]="associationTypeCn"
+      [oldAssociationTypeCn]="oldAssociationTypeCn"
+      [sourceTypeList]="sourceTypeZhList"
+      [targetTypeList]="targetTypeZhList"
+      (sourceType)="handleSourceTypeChange($event)"
+      (targetType)="handleTargetTypeChange($event)"
+    ></app-association-type-form-cn>
+    <h2 class="form-header" *ngIf="languageEnable('EN_US')">English</h2>
+    <app-association-type-form-en
+      *ngIf="languageEnable('EN_US')"
+      [associationTypeEn]="associationTypeEn"
+      [oldAssociationTypeEn]="oldAssociationTypeEn"
+      [sourceTypeList]="sourceTypeEnList"
+      [targetTypeList]="targetTypeEnList"
+      (sourceType)="handleSourceTypeChange($event)"
+      (targetType)="handleTargetTypeChange($event)"
+    ></app-association-type-form-en>
+    <div class="aBtn">
+      <button class="blue" *ngIf="!mark" (click)="handleSaveClick()">
+        {{ "service.common.save" | translate }}
+      </button>
+      <button class="blue" *ngIf="mark" (click)="handleSaveClick()">
+        {{ "service.common.sure" | translate }}
+      </button>
+      <button class="blue" *ngIf="mark" (click)="handleSaveAndContinueClick()">
+        {{ "service.common.saveAndContinue" | translate }}
+      </button>
+      <button class="return" (click)="handleCancelClick()">
+        {{ "service.common.cancel" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-shared-dialog
+  *ngIf="dialogOnOff"
+  [confirmTxt]="dialogConfirmTxt"
+  [validFunc]="validFunc"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <p>
+    <span style="color: #ff3636; word-wrap: break-word; word-break: break-all;">
+      {{
+        (language === "EN_US"
+          ? associationTypeEn.associationTypeName
+          : associationTypeCn?.associationTypeName) ||
+          associationTypeCn?.associationTypeName ||
+          associationTypeEn.associationTypeName
+      }}
+    </span>
+    {{ "service.serviceList.form.dialog.tip1" | translate }}
+  </p>
+</app-shared-dialog>

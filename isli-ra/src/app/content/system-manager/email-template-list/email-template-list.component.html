@@ -1,0 +1,73 @@
+<div class="email-box">
+  <div class="create">
+    <h6>{{ "systemEmail.list.emialTemp" | translate }}</h6>
+    <a (click)="handleCheckClick()">{{
+      "systemEmail.list.example" | translate
+    }}</a>
+    <button appPermission="MM.YJ.XZ" (click)="handleCreateClick()">
+      {{ "systemEmail.list.new" | translate }}
+    </button>
+  </div>
+  <div class="table">
+    <p-table [value]="emailTemplateListData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="10%">{{ "systemEmail.list.no" | translate }}</th>
+          <th width="30%">{{ "systemEmail.list.theme" | translate }}</th>
+          <th width="10%">{{ "systemEmail.list.type" | translate }}</th>
+          <th width="15%">{{ "systemEmail.list.auth" | translate }}</th>
+          <th width="15%">{{ "systemEmail.list.time" | translate }}</th>
+          <th width="10%">{{ "common.operation" | translate }}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>
+            {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+          </td>
+          <td title="{{ rowData.emailTitle }}">{{ rowData.emailTitle }}</td>
+          <td title="{{ rowData.mailTypeName }}">{{ rowData.mailTypeName }}</td>
+          <td title="{{ rowData.creatorName }}">{{ rowData.creatorName }}</td>
+          <td title="{{ rowData.updateDateTime | date: 'yyyy-MM-dd' }}">
+            {{ rowData.updateDateTime | date: "yyyy-MM-dd" }}
+          </td>
+          <td class="operation">
+            <!-- <a (click)="handleDetailsClick(rowData)" title="查看">查看</a> -->
+            <a
+              appPermission="MM.YJ.BJ"
+              class="modify"
+              (click)="handleEditClick(rowData)"
+              title="{{ 'service.common.modify' | translate }}"
+            ></a>
+            <a
+              appPermission="MM.YJ.SC"
+              class="delete"
+              (click)="handleDeleteClick(rowData)"
+              title="{{ 'common.delete' | translate }}"
+            ></a>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <app-loaing-data [data]="emailTemplateListData"></app-loaing-data>
+    <app-paging-box
+      *ngIf="pageInfo.totalRecords"
+      [pagingBoxObj]="pageInfo"
+      (OnPageChange)="handlePageChange($event)"
+    >
+    </app-paging-box>
+  </div>
+  <app-email-template
+    *ngIf="showTemplateFlag"
+    [showSaveBtnFlag]="showSaveBtnFlag"
+    [emailTemplateDetails]="emailTemplateDetails"
+    (OnCancelClick)="handleCancelClick()"
+    (OnSureClick)="handleSureClick($event)"
+  ></app-email-template>
+  <p-confirmDialog
+    acceptIcon=""
+    rejectIcon=""
+    acceptLabel="{{ 'common.sure' | translate }}"
+    rejectLabel="{{ 'common.cancel' | translate }}"
+  ></p-confirmDialog>
+</div>

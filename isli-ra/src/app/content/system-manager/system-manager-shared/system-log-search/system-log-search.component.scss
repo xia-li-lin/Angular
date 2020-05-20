@@ -1,0 +1,79 @@
+.system-search {
+  margin: 20px 20px 0;
+  padding-top: 20px;
+  background: #f6f8f9;
+  border-radius: 4px;
+  height: 120px;
+
+  dl {
+    height: 50px;
+    padding-bottom: 22px;
+
+    dt {
+      width: 120px;
+      line-height: 28px;
+      text-align: right;
+      font-family: SourceHanSansSC-Regular;
+      font-size: 14px;
+      color: #677d8d;
+      letter-spacing: 0;
+    }
+
+    dd {
+      min-width: 268px;
+
+      input {
+        width: 268px;
+        height: 28px;
+        padding: 0 10px;
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid #dadbe0;
+      }
+
+      ::ng-deep {
+        .ui-calendar {
+          width: 268px;
+          box-sizing: border-box;
+        }
+
+        .ui-calendar input.ui-inputtext {
+          height: 28px;
+          line-height: 28px;
+        }
+
+        .date-wrap .grap {
+          height: 28px !important;
+          line-height: 28px !important;
+          vertical-align: bottom;
+          width: 20px !important;
+        }
+
+        .ui-dropdown {
+          width: 268px;
+          height: 28px;
+          border: 1px solid #d5dce2;
+
+          .ui-inputtext {
+            line-height: 26px;
+          }
+        }
+      }
+    }
+  }
+
+  .search-button {
+    width: 100px;
+    height: 32px;
+    margin-top: -2px;
+    float: left;
+    background: #e2f2ff;
+    border: 1px solid #007bd8;
+    border-radius: 4px;
+    font-family: SourceHanSansSC-Medium;
+    font-size: 14px;
+    color: #007bd8;
+    text-align: center;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+}

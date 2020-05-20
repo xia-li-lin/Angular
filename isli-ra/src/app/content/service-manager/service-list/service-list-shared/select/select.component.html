@@ -1,0 +1,16 @@
+<div class="select">
+  <div class="header" (click)="handlePannelClick($event)">
+    <span *ngIf="selectedTypes">{{ selectedTypes.join(",") }}</span>
+  </div>
+  <div class="ui-g body" *ngIf="onOff" (click)="stopPropagation($event)">
+    <div class="ui-g-12" *ngFor="let option of options; index as i">
+      <p-checkbox
+        name="group{{ i + 1 }}"
+        value="{{ option.value }}"
+        label="{{ option.label }}"
+        [(ngModel)]="selectedTypes"
+        inputId="ny{{ i + 1 }}"
+      ></p-checkbox>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div class="role-box">
+  <div class="create">
+    <h6>{{ "systemRole.list.manager" | translate }}</h6>
+    <button appPermission="MM.ZH.CJ" (click)="handleCreateClick()">
+      {{ "systemRole.create.create" | translate }}
+    </button>
+  </div>
+  <div class="table">
+    <p-table [value]="roleListData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="6%">{{ "systemEmail.list.no" | translate }}</th>
+          <th width="14%">{{ "systemRole.list.roleName" | translate }}</th>
+          <th width="10%">{{ "systemRole.list.desc" | translate }}</th>
+          <th width="18%">{{ "systemRole.list.accountNum" | translate }}</th>
+          <th width="14%">{{ "systemEmail.list.time" | translate }}</th>
+          <th width="14%">{{ "systemAccount.list.stopTime" | translate }}</th>
+          <th width="10%">{{ "systemAccount.list.status" | translate }}</th>
+          <th width="14%">{{ "common.operation" | translate }}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>
+            {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+          </td>
+          <td title="{{ rowData.roleName }}">{{ rowData.roleName }}</td>
+          <td title="{{ rowData.description }}">{{ rowData.description }}</td>
+          <td title="{{ rowData.adminCount }}">{{ rowData.adminCount }}</td>
+          <td title="{{ rowData.updateDatetime | date: 'yyyy-MM-dd' }}">
+            {{ rowData.updateDatetime | date: "yyyy-MM-dd" }}
+          </td>
+          <td title="{{ rowData.forbiddenDatetime | date: 'yyyy-MM-dd' }}">
+            {{ rowData.forbiddenDatetime | date: "yyyy-MM-dd" || "-" }}
+          </td>
+          <td
+            title="{{ rowData.roleStatus | roleStatus }}"
+            [class.red]="rowData.roleStatus == 0"
+          >
+            {{ rowData.roleStatus | roleStatus }}
+          </td>
+          <td class="operation" *ngIf="rowData.roleIdentity != 'role_admin'">
+            <a
+              class="modify"
+              (click)="handleEditClick(rowData)"
+              *ngIf="rowData.roleStatus == 1 && rowData.canOperation"
+              title="{{ 'service.common.modify' | translate }}"
+            ></a>
+            <a
+              class="delete"
+              (click)="handleDeleteClick(rowData)"
+              *ngIf="rowData.canOperation"
+              title="{{ 'common.delete' | translate }}"
+            ></a>
+            <a
+              class="stop"
+              (click)="handleStopClick(rowData)"
+              *ngIf="rowData.roleStatus == 1 && rowData.canOperation"
+              title="{{ 'common.stop' | translate }}"
+            ></a>
+            <a
+              class="enable"
+              (click)="handleStartClick(rowData)"
+              *ngIf="rowData.roleStatus == 0 && rowData.canOperation"
+              title="{{ 'common.enable' | translate }}"
+            ></a>
+            <a
+              class="configAuth"
+              (click)="handleLimitsClick(rowData)"
+              title="{{ 'systemRole.list.config' | translate }}"
+            ></a>
+          </td>
+          <td *ngIf="rowData.roleIdentity == 'role_admin'"></td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <app-loaing-data [data]="roleListData"></app-loaing-data>
+    <app-paging-box
+      *ngIf="pageInfo.totalRecords"
+      [pagingBoxObj]="pageInfo"
+      (OnPageChange)="handlePageChange($event)"
+    >
+    </app-paging-box>
+    <app-role-limits
+      *ngIf="showPromissinFlag"
+      [treeData]="rolePermissinData"
+      [selectionData]="rolePermissinSelectionData"
+      (OnCloseClick)="handleClosePermissinClick()"
+      (OnSaveRolePermissionClick)="handleSaveRolePermissionClick($event)"
+    ></app-role-limits>
+    <p-confirmDialog
+      acceptIcon=""
+      rejectIcon=""
+      acceptLabel="{{ 'common.sure' | translate }}"
+      rejectLabel="{{ 'common.cancel' | translate }}"
+    >
+    </p-confirmDialog>
+  </div>
+</div>

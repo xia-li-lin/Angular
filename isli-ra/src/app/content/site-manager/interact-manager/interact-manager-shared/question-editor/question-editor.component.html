@@ -1,0 +1,11 @@
+<div class="question-editor">
+  <textarea [(ngModel)]="content"></textarea>
+  <div class="btn-group">
+    <button class="save" (click)="handleSaveClick()">
+      {{ "siteManager.common.save" | translate }}
+    </button>
+    <button class="cancel" (click)="handleCancelClick()">
+      {{ "siteManager.common.cancle" | translate }}
+    </button>
+  </div>
+</div>

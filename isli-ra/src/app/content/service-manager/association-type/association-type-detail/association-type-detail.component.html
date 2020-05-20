@@ -1,0 +1,67 @@
+<div class="association-type-detail content-container">
+  <div class="header">
+    <p class="title">{{ "service.associationType.detail" | translate }}</p>
+  </div>
+  <div class="body">
+    <div class="item" *ngIf="languageEnable('ZH_TW')">
+      <h2 class="title">繁体中文</h2>
+      <div class="content">
+        <table>
+          <tr>
+            <td><span>*</span>關聯類型名稱：</td>
+            <td>{{ relevanceTypeInfo?.relevanceTypeNameZh }}</td>
+          </tr>
+          <tr>
+            <td><span>*</span>源類型：</td>
+            <td>{{ relevanceTypeInfo?.sourceTypeNameZh }}</td>
+          </tr>
+          <tr>
+            <td><span>*</span>目標類型：</td>
+            <td>{{ relevanceTypeInfo?.targetTypeNameZh }}</td>
+          </tr>
+          <tr>
+            <td><span>*</span>描述：</td>
+            <td>{{ relevanceTypeInfo?.descriptionZh }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="item" *ngIf="languageEnable('EN_US')">
+      <h2 class="title">English</h2>
+      <div class="content">
+        <table>
+          <tr>
+            <td><span>*</span>Link type name：</td>
+            <td>{{ relevanceTypeInfo?.relevanceTypeNameEn }}</td>
+          </tr>
+          <tr>
+            <td><span>*</span>Source type：</td>
+            <td>{{ relevanceTypeInfo?.sourceTypeNameEn }}</td>
+          </tr>
+          <tr>
+            <td><span>*</span>Target type：</td>
+            <td>{{ relevanceTypeInfo?.targetTypeNameEn }}</td>
+          </tr>
+          <tr>
+            <td><span>*</span>Description：</td>
+            <td>{{ relevanceTypeInfo?.descriptionEn }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="aBtn">
+      <button
+        *ngIf="relevanceTypeInfo?.enabledFlag == 'Y'"
+        class="modify blue"
+        (click)="handleModifyClick(relevanceTypeInfo?.relevanceTypeId)"
+      >
+        {{ "service.common.modify" | translate }}
+      </button>
+      <button class="back search-btn" (click)="handleBackClick()">
+        {{ "service.common.back" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

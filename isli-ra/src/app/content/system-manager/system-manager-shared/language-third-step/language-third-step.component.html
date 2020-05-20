@@ -1,0 +1,42 @@
+<div class="table-box">
+  <div class="table">
+    <p-table [value]="contentData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="20%">{{ "systemEmail.list.no" | translate }}</th>
+          <th width="30%">{{ "systemShared.updateTime" | translate }}</th>
+          <th width="30%">{{ "systemShared.columnName" | translate }}</th>
+          <th width="20%">{{ "common.operation" | translate }}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>{{ rowIndex + 1 }}</td>
+          <td>{{ rowData.updateDatetime | date: "yyyy-MM-dd HH:mm:ss" }}</td>
+          <td>{{ rowData.navigationName }}</td>
+          <td class="operation">
+            <a
+              class="modify"
+              title="{{ 'service.common.modify' | translate }}"
+              (click)="handleEditClick(rowData)"
+            ></a>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div class="btn-box">
+    <button (click)="handlePreClick()">
+      {{ "systemShared.pre" | translate }}
+    </button>
+    <button (click)="handleNextClick()">
+      {{ "systemShared.next" | translate }}
+    </button>
+  </div>
+  <app-page-content
+    *ngIf="showEditFlag"
+    [content]="itemContentDetail"
+    (OnSaveClick)="handleSaveClick($event)"
+    (OnCancelClick)="handleCancelClick()"
+  ></app-page-content>
+</div>

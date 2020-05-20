@@ -1,0 +1,298 @@
+/* You can add global styles to this file, and also import other style files */
+
+@charset "utf-8";
+html,
+body {
+  height: 100%;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  outline: none;
+}
+
+body {
+  color: #333;
+  background: #e8e8e8;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  outline: none;
+}
+
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clearfix:after,
+.clearfix:before {
+  display: table;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+  overflow: hidden;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f2f2f2;
+}
+
+::-webkit-scrollbar-thumb {
+  border-color: #f2f2f2;
+  background-color: #d5d5d5;
+}
+
+input::-webkit-input-placeholder {
+  color: #b5bbbf;
+}
+
+input:-moz-placeholder {
+  color: #b5bbbf;
+}
+
+input:-ms-input-placeholder {
+  color: #b5bbbf;
+}
+
+body .ui-button {
+  background-color: #1985d5;
+  border-color: #1985d5;
+  border-radius: 0;
+}
+
+body .ui-button:hover {
+  background: #37a9fe;
+  background-color: #37a9fe;
+}
+
+body .ui-inputtext {
+  border-radius: 0;
+}
+
+body .ui-button:enabled:hover {
+  background-color: #37a9fe;
+  color: #ffffff;
+  border-color: #37a9fe;
+}
+
+body .ui-button:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0;
+}
+
+body .ui-button:enabled:active {
+  background-color: #37a9fe;
+  color: #ffffff;
+  border-color: #37a9fe;
+}
+
+body .ui-state-disabled,
+body .ui-widget:disabled {
+  border: 1px solid #dadbe0;
+  background: #fbfbfb;
+  opacity: 0.5;
+  color: #aaaaaa;
+}
+
+body .ui-button.ui-state-default.ui-button-secondary,
+body .ui-buttonset.ui-button-secondary > .ui-button.ui-state-default {
+  /* color: #333333; */
+  background-color: #f4f4f4;
+  border: 1px solid #f4f4f4;
+  color: #2a2e31;
+}
+
+body .ui-button.ui-state-default.ui-button-secondary:enabled:hover,
+body
+  .ui-buttonset.ui-button-secondary
+  > .ui-button.ui-state-default:enabled:hover {
+  background-color: #37a9fe;
+  color: #fff;
+  border-color: #dcf0ff;
+}
+
+body .ui-button.ui-state-default.ui-button-secondary:enabled:focus,
+body
+  .ui-buttonset.ui-button-secondary
+  > .ui-button.ui-state-default:enabled:focus {
+  -webkit-box-shadow: 0 0 0 0;
+  -moz-box-shadow: 0 0 0 0;
+  box-shadow: 0 0 0 0;
+}
+
+body .ui-button.ui-state-default.ui-button-secondary:enabled:active,
+body
+  .ui-buttonset.ui-button-secondary
+  > .ui-button.ui-state-default:enabled:active {
+  background-color: #37a9fe;
+  color: #fff;
+  border-color: #dcf0ff;
+  outline: 0 none;
+}
+
+body .ui-inputtext:enabled:hover:not(.ui-state-error) {
+  border-color: #74b2e2;
+}
+
+body .ui-dropdown:hover:not(.ui-state-disabled) {
+  border-color: #74b2e2;
+}
+
+.ui-toast .ui-toast-message-content {
+  min-height: 180px;
+  background: #ffffff;
+  border: 1px solid #e0e1e8;
+  box-shadow: 0 8px 18px 0 rgba(50, 82, 106, 0.1);
+}
+
+.ui-toast .ui-toast-message-text-content {
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  color: #999;
+  margin-top: 10px;
+}
+
+.ui-toast .ui-toast-message-text-content .ui-toast-summary {
+  font-size: 16px;
+  line-height: 24px;
+  color: #2a2e31;
+  text-align: center;
+}
+
+.ui-toast .ui-toast-message-content .ui-toast-icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  margin-top: 36px;
+  position: static;
+  background-size: contain;
+  border-radius: 50%;
+}
+
+.ui-toast .ui-toast-message .ui-toast-close-icon {
+  width: 16px;
+  height: 16px;
+  background: url(/assets/images/close-black.png) no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+}
+
+.ui-toast .ui-toast-message .ui-toast-close-icon::before {
+  content: "";
+}
+
+.ui-toast .ui-toast-message-content .ui-toast-icon::before {
+  content: "";
+}
+
+.ui-toast .ui-toast-message-content .pi-info-circle {
+  background: url(/assets/images/info.png) no-repeat center;
+}
+
+.ui-toast .ui-toast-message-content .pi-exclamation-triangle {
+  background: url(/assets/images/warn.png) no-repeat center;
+}
+
+.ui-toast .ui-toast-message-content .ui-toast-icon.pi-times {
+  background: url(/assets/images/error.png) no-repeat center;
+}
+
+.ui-toast .ui-toast-message-content .pi-check {
+  background: url(/assets/images/success.png) no-repeat center;
+}
+
+.ui-toast .ui-toast-message-content .ui-toast-detail {
+  text-align: center;
+}
+
+/* body .ui-radiobutton,
+body .ui-radiobutton .ui-radiobutton-box {
+  width: 10px;
+  height: 10px;
+}
+
+body .ui-radiobutton .ui-radiobutton-box .ui-radiobutton-icon {
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  margin-top: -2px;
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active {
+  border-color: #1985d5;
+  background-color: #fff;
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active.ui-state-foucs {
+  border-color: #1985d5;
+  background-color: #fff;
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active:not(.ui-state-disabled):hover {
+  border-color: #1985d5;
+  background-color: #fff;
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active .ui-radiobutton-icon {
+  background-color: #1985d5;
+} */
+
+body .ui-radiobutton {
+  width: 10px;
+  height: 10px;
+}
+
+body .ui-radiobutton .ui-radiobutton-box {
+  width: 10px;
+  height: 10px;
+}
+
+body .ui-radiobutton .ui-radiobutton-box .ui-radiobutton-icon {
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  margin-top: -2px;
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active,
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active:hover,
+body
+  .ui-radiobutton
+  .ui-radiobutton-box.ui-state-active:not(.ui-state-disabled),
+body
+  .ui-radiobutton
+  .ui-radiobutton-box.ui-state-active:not(.ui-state-disabled):hover {
+  border-color: #1985d5;
+  background-color: #fff;
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active .ui-radiobutton-icon,
+body
+  .ui-radiobutton
+  .ui-radiobutton-box.ui-state-active
+  .ui-radiobutton-icon:hover,
+body
+  .ui-radiobutton
+  .ui-radiobutton-box.ui-state-active:not(.ui-state-disabled)
+  .ui-radiobutton-icon:hover {
+  background-color: #1985d5;
+}
+
+/* body .ui-autocomplete .ui-autocomplete-input {
+    border-radius: 0;
+} */

@@ -1,0 +1,34 @@
+<div
+    class="img-container"
+    [ngClass]="{'img-readonly': readonly, 'img-error': error}"
+    (click)="handleFileClick()"
+>
+    <div
+        class="pi pi-times-circle delete"
+        *ngIf="imgUrl && !readonly"
+        (click)="hanldeDeleteClick($event)"
+    ></div>
+    <div
+        class="upload-icon-warp"
+        *ngIf="!imgUrl"
+    >
+        <div class="upload-icon"></div>
+        <span>{{uploadTxt}}</span>
+    </div>
+    <img
+        src="{{imgUrl}}"
+        *ngIf="imgUrl"
+    >
+    <div
+        class="step"
+        *ngIf="stepValue"
+    >
+    </div>
+    <input
+        type="file"
+        accept="{{accept}}"
+        style="display: none;"
+        #fileInput
+        (change)="handleFileChange($event)"
+    >
+</div>

@@ -1,0 +1,23 @@
+<div class="message-search clearfix">
+    <dl>
+        <dt>{{ 'systemShared.pubTime' | translate }}：</dt>
+        <dd>
+            <app-begin-end-date [(ngModel)]="publishDate">
+            </app-begin-end-date>
+        </dd>
+    </dl>
+    <dl>
+        <dt>{{ 'systemShared.theme' | translate }}：</dt>
+        <dd>
+            <input type="text" [(ngModel)]="theme" />
+        </dd>
+    </dl>
+    <dl>
+        <dt>{{'systemMessage.create.sendObj' | translate}}：</dt>
+        <dd>
+            <p-multiSelect [options]="spAccountData" [(ngModel)]="selectedAccount" defaultLabel="{{ 'systemShared.select' | translate }}"
+                [panelStyle]="{'width':'268px'}" [selectedItemsLabel]="">
+            </p-multiSelect>
+        </dd>
+    </dl><button class="search-button" (click)="handleSearchClick()">{{'common.search' | translate}}</button>
+</div>

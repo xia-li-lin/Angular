@@ -1,0 +1,21 @@
+<div class="dialog-box">
+  <div class="header">
+    <h5>{{ "systemShared.configTable" | translate }}</h5>
+    <a class="close" (click)="handleCloseClick()">×</a>
+  </div>
+  <div class="center">
+    <p-tree
+      [value]="treeData"
+      selectionMode="checkbox"
+      [selection]="selectionData"
+      (onNodeSelect)="handleNodeSelect($event)"
+      (onNodeUnselect)="handleNodeUnSelect($event)"
+    ></p-tree>
+  </div>
+  <div class="footer">
+    <button (click)="handleSaveRolePermissionClick()">
+      {{ "common.sure" | translate }}
+    </button>
+  </div>
+</div>
+<div class="dialog-box-bg"></div>

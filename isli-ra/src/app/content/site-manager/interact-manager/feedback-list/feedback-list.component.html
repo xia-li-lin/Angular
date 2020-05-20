@@ -1,0 +1,167 @@
+<div>
+  <div class="search-title">
+    <span>{{ "siteManager.feedbacks.list.search.title" | translate }}</span>
+    <button appPermission="WS.KH.DC" (click)="handleExportExcel()">
+      {{ "siteManager.feedbacks.list.search.excel" | translate }}
+    </button>
+  </div>
+  <div class="search-content">
+    <dl>
+      <dt>
+        {{ "siteManager.feedbacks.list.search.feedbackStatus" | translate }}：
+      </dt>
+      <dd>
+        <p-dropdown
+          name="feedbackStatus"
+          [options]="feedbackStatusList"
+          [(ngModel)]="feedBackSearch.feedbackStatus"
+          [autoDisplayFirst]="false"
+          placeholder="{{ 'siteManager.common.all' | translate }}"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        {{ "siteManager.feedbacks.list.search.feedbackTitle" | translate }}：
+      </dt>
+      <dd>
+        <input
+          pInputText
+          appTrim
+          [(ngModel)]="feedBackSearch.title"
+          placeholder="{{
+            'siteManager.feedbacks.list.search.titlePlaceholder' | translate
+          }}"
+        />
+      </dd>
+    </dl>
+    <dl>
+      <dt class="minw42">
+        {{ "siteManager.feedbacks.list.search.feedbackTypeId" | translate }}：
+      </dt>
+      <dd>
+        <p-dropdown
+          name="feedbackTypeId"
+          [options]="feedbackTypeist"
+          [(ngModel)]="feedBackSearch.feedbackTypeId"
+          [autoDisplayFirst]="false"
+          placeholder="{{ 'siteManager.common.all' | translate }}"
+        >
+        </p-dropdown>
+      </dd>
+    </dl>
+    <dl class="time">
+      <dt>
+        {{ "siteManager.feedbacks.list.search.searchDate" | translate }}：
+      </dt>
+      <dd>
+        <app-begin-end-date
+          [(ngModel)]="searchDate"
+          (ngModelChange)="handleDateChange($event)"
+        ></app-begin-end-date>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <button (click)="handleSearch()">
+          {{ "siteManager.common.search" | translate }}
+        </button>
+      </dt>
+    </dl>
+  </div>
+
+  <div class="table">
+    <p-table [value]="feedBackListData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="10%">
+            {{ "siteManager.feedbacks.list.table.no" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.feedbacks.list.table.title" | translate }}
+          </th>
+          <th>
+            {{ "siteManager.feedbacks.list.table.feedbackContent" | translate }}
+          </th>
+          <th width="10%">
+            {{ "siteManager.feedbacks.list.table.feedbackType" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.feedbacks.list.table.updateDatetime" | translate }}
+          </th>
+          <th width="8%">
+            {{ "siteManager.feedbacks.list.table.status" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.feedbacks.list.table.operat" | translate }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>
+            {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+          </td>
+          <td title="{{ rowData.title }}">
+            {{ rowData.title }}
+          </td>
+          <td title="{{ rowData.feedbackContent }}">
+            {{ rowData.feedbackContent }}
+          </td>
+          <td title="{{ rowData.feedbackType.feedbackTypeName }}">
+            {{ rowData.feedbackType.feedbackTypeName }}
+          </td>
+          <td title="{{ rowData.updateDatetime | date: 'yyyy-MM-dd' }}">
+            {{ rowData.updateDatetime | date: "yyyy-MM-dd" }}
+          </td>
+          <td
+            title="{{ rowData.status }}"
+            [ngClass]="{
+              blue: rowData.feedbackStatus == 1,
+              green: rowData.feedbackStatus == 2
+            }"
+          >
+            {{ rowData.status }}
+          </td>
+          <td class="operation">
+            <a
+              class="check"
+              title="{{ 'siteManager.common.view' | translate }}"
+              (click)="handleCheck(rowData.feedbackId)"
+            ></a>
+            <a
+              *ngIf="rowData.feedbackStatus == 1"
+              appPermission="WS.KH.CL"
+              class="dealWith"
+              title="{{ 'siteManager.common.reply' | translate }}"
+              (click)="handleDealWith(rowData.feedbackId)"
+            ></a>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <app-paging-box
+      *ngIf="pageInfo.totalRecords"
+      [pagingBoxObj]="pageInfo"
+      (OnPageChange)="handlePageChange($event)"
+    >
+    </app-paging-box>
+    <app-loaing-data [data]="feedBackListData"></app-loaing-data>
+  </div>
+</div>
+<app-deal-with
+  *ngIf="dialogOnOff"
+  (OnCloseEnableClick)="handleOnCloseEnable()"
+  (OnEnableSureClick)="handleOnEnableSure($event)"
+></app-deal-with>

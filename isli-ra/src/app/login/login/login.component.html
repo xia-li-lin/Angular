@@ -1,0 +1,60 @@
+<div class="bg">
+  <div class="content">
+    <div class="content-bd">
+      <div class="login-box">
+        <h5>{{ "login.accountLogin" | translate }}</h5>
+        <form class="login" [isliFormValidMsg]="errorMsg">
+          <mpr-form-control-valid controlName="form"></mpr-form-control-valid>
+          <div class="user-name">
+            <i></i>
+            <input
+              required
+              type="text"
+              autocomplete="off"
+              size="30"
+              name="username"
+              [(ngModel)]="userInfo.username"
+              placeholder="{{ 'login.placehold.userName' | translate }}"
+              pInputText
+              appTrim
+            />
+          </div>
+          <div class="pass-word">
+            <i></i>
+            <input
+              required
+              #password
+              type="password"
+              autocomplete="off"
+              size="30"
+              name="password"
+              [(ngModel)]="userInfo.password"
+              placeholder="{{ 'login.placehold.password' | translate }}"
+              pInputText
+            />
+          </div>
+          <div class="validcode">
+            <input
+              type="text"
+              autocomplete="off"
+              name="mobileCode"
+              [(ngModel)]="userInfo.mobileCode"
+              placeholder="{{ 'login.placehold.code' | translate }}"
+            />
+            <button
+              pButton
+              label="{{ validBtnTxt | translate: { restSecond: restSecond } }}"
+              (click)="handleSendCodeClick()"
+              [disabled]="disableSendCode"
+            ></button>
+          </div>
+          <div class="btn-submit">
+            <button (click)="handleLoginClick()">
+              {{ "login.login" | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

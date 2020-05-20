@@ -1,0 +1,111 @@
+<div class="content-container">
+  <div class="header">
+    <p class="title">{{ "content.nav.account.lcManager" | translate }}</p>
+  </div>
+  <div class="body">
+    <div class="body-warp">
+      <div class="user-detail">
+        <section>
+          <header>{{ "user.company.info" | translate }}</header>
+          <div class="item-bd">
+            <p class="item">
+              <label class="title">{{ "user.company.name" | translate }}</label>
+              <span class="content">{{ userInfo?.name }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{ "user.company.code" | translate }}</label>
+              <span class="content">{{ userInfo?.uscc }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{
+                "user.company.registerArea" | translate
+              }}</label>
+              <span class="content">{{ userInfo?.regionTitle }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{
+                "user.company.contactAddress" | translate
+              }}</label>
+              <span class="content">{{ userInfo?.address }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{
+                "user.company.business" | translate
+              }}</label>
+              <span class="content">{{ userInfo?.industryTitle }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{ "user.company.site" | translate }}</label>
+              <span class="content">{{ userInfo?.website }}</span>
+            </p>
+          </div>
+        </section>
+        <section>
+          <header>{{ "user.contact.info" | translate }}</header>
+          <div>
+            <p class="item">
+              <label class="title">{{
+                "user.contact.userName" | translate
+              }}</label>
+              <span class="content">{{ userInfo?.contactsName }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{
+                "user.contact.phone" | translate
+              }}</label>
+              <span class="content">{{ userInfo?.contactsCellPhone }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{
+                "user.contact.email" | translate
+              }}</label>
+              <span class="content">{{ userInfo?.contactsEmail }}</span>
+            </p>
+          </div>
+        </section>
+        <section>
+          <header>{{ "user.auth.info" | translate }}</header>
+          <div class="table">
+            <p-table [value]="userAuths">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width: 7%;">{{ "user.table.no" | translate }}</th>
+                  <th>{{ "user.table.areaName" | translate }}</th>
+                  <th>{{ "user.table.area" | translate }}</th>
+                  <th>{{ "user.table.business" | translate }}</th>
+                  <th>{{ "user.table.authDate" | translate }}</th>
+                  <th>{{ "user.table.authInfo" | translate }}</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                <tr>
+                  <td>{{ rowIndex + 1 }}</td>
+                  <td>{{ rowData.blockInfo?.blockName }}</td>
+                  <td>{{ rowData.blockInfo?.regionCode }}</td>
+                  <td>{{ rowData.industry }}</td>
+                  <td>
+                    {{ rowData.createTime | date: "yyyy-MM-dd HH:mm:ss" }}
+                  </td>
+                  <td class="operation">
+                    <a
+                      class="detail"
+                      href="{{ rowData.authFile }}"
+                      target="_blank"
+                      title="{{ 'common.preview' | translate }}"
+                    ></a>
+                    <a
+                      class="download"
+                      title="{{ 'common.down' | translate }}"
+                      (click)="handleDownloadClick(rowData)"
+                    ></a>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+            <app-loaing-data [data]="userAuths"></app-loaing-data>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

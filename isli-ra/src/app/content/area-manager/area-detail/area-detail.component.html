@@ -1,0 +1,244 @@
+<div class="content-container">
+  <div class="body">
+    <div class="body-warp">
+      <div ngForm [isliFormValidMsg]="errMsg" class="form">
+        <!-- <p class="item">
+    <span class="title required">语种：</span>
+    <span class="content">
+      <p-dropdown name="langCode" [(ngModel)]="areaBlock.langCode" [options]="languages"></p-dropdown>
+      <mpr-form-control-valid controlName="langCode"></mpr-form-control-valid>
+    </span>
+  </p> -->
+        <p class="item">
+          <span class="title required">{{
+            "areaManager.search.blockName" | translate
+          }}</span>
+          <span class="content">
+            <input
+              type="text"
+              pInputText
+              name="blcokName"
+              [(ngModel)]="areaBlock.blockName"
+              [readonly]="readonly"
+              [oldName]="oldBlock?.blockName"
+              [ngModelOptions]="{ updateOn: 'blur' }"
+              required
+              appValidBlockName
+              maxlength="100"
+              appTrim
+            />
+            <mpr-form-control-valid></mpr-form-control-valid>
+          </span>
+        </p>
+        <p class="item">
+          <span class="title required">{{
+            "areaManager.detail.region" | translate
+          }}</span>
+          <span class="content address-warp">
+            <p-dropdown
+              name="region"
+              [(ngModel)]="areaBlock.regionCode"
+              [options]="regions"
+              placeholder="{{ 'areaManager.detail.select' | translate }}"
+              [autoDisplayFirst]="false"
+              [disabled]="readonly"
+              required
+            ></p-dropdown>
+            <mpr-form-control-valid
+              controlName="region"
+            ></mpr-form-control-valid>
+          </span>
+        </p>
+        <p class="item">
+          <span class="title required">{{
+            "areaManager.detail.industry" | translate
+          }}</span>
+          <span class="content">
+            <p-multiSelect
+              name="blockIndustryInfos"
+              [options]="industrys"
+              [(ngModel)]="selectedIndustrys"
+              defaultLabel="{{ 'areaManager.detail.select' | translate }}"
+              [disabled]="readonly"
+              [filter]="true"
+              required
+              [styleClass]="
+                selectedIndustrys.length ? '' : 'ui-placeholder-container'
+              "
+            ></p-multiSelect>
+            <mpr-form-control-valid
+              controlName="blockIndustryInfos"
+            ></mpr-form-control-valid>
+          </span>
+        </p>
+        <p class="item">
+          <span class="title required">{{
+            "areaManager.detail.logo" | translate
+          }}</span>
+          <span class="content">
+            <span class="upload-warp">
+              <app-file-upload
+                name="logoUrl"
+                [(ngModel)]="areaBlock.logoUrl"
+                [readonly]="readonly"
+                [widthHeight]="[{ width: 100, height: 100, max: false }]"
+                required
+              ></app-file-upload>
+              <mpr-form-control-valid
+                controlName="logoUrl"
+              ></mpr-form-control-valid>
+            </span>
+          </span>
+        </p>
+        <p class="item">
+          <span class="title">{{
+            "areaManager.detail.competentOrg" | translate
+          }}</span>
+          <span class="content">
+            <input
+              type="text"
+              pInputText
+              [(ngModel)]="areaBlock.competentOrg"
+              name="competentOrg"
+              appTrim
+              maxlength="100"
+              [readonly]="readonly"
+            />
+            <mpr-form-control-valid></mpr-form-control-valid>
+          </span>
+        </p>
+        <p class="item">
+          <span class="title">{{
+            "areaManager.detail.contactsName" | translate
+          }}</span>
+          <span class="content">
+            <input
+              type="text"
+              pInputText
+              [(ngModel)]="areaBlock.contactsName"
+              name="contactsName"
+              appTrim
+              maxlength="100"
+              [readonly]="readonly"
+            />
+            <mpr-form-control-valid></mpr-form-control-valid>
+          </span>
+        </p>
+        <p class="item">
+          <span class="title">{{
+            "areaManager.detail.contactsEmail" | translate
+          }}</span>
+          <span class="content">
+            <input
+              type="text"
+              pInputText
+              [(ngModel)]="areaBlock.contactsEmail"
+              name="contactsEmail"
+              appTrim
+              maxlength="50"
+              appValidEmail
+              [readonly]="readonly"
+            />
+            <mpr-form-control-valid></mpr-form-control-valid>
+          </span>
+        </p>
+        <p class="item">
+          <span class="title required">{{
+            "areaManager.detail.blockDesc" | translate
+          }}</span>
+          <span class="content" ngModelGroup="ueditor">
+            <p-tabView>
+              <p-tabPanel
+                header="{{ 'areaManager.detail.simpleDesc' | translate }}"
+              >
+                <div class="ueditor">
+                  <ueditor
+                    [(ngModel)]="areaBlock.blockDesc"
+                    name="bockDesc"
+                    [config]="config"
+                    [readonly]="readonly"
+                    required
+                  ></ueditor>
+                  <!-- <mpr-form-control-valid
+                    controlName="ueditor"
+                  ></mpr-form-control-valid> -->
+                </div>
+              </p-tabPanel>
+              <p-tabPanel
+                header="{{ 'areaManager.detail.productDesc' | translate }}"
+              >
+                <div class="ueditor">
+                  <ueditor
+                    [(ngModel)]="areaBlock.productDesc"
+                    name="productDesc"
+                    [config]="config"
+                    [readonly]="readonly"
+                    required
+                  ></ueditor>
+                  <!-- <mpr-form-control-valid
+                    controlName="ueditor"
+                  ></mpr-form-control-valid> -->
+                </div>
+              </p-tabPanel>
+              <p-tabPanel
+                header="{{ 'areaManager.detail.applicationCase' | translate }}"
+              >
+                <div class="ueditor">
+                  <ueditor
+                    [(ngModel)]="areaBlock.applicationCase"
+                    name="applicationCase"
+                    [config]="config"
+                    [readonly]="readonly"
+                    required
+                  ></ueditor>
+                </div>
+              </p-tabPanel>
+            </p-tabView>
+            <mpr-form-control-valid
+              controlName="ueditor"
+            ></mpr-form-control-valid>
+          </span>
+        </p>
+        <p class="item">
+          <span class="title">{{
+            "areaManager.detail.website" | translate
+          }}</span>
+          <span class="content site" *ngIf="!readonly">
+            <p-dropdown
+              [options]="httpOptions"
+              [(ngModel)]="httpProc"
+              [disabled]="readonly"
+              name="httpProc"
+            ></p-dropdown>
+            <span>://</span>
+            <input
+              type="text"
+              pInputText
+              name="siteUrl"
+              pattern="^(?!(https://|http://))([A-Za-z0-9]+\.)+([A-Za-z0-9]+)$"
+              [(ngModel)]="areaBlock.siteUrl"
+              [readonly]="readonly"
+            />
+            <mpr-form-control-valid></mpr-form-control-valid>
+          </span>
+          <span *ngIf="readonly" class="content">
+            {{ areaBlock.siteUrl ? httpProc + "://" + areaBlock.siteUrl : "" }}
+          </span>
+        </p>
+        <div class="submit">
+          <button
+            pButton
+            label="{{ 'common.sure' | translate }}"
+            (click)="handleSubmitClick()"
+          ></button>
+          <button
+            class="cancel"
+            pButton
+            label="{{ 'common.cancel' | translate }}"
+            (click)="handleCancelClick()"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

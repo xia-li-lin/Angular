@@ -1,0 +1,27 @@
+<div class="analysis-stat-area">
+  <div *ngIf="analysisStatList && analysisStatList.length">
+    <app-export-view (exportView)="handleExportViewClick()"></app-export-view>
+    <!-- 国际地图 -->
+    <div
+      *ngIf="dateType == searchType.AREA"
+      echarts
+      [options]="chartInternationalOptions"
+      class="area chart-box"
+      (chartInit)="handleChartInit($event)"
+    >
+      <div class="data-loading"></div>
+    </div>
+    <!-- 国内地图 -->
+    <div
+      *ngIf="dateType == searchType.CHINA"
+      echarts
+      [options]="chartInternalOptions"
+      class="area chart-box"
+      (chartInit)="handleChartInit($event)"
+    >
+      <div class="data-loading"></div>
+    </div>
+  </div>
+
+  <app-loaing-data [data]="analysisStatList"></app-loaing-data>
+</div>

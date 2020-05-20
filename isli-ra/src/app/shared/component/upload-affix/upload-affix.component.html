@@ -1,0 +1,22 @@
+<div class="file-box">
+  <div class="file-list">
+    <p *ngFor="let item of fileList; let index = index" class="item">
+      <i></i>
+      <span>{{ item.fileName }}</span>
+      <button (click)="handleDeleteClick(index)"></button>
+    </p>
+  </div>
+  <label for="{{ xfileId }}">{{ buttonText }}</label>
+  <input
+    type="file"
+    id="{{ xfileId }}"
+    #fileInput
+    style="position:absolute;clip:rect(0 0 0 0);"
+    accept=".doc,.docx,.xls,.xlsx,.ppt,.pdf,.zip"
+    (change)="handleFileChange($event)"
+  />
+  <p class="tips">
+    {{ fileTips }}
+  </p>
+  <p class="errors">{{ fileError }}</p>
+</div>

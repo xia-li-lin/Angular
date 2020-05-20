@@ -1,0 +1,64 @@
+<div class="register-manager-table table">
+  <p-table [value]="registerManagerList">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 10%;">
+          {{ "service.register.table.serialNumber" | translate }}
+        </th>
+        <th style="width: 15%;">
+          {{ "service.register.table.services" | translate }}
+        </th>
+        <th style="width: 12%;">
+          {{ "service.register.table.serviceCode" | translate }}
+        </th>
+        <th style="width: 20%;">
+          {{ "service.register.table.serviceProvider" | translate }}
+        </th>
+        <th style="width: 15%;">
+          {{ "service.register.table.registerData" | translate }}
+        </th>
+        <th style="width: 10%;">
+          {{ "service.register.table.status" | translate }}
+        </th>
+        <th style="width: 18%;">
+          {{ "service.common.operation" | translate }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+      <tr class="table-tr">
+        <td>
+          {{ (pagingBoxObj.page - 1) * pagingBoxObj.rows + rowIndex + 1 }}
+        </td>
+        <td title="{{ rowData?.serviceName }}">{{ rowData?.serviceName }}</td>
+        <td title="{{ rowData?.serviceCode }}">{{ rowData?.serviceCode }}</td>
+        <td title="{{ rowData?.orgName }}">{{ rowData?.orgName }}</td>
+        <td>{{ rowData?.applyDatetime | date: "yyyy-MM-dd" }}</td>
+        <td
+          [ngClass]="{
+            normal: status.NORMAL === rowData?.applicationStatus,
+            forzen: status.FORZEN === rowData?.applicationStatus,
+            stop: status.STOP === rowData?.applicationStatus,
+            pendTrial: status.PEND_TRIAL === rowData?.applicationStatus,
+            pendReview: status.PEND_REVIEW === rowData?.applicationStatus,
+            notPass: status.NOT_PASS === rowData?.applicationStatus,
+            build: status.BUILD === rowData?.applicationStatus
+          }"
+        >
+          {{ rowData?.applicationStatus | registerManagerStatus }}
+        </td>
+        <td>
+          <app-register-manager-opera
+            [registerManager]="rowData"
+          ></app-register-manager-opera>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <app-loaing-data [data]="registerManagerList"></app-loaing-data>
+  <app-paging-box
+    *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+    [pagingBoxObj]="pagingBoxObj"
+    (OnPageChange)="pageChange.emit($event)"
+  ></app-paging-box>
+</div>

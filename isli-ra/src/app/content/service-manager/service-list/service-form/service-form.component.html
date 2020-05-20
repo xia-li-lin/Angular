@@ -1,0 +1,82 @@
+<div class="service-form content-container">
+  <div class="header">
+    <p class="title">{{ title | translate }}</p>
+  </div>
+  <div class="body">
+    <!-- 中文 -->
+    <app-service-form-cn
+      *ngIf="languageEnable('ZH_TW')"
+      [serviceDetail]="serviceDetail"
+      [oldServiceDetail]="oldServiceDetail"
+      [relevanceList]="relevanceList"
+      [associationTypeList]="associationTypeZhList"
+      [associatedFieldSegmentsList]="associatedFieldSegmentsList"
+      [serviceAssociationTargetList]="serviceAssociationTargetList"
+      (autoGetServiceCode)="handleAutoGetServiceCodeClick()"
+      (multiSelectChange)="handleMultiSelectChange($event)"
+      (relevanceLengthUpdate)="handleRelevanceLengthUpdate($event)"
+      (associatedFieldSegmentsChange)="
+        handleAssociatedFieldSegmentsChange($event)
+      "
+      (updataFildes)="handleUpdataFildes($event)"
+      (serviceAssociationTargetChange)="
+        handleServiceAssociationTargetChange($event)
+      "
+    ></app-service-form-cn>
+    <!-- 英文 -->
+    <app-service-form-en
+      *ngIf="languageEnable('EN_US')"
+      [serviceDetail]="serviceDetail"
+      [oldServiceDetail]="oldServiceDetail"
+      [relevanceList]="relevanceList"
+      [associationTypeList]="associationTypeEnList"
+      [associatedFieldSegmentsList]="associatedFieldSegmentsList"
+      [serviceAssociationTargetList]="serviceAssociationTargetList"
+      (autoGetServiceCode)="handleAutoGetServiceCodeClick()"
+      (multiSelectChange)="handleMultiSelectChange($event)"
+      (relevanceLengthUpdate)="handleRelevanceLengthUpdate($event)"
+      (associatedFieldSegmentsChange)="
+        handleAssociatedFieldSegmentsChange($event)
+      "
+      (updataFildes)="handleUpdataFildes($event)"
+      (serviceAssociationTargetChange)="
+        handleServiceAssociationTargetChange($event)
+      "
+    ></app-service-form-en>
+    <!-- <app-service-form-en></app-service-form-en> -->
+    <div class="aBtn">
+      <button class="blue" *ngIf="!mark" (click)="handleSaveClick()">
+        {{ "service.common.save" | translate }}
+      </button>
+      <button class="blue" *ngIf="mark" (click)="handleSaveClick()">
+        {{ "service.common.sure" | translate }}
+      </button>
+      <button class="blue" *ngIf="mark" (click)="handleSaveAndContinueClick()">
+        {{ "service.common.saveAndContinue" | translate }}
+      </button>
+      <button class="return" (click)="handleCancelClick()">
+        {{ "service.common.cancel" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-shared-dialog
+  *ngIf="dialogOnOff"
+  [confirmTxt]="dialogConfirmTxt"
+  [validFunc]="validFunc"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <p>
+    <span style="color: #ff3636; word-wrap: break-word; word-break: break-all;"
+      >{{
+        (language === "EN_US"
+          ? serviceDetail.serviceNameEn
+          : serviceDetail.serviceNameZh) ||
+          serviceDetail.serviceNameZh ||
+          serviceDetail.serviceNameEn
+      }}
+    </span>
+    {{ "service.serviceList.form.dialog.tip1" | translate }}
+  </p>
+</app-shared-dialog>

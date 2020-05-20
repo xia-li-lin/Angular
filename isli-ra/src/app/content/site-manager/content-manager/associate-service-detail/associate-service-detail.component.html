@@ -1,0 +1,199 @@
+<div class="login-box">
+  <form class="login clearfix" [isliFormValidMsg]="errorMsg">
+    <dl>
+      <dt><span>*</span>{{ "siteManager.common.langCode" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="language"
+          [(ngModel)]="info.langCode"
+          [options]="langList"
+          placeholder="{{ 'siteManager.common.pleasePlaceholder' | translate }}"
+          [autoDisplayFirst]="false"
+          required
+        ></p-dropdown>
+        <mpr-form-control-valid controlName="language"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.associates.detail.title" | translate }}：
+      </dt>
+      <dd>
+        <input
+          required
+          type="text"
+          placeholder="{{
+            'siteManager.associates.detail.titlePlaceholder' | translate
+          }}"
+          name="title"
+          [(ngModel)]="info.title"
+          maxlength="100"
+          pInputText
+        />
+        <mpr-form-control-valid controlName="title"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.associates.detail.thumbnailUrl" | translate }}：
+      </dt>
+      <dd class="thumbnailUrl">
+        <div class="upload-warp">
+          <app-file-upload
+            name="thumbnailUrl"
+            url="/isli/irms/manage-provider/base/serviceProviderAccount/v1/registerFile"
+            [ngModel]="info.thumbnailUrl"
+            (ngModelChange)="handleThumbnailChange($event)"
+            [maxFileSzie]="100 * 1024"
+            [widthHeight]="[{ width: 363, height: 207, max: false }]"
+            [all]="true"
+            required
+          ></app-file-upload>
+          <mpr-form-control-valid
+            controlName="thumbnailUrl"
+          ></mpr-form-control-valid>
+        </div>
+        <mpr-form-control-valid
+          controlName="thumbnailUrl"
+        ></mpr-form-control-valid>
+        <div class="thumbnailUrl-tip">
+          {{ "siteManager.common.thumbnailUrlTip" | translate }}
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.associates.detail.serviceCode" | translate }}：
+      </dt>
+      <dd>
+        <input
+          required
+          type="text"
+          placeholder="{{
+            'siteManager.associates.detail.serviceCodePlaceholder' | translate
+          }}"
+          name="serviceCode"
+          [(ngModel)]="info.serviceCode"
+          pattern="^\d{6}$"
+          appPatternInput="^\d+$"
+          inputPattern="^\d+$"
+          maxlength="6"
+          pInputText
+        />
+        <mpr-form-control-valid
+          controlName="serviceCode"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{
+          "siteManager.associates.detail.correlationCodingStructure"
+            | translate
+        }}：
+      </dt>
+      <dd>
+        <input
+          required
+          type="text"
+          placeholder="{{
+            'siteManager.associates.detail.correlationCodingStructurePlaceholder'
+              | translate
+          }}"
+          name="correlationCodingStructure"
+          [(ngModel)]="info.correlationCodingStructure"
+          maxlength="20"
+          pInputText
+        />
+        <mpr-form-control-valid
+          controlName="correlationCodingStructure"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.associates.detail.createTime" | translate }}：
+      </dt>
+      <dd>
+        <app-calendar
+          name="createTime"
+          [(ngModel)]="info.createTime"
+          required
+        ></app-calendar>
+        <mpr-form-control-valid
+          controlName="createTime"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.associates.detail.sort" | translate }}：
+      </dt>
+      <dd>
+        <input
+          required
+          type="text "
+          name="sort"
+          placeholder="{{
+            'siteManager.associates.detail.sortPlaceholder' | translate
+          }}"
+          [(ngModel)]="info.sort"
+          maxlength="1"
+          pInputText
+          appInputNumber
+        />
+        <mpr-form-control-valid controlName="sort"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.associates.detail.asStatus" | translate }}：
+      </dt>
+      <dd>
+        <p-radioButton
+          name="asStatus"
+          value="0"
+          label="{{ 'siteManager.common.show' | translate }}"
+          [(ngModel)]="info.asStatus"
+        ></p-radioButton>
+        <p-radioButton
+          name="asStatus"
+          value="1"
+          label="{{ 'siteManager.common.hide' | translate }}"
+          [(ngModel)]="info.asStatus"
+        ></p-radioButton>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.associates.detail.content" | translate }}：
+      </dt>
+      <dd class="ueditor">
+        <ueditor
+          name="content"
+          [(ngModel)]="info.content"
+          [config]="config"
+          required
+        ></ueditor>
+        <mpr-form-control-valid controlName="content"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>&nbsp;</dt>
+      <dd class="btn-group">
+        <button (click)="handleCommit()">
+          {{ "siteManager.common.commit" | translate }}
+        </button>
+        <button (click)="handleCancle()">
+          {{ "siteManager.common.cancle" | translate }}
+        </button>
+      </dd>
+    </dl>
+  </form>
+</div>

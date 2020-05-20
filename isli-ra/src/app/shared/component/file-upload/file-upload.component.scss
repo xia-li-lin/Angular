@@ -1,0 +1,52 @@
+.img-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  height: 100%;
+  border: 1px solid #d5dce2;
+  &:hover {
+    .delete {
+      display: inherit;
+    }
+    border: 1px solid #007bd8;
+  }
+  &.img-error {
+    border: 1px solid #eb4d4d;
+  }
+
+  &.img-readonly:hover,
+  &.img-readonly {
+    border: 0;
+  }
+
+  .delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 2em;
+    color: red;
+    display: none;
+  }
+  .upload-icon-warp {
+    text-align: center;
+    cursor: pointer;
+    .upload-icon {
+      width: 30px;
+      height: 30px;
+      margin: 0 auto;
+      background-image: url(/assets/images/upload.png);
+    }
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
+  .step {
+    height: 10px;
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+  }
+}

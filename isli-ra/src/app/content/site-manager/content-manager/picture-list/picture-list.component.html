@@ -1,0 +1,67 @@
+<div>
+  <div class="search-title">
+    <span>{{ "siteManager.picture.list.search.title" | translate }}</span>
+  </div>
+  <div class="table">
+    <p-table [value]="pictureListData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="10%">
+            {{ "siteManager.picture.list.table.no" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.picture.list.table.languageName" | translate }}
+          </th>
+          <th width="30%">
+            {{ "siteManager.picture.list.table.image" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.picture.list.table.operat" | translate }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td rowspan="4">
+            {{ rowIndex + 1 }}
+          </td>
+          <td rowspan="4" title="{{ rowData.languageName }}" class="td-rowspan">
+            {{ rowData.languageName }}
+          </td>
+        </tr>
+        <ng-container *ngFor="let item of rowData.images">
+          <tr>
+            <td>
+              <img [src]="item.urlAddress" style="width: 130px;height:80px;" />
+            </td>
+            <td class="operation">
+              <a
+                appPermission="WS.TP.XG"
+                class="upload"
+                title="{{
+                  'siteManager.picture.list.table.upload' | translate
+                }}"
+                (click)="handerUploader(fileUpload)"
+              ></a>
+              <input
+                type="file"
+                style="display: none"
+                (change)="
+                  handleFileUploaderChange($event, item.imgId, rowData.langCode)
+                "
+                #fileUpload
+              />
+            </td>
+          </tr>
+        </ng-container>
+      </ng-template>
+    </p-table>
+    <app-loaing-data [data]="pictureListData"></app-loaing-data>
+  </div>
+</div>
+<p-confirmDialog
+  acceptIcon=""
+  rejectIcon=""
+  [rejectVisible]="false"
+  acceptLabel="{{ 'common.sure' | translate }}"
+></p-confirmDialog>

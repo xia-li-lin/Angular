@@ -1,0 +1,39 @@
+.no-data-box {
+  width: 100%;
+  min-height: 200px;
+  // background: #fff;
+  position: relative;
+}
+
+.no-data {
+  margin-top: 110px;
+  width: 100%;
+  text-align: center;
+  background: url(/assets/images/listNodata.png) top center no-repeat;
+  height: 126px;
+  padding: 0;
+}
+
+.no-data p {
+  position: absolute;
+  font-size: 16px;
+  color: #888;
+  width: 100%;
+  bottom: 50px;
+  text-align: center;
+}
+
+.local-loading {
+  width: 100%;
+  height: auto;
+  display: block;
+  text-align: center;
+  color: #8b8b8b;
+  background: url(/assets/images/loading.gif) center center no-repeat;
+  padding-top: 140px;
+}
+
+.local-loading p {
+  color: #656565;
+  font-size: 14px;
+}

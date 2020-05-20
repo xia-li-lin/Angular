@@ -1,0 +1,41 @@
+<div class="form clearfix">
+    <form [isliFormValidMsg]="errorMsg">
+        <dl>
+            <dt><span>*</span>消息主題：</dt>
+            <dd>
+                <input required type="text" name="tidingsTheme" class="tidingsTheme" maxlength="20"
+                    [(ngModel)]="info.tidingsTheme" pInputText />
+                <mpr-form-control-valid controlName="tidingsTheme"></mpr-form-control-valid>
+            </dd>
+        </dl>
+        <dl>
+            <dt><span>*</span>內容：</dt>
+            <dd class="textarea">
+                <textarea required type="text" name="content" class="content" maxlength="2000"
+                    [(ngModel)]="info.content"></textarea>
+                <mpr-form-control-valid controlName="content"></mpr-form-control-valid>
+            </dd>
+        </dl>
+        <dl>
+            <dt>文字链接名称：</dt>
+            <dd>
+                <input type="text" name="textLinkName" class="textLinkName" [(ngModel)]="info.textLinkName"
+                    maxlength="20" pInputText />
+            </dd>
+        </dl>
+        <dl>
+            <dt>链接地址：</dt>
+            <dd>
+                <input type="text" name="linkUrl" class="linkUrl" [(ngModel)]="info.linkUrl" pInputText />
+            </dd>
+        </dl>
+        <dl>
+            <dt>中文附件：</dt>
+            <dd class="file-box">
+                <app-upload-affix name="fileList" class="fileList" [(ngModel)]="info.fileList"
+                    [fileTypeError]="fileTypeError" [fileSizeError]="fileSizeError" [fileuploadError]="fileuploadError"
+                    [langCode]="langCode" [buttonText]="buttonText" [fileTips]="fileTips"></app-upload-affix>
+            </dd>
+        </dl>
+    </form>
+</div>

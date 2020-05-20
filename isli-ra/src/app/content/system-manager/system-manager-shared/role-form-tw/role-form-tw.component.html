@@ -1,0 +1,27 @@
+<div class="role-form clearfix">
+    <form [isliFormValidMsg]="errorMsg">
+        <dl>
+            <dt><span>*</span>所属区域：</dt>
+            <dd>
+                <p-dropdown required name="areaId" placeholder="- 请选择 -" [options]="areaArray" [ngModel]="info.areaId"
+                    [autoDisplayFirst]="false" (ngModelChange)="areaChange($event)"  [filter]="areaArray&&areaArray.length>15?true:false">
+                </p-dropdown>
+                <mpr-form-control-valid controlName="areaId"></mpr-form-control-valid>
+            </dd>
+        </dl>
+        <dl>
+            <dt><span>*</span>角色名称：</dt>
+            <dd>
+                <input required  pInputText appRoleNameExist type="text" name="roleName" class="roleName"langCode='ZH_TW'
+                 [roleId]='info.roleId' [(ngModel)]="info.roleName"/> 
+                <mpr-form-control-valid controlName="roleName"></mpr-form-control-valid>
+            </dd>
+        </dl>
+        <dl>
+            <dt>描述：</dt>
+            <dd>
+                <input type="text" name="description" class="description" [(ngModel)]="info.description" pInputText />
+            </dd>
+        </dl>
+    </form>
+</div>

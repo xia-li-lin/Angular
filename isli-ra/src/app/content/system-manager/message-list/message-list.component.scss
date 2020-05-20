@@ -1,0 +1,213 @@
+.message-box {
+  .create {
+    width: 100%;
+    height: 50px;
+    // padding: 18px 0 15px;
+    // line-height: ;
+    padding: 10px 20px 8px;
+    border-bottom: 1px solid #f0f4f8;
+
+    // text-align: right;
+    h6 {
+      float: left;
+      font-family: SourceHanSansSC-Medium;
+      font-size: 16px;
+      line-height: 32px;
+      color: #354754;
+      letter-spacing: 0;
+    }
+
+    button {
+      float: right;
+      width: 120px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      background: #007bd8;
+      border-radius: 4px;
+      color: #fff;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+
+  .message-list {
+    padding: 0 30px;
+    display: block;
+    position: relative;
+
+    .loading {
+      float: left;
+      width: 100%;
+      text-align: center;
+    }
+
+    dl,
+    dt,
+    dd {
+      // float: left;
+      width: 100%;
+    }
+
+    dl {
+      padding-top: 30px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #f0f4f8;
+
+      dt {
+        line-height: 18px;
+        height: 18px;
+
+        h6 {
+          font-weight: normal;
+          float: left;
+          font-size: 14px;
+          width: 626px;
+          overflow: hidden;
+          white-space: nowrap;
+          word-wrap: break-word;
+          word-break: break-all;
+          text-overflow: ellipsis;
+        }
+
+        p {
+          width: 400px;
+          float: right;
+          font-family: SourceHanSansSC-Regular;
+          font-size: 12px;
+          color: #b1bac2;
+          text-align: right;
+
+          span {
+            display: inline-block;
+            width: 80px;
+            vertical-align: middle;
+          }
+
+          a {
+            display: inline-block;
+            max-width: 230px;
+            overflow: hidden;
+            white-space: nowrap;
+            word-wrap: break-word;
+            word-break: break-all;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            color: #b1bac2;
+          }
+
+          i {
+            display: inline-block;
+            width: 90px;
+            vertical-align: middle;
+            font-style: normal;
+          }
+        }
+      }
+
+      dd {
+        padding-top: 10px;
+        font-family: SourceHanSansSC-Regular;
+        font-size: 14px;
+        color: #9ea6ac;
+        letter-spacing: 0.4px;
+        line-height: 28px;
+
+        &.showShort {
+          overflow: hidden;
+          word-wrap: break-word;
+          word-break: break-all;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          /* autoprefixer: off */
+          -webkit-box-orient: vertical;
+          /* autoprefixer: on */
+        }
+
+        &.spread {
+          height: 24px;
+
+          a {
+            width: 70px;
+            height: 24px;
+            float: right;
+            border: 1px solid #d5dce2;
+            border-radius: 4px;
+            text-align: center;
+            line-height: 22px;
+            font-family: SourceHanSansSC-Regular;
+            font-size: 14px;
+            color: #9ea6ac;
+            position: relative;
+            cursor: pointer;
+          }
+
+          i {
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            position: absolute;
+            top: 9px;
+            right: 10px;
+
+            &.spread {
+              border-top: 3px solid #444;
+            }
+
+            &.up {
+              border-bottom: 3px solid #444;
+            }
+          }
+        }
+
+        &.affix {
+          font-family: SourceHanSansSC-Medium;
+          line-height: 22px;
+          font-size: 14px;
+          color: #354754;
+
+          span {
+            font-size: 14px;
+            color: #354754;
+            display: inline-block;
+            margin-right: 5px;
+          }
+
+          p {
+            display: inline-block;
+          }
+
+          i,
+          a {
+            margin-right: 5px;
+            display: inline-block;
+            vertical-align: middle;
+          }
+
+          i {
+            width: 24px;
+            height: 22px;
+            background: url(/assets/images/affixBlue.png) left center no-repeat;
+          }
+
+          a {
+            font-family: SourceHanSansSC-Regular;
+            font-size: 14px;
+            color: #9ea6ac;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 200px;
+            margin-right: 20px;
+            word-break: break-all;
+            word-wrap: break-word;
+
+            &:hover {
+              color: #007bd8;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+.user {
+  padding-top: 30px;
+  text-align: center;
+  .user-warp {
+    display: inline-block;
+    text-align: left;
+    line-height: normal;
+  }
+  p {
+    min-height: 30px;
+  }
+  label {
+    padding-right: 10px;
+    min-width: 100px;
+    text-align: right;
+    display: inline-block;
+    font-size: 14px;
+    color: #9ea6ac;
+  }
+  span.info-warp {
+    display: inline-block;
+    word-break: break-all;
+    max-width: 430px;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #354754;
+    line-height: normal;
+    .item {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+      &.warn {
+        color: #9ea6ac;
+        font-size: 12px;
+      }
+    }
+  }
+  .required {
+    color: #eb4d4d;
+  }
+
+  .user-modify {
+    margin-top: 7px;
+    p {
+      min-height: 46px;
+    }
+    ::ng-deep {
+      .ui-dropdown.ui-state-disabled {
+        .ui-dropdown-trigger {
+          display: none;
+        }
+      }
+      .ui-state-disabled {
+        color: #354754;
+        opacity: 1;
+        background: #fff;
+        border: 0;
+      }
+    }
+  }
+
+  .submit {
+    margin-top: 15px;
+    text-align: center;
+    button {
+      margin-right: 20px;
+      padding: 0 30px;
+    }
+    .tip-warn {
+      color: #9ea6ac;
+      font-size: 12px;
+    }
+  }
+}
+
+.warn-pwd {
+  padding: 20px 40px;
+  .warn-icon {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: url(/assets/images/tip.png) no-repeat center;
+  }
+  .warn-tip {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 15px;
+    color: #354754;
+    line-height: 24px;
+    max-width: 220px;
+  }
+}
+
+:host ::ng-deep {
+  .ui-dialog {
+    .ui-dialog-titlebar,
+    .ui-dialog-content,
+    .ui-dialog-footer {
+      border: 0;
+      background: #ffffff;
+    }
+    .ui-dialog-footer {
+      padding-bottom: 30px;
+    }
+    .pi-times {
+      &::before {
+        content: '';
+      }
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      background: url(/assets/images/close-black.png) no-repeat;
+      background-position: 0 0;
+      &:hover {
+        background-position: 0 -16px;
+      }
+    }
+  }
+}

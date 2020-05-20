@@ -1,0 +1,84 @@
+<div class="dialog-box check-system-data">
+  <div class="dialog">
+    <div class="dialog-title">
+      <h5>{{ "service.register.table.checkSystemData.title" | translate }}</h5>
+      <a (click)="closeSystemDataClick.emit($event)"></a>
+    </div>
+    <div class="dialog-content">
+      <dl>
+        <dt>
+          {{
+            "service.register.table.checkSystemData.isliCodeRegisterApi"
+              | translate
+          }}
+        </dt>
+        <dd>
+          <span>{{ systemData?.isliRegisterApi }}</span>
+          <a
+            *ngIf="systemData?.isliRegisterApi"
+            href="javascript:;"
+            title="{{ 'service.common.copy' | translate }}"
+            ngxClipboard
+            [cbContent]="systemData?.isliRegisterApi"
+            (cbOnSuccess)="handleCopySuccessClick()"
+            >{{ "service.common.copy" | translate }}</a
+          >
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          {{
+            "service.register.table.checkSystemData.isliCodeResolutionApi"
+              | translate
+          }}
+        </dt>
+        <dd>
+          <span>{{ systemData?.isliResolutionApi }}</span>
+          <a
+            *ngIf="systemData?.isliResolutionApi"
+            href="javascript:;"
+            title="{{ 'service.common.copy' | translate }}"
+            ngxClipboard
+            [cbContent]="systemData?.isliResolutionApi"
+            (cbOnSuccess)="handleCopySuccessClick()"
+            >{{ "service.common.copy" | translate }}</a
+          >
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          {{ "service.register.table.checkSystemData.systemIdent" | translate }}
+        </dt>
+        <dd>
+          <span>{{ systemData?.sysIdentity }}</span>
+          <a
+            *ngIf="systemData?.sysIdentity"
+            href="javascript:;"
+            title="{{ 'service.common.copy' | translate }}"
+            ngxClipboard
+            [cbContent]="systemData?.sysIdentity"
+            (cbOnSuccess)="handleCopySuccessClick()"
+            >{{ "service.common.copy" | translate }}
+          </a>
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          {{ "service.register.table.checkSystemData.systemKey" | translate }}
+        </dt>
+        <dd>
+          <span>{{ systemData?.sysSymmetricKey }}</span>
+          <a
+            *ngIf="systemData?.sysSymmetricKey"
+            href="javascript:;"
+            title="{{ 'service.common.copy' | translate }}"
+            ngxClipboard
+            [cbContent]="systemData?.sysSymmetricKey"
+            (cbOnSuccess)="handleCopySuccessClick()"
+            >{{ "service.common.copy" | translate }}</a
+          >
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>

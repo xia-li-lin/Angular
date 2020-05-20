@@ -1,0 +1,57 @@
+// body .ui-dialog .ui-dialog-titlebar {
+//   background: pink;
+// }
+
+.ui-confirmdialog.ui-dialog .ui-dialog-titlebar {
+  // border: 0 none;
+  height: 38px;
+  background: #fff;
+  border: 0 none;
+  padding: 15px;
+  font-weight: normal;
+}
+
+.ui-confirmdialog.ui-dialog .ui-dialog-content {
+  border: 0 none;
+  min-height: 100px;
+  padding: 32px 30px;
+  text-align: center;
+
+  span.ui-confirmdialog-message {
+    text-align: left;
+    font-family: SourceHanSansSC-Medium;
+    font-size: 18px;
+    color: #354754;
+    background: url(/assets/images/confirmBg.png) left top no-repeat;
+    min-height: 36px;
+    line-height: 36px;
+    display: inline-block;
+    padding-left: 46px;
+  }
+}
+
+.ui-confirmdialog.ui-dialog .ui-dialog-footer {
+  border: 0 none;
+  padding: 0;
+  text-align: center;
+  padding: 14px 0 30px;
+
+  button {
+    width: 100px;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid #007BD8;
+    background: #007BD8;
+    border-radius: 4px;
+    color: #fff;
+    font-family: SourceHanSansSC-Regular;
+    font-size: 14px;
+    margin: 0 10px;
+
+    &:last-child {
+      background: #fff;
+      color: #007BD8;
+    }
+  }
+}

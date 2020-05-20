@@ -1,0 +1,38 @@
+<div class="table-box"> 
+  <div class="title">
+    <a>{{ 'systemShared.stepFirst' | translate }}</a>
+    <a>{{ 'systemShared.stepSecond' | translate }}</a>
+    <a>{{ 'systemShared.stepThird' | translate }}</a>
+  </div>
+  <div class="nav-list-default">
+    <div class="list" *ngFor="let item of languageListStandradData">
+      <p>
+        <a>{{ item.name }}</a>
+      </p>
+      <p>
+        <a title="{{ list.name }}" *ngFor="let list of item.children">{{
+          list.name
+        }}</a>
+      </p>
+    </div>
+  </div>
+  <div class="nav-list">
+    <div class="list" *ngFor="let item of languageListData">
+      <p>
+        <a title="{{ list.name }}" *ngFor="let list of item.children">
+          <input
+            required
+            type="text"
+            [(ngModel)]="list.name"
+            pInputText
+            (ngModelChange)="handleDataChange()"
+          />
+        </a>
+      </p>
+    </div>
+  </div>
+  <p class="error"><a *ngIf="errorFlag">{{ 'systemShared.input' | translate }}</a></p>
+  <div class="btn-box">
+    <button (click)="handleNextClick()">{{ 'systemShared.next' | translate }}</button>
+  </div>
+</div>

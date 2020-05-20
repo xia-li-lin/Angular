@@ -1,0 +1,98 @@
+<div>
+  <div class="search-title">
+    <span>{{ "siteManager.feedbacks.detail.view" | translate }}</span>
+  </div>
+  <div class="item">
+    <h2>{{ "siteManager.feedbacks.detail.basicInfo" | translate }}</h2>
+    <div class="item-content">
+      <dl>
+        <dt>
+          {{ "siteManager.feedbacks.detail.updateDatetime" | translate }}：
+        </dt>
+        <dd>{{ feedBack.updateDatetime | date: "yyyy-MM-dd" }}</dd>
+      </dl>
+      <dl>
+        <dt>{{ "siteManager.feedbacks.detail.status" | translate }}：</dt>
+        <dd>{{ feedBack.status }}</dd>
+      </dl>
+      <dl>
+        <dt>{{ "siteManager.feedbacks.detail.replyDate" | translate }}：</dt>
+        <dd>{{ feedBack.updateDatetime | date: "yyyy-MM-dd" }}</dd>
+      </dl>
+      <dl *ngIf="feedBack.feedbackStatus === 2">
+        <dt>工作人員工號：</dt>
+        <dd>{{ feedBack.jobNo }}</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="item">
+    <h2>{{ "siteManager.feedbacks.detail.feedbackMessage" | translate }}</h2>
+    <div class="item-content">
+      <dl>
+        <dt>{{ "siteManager.feedbacks.detail.title" | translate }}：</dt>
+        <dd>{{ feedBack.title }}</dd>
+      </dl>
+      <dl>
+        <dt>
+          {{ "siteManager.feedbacks.detail.feedbackTypeName" | translate }}：
+        </dt>
+        <dd>
+          {{
+            feedBack.feedbackType
+              ? feedBack.feedbackType.feedbackTypeName
+              : "--"
+          }}
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          {{ "siteManager.feedbacks.detail.feedbackContent" | translate }}：
+        </dt>
+        <dd>{{ feedBack.feedbackContent }}</dd>
+      </dl>
+      <dl>
+        <dt>{{ "siteManager.feedbacks.detail.attachment" | translate }}：</dt>
+        <dd>
+          <img [src]="imgUrl" />
+          {{ imgUrl ? "" : "-" }}
+        </dd>
+      </dl>
+    </div>
+  </div>
+  <div class="item" *ngIf="feedBack.feedbackStatus === 2">
+    <h2>受理資訊</h2>
+    <div class="item-content">
+      <dl>
+        <dt>處理結果：</dt>
+        <dd>{{ feedBack.dealOpinion }}</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="item">
+    <h2>{{ "siteManager.feedbacks.detail.contactInformation" | translate }}</h2>
+    <div class="item-content">
+      <dl>
+        <dt>{{ "siteManager.feedbacks.detail.feedbackName" | translate }}：</dt>
+        <dd>{{ feedBack.feedbackName }}</dd>
+      </dl>
+      <dl>
+        <dt>{{ "siteManager.feedbacks.detail.userName" | translate }}：</dt>
+        <dd>{{ feedBack.userName }}</dd>
+      </dl>
+      <dl>
+        <dt>{{ "siteManager.feedbacks.detail.phone" | translate }}：</dt>
+        <dd>{{ feedBack.userEmail }}</dd>
+      </dl>
+      <dl>
+        <dt>{{ "siteManager.feedbacks.detail.email" | translate }}：</dt>
+        <dd>{{ feedBack.userEmail }}</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="back">
+    <button (click)="hadleBack()">
+      {{ "siteManager.common.return" | translate }}
+    </button>
+  </div>
+</div>

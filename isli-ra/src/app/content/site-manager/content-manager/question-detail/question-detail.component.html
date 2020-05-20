@@ -1,0 +1,105 @@
+<div class="login-box">
+  <form class="login clearfix" [isliFormValidMsg]="errorMsg">
+    <dl>
+      <dt><span>*</span>{{ "siteManager.common.langCode" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="language"
+          [(ngModel)]="info.langCode"
+          [options]="langList"
+          placeholder="{{ 'siteManager.common.pleasePlaceholder' | translate }}"
+          [autoDisplayFirst]="false"
+          required
+        ></p-dropdown>
+        <mpr-form-control-valid controlName="language"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.question.detail.title" | translate }}：
+      </dt>
+      <dd>
+        <input
+          required
+          type="text"
+          placeholder="{{
+            'siteManager.question.detail.titlePlaceholder' | translate
+          }}"
+          name="title"
+          [(ngModel)]="info.title"
+          maxlength="100"
+          pInputText
+        />
+        <mpr-form-control-valid controlName="title"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.question.detail.sort" | translate }}：
+      </dt>
+      <dd>
+        <input
+          required
+          type="text "
+          name="sort"
+          placeholder="{{
+            'siteManager.question.detail.sortPlaceholder' | translate
+          }}"
+          [(ngModel)]="info.sort"
+          maxlength="1"
+          pInputText
+          appPatternInput="^\d+$"
+        />
+        <mpr-form-control-valid controlName="sort"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.question.detail.questionStatus" | translate }}：
+      </dt>
+      <dd>
+        <p-radioButton
+          name="questionStatus"
+          value="0"
+          label="{{ 'siteManager.common.show' | translate }}"
+          [(ngModel)]="info.questionStatus"
+        ></p-radioButton>
+        <p-radioButton
+          name="questionStatus"
+          value="1"
+          label="{{ 'siteManager.common.hide' | translate }}"
+          [(ngModel)]="info.questionStatus"
+        ></p-radioButton>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.question.detail.replyContent" | translate }}：
+      </dt>
+      <dd class="ueditor">
+        <ueditor
+          name="replyContent"
+          [(ngModel)]="info.replyContent"
+          [config]="config"
+          required
+        ></ueditor>
+        <mpr-form-control-valid
+          controlName="replyContent"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>&nbsp;</dt>
+      <dd class="btn-group">
+        <button (click)="handleCommit()">
+          {{ "siteManager.common.commit" | translate }}
+        </button>
+        <button (click)="handleCancle()">
+          {{ "siteManager.common.cancle" | translate }}
+        </button>
+      </dd>
+    </dl>
+  </form>
+</div>

@@ -1,0 +1,172 @@
+<div class="controlled-word-config content-container">
+  <div class="header">
+    <p class="title">
+      {{ "service.controlledWordManagement.config.title" | translate }}
+    </p>
+  </div>
+  <div class="body">
+    <!--  -->
+    <div class="bd-search">
+      <div class="p-grid search-bd">
+        <div
+          class="item"
+          [ngClass]="{
+            'p-col-4': language !== 'EN_US',
+            'p-col-5': language === 'EN_US'
+          }"
+        >
+          <label class="wid-70"
+            >{{
+              "service.controlledWordManagement.config.controlledId"
+                | translate
+            }}：</label
+          >
+          <span class="item-bd">
+            <input
+              type="text"
+              name="controlledId"
+              appTrim
+              pInputText
+              [readonly]="true"
+              [(ngModel)]="controlledId"
+            />
+          </span>
+        </div>
+        <div
+          class="item"
+          [ngClass]="{
+            'p-col-4': language !== 'EN_US',
+            'p-col-5': language === 'EN_US'
+          }"
+        >
+          <label class="wid-84"
+            >{{
+              "service.controlledWordManagement.config.controlledName"
+                | translate
+            }}：</label
+          >
+          <span class="item-bd">
+            <input
+              type="text"
+              name="controlledName"
+              appTrim
+              pInputText
+              [readonly]="true"
+              [(ngModel)]="controlledName"
+            />
+          </span>
+        </div>
+        <div class="p-col-2 item item-search">
+          <span class="item-bd">
+            <button
+              pButton
+              label="{{
+                'service.controlledWordManagement.config.add' | translate
+              }}"
+              (click)="handleAddClick()"
+            ></button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- 列表开始 -->
+    <div class="table">
+      <p-table [value]="controllWordAttrList">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 15%;">
+              {{
+                "service.controlledWordManagement.config.table.serialNumber"
+                  | translate
+              }}
+            </th>
+            <th style="width: 25%;">
+              {{
+                "service.controlledWordManagement.config.table.termName"
+                  | translate
+              }}
+            </th>
+            <th style="width: 20%;">
+              {{
+                "service.controlledWordManagement.config.table.termId"
+                  | translate
+              }}
+            </th>
+            <th style="width: 15%;">
+              {{
+                "service.controlledWordManagement.config.table.creationDate"
+                  | translate
+              }}
+            </th>
+            <th style="width: 15%;">
+              {{
+                "service.controlledWordManagement.config.table.operations"
+                  | translate
+              }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+          <tr class="table-tr">
+            <td>
+              {{ (pagingBoxObj.page - 1) * pagingBoxObj.rows + rowIndex + 1 }}
+            </td>
+            <td>
+              {{ rowData?.value }}
+            </td>
+            <td>{{ rowData?.itemId }}</td>
+            <td>{{ rowData?.createTime | date: "yyyy-MM-dd" }}</td>
+            <td class="operation">
+              <a
+                class="delete"
+                href="javascript:;"
+                title="{{
+                  'service.controlledWordManagement.config.operations.delete'
+                    | translate
+                }}"
+                (click)="handleDeleteClick(rowData)"
+              ></a>
+              <a
+                class="modify"
+                href="javascript:;"
+                title="{{
+                  'service.controlledWordManagement.config.operations.modify'
+                    | translate
+                }}"
+                (click)="handleModifyClick(rowData)"
+              ></a>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-loaing-data [data]="controllWordAttrList"></app-loaing-data>
+      <app-paging-box
+        *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+        [pagingBoxObj]="pagingBoxObj"
+        (OnPageChange)="handlePageChange($event)"
+      ></app-paging-box>
+    </div>
+    <!-- 列表结束 -->
+  </div>
+</div>
+
+<!-- 删除 -->
+<app-shared-dialog
+  *ngIf="dialogOnOff"
+  cancelTxt="{{ 'service.common.cancel' | translate }}"
+  confirmTxt="{{ 'service.common.sure' | translate }}"
+  [validFunc]="validFunc"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <div>{{ "service.common.deleteDialogTips" | translate }}</div>
+</app-shared-dialog>
+
+<!-- 添加词条 -->
+<app-controlled-word-add
+  *ngIf="addOnOff"
+  [showSort]="true"
+  [title]="title"
+  [controllWord]="controllWord"
+  (cancel)="addOnOff = false"
+  (save)="handleSaveClick($event)"
+></app-controlled-word-add>

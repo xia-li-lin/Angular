@@ -1,0 +1,244 @@
+<div class="service-form-en form clearfix">
+  <form [isliFormValidMsg]="errorMsg">
+    <div class="item item-en clearfix">
+      <h2>English</h2>
+      <div class="content">
+        <!-- 服务 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            Service：
+          </dt>
+          <dd>
+            <input
+              type="text"
+              name="serviceNameEn"
+              pInputText
+              appTrim
+              required
+              maxlength="300"
+              minLength="1"
+              [(ngModel)]="serviceDetail.serviceNameEn"
+              [ngModelOptions]="{ updateOn: 'blur' }"
+              [mark]="'serviceNameEn'"
+              [oldName]="oldServiceDetail?.serviceNameEn"
+              appValidNameUnique
+            />
+            <mpr-form-control-valid
+              controlName="serviceNameEn"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 服务编码 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            Service code：
+          </dt>
+          <dd>
+            <input
+              type="text"
+              name="serviceCodeEn"
+              pInputText
+              required
+              maxlength="6"
+              pattern="^\d{6}$"
+              appPatternInput="^\d+$"
+              inputPattern="^\d+$"
+              style="width: 330px;"
+              [(ngModel)]="serviceDetail.serviceCodeEn"
+            />
+            <button class="return" (click)="handleAutoGetServiceCodeClick()">
+              Acquire
+            </button>
+            <mpr-form-control-valid
+              controlName="serviceCodeEn"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 关联类型 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            Link type：
+          </dt>
+          <dd style="height: 32px;">
+            <p-multiSelect
+              [options]="associationTypeList"
+              name="relevanceTypeEn"
+              required
+              defaultLabel="&nbsp;"
+              [panelStyle]="{ width: '450px' }"
+              [(ngModel)]="relevanceTypeEn"
+              (onChange)="handleMultiSelectChange($event)"
+            ></p-multiSelect>
+            <mpr-form-control-valid
+              controlName="relevanceTypeEn"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 服务关联目标 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            Service Association target：
+          </dt>
+          <dd>
+            <p-dropdown
+              name="targetEntityTypeEn"
+              required
+              [autoDisplayFirst]="false"
+              [options]="serviceAssociationTargetList"
+              [(ngModel)]="serviceDetail.targetEntityType"
+              (onChange)="serviceAssociationTargetChange.emit($event)"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+            </p-dropdown>
+            <mpr-form-control-valid
+              controlName="targetEntityTypeEn"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 关联字段长度 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            Link code length：
+          </dt>
+          <dd>
+            <input
+              type="text"
+              name="relevanceLengthEn"
+              pInputText
+              required
+              maxlength="2"
+              placeholder="Please input a positive integer no more than 30"
+              pattern="^([12][0-9]|30|[1-9])$"
+              appPatternInput="^\d+$"
+              inputPattern="^\d+$"
+              [(ngModel)]="serviceDetail.relevanceLengthEn"
+              (blur)="
+                relevanceLengthUpdate.emit(serviceDetail.relevanceLengthEn)
+              "
+            />
+            <mpr-form-control-valid
+              controlName="relevanceLengthEn"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 关联字段分段 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            Link field partition：
+          </dt>
+          <dd>
+            <p-dropdown
+              name="relevanceNumEn"
+              [options]="associatedFieldSegmentsList"
+              required
+              [(ngModel)]="serviceDetail.relevanceNumEn"
+              (onChange)="associatedFieldSegmentsChange.emit($event)"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+            </p-dropdown>
+            <mpr-form-control-valid
+              controlName="relevanceNumEn"
+            ></mpr-form-control-valid>
+            <app-add-filed
+              *ngIf="serviceDetail.relevanceNumEn != 1"
+              [relevanceNum]="serviceDetail.relevanceNumEn"
+              name="relevanceSubsectionEn"
+              required="(serviceDetail.relevanceNumEn!=1)"
+              [(ngModel)]="serviceDetail.relevanceSubsectionEn"
+              (updataFildes)="updataFildes.emit($event)"
+              [relevanceLength]="serviceDetail.relevanceLengthEn"
+              appValidRelevanceNum
+            ></app-add-filed>
+            <mpr-form-control-valid
+              *ngIf="serviceDetail.relevanceNumEn != 1"
+              controlName="relevanceSubsectionEn"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 服务说明文件 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            Service description file：
+          </dt>
+          <dd>
+            <div class="upload">
+              <input
+                type="text"
+                required
+                pInputText
+                appTrim
+                name="serviceWordUrlFileNameEn"
+                [readonly]="true"
+                [(ngModel)]="serviceDetail.serviceWordUrlFileNameEn"
+              />
+              <button class="blue" (click)="handleInputFileClick(descDocEn)">
+                Upload
+              </button>
+            </div>
+
+            <input
+              type="file"
+              style="display: none;"
+              accept=".doc,.docx"
+              (change)="handleServiceDescDocChange($event)"
+              name="serviceWordUrlFileNameEn"
+              #descDocEn
+            />
+            <mpr-form-control-valid
+              controlName="serviceWordUrlFileNameEn"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 服务简介 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            Brief introduction：
+          </dt>
+          <dd>
+            <textarea
+              name="descriptionEn"
+              id=""
+              cols="30"
+              rows="10"
+              required
+              maxlength="2000"
+              required
+              appInputTextarea
+              appTrim
+              [(ngModel)]="serviceDetail.descriptionEn"
+            ></textarea>
+            <mpr-form-control-valid
+              controlName="descriptionEn"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </form>
+</div>

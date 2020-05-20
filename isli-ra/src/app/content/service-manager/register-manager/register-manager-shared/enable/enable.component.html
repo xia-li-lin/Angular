@@ -1,0 +1,43 @@
+<div class="dialog-box enable">
+  <div class="dialog">
+    <div class="dialog-title">
+      <h5>{{ "service.register.dialog.operationTip" | translate }}</h5>
+      <a (click)="closeEnableClick.emit($event)"></a>
+    </div>
+    <div class="dialog-content">
+      <dl>
+        <dt>
+          <span class="red">*</span>
+          {{ "service.register.dialog.submitReason" | translate }}：
+        </dt>
+        <dd class="submitReason">
+          <form [isliFormValidMsg]="errorMsg">
+            <textarea
+              name="submitReason"
+              id=""
+              cols="30"
+              rows="10"
+              placeholder="{{
+                'service.register.dialog.submitReasonPlaceholder' | translate
+              }}"
+              [(ngModel)]="submitReason"
+              required
+              appTrim
+            ></textarea>
+            <mpr-form-control-valid
+              controlName="submitReason"
+            ></mpr-form-control-valid>
+          </form>
+        </dd>
+      </dl>
+    </div>
+    <div class="dialog-footer">
+      <button class="blue" (click)="handleSureClick()">
+        {{ "service.register.dialog.sure" | translate }}
+      </button>
+      <button class="return" (click)="closeEnableClick.emit($event)">
+        {{ "service.register.dialog.leave" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

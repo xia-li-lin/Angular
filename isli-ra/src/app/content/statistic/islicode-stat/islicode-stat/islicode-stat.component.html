@@ -1,0 +1,38 @@
+<div class="islicode-stat statistic">
+  <h2 class="nav-name">{{ "statistic.nav.islicodeAnsys" | translate }}</h2>
+  <div class="clearfix statistic-content">
+    <app-islicode-stat-search
+      [searchParams]="searchParams"
+      [spUserList]="spUserList"
+      (dateChange)="handleDateChange($event)"
+      (searchClick)="handleSearchClick($event)"
+    ></app-islicode-stat-search>
+    <h2 class="isli-code-total">
+      {{ "statistic.isliCodeTotal" | translate }}:
+      {{ isliCodeTotal | unitConver: "million" }}
+      ({{ "statistic.million" | translate }})
+    </h2>
+    <app-islicode-stat-chart
+      [type]="searchParams.type"
+      [isliCodeStatistic]="isliCodeStatistic"
+    ></app-islicode-stat-chart>
+    <div class="clearfix toggle">
+      <button
+        class="toggleBtn"
+        [ngClass]="{ toggleBtnActive: onoff }"
+        (click)="handleToggleClick()"
+      ></button>
+    </div>
+    <app-excel
+      *ngIf="onoff"
+      (exportTable)="handleExportTableClick()"
+    ></app-excel>
+    <app-islicode-stat-table
+      *ngIf="onoff"
+      [type]="searchParams.type"
+      [pagingBoxObj]="pagingBoxObj"
+      [isliCodeNumberTotal]="isliCodeNumberTotal"
+      [isliCodeStatistic]="isliCodeStatistic"
+    ></app-islicode-stat-table>
+  </div>
+</div>

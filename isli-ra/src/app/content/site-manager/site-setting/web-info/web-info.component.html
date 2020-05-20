@@ -1,0 +1,235 @@
+<div>
+  <div class="search-title">
+    <span>網站資訊管理</span>
+  </div>
+  <div ngForm class="table">
+    <div *ngIf="languageEnable('EN_US')">
+      <h1>English</h1>
+      <h2>Friendship link management</h2>
+      <p-table [value]="linksEn">
+        <ng-template pTemplate="header">
+          <tr>
+            <th width="10%">No.</th>
+            <th width="30%">Description</th>
+            <th>Link/Address</th>
+            <th width="20%" *ngIf="readonly">Operation Time</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">
+          <tr>
+            <td>{{ rowIndex + 1 }}</td>
+            <td [title]="item.contactKey">
+              <input
+                #contactKey
+                type="text"
+                pInputText
+                maxlength="250"
+                [value]="item.contactKey"
+                [readonly]="readonly"
+                (keyup)="
+                  handleContactKey(item.contactId, contactKey.value, 'linksEn')
+                "
+                appTrim
+              />
+            </td>
+            <td [title]="item.contactValue">
+              <input
+                #contactValue
+                type="text"
+                pInputText
+                maxlength="250"
+                [value]="item.contactValue"
+                [readonly]="readonly"
+                (keyup)="
+                  handleContactValue(
+                    item.contactId,
+                    contactValue.value,
+                    'linksEn'
+                  )
+                "
+                appTrim
+              />
+            </td>
+            <td *ngIf="readonly">
+              {{ item.updateDatetime | date: "yyyy-MM-dd  HH:mm:ss" }}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-loaing-data [data]="linksEn"></app-loaing-data>
+      <h2>Website copyright information management</h2>
+      <p-table [value]="copyrightsEn">
+        <ng-template pTemplate="header">
+          <tr>
+            <th width="10%">No.</th>
+            <th width="30%">Description</th>
+            <th>Link/Address</th>
+            <th width="20%" *ngIf="readonly">Operation Time</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">
+          <tr>
+            <td>{{ rowIndex + 1 }}</td>
+            <td [title]="item.contactKey">
+              <input
+                #contactKey
+                type="text"
+                pInputText
+                maxlength="250"
+                [value]="item.contactKey"
+                [readonly]="readonly"
+                (keyup)="
+                  handleContactKey(
+                    item.contactId,
+                    contactKey.value,
+                    'copyrightsEn'
+                  )
+                "
+                appTrim
+              />
+            </td>
+            <td [title]="item.contactValue">
+              <input
+                #contactValue
+                type="text"
+                pInputText
+                maxlength="250"
+                [value]="item.contactValue"
+                [readonly]="readonly"
+                (keyup)="
+                  handleContactValue(
+                    item.contactId,
+                    contactValue.value,
+                    'copyrightsEn'
+                  )
+                "
+                appTrim
+              />
+            </td>
+            <td *ngIf="readonly">
+              {{ item.updateDatetime | date: "yyyy-MM-dd  HH:mm:ss" }}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-loaing-data [data]="copyrightsEn"></app-loaing-data>
+    </div>
+    <div *ngIf="languageEnable('ZH_TW')">
+      <h1>中文繁体</h1>
+      <h2>友情鏈接管理</h2>
+      <p-table [value]="links">
+        <ng-template pTemplate="header">
+          <tr>
+            <th width="10%">序號</th>
+            <th width="30%">描述</th>
+            <th>連結/地址</th>
+            <th width="20%" *ngIf="readonly">操作时间</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">
+          <tr>
+            <td>{{ rowIndex + 1 }}</td>
+            <td [title]="item.contactKey">
+              <input
+                #contactKey
+                type="text"
+                pInputText
+                maxlength="250"
+                [value]="item.contactKey"
+                [readonly]="readonly"
+                (keyup)="
+                  handleContactKey(item.contactId, contactKey.value, 'links')
+                "
+                appTrim
+              />
+            </td>
+            <td [title]="item.contactValue">
+              <input
+                #contactValue
+                type="text"
+                pInputText
+                maxlength="250"
+                [value]="item.contactValue"
+                [readonly]="readonly"
+                (keyup)="
+                  handleContactValue(
+                    item.contactId,
+                    contactValue.value,
+                    'links'
+                  )
+                "
+                appTrim
+              />
+            </td>
+            <td *ngIf="readonly">
+              {{ item.updateDatetime | date: "yyyy-MM-dd  HH:mm:ss" }}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-loaing-data [data]="links"></app-loaing-data>
+      <h2>網站版權信息管理</h2>
+      <p-table [value]="copyrights">
+        <ng-template pTemplate="header">
+          <tr>
+            <th width="10%">序號</th>
+            <th width="30%">描述</th>
+            <th>連結/地址</th>
+            <th width="20%" *ngIf="readonly">操作时间</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">
+          <tr>
+            <td>{{ rowIndex + 1 }}</td>
+            <td [title]="item.contactKey">
+              <input
+                #contactKey
+                type="text"
+                pInputText
+                maxlength="250"
+                [value]="item.contactKey"
+                [readonly]="readonly"
+                (keyup)="
+                  handleContactKey(
+                    item.contactId,
+                    contactKey.value,
+                    'copyrights'
+                  )
+                "
+                appTrim
+              />
+            </td>
+            <td [title]="item.contactValue">
+              <input
+                #contactValue
+                type="text"
+                pInputText
+                maxlength="250"
+                [value]="item.contactValue"
+                [readonly]="readonly"
+                (keyup)="
+                  handleContactValue(
+                    item.contactId,
+                    contactValue.value,
+                    'copyrights'
+                  )
+                "
+                appTrim
+              />
+            </td>
+            <td *ngIf="readonly">
+              {{ item.updateDatetime | date: "yyyy-MM-dd HH:mm:ss" }}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-loaing-data [data]="copyrights"></app-loaing-data>
+    </div>
+    <div class="btn">
+      <button *ngIf="!readonly" (click)="handleSave()">保存</button>
+      <button appPermission="WS.WZ.XG" *ngIf="readonly" (click)="handleEdit()">
+        修改
+      </button>
+    </div>
+  </div>
+</div>

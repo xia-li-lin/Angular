@@ -1,0 +1,98 @@
+<div class="content-container">
+  <div class="header">
+    <p class="title">{{ "content.nav.account.lcManager" | translate }}</p>
+  </div>
+  <div class="body">
+    <div class="body-warp">
+      <div class="user-detail">
+        <section>
+          <header>{{ "user.company.info" | translate }}</header>
+          <div class="item-bd">
+            <p class="item">
+              <label class="title">{{ "user.company.name" | translate }}</label>
+              <span class="content">{{ userInfo?.orgName }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{ "user.company.code" | translate }}</label>
+              <span class="content">{{ userInfo?.idNumber }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{
+                "user.company.registerArea" | translate
+              }}</label>
+              <span class="content">{{ userInfo?.areaName }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{
+                "user.company.contactAddress" | translate
+              }}</label>
+              <span class="content">{{ userInfo?.linkmanContact }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{
+                "user.company.business" | translate
+              }}</label>
+              <span class="content"></span>
+            </p>
+            <p class="item">
+              <label class="title">{{ "user.company.site" | translate }}</label>
+              <span class="content">{{ userInfo?.orgWebsite }}</span>
+            </p>
+          </div>
+        </section>
+        <section>
+          <header>{{ "user.auth.info" | translate }}</header>
+          <div>
+            <p class="item">
+              <label class="title">{{
+                "user.auth.areaName" | translate
+              }}</label>
+              <span class="content"></span>
+            </p>
+            <p class="item">
+              <label class="title">{{
+                "user.auth.uploadInfo" | translate
+              }}</label>
+              <span class="content"></span>
+            </p>
+          </div>
+        </section>
+        <section>
+          <header>{{ "user.contact.info" | translate }}</header>
+          <div>
+            <p class="item">
+              <label class="title">{{
+                "user.contact.userName" | translate
+              }}</label>
+              <span class="content">{{ userInfo?.linkman }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{
+                "user.contact.phone" | translate
+              }}</label>
+              <span
+                class="content"
+                *ngIf="!userInfo?.phone && userInfo?.mobile"
+                >{{ "+" + userInfo?.mobileType + "-" + userInfo?.mobile }}</span
+              >
+              <span class="content" *ngIf="userInfo?.phone">{{
+                "+" +
+                  userInfo?.phoneType +
+                  "-" +
+                  userInfo?.phone +
+                  userInfo.phoneArea +
+                  userInfo.phoneExt
+              }}</span>
+            </p>
+            <p class="item">
+              <label class="title">{{
+                "user.contact.email" | translate
+              }}</label>
+              <span class="content">{{ userInfo?.linkmanEmail }}</span>
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

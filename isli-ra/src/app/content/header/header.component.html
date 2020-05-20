@@ -1,0 +1,29 @@
+<div class="header">
+  <div class="head-box">
+    <div class="left" (click)="handleHomeClick()">
+      <img src="assets/images/logo.png" />
+      <span class="lg-title">{{ "webName" | translate }}</span>
+    </div>
+    <div class="right">
+      <p class="language">
+        <span
+          class="item"
+          [ngClass]="{ active: ativeLanguage('ZH') }"
+          (click)="handleChangeLanguage('ZH_TW')"
+          >繁</span
+        >
+        <span class="item grap">|</span>
+        <span
+          class="item"
+          [ngClass]="{ active: ativeLanguage('EN') }"
+          (click)="handleChangeLanguage('EN_US')"
+          >EN</span
+        >
+      </p>
+      <p class="user" *ngIf="hasLogin">
+        <span>{{ publisherName }}</span>
+        <a class="quit" (click)="handleQuitClick()"></a>
+      </p>
+    </div>
+  </div>
+</div>

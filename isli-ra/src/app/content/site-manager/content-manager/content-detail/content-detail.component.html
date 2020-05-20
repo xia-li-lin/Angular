@@ -1,0 +1,42 @@
+<div>
+  <div class="search-title">
+    <span>{{ "siteManager.content.detail.title" | translate }}</span>
+  </div>
+
+  <form class="detail" [isliFormValidMsg]="errorMsg">
+    <h2 *ngIf="langCode === 'ZH_TW'">中文繁體</h2>
+    <h2 *ngIf="langCode === 'EN_US'">English</h2>
+    <dl>
+      <dt><span>*</span>内容 ：</dt>
+      <dd>
+        <ueditor
+          [(ngModel)]="content.contentDetail.contentDetail"
+          [config]="config"
+          name="contentDetail"
+          required
+        ></ueditor>
+        <mpr-form-control-valid
+          controlName="contentDetail"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>{{ "siteManager.common.uploadAffix" | translate }} ：</dt>
+      <dd>
+        <app-upload-affix
+          [(ngModel)]="filePaths"
+          name="filePaths"
+        ></app-upload-affix>
+      </dd>
+    </dl>
+
+    <div class="btn-group">
+      <button (click)="handleCommit()">
+        {{ "siteManager.common.commit" | translate }}
+      </button>
+      <button (click)="handleCancle()">
+        {{ "siteManager.common.cancle" | translate }}
+      </button>
+    </div>
+  </form>
+</div>

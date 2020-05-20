@@ -1,0 +1,178 @@
+<div>
+  <div class="search-title">
+    <span>{{ "siteManager.fqmanagers.list.search.title" | translate }}</span>
+  </div>
+  <div [class]="'search search-content' + lang">
+    <dl>
+      <dt>{{ "siteManager.fqmanagers.list.search.isShow" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="isShow"
+          [options]="isShowList"
+          [(ngModel)]="fqManagerSearch.isShow"
+          [autoDisplayFirst]="false"
+          placeholder="{{ 'siteManager.common.all' | translate }}"
+        >
+        </p-dropdown>
+      </dd>
+    </dl>
+    <dl>
+      <dt>{{ "siteManager.fqmanagers.list.search.keyWord" | translate }}：</dt>
+      <dd>
+        <input
+          pInputText
+          appTrim
+          [(ngModel)]="fqManagerSearch.keyWord"
+          placeholder="{{
+            'siteManager.fqmanagers.list.search.keyWordPlaceholder' | translate
+          }}"
+        />
+      </dd>
+    </dl>
+    <dl>
+      <dt class="minw42">{{ "siteManager.common.langCode" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="langCode"
+          [options]="langList"
+          [(ngModel)]="fqManagerSearch.langCode"
+          [autoDisplayFirst]="false"
+          placeholder="{{ 'siteManager.common.all' | translate }}"
+        >
+        </p-dropdown>
+      </dd>
+    </dl>
+    <dl class="time">
+      <dt>
+        {{ "siteManager.fqmanagers.list.search.searchDate" | translate }}：
+      </dt>
+      <dd>
+        <app-begin-end-date
+          [(ngModel)]="searchDate"
+          (ngModelChange)="handleDateChange($event)"
+        ></app-begin-end-date>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <button (click)="handleSearch()">
+          {{ "siteManager.common.search" | translate }}
+        </button>
+      </dt>
+    </dl>
+  </div>
+  <div class="table">
+    <p-table [value]="fqManagerListData" [customSort]="true">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="8%">
+            {{ "siteManager.fqmanagers.list.table.no" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.fqmanagers.list.table.title" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.fqmanagers.list.table.questioner" | translate }}
+          </th>
+          <th width="10%">{{ "siteManager.common.langCode" | translate }}</th>
+          <th
+            width="15%"
+            [pSortableColumn]="'createTime'"
+            (click)="fqmanagerSort('createTime')"
+          >
+            {{ "siteManager.fqmanagers.list.table.createTime" | translate }}
+
+            <p-sortIcon field="createTime"></p-sortIcon>
+          </th>
+          <th
+            width="10%"
+            [pSortableColumn]="'replayNum'"
+            (click)="fqmanagerSort('replayNum')"
+          >
+            {{ "siteManager.fqmanagers.list.table.replayNum" | translate }}
+            <p-sortIcon field="replayNum"></p-sortIcon>
+          </th>
+          <th width="8%">
+            {{ "siteManager.fqmanagers.list.table.isShow" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.fqmanagers.list.table.operat" | translate }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>
+            {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+          </td>
+          <td title="{{ rowData.title }}">
+            {{ rowData.title }}
+          </td>
+          <td title="{{ rowData.questioner }}">
+            {{ rowData.questioner }}
+          </td>
+          <td title="{{ rowData.langDesc }}">
+            {{ rowData.langDesc }}
+          </td>
+          <td title="{{ rowData.createTime | date: 'yyyy-MM-dd' }}">
+            {{ rowData.createTime | date: "yyyy-MM-dd" }}
+          </td>
+          <td title="{{ rowData.replayNum }}">
+            {{ rowData.replayNum }}
+          </td>
+          <td
+            [ngClass]="{
+              blue: rowData.isShow == 0,
+              green: rowData.isShow == 1
+            }"
+            title="{{ rowData.isShow | showHideTrans }}"
+          >
+            {{ rowData.isShow | showHideTrans }}
+          </td>
+          <td class="operation">
+            <a
+              class="check"
+              title="{{ 'siteManager.common.reply' | translate }}"
+              (click)="handleCheckClick(rowData.questionId)"
+              ><i *ngIf="rowData.isExistNewData === 1"></i
+            ></a>
+            <a
+              [ngClass]="{
+                exhibition: rowData.isShow == 0,
+                conceal: rowData.isShow == 1
+              }"
+              title="{{ rowData.isShow | showHideTrans: 1 }}"
+              (click)="handlehideOrShow(rowData.questionId, rowData.isShow)"
+            ></a>
+            <a
+              class="delete"
+              title="{{ 'siteManager.common.delete' | translate }}"
+              (click)="handleDeleteClick(rowData.questionId)"
+            ></a>
+            <a
+              class="top"
+              title="{{ 'siteManager.common.stick' | translate }}"
+              *ngIf="pageInfo.page != 1 || rowIndex != 0"
+              (click)="handleTopClick(rowData.questionId)"
+            ></a>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <app-paging-box
+      *ngIf="pageInfo.totalRecords"
+      [pagingBoxObj]="pageInfo"
+      (OnPageChange)="handlePageChange($event)"
+    >
+    </app-paging-box>
+    <app-loaing-data [data]="fqManagerListData"></app-loaing-data>
+  </div>
+</div>
+<app-shared-dialog
+  *ngIf="dialogOnOff"
+  cancelTxt="{{ 'siteManager.common.cancle' | translate }}"
+  [validFunc]="validFunc"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <div>{{ "siteManager.common.cancelContent" | translate }}</div>
+</app-shared-dialog>

@@ -1,0 +1,69 @@
+<div class="register-manager content-container">
+  <div class="header">
+    <p class="title">{{ "service.nav.serviceRegisterManager" | translate }}</p>
+    <button
+      pButton
+      label="{{ 'service.common.exportExcel' | translate }}"
+      (click)="handleExportExcelClick()"
+    ></button>
+  </div>
+  <div class="body">
+    <app-register-manager-search
+      [statusList]="statusList"
+      [servicesList]="servicesList"
+      [serviceCodeList]="serviceCodeList"
+      [serviceProviderList]="serviceProviderList"
+      (searchClick)="handleSearchClick($event)"
+    ></app-register-manager-search>
+    <app-register-manager-table
+      [registerManagerList]="registerManagerList"
+      [pagingBoxObj]="pagingBoxObj"
+      (pageChange)="handlePageChange($event)"
+    ></app-register-manager-table>
+  </div>
+</div>
+
+<!-- 查看系统资料 -->
+<app-check-system-data
+  *ngIf="checkSystemDataOnOff"
+  [systemData]="systemData"
+  (closeSystemDataClick)="handleCloseSystemDataClick()"
+></app-check-system-data>
+
+<!-- 冻结 -->
+<app-forzen
+  *ngIf="forzenOnOff"
+  (closeForzenClick)="handleCloseForzenClick()"
+  (forzenSureClick)="handleForzenSureClick($event)"
+></app-forzen>
+
+<!-- 启用 -->
+<app-enable
+  *ngIf="enableOnOff"
+  (closeEnableClick)="handleCloseEnableClick()"
+  (enableSureClick)="handleEnableSureClick($event)"
+></app-enable>
+
+<!-- 停用 -->
+<app-stop
+  *ngIf="stopOnOff"
+  (closeStopClick)="handleCloseStopClick()"
+  (stopSureClick)="handleStopSureClick($event)"
+></app-stop>
+
+<!-- 待复审，建设中-审核 -->
+<app-service-manager-dialog
+  *ngIf="toExamineOnOff"
+  [status]="currentRowData.applicationStatus"
+  [serviceRegisterInfo]="currentRowData"
+  (submitClick)="handleSubmitClick($event)"
+  (cancelClick)="handleCancelClick()"
+></app-service-manager-dialog>
+
+<!-- 申诉审核 -->
+<app-appeal-review-dialog
+  *ngIf="appealReviewOnOff"
+  [serviceRegisterInfo]="currentRowData"
+  (submitClick)="handleAppealReviewSubmitClick($event)"
+  (cancelClick)="appealReviewOnOff = false"
+></app-appeal-review-dialog>

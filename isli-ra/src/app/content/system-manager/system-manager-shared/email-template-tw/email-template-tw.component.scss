@@ -1,0 +1,70 @@
+.form {
+    // padding-top: 20px;
+    // padding: 0 0;
+
+    dl,
+    dt,
+    dd {}
+
+    dl {
+        width: 100%;
+        padding-bottom: 12px;
+
+        dt {
+            width: 175px;
+            text-align: right;
+            line-height: 32px;
+
+            span {
+                color: #FF3636;
+            }
+        }
+
+        dd {
+            position: relative;
+            width: calc(100% - 175px);
+
+            input,
+            textarea {
+                width: 450px;
+                border: 1px solid #D5DCE2;
+            }
+
+            input {
+                height: 32px;
+                line-height: 32px;
+                padding: 0 10px;
+            }
+
+            &.ueditor {
+
+                ::ng-deep {
+                    .error {
+                        top: 220px;
+                    }
+                }
+            }
+
+            ::ng-deep {
+                .error {
+                    position: absolute;
+                    left: 460px;
+                    top: 0;
+
+                    p {
+                        font-family: SourceHanSansSC-Regular;
+                        font-size: 12px;
+                        color: #EB4D4D;
+                        line-height: 32px;
+                    }
+                }
+
+                .ui-dropdown {
+                    width: 450px;
+                    border: 1px solid #D5DCE2;
+                }
+
+            }
+        }
+    }
+}

@@ -1,0 +1,135 @@
+<div
+  class="dialog-box controlled-word-add"
+  [ngClass]="{
+    'dialog-box-zh': language !== 'EN_US',
+    'dialog-box-en': language === 'EN_US'
+  }"
+>
+  <div class="dialog" #dialog>
+    <div class="dialog-title">
+      <h5>{{ title | translate }}</h5>
+      <a (click)="cancel.emit($event)"></a>
+    </div>
+    <div class="dialog-content">
+      <form [isliFormValidMsg]="errorMsg">
+        <div class="item" *ngIf="showSort">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{
+              "service.controlledWordManagement.config.form.sort" | translate
+            }}：
+          </div>
+          <div class="itemR">
+            <input
+              type="text"
+              name="displayOrder"
+              required="showSort"
+              pInputText
+              appPatternInput="^[1-9][0-9]{0,1}$"
+              inputPattern="^[1-9][0-9]{0,1}$"
+              placeholder="{{
+                'service.controlledWordManagement.config.placehold.sort'
+                  | translate
+              }}"
+              [(ngModel)]="controllWord.displayOrder"
+            />
+            <mpr-form-control-valid
+              controlName="displayOrder"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <div class="item">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{
+              "service.controlledWordManagement.config.form.chineseName"
+                | translate
+            }}：
+          </div>
+          <div class="itemR">
+            <input
+              type="text"
+              name="controlledNameZh"
+              required
+              pInputText
+              appTrim
+              maxlength="25"
+              placeholder="{{
+                'service.controlledWordManagement.config.placehold.chineseName'
+                  | translate
+              }}"
+              [(ngModel)]="controllWord.controlledNameZh"
+            />
+            <mpr-form-control-valid
+              controlName="controlledNameZh"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!-- 英文名称 -->
+        <div class="item">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{
+              "service.controlledWordManagement.config.form.englishName"
+                | translate
+            }}：
+          </div>
+          <div class="itemR">
+            <input
+              type="text"
+              name="controlledNameEn"
+              required
+              pInputText
+              appTrim
+              maxlength="50"
+              placeholder="{{
+                'service.controlledWordManagement.config.placehold.englishName'
+                  | translate
+              }}"
+              [(ngModel)]="controllWord.controlledNameEn"
+            />
+            <mpr-form-control-valid
+              controlName="controlledNameEn"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!-- 属性字段名称 -->
+        <div class="item">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{
+              "service.controlledWordManagement.config.form.propFieldName"
+                | translate
+            }}：
+          </div>
+          <div class="itemR">
+            <input
+              type="text"
+              name="controlledCode"
+              required
+              pInputText
+              appTrim
+              maxlength="50"
+              placeholder="{{
+                'service.controlledWordManagement.config.placehold.propFieldName'
+                  | translate
+              }}"
+              [(ngModel)]="controllWord.controlledCode"
+            />
+            <mpr-form-control-valid
+              controlName="controlledCode"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="dialog-footer">
+      <button class="blue" (click)="handleSaveClick()">
+        {{ "service.common.save" | translate }}
+      </button>
+      <button class="return" (click)="cancel.emit($event)">
+        {{ "service.common.cancel" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

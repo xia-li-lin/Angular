@@ -1,0 +1,317 @@
+<div
+  class="dialog-box target-attr-form"
+  [ngClass]="{
+    'dialog-box-en': language === 'EN_US',
+    'dialog-box-zh': language !== 'EN_US'
+  }"
+>
+  <div class="dialog" #dialog>
+    <div class="dialog-title">
+      <h5>{{ title | translate }}</h5>
+      <a (click)="cancel.emit($event)"></a>
+    </div>
+    <div class="dialog-content">
+      <form [isliFormValidMsg]="errorMsg">
+        <div class="item">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{ "service.targetList.config.form.sort" | translate }}：
+          </div>
+          <div class="itemR">
+            <input
+              type="text"
+              name="displayOrder"
+              required
+              pInputText
+              appPatternInput="^[1-9][0-9]{0,1}$"
+              inputPattern="^[1-9][0-9]{0,1}$"
+              placeholder="{{
+                'service.targetList.config.form.placehold.sort' | translate
+              }}"
+              [(ngModel)]="entityField.displayOrder"
+            />
+            <mpr-form-control-valid
+              controlName="displayOrder"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <div class="item">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{ "service.targetList.config.form.chineseName" | translate }}：
+          </div>
+          <div class="itemR">
+            <input
+              type="text"
+              name="paramNameZh"
+              required
+              pInputText
+              appTrim
+              maxlength="25"
+              placeholder="{{
+                'service.targetList.config.form.placehold.chineseName'
+                  | translate
+              }}"
+              [(ngModel)]="entityField.paramNameZh"
+            />
+            <mpr-form-control-valid
+              controlName="paramNameZh"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!-- 英文名称 -->
+        <div class="item">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{ "service.targetList.config.form.englishName" | translate }}：
+          </div>
+          <div class="itemR">
+            <input
+              type="text"
+              name="paramNameEn"
+              required
+              pInputText
+              appTrim
+              maxlength="50"
+              placeholder="{{
+                'service.targetList.config.form.placehold.englishName'
+                  | translate
+              }}"
+              [(ngModel)]="entityField.paramNameEn"
+            />
+            <mpr-form-control-valid
+              controlName="paramNameEn"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!-- 数据开放权限 -->
+        <div class="item">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{
+              "service.targetList.config.form.dataOpenPermission" | translate
+            }}：
+          </div>
+          <div class="itemR">
+            <p-dropdown
+              name="permission"
+              required
+              [options]="permissionList"
+              [(ngModel)]="entityField.permission"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+            </p-dropdown>
+            <mpr-form-control-valid
+              controlName="permission"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!-- 属性字段名称 -->
+        <div class="item">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{ "service.targetList.config.form.propFieldName" | translate }}：
+          </div>
+          <div class="itemR">
+            <input
+              type="text"
+              name="paramCode"
+              required
+              pInputText
+              appTrim
+              maxlength="50"
+              placeholder="{{
+                'service.targetList.config.form.placehold.propFieldName'
+                  | translate
+              }}"
+              [(ngModel)]="entityField.paramCode"
+              appValidNameUnique
+              [mark]="'paramCode'"
+              [entityField]="entityField"
+            />
+            <mpr-form-control-valid
+              controlName="paramCode"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!-- 属性类型 -->
+        <div class="item">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{ "service.targetList.config.form.propType" | translate }}：
+          </div>
+          <div class="itemR">
+            <p-dropdown
+              name="dataId"
+              required="dataId === ATTR_TYPE.CONTROLLED?true:false"
+              [options]="attrTypeList"
+              [(ngModel)]="entityField.dataId"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+            </p-dropdown>
+            <mpr-form-control-valid
+              controlName="dataId"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!-- 属性类型 -->
+        <!-- 属性长度 -->
+        <div class="item" *ngIf="entityField.dataId !== attrType.CONTROLLED">
+          <div class="itemL">
+            {{ "service.targetList.config.form.propLen" | translate }}：
+          </div>
+          <div class="itemR">
+            <input
+              type="text"
+              name="paramMaxLength"
+              pInputText
+              appPatternInput="^[1-9][0-9]{0,1}$"
+              inputPattern="^[1-9][0-9]{0,1}$"
+              [(ngModel)]="entityField.paramMaxLength"
+            />
+            <mpr-form-control-valid
+              controlName="paramMaxLength"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!-- 正则表达式 -->
+        <div class="item" *ngIf="entityField.dataId !== attrType.CONTROLLED">
+          <div class="itemL">
+            {{ "service.targetList.config.form.regExp" | translate }}：
+          </div>
+          <div class="itemR">
+            <input
+              type="text"
+              name="regexMatchExpr"
+              pInputText
+              appTrim
+              [(ngModel)]="entityField.regexMatchExpr"
+            />
+            <mpr-form-control-valid
+              controlName="regexMatchExpr"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!-- 编目类型 -->
+        <div class="item">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{ "service.targetList.config.form.catalogType" | translate }}：
+          </div>
+          <div class="itemR">
+            <p-dropdown
+              name="paramType"
+              required
+              [options]="paramTypeList"
+              [(ngModel)]="entityField.paramType"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+            </p-dropdown>
+            <mpr-form-control-valid
+              controlName="paramType"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!-- 是否多值 -->
+        <div class="item">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{ "service.targetList.config.form.multiValue" | translate }}：
+          </div>
+          <div class="itemR">
+            <p-radioButton
+              name="multiValue"
+              value="0"
+              label="{{
+                'service.targetList.config.form.multiValueItems.yes' | translate
+              }}"
+              [(ngModel)]="entityField.multiValue"
+              required
+            ></p-radioButton>
+            <p-radioButton
+              name="multiValue"
+              value="1"
+              label="{{
+                'service.targetList.config.form.multiValueItems.no' | translate
+              }}"
+              [(ngModel)]="entityField.multiValue"
+              required
+            ></p-radioButton>
+            <mpr-form-control-valid
+              controlName="paramType"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!-- 受控词 -->
+        <div class="item" *ngIf="entityField.dataId === attrType.CONTROLLED">
+          <div class="itemL">
+            <span class="red">*</span
+            >{{
+              "service.targetList.config.form.controlledTerms" | translate
+            }}：
+          </div>
+          <div class="itemR">
+            <p-dropdown
+              name="controlledId"
+              required
+              placeholder="{{ 'common.select' | translate }}"
+              [options]="controllWordList"
+              [(ngModel)]="entityField.controlledId"
+              [autoDisplayFirst]="false"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+            </p-dropdown>
+            <mpr-form-control-valid
+              controlName="controlledId"
+            ></mpr-form-control-valid>
+          </div>
+        </div>
+        <!--  -->
+      </form>
+    </div>
+    <div class="dialog-footer">
+      <button class="blue" (click)="handleSaveClick()">
+        {{ "service.common.save" | translate }}
+      </button>
+      <button class="return" (click)="cancel.emit($event)">
+        {{ "service.common.cancel" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

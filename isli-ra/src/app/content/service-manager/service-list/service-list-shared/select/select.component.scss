@@ -1,0 +1,25 @@
+.select{
+    position: relative;
+    .header{
+      width: 400px;
+      height: 32px;
+      line-height: 32px;
+      overflow: hidden;
+      color: hsl(205, 23%, 27%);
+      border: 1px solid #d5dce2;
+      background: url('/assets/images/arr.png') 380px center no-repeat;
+    }
+    .ui-g{
+      position: absolute;
+      top: 34px;
+      left: 0;
+      width: 400px;
+      height: auto;
+      padding: 15px;
+      overflow: hidden;
+      border: 1px solid #d5dce2;
+      border-top: none;
+      background: #fff;
+      z-index: 99;
+    }
+  }

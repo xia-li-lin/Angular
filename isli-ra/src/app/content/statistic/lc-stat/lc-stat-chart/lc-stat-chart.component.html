@@ -1,0 +1,20 @@
+<div class="lc-stat-chart chart-box">
+  <div
+    *ngIf="
+      (lcTimeList && lcTimeList.length) ||
+      (lcServiceList && lcServiceList.length)
+    "
+  >
+    <app-export-view (exportView)="handleExportViewClick()"></app-export-view>
+    <div
+      echarts
+      [options]="chartOption"
+      class="demo-chart"
+      (chartInit)="handleChartInit($event)"
+    >
+      <div class="data-loading"></div>
+    </div>
+  </div>
+
+  <app-loaing-data [data]="lcTimeList || lcServiceList"></app-loaing-data>
+</div>

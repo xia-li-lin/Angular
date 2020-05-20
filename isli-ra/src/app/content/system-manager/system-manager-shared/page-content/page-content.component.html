@@ -1,0 +1,16 @@
+<div class="dialog-box">
+  <div class="header">
+    <h5>{{ "service.common.modify" | translate }}</h5>
+    <a class="close" (click)="handleCancelClick()">×</a>
+  </div>
+  <div class="center">
+    <ueditor [(ngModel)]="content" [config]="config"></ueditor>
+  </div>
+  <div class="footer">
+    <button (click)="handleSaveClick()">{{ "common.save" | translate }}</button>
+    <button (click)="handleCancelClick()">
+      {{ "common.cancel" | translate }}
+    </button>
+  </div>
+</div>
+<div class="dialog-box-bg"></div>

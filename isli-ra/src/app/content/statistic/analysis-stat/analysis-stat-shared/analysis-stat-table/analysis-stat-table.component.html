@@ -1,0 +1,60 @@
+<div class="analysis-stat-table list-box">
+  <div class="list-header clearfix">
+    <div>{{ dateType | textTransform: "searchStat":type }}</div>
+    <div>
+      <span *ngIf="type != searchType.AREA">{{
+        "statistic.isliCodeAnalysisNum" | translate
+      }}</span>
+      <span *ngIf="type == searchType.AREA">{{
+        "statistic.analysisTimes" | translate
+      }}</span>
+    </div>
+    <div>{{ "statistic.total" | translate }}:</div>
+  </div>
+  <ul
+    class="list-body clearfix"
+    *ngIf="analysisStatPageList && analysisStatPageList.length"
+  >
+    <li *ngFor="let statistic of analysisStatPageList">
+      <div class="row first-row">
+        <span *ngIf="dateType != 'day'">{{
+          statistic?.time || statistic?.country
+        }}</span>
+        <span *ngIf="dateType == 'day'">{{
+          (statistic?.time?.split("-"))[statistic?.time?.split("-")?.length - 1]
+        }}</span>
+        <span *ngIf="type == 'relationType'">{{
+          statistic?.relationType
+        }}</span>
+      </div>
+      <div class="row second-row" [ngSwitch]="dateType">
+        <!-- <span *ngSwitchCase="'year' || 'china'">{{statistic?.num | unitConver:'thousand'}}</span>
+                <span *ngSwitchCase="'area'">{{statistic?.num | unitConver:'million'}}</span>
+                <span *ngSwitchDefault>{{statistic?.num}}</span> -->
+        {{ statistic?.num }}
+      </div>
+    </li>
+  </ul>
+  <div
+    *ngIf="analysisStatPageList && analysisStatPageList.length"
+    class="list-num-total"
+    [ngSwitch]="dateType"
+    [ngStyle]="{ width: totalWidth }"
+  >
+    <!-- <span *ngSwitchCase="'year' || 'china'">{{tableTotal | unitConver:'thousand'}}</span>
+        <span *ngSwitchCase="'area'">{{tableTotal | unitConver:'million'}}</span>
+        <span *ngSwitchDefault>{{tableTotal}}</span> -->
+    {{ tableTotal }}
+  </div>
+  <div
+    class="no-data clearfix"
+    *ngIf="!(analysisStatPageList && analysisStatPageList.length)"
+  >
+    {{ "common.noData" | translate }}
+  </div>
+  <app-paging-box
+    *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+    [pagingBoxObj]="pagingBoxObj"
+    (OnPageChange)="handlePageChange($event)"
+  ></app-paging-box>
+</div>

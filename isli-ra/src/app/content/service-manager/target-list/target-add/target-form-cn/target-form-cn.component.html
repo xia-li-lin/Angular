@@ -1,0 +1,47 @@
+<div class="target-form-cn target-form form clearfix">
+  <form [isliFormValidMsg]="errorMsg">
+    <dl>
+      <dt>
+        <span class="red">*</span>
+        目標名稱：
+      </dt>
+      <dd>
+        <input
+          type="text"
+          name="entityNameZh"
+          required
+          maxlength="100"
+          pInputText
+          appTrim
+          [mark]="'targetName'"
+          [entityType]="entityType"
+          [(ngModel)]="entityType.entityNameZh"
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          appValidNameUnique
+        />
+        <mpr-form-control-valid
+          controlName="entityNameZh"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span class="red">*</span>
+        目標描述：
+      </dt>
+      <dd>
+        <textarea
+          required
+          type="text"
+          name="entityDescZh"
+          maxlength="2000"
+          appTrim
+          [(ngModel)]="entityType.entityDescZh"
+        ></textarea>
+        <mpr-form-control-valid
+          controlName="entityDescZh"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+  </form>
+</div>

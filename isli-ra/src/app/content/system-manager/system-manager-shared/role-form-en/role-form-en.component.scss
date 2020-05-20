@@ -1,0 +1,84 @@
+.role-form {
+    padding: 20px;
+
+    dl,
+    dt,
+    dd {
+        float: left;
+    }
+
+    dl {
+        width: 100%;
+        height: auto;
+        padding-bottom: 12px;
+
+        dt {
+            width: 180px;
+            line-height: 32px;
+            text-align: right;
+            padding-right: 6px;
+            font-size: 14px;
+            color: #B1BAC2;
+
+            span {
+                color: #FF3636;
+                margin-right: 3px;
+            }
+        }
+
+        dd {
+            width: 860px;
+
+            input {
+                width: 450px;
+                padding: 0 10px;
+                height: 31px;
+                margin-right: 10px;
+                vertical-align: middle;
+                border: 1px solid #D5DCE2;
+                font-size: 14px;
+                color: #354754;
+            }
+
+            position: relative;
+
+
+            ::ng-deep {
+                .error {
+                    position: absolute;
+                    line-height: 32px;
+                    left: 460px;
+                    top: 0;
+
+                    p {
+                        color: #FF3636;
+                        height: 32px;
+                        line-height: 32px;
+                    }
+                }
+
+                .ui-dropdown {
+                    width: 450px;
+                    height: 32px;
+                    border: 1px solid #D5DCE2;
+                    margin-right: 10px;
+
+                }
+
+                .ui-inputtext.ng-dirty.ng-invalid {
+                    border: 1px solid #FF3636;
+                }
+
+            }
+
+            p-dropdown.ng-dirty.ng-invalid {
+                ::ng-deep {
+                    .ui-dropdown {
+                        border: 1px solid #FF3636;
+                    }
+                }
+            }
+
+        }
+    }
+}

@@ -3,13 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "isli-ra": {
+    "ng-isli-ra-manager": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -17,20 +13,62 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/isli-ra",
+            "outputPath": "dist/ng-isli-ra-manager",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/css/reset.scss",
+              "src/assets/css/table.scss",
+              "src/assets/css/button.scss",
+              "src/assets/css/date.scss",
+              "src/assets/css/statistic-table.scss",
+              "src/assets/css/confirmdialog.scss",
+              "src/assets/css/multi-select.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/echarts/dist/echarts.min.js",
+              "node_modules/echarts/map/js/china.js",
+              "node_modules/echarts/map/js/world.js",
+              "node_modules/echarts/map/js/province/anhui.js",
+              "node_modules/echarts/map/js/province/aomen.js",
+              "node_modules/echarts/map/js/province/beijing.js",
+              "node_modules/echarts/map/js/province/chongqing.js",
+              "node_modules/echarts/map/js/province/fujian.js",
+              "node_modules/echarts/map/js/province/gansu.js",
+              "node_modules/echarts/map/js/province/guangdong.js",
+              "node_modules/echarts/map/js/province/guangxi.js",
+              "node_modules/echarts/map/js/province/guizhou.js",
+              "node_modules/echarts/map/js/province/hainan.js",
+              "node_modules/echarts/map/js/province/hebei.js",
+              "node_modules/echarts/map/js/province/heilongjiang.js",
+              "node_modules/echarts/map/js/province/henan.js",
+              "node_modules/echarts/map/js/province/hubei.js",
+              "node_modules/echarts/map/js/province/hunan.js",
+              "node_modules/echarts/map/js/province/jiangsu.js",
+              "node_modules/echarts/map/js/province/jiangxi.js",
+              "node_modules/echarts/map/js/province/jilin.js",
+              "node_modules/echarts/map/js/province/liaoning.js",
+              "node_modules/echarts/map/js/province/neimenggu.js",
+              "node_modules/echarts/map/js/province/ningxia.js",
+              "node_modules/echarts/map/js/province/qinghai.js",
+              "node_modules/echarts/map/js/province/shandong.js",
+              "node_modules/echarts/map/js/province/shanghai.js",
+              "node_modules/echarts/map/js/province/shanxi.js",
+              "node_modules/echarts/map/js/province/shanxi1.js",
+              "node_modules/echarts/map/js/province/sichuan.js",
+              "node_modules/echarts/map/js/province/taiwan.js",
+              "node_modules/echarts/map/js/province/tianjin.js",
+              "node_modules/echarts/map/js/province/xianggang.js",
+              "node_modules/echarts/map/js/province/xinjiang.js",
+              "node_modules/echarts/map/js/province/xizang.js",
+              "node_modules/echarts/map/js/province/yunnan.js",
+              "node_modules/echarts/map/js/province/zhejiang.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -47,8 +85,9 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
+              "vendorChunk": true,
               "buildOptimizer": true,
+              "commonChunk": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -62,18 +101,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "isli-ra:build"
+            "browserTarget": "ng-isli-ra-manager:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "isli-ra:build:production"
+              "browserTarget": "ng-isli-ra-manager:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "isli-ra:build"
+            "browserTarget": "ng-isli-ra-manager:build"
           }
         },
         "test": {
@@ -83,13 +122,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         },
@@ -101,24 +135,28 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "isli-ra:serve"
+            "devServerTarget": "ng-isli-ra-manager:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "isli-ra:serve:production"
+              "devServerTarget": "ng-isli-ra-manager:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "isli-ra"
+    }
+  },
+  "defaultProject": "ng-isli-ra-manager",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

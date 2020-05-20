@@ -1,0 +1,688 @@
+<div class="register-detail content-container">
+  <div class="header">
+    <p class="title">
+      {{ "service.nav.serviceRegisterManagerDetail" | translate }}
+    </p>
+  </div>
+  <div class="body">
+    <!-- <app-service-register-info
+      [id]="id"
+      [status]="status"
+      [serviceRegisterInfo]="serviceRegisterDetail"
+    ></app-service-register-info> -->
+    <!--  -->
+    <div class="service-register-info item">
+      <h2 class="title">
+        {{ "service.register.detail.serviceRegisterInfo.title" | translate }}
+      </h2>
+      <div class="content">
+        <!-- 基础信息 -->
+        <table>
+          <!-- 服务 -->
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.services"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.serviceName }}</td>
+          </tr>
+          <!-- 服务编码 -->
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.serviceCode"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.serviceCode }}</td>
+          </tr>
+          <!-- 关联类型 -->
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.serviceType"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.relevanceTypeUuidText }}</td>
+          </tr>
+          <!-- 源类型 -->
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.sourceType"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.sourceTypeUuidsText }}</td>
+          </tr>
+          <!-- 目标类型 -->
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.targetType"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.targetTypeUuidsText }}</td>
+          </tr>
+          <!-- 关联字段 -->
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.correlationField"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.lcLength }}</td>
+          </tr>
+          <!-- 关联字段分段 -->
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.correlationFieldSegments"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.lcSection }}</td>
+          </tr>
+          <!-- 拟申请关联服务实施计划 -->
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.applyServicePlan"
+                  | translate
+              }}：
+            </td>
+            <td class="operation">
+              <span>{{ serviceRegisterDetail?.planFileName }}</span>
+              <a
+                [ngClass]="{
+                  check: serviceRegisterDetail?.swfServicePlan,
+                  putGrayCheck: !serviceRegisterDetail?.swfServicePlan
+                }"
+                (click)="
+                  handlePrePDFClick(serviceRegisterDetail?.swfServicePlan)
+                "
+                title="{{ 'service.common.preview' | translate }}"
+              ></a>
+              <a
+                class="download"
+                (click)="handleDownloadClick()"
+                title="{{ 'service.common.down' | translate }}"
+              ></a>
+            </td>
+          </tr>
+          <!-- 关联目标解析地址 -->
+          <tr *ngIf="statusObj.NORMAL == status || statusObj.BUILD == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.associateTargetResolutionAddress"
+                  | translate
+              }}：
+            </td>
+            <td>
+              <span class="oSpan">{{
+                serviceRegisterDetail?.resolutionServiceUrl
+              }}</span>
+              <a
+                *ngIf="serviceRegisterDetail?.resolutionServiceUrl"
+                class="copy"
+                href="javascript:;"
+                title="{{ 'service.common.copy' | translate }}"
+                ngxClipboard
+                [cbContent]="serviceRegisterDetail?.resolutionServiceUrl"
+                (cbOnSuccess)="handleCopySuccessClick()"
+                >{{ "service.common.copy" | translate }}
+              </a>
+            </td>
+          </tr>
+          <!-- 单点登录API -->
+          <tr *ngIf="statusObj.NORMAL == status || statusObj.BUILD == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.singleSignApi"
+                  | translate
+              }}：
+            </td>
+            <td>
+              <span class="oSpan">{{ serviceRegisterDetail?.spLoginUrl }}</span>
+              <a
+                *ngIf="serviceRegisterDetail?.spLoginUrl"
+                class="copy"
+                href="javascript:;"
+                title="{{ 'service.common.copy' | translate }}"
+                ngxClipboard
+                [cbContent]="serviceRegisterDetail?.spLoginUrl"
+                (cbOnSuccess)="handleCopySuccessClick()"
+                >{{ "service.common.copy" | translate }}
+              </a>
+            </td>
+          </tr>
+          <!-- 状态 -->
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.status"
+                  | translate
+              }}：
+            </td>
+            <td
+              [ngClass]="{
+                normal: statusObj.NORMAL == status,
+                forzen: statusObj.FORZEN == status,
+                stop: statusObj.STOP == status,
+                pendTrial: statusObj.PEND_TRIAL == status,
+                pendReview: statusObj.PEND_REVIEW == status,
+                notPass: statusObj.NOT_PASS == status,
+                build: statusObj.BUILD == status
+              }"
+            >
+              {{ status | registerManagerStatus }}
+            </td>
+          </tr>
+
+          <!-- 正常状态 -->
+          <!-- 登记日期 -->
+          <tr *ngIf="statusObj.NORMAL == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.registerData"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.applyDatetime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 分配日期 -->
+          <tr *ngIf="statusObj.NORMAL == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.allotmentDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.distributionDatetime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 初审日期 -->
+          <tr *ngIf="statusObj.NORMAL == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.firstTrialDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.firstAuditTime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 初审意见 -->
+          <tr *ngIf="statusObj.NORMAL == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.preliminary"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.firstAuditOpinion }}</td>
+          </tr>
+          <!-- 复审日期 -->
+          <tr *ngIf="statusObj.NORMAL == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.reviewDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.secondAuditTime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 复审意见 -->
+          <tr *ngIf="statusObj.NORMAL == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.reviewOpinion"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.secondAuditOpinion }}</td>
+          </tr>
+
+          <!-- 冻结状态 -->
+          <!-- 登记日期 -->
+          <tr *ngIf="statusObj.FORZEN == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.registerData"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.applyDatetime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 分配日期 -->
+          <tr *ngIf="statusObj.FORZEN == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.allotmentDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.distributionDatetime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 冻结日期 -->
+          <tr *ngIf="statusObj.FORZEN == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.freezeDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.frozenDatetime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 冻结理由 -->
+          <tr *ngIf="statusObj.FORZEN == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.freezeReason"
+                  | translate
+              }}：
+            </td>
+            <td style="line-height: 18px; padding-top: 6px;">
+              {{ serviceRegisterDetail?.auditOpinion }}
+            </td>
+          </tr>
+
+          <!-- 停用状态 -->
+          <!-- 登记日期 -->
+          <tr *ngIf="statusObj.STOP == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.registerData"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.applyDatetime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 分配日期 -->
+          <tr *ngIf="statusObj.STOP == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.allotmentDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.distributionDatetime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 冻结日期 -->
+          <tr *ngIf="statusObj.STOP == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.freezeDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.frozenDatetime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 冻结理由 -->
+          <tr *ngIf="statusObj.STOP == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.freezeReason"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.auditOpinion }}</td>
+          </tr>
+          <!-- 停用日期 -->
+          <tr *ngIf="statusObj.STOP == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.stopDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.cancelDatetime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 冻结停用理由 -->
+          <tr *ngIf="statusObj.STOP == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.stopReason"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.cancelOpinion }}</td>
+          </tr>
+
+          <!-- 待初审状态 -->
+          <!-- 初审日期 -->
+          <tr *ngIf="statusObj.PEND_REVIEW == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.firstTrialDate"
+                  | translate
+              }}：
+            </td>
+
+            <td>
+              {{
+                serviceRegisterDetail?.firstAuditTime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 初审意见 -->
+          <tr *ngIf="statusObj.PEND_REVIEW == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.preliminary"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.firstAuditOpinion }}</td>
+          </tr>
+
+          <!-- 未通过状态 -->
+          <!-- 初审日期 -->
+          <tr *ngIf="statusObj.NOT_PASS == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.firstTrialDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.firstAuditTime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 初审意见 -->
+          <tr *ngIf="statusObj.NOT_PASS == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.preliminary"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.firstAuditOpinion }}</td>
+          </tr>
+          <!-- 复审日期 -->
+          <tr *ngIf="statusObj.NOT_PASS == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.reviewDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.secondAuditTime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 复审意见 -->
+          <tr *ngIf="statusObj.NOT_PASS == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.reviewOpinion"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.secondAuditOpinion }}</td>
+          </tr>
+
+          <!-- 建设中 -->
+          <!-- 初审日期 -->
+          <tr *ngIf="statusObj.BUILD == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.firstTrialDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.firstAuditTime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 初审意见 -->
+          <tr *ngIf="statusObj.BUILD == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.preliminary"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.firstAuditOpinion }}</td>
+          </tr>
+          <!-- 复审日期 -->
+          <tr *ngIf="statusObj.BUILD == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.reviewDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.secondAuditTime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <!-- 复审意见 -->
+          <tr *ngIf="statusObj.BUILD == status">
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.reviewOpinion"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.secondAuditOpinion }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!--  -->
+    <!-- <app-service-provider-info
+      [id]="id"
+      [status]="status"
+      [serviceProviderInfo]="serviceRegisterDetail"
+    ></app-service-provider-info> -->
+    <!--  -->
+    <div class="service-provider-info item">
+      <h2 class="title">
+        {{ "service.register.detail.serviceProviderInfo.title" | translate }}
+      </h2>
+      <div class="content">
+        <table>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceProviderInfo.username"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.spEmail }}</td>
+          </tr>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceProviderInfo.organizationName"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.orgName }}</td>
+          </tr>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceProviderInfo.contactPerson"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.contact }}</td>
+          </tr>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceProviderInfo.fixedTel"
+                  | translate
+              }}：
+            </td>
+            <td>{{ phone }}</td>
+          </tr>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceProviderInfo.mobilePhone"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterDetail?.mobileType
+                  ? serviceRegisterDetail?.mobileType +
+                    "-" +
+                    serviceRegisterDetail?.mobile
+                  : serviceRegisterDetail?.mobile
+              }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceProviderInfo.capacity"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.position }}</td>
+          </tr>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceProviderInfo.email" | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.email }}</td>
+          </tr>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceProviderInfo.address"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.address }}</td>
+          </tr>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceProviderInfo.postcode"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterDetail?.zip }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!--  -->
+    <div class="aBtn">
+      <button
+        class="toExamine blue"
+        *ngIf="statusObj.PEND_REVIEW == status || statusObj.BUILD == status"
+        (click)="handleToExamineClick()"
+      >
+        {{ "service.register.operation.toExamine" | translate }}
+      </button>
+      <button
+        class="toExamine blue"
+        *ngIf="serviceRegisterDetail?.frozenAppeal"
+        (click)="handleAppealAuditClick()"
+      >
+        {{ "service.register.operation.appealAudit" | translate }}
+      </button>
+      <button class="back search-btn" (click)="handleBackClick()">
+        {{ "service.common.back" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 待复审，建设中-审核 -->
+<app-service-manager-dialog
+  *ngIf="toExamineOnOff"
+  [status]="status"
+  [serviceRegisterInfo]="serviceRegisterDetail"
+  (submitClick)="handleSubmitClick($event)"
+  (cancelClick)="handleCancelClick()"
+></app-service-manager-dialog>
+
+<!-- 申诉审核 -->
+<app-appeal-review-dialog
+  *ngIf="appealReviewOnOff"
+  [serviceRegisterInfo]="serviceRegisterDetail"
+  (submitClick)="handleAppealReviewSubmitClick($event)"
+  (cancelClick)="appealReviewOnOff = false"
+></app-appeal-review-dialog>

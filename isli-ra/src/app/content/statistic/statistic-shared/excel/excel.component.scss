@@ -1,0 +1,27 @@
+.excel-box{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 10px;
+    .excel{
+        float: right;
+        font-family: SourceHanSansSC-Regular;
+        font-size: 13px;
+        line-height: 14px;
+        color: #677D8D;
+        cursor: pointer;
+        .icon{
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            background: url(/assets/images/sprite-icon.png) no-repeat;
+            background-position: -856px -20px;
+        }
+        &:hover{
+            color: #007BD8;
+            .icon{
+                background-position: -856px -58px;
+            }
+        }
+    }
+}

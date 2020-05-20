@@ -1,0 +1,14 @@
+<div class="add-filed">
+  <div class="filed-item" *ngFor="let filed of filedsData; let i = index">
+    <input
+      type="text"
+      name="filed{{ i }}"
+      [(ngModel)]="filedsData[i].value"
+      required
+      appPatternInput="^[1-9][0-9]{0,1}$"
+      inputPattern="^[1-9][0-9]{0,1}$"
+      (blur)="updataFildesBlur()"
+    />
+    <span *ngIf="i != filedsData.length - 1">-</span>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+<div class="association-type-table table">
+  <p-table [value]="associationTypeList">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 10%;">
+          {{ "service.associationType.table.serialNumber" | translate }}
+        </th>
+        <th style="width: 20%;">
+          {{ "service.associationType.table.linkType" | translate }}
+        </th>
+        <th style="width: 20%;">
+          {{ "service.associationType.table.sourceType" | translate }}
+        </th>
+        <th style="width: 20%;">
+          {{ "service.associationType.table.targetType" | translate }}
+        </th>
+        <th style="width: 15%;">
+          {{ "service.associationType.table.creationDate" | translate }}
+        </th>
+        <th style="width: 15%;">
+          {{ "service.associationType.table.operations" | translate }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+      <tr class="table-tr">
+        <td>
+          {{ (pagingBoxObj.page - 1) * pagingBoxObj.rows + rowIndex + 1 }}
+        </td>
+        <td>
+          {{ rowData?.relevanceTypeName }}
+        </td>
+        <td>
+          {{ rowData?.sourceTypeName }}
+        </td>
+        <td>
+          {{ rowData?.targetTypeName }}
+        </td>
+        <td>{{ rowData?.createDateTime | date: "yyyy-MM-dd" }}</td>
+        <td class="operation">
+          <a
+            class="check"
+            href="javascript:;"
+            title="{{ 'service.associationType.operations.view' | translate }}"
+            (click)="handleCheckClick(rowData)"
+          ></a>
+          <a
+            class="modify"
+            *ngIf="rowData?.enabledFlag == 'Y'"
+            href="javascript:;"
+            title="{{
+              'service.associationType.operations.modify' | translate
+            }}"
+            (click)="handleModifyClick(rowData)"
+          ></a>
+          <a
+            class="stop"
+            *ngIf="rowData?.enabledFlag == 'Y'"
+            href="javascript:;"
+            title="{{
+              'service.associationType.operations.disabled' | translate
+            }}"
+            (click)="handleStopClick(rowData)"
+          ></a>
+          <a
+            class="enable"
+            *ngIf="rowData?.enabledFlag == 'N'"
+            href="javascript:;"
+            title="{{
+              'service.associationType.operations.enable' | translate
+            }}"
+            (click)="handleEnableClick(rowData)"
+          ></a>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <app-loaing-data [data]="associationTypeList"></app-loaing-data>
+  <app-paging-box
+    *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+    [pagingBoxObj]="pagingBoxObj"
+    (OnPageChange)="OnPage.emit($event)"
+  ></app-paging-box>
+</div>
+<!-- 停用 -->
+<app-shared-dialog
+  *ngIf="dialogStopOnOff"
+  cancelTxt="{{ 'service.common.cancel' | translate }}"
+  confirmTxt="{{ 'service.common.sure' | translate }}"
+  [validFunc]="validFuncStop"
+  (OnCancelClick)="handleStopCancelDialogClick()"
+>
+  <div>
+    {{ "service.associationType.dialog.disabledTips" | translate
+    }}<span class="colorRed">{{ currentRelevanceTypeName }}</span
+    >{{ "service.associationType.dialog.linkType" | translate }}？
+  </div>
+</app-shared-dialog>
+
+<!-- 启用 -->
+<app-shared-dialog
+  *ngIf="dialogEnableOnOff"
+  cancelTxt="{{ 'service.common.cancel' | translate }}"
+  confirmTxt="{{ 'service.common.sure' | translate }}"
+  [validFunc]="validFuncEnable"
+  (OnCancelClick)="handleEnableCancelDialogClick()"
+>
+  <div>
+    {{ "service.associationType.dialog.enableTips" | translate
+    }}<span class="colorRed">{{ currentRelevanceTypeName }}</span
+    >{{ "service.associationType.dialog.linkType" | translate }}？
+  </div>
+</app-shared-dialog>

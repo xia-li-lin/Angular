@@ -1,0 +1,19 @@
+.content-container {
+    .header {
+      position: relative;
+      button {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+      }
+    }
+    .body {
+      padding: 0 30px;
+    }
+  }
+  
+  ::ng-deep{
+    .right-bd .content-container .item .item-bd .ui-inputtext{
+      width: 258px;
+    }
+  }

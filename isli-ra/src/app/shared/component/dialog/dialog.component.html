@@ -1,0 +1,27 @@
+<div class="d-mask {{ styleClass }}">
+  <div
+    class="d-container"
+    [@animation]="dailogState"
+    (@animation.done)="handleAnimationDone()"
+  >
+    <div class="d-warp">
+      <div class="d-header">
+        <h5 *ngIf="title">{{ title }}</h5>
+        <span class="d-close" (click)="handleCloseClick()"></span>
+      </div>
+      <div class="d-content">
+        <div class="d-content-box">
+          <ng-content></ng-content>
+        </div>
+      </div>
+      <div class="d-footer" *ngIf="showFooter">
+        <button class="blue" (click)="handleConfirmClick()">
+          {{ confirmTxt }}
+        </button>
+        <button *ngIf="cancelTxt" class="return" (click)="handleCloseClick()">
+          {{ cancelTxt }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

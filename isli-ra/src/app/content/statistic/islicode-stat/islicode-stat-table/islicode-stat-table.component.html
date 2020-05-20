@@ -1,0 +1,54 @@
+<div class="islicode-stat-table list-box">
+  <div class="list-header clearfix">
+    <div>{{ type | textTransform }}</div>
+    <div>{{ "statistic.isliCodeNum" | translate }}</div>
+    <div>{{ "statistic.total" | translate }}:</div>
+  </div>
+  <ul
+    class="list-body clearfix"
+    *ngIf="isliCodePageStatistic && isliCodePageStatistic.length"
+  >
+    <li *ngFor="let statistic of isliCodePageStatistic">
+      <div class="row first-row">
+        <span *ngIf="type == exactDate.YEAR">{{ statistic?.year }}</span>
+        <span *ngIf="type == exactDate.MONTH"
+          >{{ statistic?.year }}-{{ statistic?.month }}</span
+        >
+        <span *ngIf="type == exactDate.DAY">{{ statistic?.day }}</span>
+      </div>
+      <div class="row second-row">
+        <!-- <span *ngIf="type==exactDate.YEAR">
+                    {{statistic?.num | unitConver:'thousand'}}
+                </span>
+                <span *ngIf="type!=exactDate.YEAR">
+                    {{statistic?.num}}
+                </span> -->
+        {{ statistic?.num }}
+      </div>
+    </li>
+  </ul>
+  <div
+    *ngIf="isliCodePageStatistic && isliCodePageStatistic.length"
+    class="list-num-total"
+    [ngStyle]="{ width: totalWidth }"
+  >
+    <!-- <span *ngIf="type==exactDate.YEAR">
+            {{isliCodeNumberTotal | unitConver:'thousand'}}
+        </span>
+        <span *ngIf="type!=exactDate.YEAR">
+            {{isliCodeNumberTotal}}
+        </span> -->
+    {{ isliCodeNumberTotal }}
+  </div>
+  <div
+    class="no-data clearfix"
+    *ngIf="!(isliCodePageStatistic && isliCodePageStatistic.length)"
+  >
+    {{ "common.noData" | translate }}
+  </div>
+  <app-paging-box
+    *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+    [pagingBoxObj]="pagingBoxObj"
+    (OnPageChange)="handlePageChange($event)"
+  ></app-paging-box>
+</div>

@@ -1,0 +1,43 @@
+<div class="dialog-box enable">
+  <div class="dialog">
+    <div class="dialog-title">
+      <h5>{{ "siteManager.feedbacks.dialog.tip" | translate }}</h5>
+      <a (click)="OnCloseEnableClick.emit($event)"></a>
+    </div>
+    <div class="dialog-content">
+      <dl>
+        <dt>
+          <span class="red">*</span>
+          {{ "siteManager.feedbacks.dialog.submitReason" | translate }}：
+        </dt>
+        <dd>
+          <textarea
+            cols="30"
+            rows="10"
+            [(ngModel)]="submitReason"
+            (keyup)="handleOnfocus()"
+            placeholder="{{
+              'siteManager.feedbacks.dialog.submitReasonPlaceholder' | translate
+            }}"
+            maxlength="200"
+          ></textarea>
+          <p>
+            <p-checkbox [(ngModel)]="emailCheck" binary="true"></p-checkbox>
+            <span>{{
+              "siteManager.feedbacks.dialog.emailCheck" | translate
+            }}</span>
+          </p>
+          <p class="red" *ngIf="errMsg">{{ errMsg }}</p>
+        </dd>
+      </dl>
+    </div>
+    <div class="dialog-footer">
+      <button class="blue" (click)="handleSureClick()">
+        {{ "siteManager.common.commit" | translate }}
+      </button>
+      <button class="return" (click)="OnCloseEnableClick.emit($event)">
+        {{ "siteManager.common.cancle" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

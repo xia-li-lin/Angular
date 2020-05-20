@@ -1,0 +1,39 @@
+{
+    "ngx-translate-manager.locale": "**/src/assets/i18n/xll-zh.json",
+    "editor.codeLens": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "window.zoomLevel": 0,
+    "editor.wrappingIndent": "indent",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "files.exclude": {
+        "**/dist": true,
+        "**/node_modules": true
+    },
+    "files.insertFinalNewline": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120,
+    "editor.formatOnPaste": true,
+    "html.format.indentHandlebars": true,
+    "javascript.autoClosingTags": false,
+    "javascript.preferences.importModuleSpecifier": "relative",
+    "prettier.useTabs": false,
+    "prettier.tabWidth": 2,
+    "editor.suggestSelection": "first",    
+    "[javascript]": {
+        "editor.defaultFormatter": "remimarsal.prettier-now",
+    },
+    "eslint.autoFixOnSave": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.tabSize": 2,
+    "[typescript]": {
+        "editor.defaultFormatter": "remimarsal.prettier-now"
+    },
+      "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+
+}

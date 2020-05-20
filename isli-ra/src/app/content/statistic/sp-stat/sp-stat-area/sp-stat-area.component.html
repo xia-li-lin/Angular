@@ -1,0 +1,15 @@
+<div class="sp-stat-area chart-box">
+  <div *ngIf="spStatistList && spStatistList.length">
+    <app-export-view (exportView)="handleExportViewClick()"></app-export-view>
+    <div
+      echarts
+      [options]="optionsData"
+      class="area"
+      (chartInit)="handleChartInit($event)"
+    >
+      <div class="data-loading"></div>
+    </div>
+  </div>
+
+  <app-loaing-data [data]="spStatistList"></app-loaing-data>
+</div>

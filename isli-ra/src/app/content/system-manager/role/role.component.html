@@ -1,0 +1,26 @@
+<div class="role-box">
+  <div class="create">
+    <h6>{{createTxt }}</h6>
+  </div>
+  <div class="title">
+    <h5>繁体中文</h5>
+  </div>
+  <app-role-form-tw
+    [areaArray]="areaArrayZh"
+    [info]="infoTw"
+    (OnAreaTwChange)="handleAreaTwChange($event)"
+  >
+  </app-role-form-tw>
+  <div class="title">
+    <h5>EngLish</h5>
+  </div>
+  <app-role-form-en
+    [areaArray]="areaArrayEn"
+    [info]="infoEn"
+    (OnAreaEnChange)="handleAreaEnChange($event)"
+  >
+  </app-role-form-en>
+  <div class="btn-box">
+    <button (click)="handleSaveClick()">{{ 'common.sure' | translate }}</button>
+  </div>
+</div>

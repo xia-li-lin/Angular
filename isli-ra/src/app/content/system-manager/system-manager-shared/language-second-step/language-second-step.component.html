@@ -1,0 +1,51 @@
+<div class="table-box">
+  <div class="table">
+    <p-table [value]="homeBackgroundData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="10%">{{ "systemEmail.list.no" | translate }}</th>
+          <th width="40%">{{ "systemShared.image" | translate }}</th>
+          <th width="30%">{{ "systemShared.updateTime" | translate }}</th>
+          <th width="20%">{{ "common.operation" | translate }}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>{{ rowIndex + 1 }}</td>
+          <td>
+            <img src="{{ rowData.urlAddress }}" />
+          </td>
+          <td>{{ rowData.updateDateTime | date: "yyyy-MM-dd" }}</td>
+          <td class="operation">
+            <a class="check" title="{{ 'systemShared.preview' | translate }}">
+              <p-lightbox [images]="getImages(rowData.urlAddress)"></p-lightbox>
+            </a>
+            <a
+              class="upload"
+              title="{{ 'systemShared.selectImg' | translate }}"
+            >
+              <label for="{{ rowData.imgId }}"></label>
+              <input
+                type="file"
+                id="{{ rowData.imgId }}"
+                style="position: absolute; clip: rect(0 0 0 0);"
+                accept="image/jpg,image/jpeg,image/png,image/bmp"
+                (change)="
+                  handleFileChange($event, rowData.imgId, rowData.langCode)
+                "
+              />
+            </a>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div class="btn-box">
+    <button (click)="handlePreClick()">
+      {{ "systemShared.pre" | translate }}
+    </button>
+    <button (click)="handleNextClick()">
+      {{ "systemShared.next" | translate }}
+    </button>
+  </div>
+</div>

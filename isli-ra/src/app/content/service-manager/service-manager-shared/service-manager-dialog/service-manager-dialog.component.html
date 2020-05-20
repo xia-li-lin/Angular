@@ -1,0 +1,149 @@
+<div
+  class="dialog-box service-manager-dialog"
+  ngForm
+  [isliFormValidMsg]="errorMsg"
+  [ngClass]="{
+    'dialog-box-zh': language !== 'EN_US',
+    'dialog-box-en': language === 'EN_US'
+  }"
+>
+  <div class="dialog" #dialog>
+    <div class="dialog-title">
+      <h5>{{ "service.register.dialog.operationTip" | translate }}</h5>
+      <a (click)="cancelClick.emit($event)"></a>
+    </div>
+    <div class="dialog-content">
+      <div class="content clearfix" *ngIf="statusObj.PEND_REVIEW == status">
+        <table>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.preliminaryResults"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterInfo?.firstAuditResult | auditResult | translate
+              }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.firstTrialDate"
+                  | translate
+              }}：
+            </td>
+            <td>
+              {{
+                serviceRegisterInfo?.firstAuditTime
+                  | date: "yyyy-MM-dd HH:mm:ss"
+              }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{
+                "service.register.detail.serviceRegisterInfo.preliminary"
+                  | translate
+              }}：
+            </td>
+            <td>{{ serviceRegisterInfo?.firstAuditOpinion }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="content clearfix" *ngIf="statusObj.BUILD == status">
+        <!-- 关联目标解析地址 -->
+        <dl class="clearfix">
+          <dt>
+            {{
+              "service.register.detail.serviceRegisterInfo.associateTargetResolutionAddress"
+                | translate
+            }}：
+          </dt>
+          <dd>
+            {{ serviceRegisterInfo?.resolutionServiceUrl }}
+            <a
+              *ngIf="serviceRegisterInfo?.resolutionServiceUrl"
+              href="javascript:;"
+              title="{{ 'service.common.copy' | translate }}"
+              ngxClipboard
+              [cbContent]="serviceRegisterInfo?.resolutionServiceUrl"
+              (cbOnSuccess)="handleCopySuccessClick()"
+              >{{ "service.common.copy" | translate }}
+            </a>
+          </dd>
+        </dl>
+        <!-- 单点登录API -->
+        <dl class="clearfix">
+          <dt>
+            {{
+              "service.register.detail.serviceRegisterInfo.singleSignApi"
+                | translate
+            }}：
+          </dt>
+          <dd>
+            {{ serviceRegisterInfo?.spLoginUrl }}
+            <a
+              *ngIf="serviceRegisterInfo?.spLoginUrl"
+              href="javascript:;"
+              title="{{ 'service.common.copy' | translate }}"
+              ngxClipboard
+              [cbContent]="serviceRegisterInfo?.spLoginUrl"
+              (cbOnSuccess)="handleCopySuccessClick()"
+              >{{ "service.common.copy" | translate }}
+            </a>
+          </dd>
+        </dl>
+      </div>
+      <h2 class="audit-process">
+        {{ "service.register.dialog.auditProcess" | translate }}
+      </h2>
+      <div class="item">
+        <div class="itemL">
+          {{ "service.register.dialog.approvalOperation" | translate }}：
+        </div>
+        <div class="itemR">
+          <p-radioButton
+            name="groupname"
+            value="Y"
+            label="{{ 'service.register.dialog.pass' | translate }}"
+            [(ngModel)]="approvalOperation"
+          ></p-radioButton>
+          <p-radioButton
+            name="groupname"
+            value="N"
+            label="{{ 'service.register.dialog.notPass' | translate }}"
+            [(ngModel)]="approvalOperation"
+          ></p-radioButton>
+        </div>
+      </div>
+      <div class="item">
+        <div class="itemL">
+          {{ "service.register.dialog.approvalOpinion" | translate }}：
+        </div>
+        <div class="itemR">
+          <textarea
+            name="reason"
+            id=""
+            cols="30"
+            rows="10"
+            required
+            [(ngModel)]="approvalOpinion"
+            appTrim
+          ></textarea>
+          <mpr-form-control-valid controlName="reason"></mpr-form-control-valid>
+        </div>
+      </div>
+    </div>
+    <div class="dialog-footer">
+      <button class="blue" (click)="handleSubmitClick()">
+        {{ "service.register.dialog.submit" | translate }}
+      </button>
+      <button class="return" (click)="cancelClick.emit($event)">
+        {{ "service.register.dialog.leave" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

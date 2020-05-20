@@ -1,0 +1,178 @@
+.dialog-box {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba($color: #fff, $alpha: 0);
+  left: 0;
+  top: 0;
+  z-index: 999;
+  .dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    border: 1px solid #e0e1e8;
+    box-shadow: 0 8px 18px 0 rgba(50, 82, 106, 0.10);
+    .dialog-title {
+      background: #007bd8;
+      h5 {
+        height: 40px;
+        line-height: 40px;
+        padding-left: 13px;
+        font-family: SourceHanSansSC-Medium;
+        font-size: 14px;
+        color: #ffffff;
+        font-weight: normal;
+      }
+      a {
+        position: absolute;
+        right: 13px;
+        top: 12px;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        background: url(/assets/images/close.png) no-repeat;
+        background-position: 0 0;
+        &:hover {
+          background-position: 0 -16px;
+        }
+      }
+    }
+    .dialog-content {
+      table {
+        tr {
+          td {
+            &:nth-of-type(1) {
+              padding-left: 32px;
+              text-align: right;
+            }
+            &:nth-of-type(2) {
+              padding-left: 10px;
+              padding-right: 20px;
+            }
+            line-height: 32px;
+          }
+        }
+      }
+      dl {
+        margin-top: 20px;
+        padding: 0 20px;
+        width: 100%;
+        dt {
+          width: 100%;
+          font-family: SourceHanSansSC-Medium;
+          font-size: 14px;
+          line-height: 14px;
+          color: #354754;
+          letter-spacing: 0;
+          padding-left: 8px;
+          border-left: 4px solid #007bd8;
+        }
+        dd {
+          width: 100%;
+          margin-top: 10px;
+          font-family: SourceHanSansSC-Regular;
+          font-size: 13px;
+          color: #677d8d;
+          padding-left: 12px;
+          box-sizing: content-box;
+          word-break: break-all;
+          span,
+          a {
+            display: inline-block;
+          }
+          a {
+            margin-left: 10px;
+            color: #677d8d;
+            cursor: pointer;
+            &:hover {
+              color: #007bd8;
+            }
+          }
+        }
+      }
+      h2.audit-process {
+        width: 100%;
+        font-family: SourceHanSansSC-Medium;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 14px;
+        color: #354754;
+        letter-spacing: 0;
+        padding-left: 8px;
+        border-left: 4px solid #007bd8;
+        margin: 20px 20px 10px 20px;
+      }
+      .item {
+        padding: 0 20px;
+        margin-bottom: 10px;
+        clear: both;
+        overflow: hidden;
+        .itemL {
+          float: left;
+          font-family: SourceHanSansSC-Regular;
+          font-size: 14px;
+          color: #354754;
+          letter-spacing: 0;
+          text-align: right;
+          padding-left: 12px;
+          margin-right: 10px;
+        }
+        .itemR {
+          float: left;
+          p-radioButton {
+            padding-right: 20px;
+          }
+          textarea {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #d5dce2;
+            box-sizing: border-box;
+          }
+        }
+      }
+    }
+    .dialog-footer {
+      clear: both;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      button {
+        width: 120px;
+        height: 32px;
+        cursor: pointer;
+        &:nth-of-type(1) {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+
+  &.dialog-box-zh {
+    .dialog {
+      width: 440px;
+      .item {
+        .itemL {
+          width: 82px;
+        }
+        .itemR {
+          width: 306px;
+        }
+      }
+    }
+  }
+  &.dialog-box-en {
+    .dialog {
+      width: 594px;
+      .item {
+        .itemL {
+          width: 140px;
+        }
+        .itemR {
+          width: 400px;
+        }
+      }
+    }
+  }
+}

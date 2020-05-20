@@ -1,0 +1,25 @@
+<div class="target-add content-container">
+  <div class="header">
+    <p class="title">{{ "service.targetList.add" | translate }}</p>
+  </div>
+  <div class="body">
+    <h2 class="form-header" *ngIf="languageEnable('ZH_TW')">繁体中文</h2>
+    <app-target-form-cn
+      *ngIf="languageEnable('ZH_TW')"
+      [entityType]="entityType"
+    ></app-target-form-cn>
+    <h2 class="form-header" *ngIf="languageEnable('EN_US')">English</h2>
+    <app-target-form-en
+      *ngIf="languageEnable('EN_US')"
+      [entityType]="entityType"
+    ></app-target-form-en>
+    <div class="aBtn">
+      <button class="blue" (click)="handleSaveClick()">
+        {{ "service.common.save" | translate }}
+      </button>
+      <button class="return" (click)="handleCancelClick()">
+        {{ "service.common.cancel" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

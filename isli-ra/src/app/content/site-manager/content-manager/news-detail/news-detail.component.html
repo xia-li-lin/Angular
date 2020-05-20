@@ -1,0 +1,191 @@
+<div class="login-box">
+  <h2 *ngIf="modify && info.language.langCode === 'ZH_TW'">中文繁體</h2>
+  <h2 *ngIf="modify && info.language.langCode === 'EN_US'">English</h2>
+  <form class="login clearfix" [isliFormValidMsg]="errorMsg">
+    <dl *ngIf="!modify">
+      <dt><span>*</span>{{ "siteManager.common.langCode" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="language"
+          [(ngModel)]="info.language.langCode"
+          [options]="langList"
+          placeholder="{{ 'siteManager.common.pleasePlaceholder' | translate }}"
+          [autoDisplayFirst]="false"
+          (onChange)="handleChangeLanguage($event)"
+          required
+        ></p-dropdown>
+        <mpr-form-control-valid controlName="language"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt><span>*</span>{{ "siteManager.news.detail.title" | translate }}：</dt>
+      <dd>
+        <input
+          required
+          type="text"
+          placeholder="{{
+            'siteManager.news.detail.titlePlaceholder' | translate
+          }}"
+          name="title"
+          [(ngModel)]="info.title"
+          maxlength="100"
+          pInputText
+        />
+        <mpr-form-control-valid controlName="title"></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.news.detail.createDateTime" | translate }}：
+      </dt>
+      <dd>
+        <app-calendar
+          name="createDateTime"
+          [(ngModel)]="info.createDateTime"
+          required
+        ></app-calendar>
+        <mpr-form-control-valid
+          controlName="createDateTime"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.news.detail.navigationId" | translate }}：
+      </dt>
+      <dd>
+        <p-dropdown
+          name="navigationId"
+          [options]="navNamesList"
+          [(ngModel)]="info.navigationId"
+          placeholder="{{ 'siteManager.common.pleasePlaceholder' | translate }}"
+          required
+        >
+        </p-dropdown>
+        <mpr-form-control-valid
+          controlName="navigationId"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.news.detail.status" | translate }}：
+      </dt>
+      <dd>
+        <p-radioButton
+          name="isHided"
+          value="0"
+          label="{{ 'siteManager.common.show' | translate }}"
+          [(ngModel)]="info.isHided"
+        ></p-radioButton>
+        <p-radioButton
+          name="isHided"
+          value="1"
+          label="{{ 'siteManager.common.hide' | translate }}"
+          [(ngModel)]="info.isHided"
+        ></p-radioButton>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.news.detail.authorName" | translate }}：
+      </dt>
+      <dd>
+        <input
+          required
+          type="text"
+          placeholder="{{
+            'siteManager.news.detail.authorNamePlaceholder' | translate
+          }}"
+          name="authorName"
+          [(ngModel)]="info.authorName"
+          maxlength="100"
+          pInputText
+        />
+        <mpr-form-control-valid
+          controlName="authorName"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span
+        >{{ "siteManager.news.detail.priorityLevel" | translate }}：
+      </dt>
+      <dd>
+        <input
+          required
+          type="text "
+          placeholder="{{
+            'siteManager.news.detail.priorityLevelPlaceholder' | translate
+          }}"
+          name="priorityLevel"
+          [(ngModel)]="info.priorityLevel"
+          maxlength="1"
+          appPatternInput="^\d+$"
+          pInputText
+        />
+        <mpr-form-control-valid
+          controlName="priorityLevel"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.news.detail.newsSummary" | translate }}：
+      </dt>
+      <dd class="textarea">
+        <textarea
+          required
+          placeholder="{{
+            'siteManager.news.detail.newsSummaryPlaceholder' | translate
+          }}"
+          name="newsSummary"
+          [(ngModel)]="info.newsDetail.newsSummary"
+          maxlength="200"
+          pInputText
+        ></textarea>
+        <mpr-form-control-valid
+          controlName="newsSummary"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span>*</span>{{ "siteManager.news.detail.newsDetail" | translate }}：
+      </dt>
+      <dd class="ueditor">
+        <ueditor
+          name="newsDetail"
+          [(ngModel)]="info.newsDetail.newsDetail"
+          [config]="config"
+          required
+        ></ueditor>
+        <mpr-form-control-valid
+          controlName="newsDetail"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>{{ "siteManager.common.uploadAffix" | translate }}：</dt>
+      <dd>
+        <app-upload-affix
+          [(ngModel)]="filePaths"
+          name="filePaths"
+        ></app-upload-affix>
+      </dd>
+    </dl>
+    <dl>
+      <dt>&nbsp;</dt>
+      <dd class="btn-group">
+        <button (click)="handleCommit()">
+          {{ "siteManager.common.commit" | translate }}
+        </button>
+        <button (click)="handleCancle()">
+          {{ "siteManager.common.cancle" | translate }}
+        </button>
+      </dd>
+    </dl>
+  </form>
+</div>

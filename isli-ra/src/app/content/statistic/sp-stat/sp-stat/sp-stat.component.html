@@ -1,0 +1,37 @@
+<div class="sp-stat statistic">
+  <h2 class="nav-name">{{ "statistic.nav.spAnsys" | translate }}</h2>
+  <div class="clearfix statistic-content">
+    <app-sp-stat-search
+      [sPSearchParams]="sPSearchParams"
+      (typeChange)="handleTypeChange($event)"
+      (searchClick)="handleSearchClick($event)"
+    ></app-sp-stat-search>
+    <app-sp-stat-time
+      *ngIf="sPSearchParams.dataType == dataType.TIME"
+      [spStatistList]="spStatistList"
+    ></app-sp-stat-time>
+    <app-sp-stat-area
+      *ngIf="sPSearchParams.dataType == dataType.AREA"
+      [dataType]="sPSearchParams.dataType"
+      [spStatistList]="spStatistList"
+    ></app-sp-stat-area>
+    <div class="clearfix toggle" *ngIf="spStatistList && spStatistList.length">
+      <button
+        class="toggleBtn"
+        [ngClass]="{ toggleBtnActive: onoff }"
+        (click)="handleToggleClick()"
+      ></button>
+    </div>
+    <app-excel
+      *ngIf="onoff"
+      (exportTable)="handleExportTableClick()"
+    ></app-excel>
+    <app-sp-stat-table
+      *ngIf="onoff"
+      [type]="sPSearchParams.dataType"
+      [spStatistList]="spStatistList"
+      [pagingBoxObj]="pagingBoxObj"
+      [spStatistTotal]="spStatistTotal"
+    ></app-sp-stat-table>
+  </div>
+</div>

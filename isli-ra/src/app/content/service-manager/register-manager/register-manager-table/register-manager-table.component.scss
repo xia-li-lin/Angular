@@ -1,0 +1,13 @@
+.register-manager-table{
+    tr{
+        td{
+            &.normal{ color: #93C61F; }
+            &.forzen{ color: #FF9E36; }
+            &.stop{ color: #FF3636; }
+            &.pendTrial{ color: #677D8D; }
+            &.pendReview{color: #677D8D;}
+            &.notPass{ color: #FF3636; }
+            &.build{ color: #677D8D; }
+        }
+    }
+}

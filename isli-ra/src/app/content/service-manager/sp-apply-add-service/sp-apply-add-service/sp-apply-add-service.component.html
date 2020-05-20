@@ -1,0 +1,32 @@
+<div class="sp-apply-add-service content-container">
+  <div class="header">
+    <p class="title">{{ "service.nav.spApplyNewService" | translate }}</p>
+    <button
+      pButton
+      label="{{ 'service.common.exportExcel' | translate }}"
+      (click)="handleExportExcelClick()"
+    ></button>
+  </div>
+  <div class="body">
+    <app-sp-apply-add-service-search
+      [servicesList]="servicesList"
+      [serviceProviderList]="serviceProviderList"
+      (searchClick)="handleSearchClick($event)"
+    ></app-sp-apply-add-service-search>
+    <app-sp-apply-add-service-table
+      [applyServiceList]="applyServiceList"
+      [pagingBoxObj]="pagingBoxObj"
+      (pageChange)="handlePageChange($event)"
+      (sendMessageClick)="handleSendMessageClick($event)"
+    ></app-sp-apply-add-service-table>
+  </div>
+</div>
+
+<app-message
+  *ngIf="showSendMessage"
+  [selectedAccount]="selectedAccount"
+  [spAccountData]="spAccountData"
+  (OnCancelClick)="handleCancelClick()"
+  (OnSureClick)="handleSureClick($event)"
+>
+</app-message>

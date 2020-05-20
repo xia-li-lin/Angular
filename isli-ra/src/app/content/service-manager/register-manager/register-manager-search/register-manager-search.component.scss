@@ -1,0 +1,61 @@
+.register-manager-search {
+  label {
+    text-align: right;
+  }
+  label,
+  span {
+    display: inline-block;
+  }
+  .wid-55 {
+    width: 55px;
+  }
+  .wid-70 {
+    width: 70px;
+  }
+  .wid-84 {
+    width: 84px;
+  }
+  .wid-130 {
+    width: 130px;
+  }
+  .search-zh {
+    padding-left: 20px;
+  }
+}
+
+::ng-deep {
+  .right-bd .content-container .item .item-bd .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .right-bd .content-container .register-manager-search {
+    &.search-en {
+      .item .item-bd {
+        .date-wrap .p-grid {
+          width: 460px;
+        }
+        .ui-inputtext {
+          width: 360px;
+        }
+        .date-wrap .ui-inputtext,
+        .ui-dropdown .ui-dropdown-panel {
+          width: 215px;
+        }
+      }
+    }
+    &.search-zh {
+      .item .item-bd {
+        .date-wrap .p-grid {
+          width: 430px;
+        }
+        .ui-inputtext {
+        }
+        .date-wrap .ui-inputtext,
+        .ui-dropdown .ui-dropdown-panel {
+          width: 200px;
+        }
+      }
+    }
+  }
+}

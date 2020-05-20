@@ -1,0 +1,80 @@
+<div class="content-container">
+  <div class="header">
+    <p class="title"></p>
+  </div>
+  <div class="body">
+    <div class="body-warp">
+      <div ngForm [isliFormValidMsg]="errMsg">
+        <p class="item">
+          <label class="title">{{
+            "lcManager.threshold.isliOrg" | translate
+          }}</label>
+          <span class="content">{{ threshold.orgName }}</span>
+        </p>
+        <p class="item">
+          <label class="title">{{
+            "lcManager.threshold.serviceCode" | translate
+          }}</label>
+          <span class="content">{{ threshold.serviceCode }}</span>
+        </p>
+        <p class="item">
+          <label class="title required">{{
+            "lcManager.threshold.lcWarningBegin" | translate
+          }}</label>
+          <span class="content">
+            <input
+              pInputText
+              [(ngModel)]="threshold.prewarningValue"
+              name="prewarningValue"
+              required
+              appPatternInput="^\d+$"
+              inputPattern="^\d+$"
+              [appIntMaxMin]="99"
+              [min]="10"
+              maxlength="2"
+            />
+            %
+            <mpr-form-control-valid></mpr-form-control-valid>
+            <span class="tip">{{
+              "lcManager.threshold.lcWarningTip" | translate
+            }}</span>
+          </span>
+        </p>
+        <p class="item">
+          <label class="title required">{{
+            "lcManager.threshold.lcWarningEnd" | translate
+          }}</label>
+          <span class="content">
+            <input
+              pInputText
+              [(ngModel)]="threshold.thresholdValue"
+              name="thresholdValue"
+              appPatternInput="^\d+$"
+              inputPattern="^\d+$"
+              required
+              maxlength="13"
+            />
+            &nbsp;&nbsp;&nbsp;
+            <mpr-form-control-valid></mpr-form-control-valid>
+            <span class="tip">{{
+              "lcManager.threshold.lcWarningEndTip" | translate
+            }}</span>
+          </span>
+        </p>
+        <p class="submit">
+          <button
+            pButton
+            label="{{ 'common.modify' | translate }}"
+            (click)="handleSubmitClick()"
+          ></button>
+          <button
+            pButton
+            class="cancel"
+            label="{{ 'common.cancel' | translate }}"
+            (click)="handleCancelClick()"
+          ></button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

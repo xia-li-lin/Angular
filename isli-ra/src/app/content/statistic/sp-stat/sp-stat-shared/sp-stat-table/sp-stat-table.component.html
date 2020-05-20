@@ -1,0 +1,43 @@
+<div class="sp-stat-table list-box">
+  <div class="list-header clearfix">
+    <div>{{ type | textTransform: "serviceCode" }}</div>
+    <div>{{ "statistic.spUserNum" | translate }}</div>
+    <div>{{ "statistic.total" | translate }}:</div>
+  </div>
+  <ul
+    class="list-body clearfix"
+    *ngIf="spStatistPageList && spStatistPageList.length"
+  >
+    <li *ngFor="let statistic of spStatistPageList">
+      <div class="row first-row">
+        <span *ngIf="type == dataType.TIME" title="{{ statistic?.year }}">{{
+          statistic?.year
+        }}</span>
+        <span *ngIf="type == dataType.AREA" title="{{ statistic?.area_desc }}">
+          {{ statistic?.area_desc }}
+        </span>
+      </div>
+      <div class="row second-row">
+        {{ statistic?.total }}
+      </div>
+    </li>
+  </ul>
+  <div
+    *ngIf="spStatistPageList && spStatistPageList.length"
+    class="list-num-total"
+    [ngStyle]="{ width: totalWidth }"
+  >
+    {{ spStatistTotal }}
+  </div>
+  <div
+    class="no-data clearfix"
+    *ngIf="!(spStatistPageList && spStatistPageList.length)"
+  >
+    {{ "common.noData" | translate }}
+  </div>
+  <app-paging-box
+    *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+    [pagingBoxObj]="pagingBoxObj"
+    (OnPageChange)="handlePageChange($event)"
+  ></app-paging-box>
+</div>

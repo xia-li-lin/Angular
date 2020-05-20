@@ -1,0 +1,71 @@
+<div class="sp-stat-search statistic-search">
+  <div class="item">
+    <div class="itemL">{{ "statistic.typeSelection" | translate }}：</div>
+    <div class="itemR">
+      <p-selectButton
+        [options]="types"
+        styleClass="selectButton"
+        [(ngModel)]="sPSearchParams.dataType"
+        (ngModelChange)="handleTypeChange($event)"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-selectButton>
+    </div>
+  </div>
+  <div class="item" *ngIf="sPSearchParams.dataType == dataType.TIME">
+    <div class="itemL">{{ "statistic.selectTime" | translate }}：</div>
+    <div class="itemR calendar-dropdown">
+      <p-dropdown
+        [options]="startTimesList"
+        [filter]="startTimesList && startTimesList.length > 15 ? true : false"
+        [(ngModel)]="sPSearchParams.startTime"
+        (ngModelChange)="handleStartTimeChange($event)"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-dropdown>
+      <span class="line">-</span>
+      <p-dropdown
+        [options]="endTimesList"
+        [filter]="endTimesList && endTimesList.length > 15 ? true : false"
+        [(ngModel)]="sPSearchParams.endTime"
+        (ngModelChange)="handleEndTimeChange($event)"
+      >
+        <ng-template let-item pTemplate="selectedItem">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <span title="{{ item.label | translate }}">{{
+            item.label | translate
+          }}</span>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="item" *ngIf="sPSearchParams.dataType == dataType.TIME">
+    <div class="itemL">
+      <button class="search-btn" (click)="handleSearchClick()">
+        {{ "statistic.common.search" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

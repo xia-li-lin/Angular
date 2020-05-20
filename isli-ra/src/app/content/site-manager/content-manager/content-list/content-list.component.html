@@ -1,0 +1,109 @@
+<div>
+  <div class="search-title">
+    <span>{{ "siteManager.content.list.search.title" | translate }}</span>
+  </div>
+  <div class="search-content">
+    <dl class="time">
+      <dt>{{ "siteManager.content.list.search.searchDate" | translate }}：</dt>
+      <dd>
+        <app-begin-end-date
+          [(ngModel)]="searchDate"
+          (ngModelChange)="handleDateChange($event)"
+        ></app-begin-end-date>
+      </dd>
+    </dl>
+    <dl>
+      <dt>{{ "siteManager.content.list.search.keyWord" | translate }}：</dt>
+      <dd>
+        <input
+          pInputText
+          appTrim
+          [(ngModel)]="contentSearch.keyWord"
+          placeholder="{{
+            'siteManager.content.list.search.keyWordPlaceholder' | translate
+          }}"
+        />
+      </dd>
+    </dl>
+    <dl>
+      <dt>{{ "siteManager.common.langCode" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="langCode"
+          [options]="langList"
+          [(ngModel)]="contentSearch.langCode"
+          [autoDisplayFirst]="false"
+          placeholder="{{ 'siteManager.common.langCode' | translate }}"
+        >
+        </p-dropdown>
+      </dd>
+    </dl>
+
+    <dl>
+      <dt>
+        <button (click)="handleSearch()">
+          {{ "siteManager.common.search" | translate }}
+        </button>
+      </dt>
+    </dl>
+  </div>
+  <div class="table">
+    <p-table [value]="contentListData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="10%">
+            {{ "siteManager.content.list.table.no" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.content.list.table.navigationName" | translate }}
+          </th>
+          <th width="10%">{{ "siteManager.common.langCode" | translate }}</th>
+          <th width="15%">
+            {{ "siteManager.content.list.table.updateDatetime" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.content.list.table.operat" | translate }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>
+            {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+          </td>
+          <td title="{{ rowData.navigationName }}">
+            {{ rowData.navigationName }}
+          </td>
+          <td title="{{ rowData.langCode }}">
+            {{ rowData.langCode }}
+          </td>
+          <td title="{{ rowData.updateDatetime | date: 'yyyy-MM-dd' }}">
+            {{ rowData.updateDatetime | date: "yyyy-MM-dd" }}
+          </td>
+          <td class="operation">
+            <a
+              appPermission="WS.NR.XG"
+              class="modify"
+              title="{{ 'siteManager.common.modify' | translate }}"
+              (click)="
+                handleEditClick(
+                  rowData.contentId,
+                  rowData.navigationId,
+                  rowData.navigationName,
+                  rowData.langCode
+                )
+              "
+            ></a>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <app-paging-box
+      *ngIf="pageInfo.totalRecords"
+      [pagingBoxObj]="pageInfo"
+      (OnPageChange)="handlePageChange($event)"
+    >
+    </app-paging-box>
+    <app-loaing-data [data]="contentListData"></app-loaing-data>
+  </div>
+</div>

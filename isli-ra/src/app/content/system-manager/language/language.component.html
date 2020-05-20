@@ -1,0 +1,40 @@
+<div class="language-box">
+    <div class="create">
+        <h6>{{ 'systemLanguage.create.config' | translate }}</h6>
+    </div>
+    <div class="step">
+        <ul>
+            <li class="active">
+                <p class="number">1</p>
+                <p class="txt">{{ 'systemLanguage.create.nav' | translate }}</p>
+            </li>
+            <li [class.active]=" step==STEP.SECOND ||step==STEP.THIRD || step==STEP.LAST">
+                <p class="number">2</p>
+                <p class="txt">{{ 'systemLanguage.create.background' | translate }}</p>
+            </li>
+            <li [class.active]=" step==STEP.THIRD || step==STEP.LAST">
+                <p class="number">3</p>
+                <p class="txt">{{ 'systemLanguage.create.content' | translate }}</p>
+            </li>
+            <li [class.active]="step==STEP.LAST">
+                <p class="number">4</p>
+                <p class="txt">{{ 'systemLanguage.create.success' | translate }}</p>
+            </li>
+        </ul>
+    </div>
+    <app-language-first-step *ngIf="step==STEP.FIRST" [languageListStandradData]="languageListStandradData"
+        [langCode]="langCode" [languageListData]="languageListData" (OnNextClick)="handleStepClick($event)">
+    </app-language-first-step>
+    <app-language-second-step *ngIf="step==STEP.SECOND" [homeBackgroundData]="homeBackgroundData"
+        (OnStepClick)="handleStepClick($event)" (OnUpdateHomeBckgroundClick)="getHomeBackground()">
+    </app-language-second-step>
+    <app-language-third-step *ngIf="step==STEP.THIRD" [contentData]="contentData"
+        (OnStepClick)="handleStepClick($event)"></app-language-third-step>
+    <app-language-last-step *ngIf="step==STEP.LAST" (OnCompleteClick)="handleCompleteClick()"
+        (OnCancelCLick)="handleCancelClick()"></app-language-last-step>
+    <!-- <div class="btn-box">
+        <button *ngIf="step!==STEP.FIRST && step!==STEP.LAST" (click)="handlePreClick()">上一步</button>
+        <button *ngIf="step!==STEP.LAST" (click)="handleStepClick()"> 下一步</button>
+    </div> -->
+
+</div>

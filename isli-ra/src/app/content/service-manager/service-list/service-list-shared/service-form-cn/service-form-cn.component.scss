@@ -1,0 +1,184 @@
+.form {
+  .item {
+    h2 {
+      font-family: SourceHanSansSC-Medium;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 14px;
+      color: #354754;
+      letter-spacing: 0;
+      border-left: 4px solid #007bd8;
+      padding-left: 8px;
+      margin: 20px 0;
+    }
+    .content {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      dl {
+        color: #354754;
+        font-family: SourceHanSansSC-Regular;
+        font-size: 14px;
+        width: 100%;
+        height: auto;
+        dt {
+          float: left;
+          width: 200px;
+          text-align: right;
+          letter-spacing: 0;
+        }
+        dd {
+          float: left;
+          width: 860px;
+          position: relative;
+          input {
+            width: 450px;
+            height: 32px;
+            line-height: 32px;
+            border: 1px solid #d5dce2;
+            box-sizing: border-box;
+            float: left;
+          }
+          textarea {
+            width: 450px;
+            height: 186px;
+            padding: 5px;
+            border: 1px solid #d5dce2;
+            line-height: 18px;
+            box-sizing: border-box;
+            float: left;
+          }
+          input,
+          textarea {
+            &.ng-dirty.ng-invalid.ui-inputtext,
+            &.ng-dirty.ng-invalid {
+              border: 1px solid #eb4d4d;
+            }
+          }
+          .ng-dirty.ng-invalid {
+            input.ui-inputtext {
+              border: 1px solid #eb4d4d;
+            }
+          }
+          .return,
+          .blue {
+            width: 100px;
+            height: 30px;
+            box-sizing: border-box;
+          }
+          .return {
+            margin-left: 20px;
+          }
+          .upload {
+            input {
+              width: 330px;
+              line-height: 32px;
+              border: 1px solid #d5dce2;
+              box-sizing: border-box;
+              float: left;
+              display: block;
+            }
+            button {
+              float: left;
+              display: block;
+              margin-left: 20px;
+              cursor: pointer;
+            }
+          }
+        }
+        clear: both;
+        line-height: 32px;
+        margin-bottom: 12px;
+      }
+      .table-style {
+        width: 100%;
+        margin-top: 20px;
+        table {
+          width: 100%;
+          height: auto;
+          overflow: hidden;
+          margin: 0;
+          padding: 0;
+          border-bottom: 1px solid #ccc;
+          border-right: 1px solid #ccc;
+          td,
+          th {
+            width: calc(100% / 3);
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            line-height: 30px;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+          }
+          th {
+            background: #006fc4;
+            color: #fff;
+            line-height: 42px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.item ::ng-deep {
+  .error {
+    position: absolute;
+    line-height: 32px;
+    left: 460px;
+    top: 0;
+
+    p {
+      color: #eb4d4d;
+      color: #eb4d4d;
+      display: flex;
+      align-items: center;
+      height: 32px;
+    }
+  }
+  .ui-state-disabled,
+  body .ui-widget:disabled {
+    opacity: 1;
+  }
+  .ui-corner-all {
+    border-radius: 0;
+  }
+  .ui-inputtext,
+  .ui-multiselect {
+    width: 448px;
+    border-radius: 0;
+    height: 32px;
+    box-sizing: border-box;
+  }
+  .ui-inputtext {
+    padding: 0 0.5em;
+  }
+  .ui-dropdown .ui-dropdown-panel {
+    width: 448px;
+  }
+  .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ui-autocomplete .ui-autocomplete-input {
+    padding: 0 0.5em;
+  }
+  .ui-autocomplete .ui-autocomplete-input {
+    padding-right: 0;
+  }
+  .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-filter-container .ui-inputtext {
+    padding: 0;
+    width: 380px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-filter-container .ui-multiselect-filter-icon {
+    right: 0;
+    left: 360px;
+  }
+  .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-close {
+    margin-top: -0.88em;
+  }
+}

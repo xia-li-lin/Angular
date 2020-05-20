@@ -1,0 +1,1582 @@
+{
+  "areaManager": {
+    "addBtn": "新增區/行",
+    "detail": {
+      "applicationCase": "應用案例",
+      "blockDesc": "區行介紹：",
+      "competentOrg": "主管機構名稱：",
+      "contactsEmail": "聯系郵箱：",
+      "contactsName": "联系人姓名：",
+      "contactsPhone": "聯系人姓名：",
+      "industry": "所屬行業：",
+      "logo": "區行LOGO：",
+      "productDesc": "產品介紹",
+      "region": "所屬地區",
+      "select": "請選擇",
+      "simpleDesc": "區行簡介",
+      "valid": {
+        "blcokName": {
+          "existError": "區行名稱已存在",
+          "required": "請輸入區行名稱"
+        },
+        "blockIndustryInfos": {
+          "required": "請選擇行業"
+        },
+        "logoUrl": {
+          "imageContentError": "請選擇合法的圖片",
+          "imageFileSizeError": "請選擇2MB以內的圖片",
+          "imageFileTypeError": "圖片的格式不匹配",
+          "imageWidthHeightError": "圖片的長寬不匹配",
+          "required": "請上傳Logo"
+        },
+        "region": {
+          "required": "請選擇地區"
+        },
+        "siteUrl": {
+          "pattern": "請輸入合法網址"
+        },
+        "ueditor": {
+          "applicationCase": {
+            "required": "請輸入應用案例"
+          },
+          "bockDesc": {
+            "required": "請輸入區行簡介"
+          },
+          "productDesc": {
+            "required": "請輸入産品簡介"
+          }
+        }
+      },
+      "website": "官方網站："
+    },
+    "dialog": {
+      "enableFailed": "服務啓用失敗",
+      "enableSuccess": "服務啓用成功",
+      "freezeFailed": "服務凍結失敗",
+      "freezeSuccess": "服務凍結成功"
+    },
+    "search": {
+      "all": "- 全部 -",
+      "blockName": "區行名稱：",
+      "blockNamePlaceholder": "請輸入區行名稱",
+      "registerTime": "登記時間：",
+      "searchBtn": "搜索",
+      "serviceCode": "服務編碼：",
+      "status": "狀態："
+    },
+    "service": {
+      "common": {
+        "loading": "加載中..."
+      },
+      "servceName": "服務名稱：",
+      "status": "服務狀態："
+    },
+    "serviceConfigBtn": "配置服務",
+    "serviceManager": "服務管理",
+    "status": {
+      "all": "- 全部 -",
+      "disabled": "停用",
+      "normal": "正常"
+    },
+    "table": {
+      "blockName": "區行名稱",
+      "createTime": "創建時間",
+      "no": "序號",
+      "operation": "操作",
+      "registerTime": "登記時間",
+      "relevanceType": "關聯類型",
+      "serviceCode": "服務編碼",
+      "serviceName": "服務名稱",
+      "status": "狀態"
+    }
+  },
+  "common": {
+    "add": "新增",
+    "addBtn": "添加",
+    "all": "- 全部 -",
+    "allocation": "分配角色",
+    "back": "返回",
+    "backBtn": "返回",
+    "cancel": "取消",
+    "check": "查看",
+    "china": "中国大陆 +86",
+    "continueCreate": "继续创建",
+    "copy": "复制",
+    "delete": "删除",
+    "done": "完成",
+    "download": "下载",
+    "enable": "启用",
+    "export": "导出",
+    "exportExcel": "导出Excel",
+    "freezed": "凍結",
+    "hongkong": "香港 +852",
+    "loading": "數據加載中",
+    "macao": "澳门 +853",
+    "modify": "修改",
+    "modifyDate": "修改时间",
+    "noData": "暫無數據",
+    "operaFailed": "操作失败",
+    "operaSuccess": "操作成功",
+    "operation": "操作",
+    "pending": "未處理",
+    "preview": "预览",
+    "replied": "已處理",
+    "save": "保存",
+    "saveAndContinue": "保存并继续",
+    "search": "搜索",
+    "select": "-请选择-",
+    "stop": "停用",
+    "sure": "确定",
+    "taiwan": "台湾 +886",
+    "tips": "提示",
+    "toExamine": "审核",
+    "upload": "上傳",
+    "uploadAffix": {
+      "buttonText": "上傳附件",
+      "fileSizeError": "附件不能超过2M",
+      "fileTips": "(文件單個大小不超過2M，格式支持：doc、docx、xls、xlsx、ppt、pdf、zip)",
+      "fileTypeError": "附件格式不正确",
+      "fileuploadError": "上傳失败"
+    }
+  },
+  "content": {
+    "header": {
+      "language": "语言"
+    },
+    "language": {
+      "EN": "英文",
+      "zhCN": "简体中文",
+      "zhTW": "繁体中文"
+    },
+    "nav": {
+      "account": {
+        "lcManager": "LC賬戶管理",
+        "manager": "統壹賬戶管理",
+        "spManager": "SP賬戶管理"
+      },
+      "area": {
+        "manager": "區/行管理"
+      },
+      "areaAdd": "新增區行",
+      "areaManager": "區/行管理",
+      "dataAnsys": "數據統計",
+      "index": "首頁",
+      "lc": {
+        "allocated": "服務編碼分配",
+        "manager": "LC管理",
+        "thresthold": "服務編碼閥值"
+      },
+      "lcManager": "LC管理",
+      "location": "您的位置：",
+      "logger": "系統日誌",
+      "serverManager": "服務管理",
+      "siteManager": "網站管理",
+      "sysManager": "系統管理",
+      "systemAccount": "系統帳戶",
+      "systemtManager": "系统管理",
+      "user": {
+        "spManager": "SP賬戶管理",
+        "spManagerCheck": "SP賬戶審核",
+        "userManager": "用户管理"
+      },
+      "userManager": "用户管理"
+    }
+  },
+  "footer": {
+    "nav": {
+      "Platform": "開放平臺",
+      "contact": "聯繫我們",
+      "usISLIRAOpen": "ISLI RA 官網"
+    },
+    "text": "國際資訊內容產業協會  地址：香港九龍尖沙咀柯士甸路28新港國際大廈9樓  電話：+852 23990697"
+  },
+  "index": {
+    "accountInfo": "帳戶信息",
+    "accountStatus": "帳戶狀態",
+    "btn": {
+      "back": "返回",
+      "changePassword": "修改密碼",
+      "edit": "修改信息",
+      "sure": "確定"
+    },
+    "changePassword": {
+      "confirmPassword": "確認新密碼",
+      "currentPassword": "原密碼",
+      "newPassword": "新密碼",
+      "newPasswordTip": "建議是6-20個英文字母、數字或符號組合密碼",
+      "title": "修改密碼",
+      "valid": {
+        "confirmPassword": "請確認新密碼",
+        "currentPassword": "請輸入原密碼",
+        "newPassword": "請輸入新密碼",
+        "patternConfirm": "您兩次輸入的密碼不一致，請重新輸入。",
+        "patternLen": "密碼不能為空，且長度為 6 ~ 20 位",
+        "patternStr": "密碼是英文字母、數字或符號組合"
+      }
+    },
+    "creationDate": "創建時間",
+    "dialog": {
+      "btn": "立即修改",
+      "tip": "您的密碼長期未修改，為了您的帳號安全，請及時修改密碼！"
+    },
+    "email": "聯系郵箱",
+    "employeeId": "工號",
+    "name": "姓名",
+    "phone": "手機",
+    "phoneNo": "固話",
+    "placehold": {
+      "areaCode": "區號",
+      "email": "請輸入您常用的郵箱",
+      "ext": "分機號",
+      "name": "請輸入您的真實姓名",
+      "phone": "請輸入您的手機號",
+      "phoneNo": "您的固定電話"
+    },
+    "roleType": "角色類型",
+    "tips": "請根據需要維護您的帳戶信息，或修改帳戶密碼。",
+    "username": "用戶名",
+    "valid": {
+      "email": "聯系郵箱不能為空",
+      "emialTip": "非常重要，可用於密碼找回",
+      "name": "姓名不能為空",
+      "phone": "聯系電話不能為空",
+      "phoneNo": "固定電話不能為空",
+      "phoneNoFormat": "固定電話格式不正確"
+    }
+  },
+  "lcManager": {
+    "nav": {
+      "alloct": "分配列表",
+      "threshold": "閥值列表",
+      "thresholdDetail": "閥值詳情"
+    },
+    "search": {
+      "allocatedDate": "分配时间：",
+      "lcWarning": "LC编码预警值：",
+      "modifyDate": "修改时间：",
+      "service": "服务：",
+      "serviceCode": "服務編碼：",
+      "serviceCodeSu": "所属服务编码：",
+      "serviceCodeSuPlaceholder": "请输入服务编码",
+      "serviceName": "服務名稱：",
+      "servicePlaceholder": "请输入服务名称"
+    },
+    "table": {
+      "allocatedCount": "LC编码分配数量",
+      "allocatedDate": "分配时间",
+      "isliOrg": "ISLI区组注册机构",
+      "lcWarningBegin": "LC编码预警值",
+      "lcWarningEnd": "LC编码阀值",
+      "service": "服务",
+      "serviceCode": "服务编码"
+    },
+    "threshold": {
+      "isliOrg": "ISLI区组注册机构：",
+      "lcWarningBegin": "LC编码预警值：",
+      "lcWarningEnd": "目标LC编码阀值：",
+      "lcWarningEndTip": "單位編碼容量的正整數倍，如ISLI/MPR為10萬的正整數倍",
+      "lcWarningTip": "请输入10-99之间的两位正整数",
+      "serviceCode": "服務編碼："
+    },
+    "valid": {
+      "prewarningValue": {
+        "requred": "输入10-99之间的两位正整数"
+      },
+      "thresholdValue": {
+        "required": "请输入目标阀值"
+      }
+    }
+  },
+  "login": {
+    "accountLogin": "用戶登錄",
+    "forgetPassword": "忘記密碼？",
+    "login": "登 錄",
+    "placehold": {
+      "code": "請輸入驗證碼",
+      "password": "請輸入您的登錄密碼",
+      "userName": "請輸入您的用戶名"
+    },
+    "resendCode": "發送驗證碼（{{restSecond}}）",
+    "sendCode": "發送驗證碼",
+    "valid": {
+      "code": {
+        "getError": "驗證碼獲取失敗，請稍後再試！",
+        "required": "請輸入6位驗證碼",
+        "validError": "驗證碼錯誤"
+      },
+      "password": {
+        "required": "請輸入密碼"
+      },
+      "userName": {
+        "loginError": "帳號密碼錯誤",
+        "required": "請輸入您的用戶名"
+      }
+    }
+  },
+  "service": {
+    "associationType": {
+      "add": "新增關聯類型",
+      "detail": "關聯類型詳情",
+      "dialog": {
+        "disabledTips": "您確定禁用",
+        "enableTips": "您確定啟用",
+        "linkType": "關聯類型"
+      },
+      "modify": "修改關聯類型",
+      "operations": {
+        "disabled": "停用",
+        "enable": "啟用",
+        "modify": "修改",
+        "view": "查看"
+      },
+      "search": {
+        "creationDate": "創建時間",
+        "linkType": "關聯類型",
+        "sourceType": "源類型",
+        "state": "狀態",
+        "targetType": "目標類型"
+      },
+      "status": {
+        "all": "- 全部 -",
+        "disabled": "停用",
+        "normal": "正常"
+      },
+      "table": {
+        "creationDate": "創建時間",
+        "linkType": "關聯類型",
+        "operations": "操作",
+        "serialNumber": "序號",
+        "sourceType": "源類型",
+        "targetType": "目標類型"
+      },
+      "title": "關聯類型"
+    },
+    "common": {
+      "all": "- 全部 -",
+      "back": "返回",
+      "cancel": "取消",
+      "continueCreate": "继续创建",
+      "copy": "復制",
+      "copySuccess": "複製成功",
+      "deleteDialogTips": "確定要删除嗎？",
+      "down": "下載",
+      "exportExcel": "導出 Excel",
+      "modify": "修改",
+      "operaFailed": "操作失敗",
+      "operaSuccess": "操作成功",
+      "operation": "操作",
+      "preview": "預覽",
+      "save": "保存",
+      "saveAndContinue": "保存並繼續",
+      "search": "搜索",
+      "sure": "確定",
+      "tips": "提示",
+      "view": "查看"
+    },
+    "controlledWordManagement": {
+      "add": "新增受控詞",
+      "config": {
+        "add": "添加詞條",
+        "controlledId": "受控詞ID",
+        "controlledName": "受控詞名稱",
+        "form": {
+          "addControlled": "添加受控詞",
+          "addTerm": "添加詞條",
+          "chineseName": "中文名稱",
+          "englishName": "英文名稱",
+          "modifyTerm": "修改詞條",
+          "propFieldName": "屬性字段名稱",
+          "sort": "排序"
+        },
+        "operations": {
+          "delete": "删除",
+          "modify": "修改"
+        },
+        "placehold": {
+          "chineseName": "屬性名稱",
+          "englishName": "屬性英文名稱",
+          "propFieldName": "出版標記",
+          "sort": "屬性排列順序"
+        },
+        "table": {
+          "creationDate": "創建時間",
+          "operations": "操作",
+          "serialNumber": "序號",
+          "termId": "詞條ID",
+          "termName": "詞條名稱"
+        },
+        "term": "詞條",
+        "title": "配寘受控詞",
+        "valid": {
+          "chineseName": "請輸入中文名稱",
+          "englishName": "請輸入英文名稱",
+          "propFieldName": "請輸入屬性字段名稱",
+          "sort": "請輸入排序"
+        }
+      },
+      "controlled": "受控詞",
+      "controlledName": "受控詞名稱",
+      "operations": {
+        "config": "配寘",
+        "delete": "删除"
+      },
+      "table": {
+        "controlledName": "受控詞名稱",
+        "creationDate": "創建時間",
+        "operations": "操作",
+        "serialNumber": "序號"
+      },
+      "title": "受控詞管理"
+    },
+    "nav": {
+      "associationType": "關聯類型",
+      "controlledWordManagement": "受控詞管理",
+      "serverManager": "服務管理",
+      "service": "服務",
+      "serviceList": "服務清單",
+      "serviceRegisterManager": "服務登記管理",
+      "serviceRegisterManagerDetail": "服務登記管理詳情",
+      "sourceList": "源清單",
+      "spApplyNewService": "SP申請新增服務",
+      "targetList": "目標清單"
+    },
+    "register": {
+      "detail": {
+        "serviceProviderInfo": {
+          "address": "通訊地址",
+          "capacity": "職位",
+          "contactPerson": "聯系人",
+          "email": "電子郵箱",
+          "fixedTel": "固話",
+          "mobilePhone": "手機",
+          "organizationName": "機構名稱",
+          "postcode": "郵編",
+          "title": "服務提供商信息",
+          "username": "用戶名"
+        },
+        "serviceRegisterInfo": {
+          "allotmentDate": "分配日期",
+          "applyServicePlan": "擬申請關聯服務實施計劃",
+          "approvalOpera": "審批操作",
+          "approvalOpinion": "審批意見",
+          "associateTargetResolutionAddress": "關聯目標解析地址",
+          "correlationField": "關聯字段",
+          "correlationFieldSegments": "關聯字段分段",
+          "firstTrialDate": "初審日期",
+          "freezeDate": "凍結日期",
+          "freezeReason": "凍結理由",
+          "preliminary": "初審意見",
+          "preliminaryResults": "初審結果",
+          "registerData": "登記日期",
+          "reviewDate": "復審日期",
+          "reviewOpinion": "復審意見",
+          "serviceCode": "服務編碼",
+          "serviceType": "關聯類型",
+          "services": "服務",
+          "singleSignApi": "單點登錄API",
+          "sourceType": "源類型",
+          "status": "狀態",
+          "stopDate": "停用日期",
+          "stopReason": "停用理由",
+          "targetType": "目標類型",
+          "title": "服務登記信息"
+        }
+      },
+      "dialog": {
+        "appeal": "申訴操作",
+        "appealDate": "申訴日期",
+        "approvalOperation": "審批操作",
+        "approvalOpinion": "審批意見",
+        "auditProcess": "审核处理",
+        "freezeDate": "凍結日期",
+        "handleAppeal": "申述處理",
+        "leave": "關閉",
+        "notPass": "未通過",
+        "operationTip": "操作提示",
+        "pass": "通過",
+        "reasonsToAppeal": "申訴理由",
+        "submit": "提交",
+        "submitReason": "提交理由",
+        "submitReasonPlaceholder": "請輸入操作理由，限200字。",
+        "submitReasonRequired": "請輸入提交理由",
+        "sure": "確定"
+      },
+      "operation": {
+        "appealAudit": "申訴稽核",
+        "enable": "啟用",
+        "forzen": "凍結",
+        "pendReview": "待復審",
+        "pendTrial": "待初審",
+        "servicePush": "服務推送",
+        "stop": "停用",
+        "toExamine": "審核",
+        "viewDetail": "查看詳情",
+        "viewSystemData": "查看系統資料"
+      },
+      "search": {
+        "registerData": "登記日期",
+        "serviceCode": "服務編碼",
+        "serviceProvider": "服務提供商",
+        "services": "服務",
+        "status": "狀態"
+      },
+      "status": {
+        "all": "- 全部 -",
+        "build": "建設中",
+        "forzen": "凍結",
+        "normal": "正常",
+        "notPass": "未通過",
+        "pendReview": "待復審",
+        "pendTrial": "待初審",
+        "preTrial": "預審",
+        "stop": "停用"
+      },
+      "table": {
+        "checkSystemData": {
+          "isliCodeRegisterApi": "ISLI編碼註冊API",
+          "isliCodeResolutionApi": "ISLI編碼解析API",
+          "systemIdent": "系統標識",
+          "systemKey": "系統密鑰",
+          "title": "服務登記申請資料"
+        },
+        "registerData": "登記日期",
+        "serialNumber": "序號",
+        "serviceCode": "服務編碼",
+        "serviceProvider": "服務提供商",
+        "services": "服務",
+        "status": "狀態"
+      }
+    },
+    "sPServiceAdd": {
+      "search": {
+        "applicationDate": "申請日期",
+        "service": "服務",
+        "serviceProvider": "服務提供商"
+      },
+      "table": {
+        "applicationDate": "申請日期",
+        "preview": "預覽",
+        "previewedTemporary": "暫不可預覽",
+        "sendMessage": "發送消息",
+        "serialNumber": "序號",
+        "service": "服務",
+        "serviceProposal": "服務提案",
+        "serviceProvider": "服務提供商"
+      }
+    },
+    "serviceList": {
+      "add": "新增服務",
+      "detail": {
+        "title": "服務清單詳情"
+      },
+      "form": {
+        "dialog": {
+          "service": "服務",
+          "tip1": "您已經成功創建了"
+        }
+      },
+      "modify": "修改服務",
+      "push": {
+        "districtRowList": "區行列表",
+        "multiselect": "可以多選",
+        "placehold": {
+          "districtRowList": "請選擇區行清單"
+        }
+      },
+      "search": {
+        "associationType": "關聯類型",
+        "createTime": "創建時間",
+        "serviceCode": "服務編碼",
+        "services": "服務"
+      },
+      "table": {
+        "associationType": "關聯類型",
+        "createTime": "創建時間",
+        "serialNumber": "序號",
+        "services": "服務"
+      }
+    },
+    "sourceList": {
+      "add": "新增源",
+      "config": {
+        "add": "添加屬性",
+        "configurationProperty": "源配寘",
+        "form": {
+          "add": "添加屬性",
+          "catalogType": "編目類型",
+          "catalogTypeItems": {
+            "common": "普通",
+            "controlledWordOptionValue": "受控詞選項值",
+            "invisible": "不可見",
+            "readOnly": "只讀",
+            "required": "必填"
+          },
+          "chineseName": "中文名稱",
+          "controlledTerms": "受控詞",
+          "dataOpenPermission": "數據開放許可權",
+          "dataOpenPermissionItems": {
+            "open": "開放",
+            "underControl": "受控"
+          },
+          "englishName": "英文名稱",
+          "modify": "修改内容",
+          "multiValue": "是否多值",
+          "multiValueItems": {
+            "no": "否",
+            "yes": "是"
+          },
+          "placehold": {
+            "chineseName": "屬性名稱",
+            "englishName": "屬性英文名稱",
+            "propFieldName": "出版標記",
+            "sort": "屬性排列順序"
+          },
+          "propFieldName": "屬性字段名稱",
+          "propLen": "屬性長度",
+          "propType": "屬性類型",
+          "propTypeItems": {
+            "controlledTerms": "受控詞",
+            "date": "日期",
+            "decimal": "小數",
+            "integer": "整數",
+            "multiLineText": "多行文字",
+            "singleLineText": "單行文字",
+            "time": "時間"
+          },
+          "regExp": "正則表達式",
+          "sort": "排序",
+          "valid": {
+            "catalogType": "請選擇編目類型",
+            "chineseName": "請輸入中文名稱",
+            "controlledTerms": "請選擇受控詞",
+            "dataOpenPermission": "請選擇數據開放許可權",
+            "englishName": "請輸入英文名稱",
+            "multiValue": "請選擇是否多值",
+            "propFieldName": "請輸入屬性字段名稱",
+            "propFieldNameUnique": "屬性字段名稱已存在",
+            "propType": "請選擇内容類型",
+            "sort": "請輸入排序"
+          }
+        },
+        "operations": {
+          "delete": "删除",
+          "modify": "修改"
+        },
+        "sourceId": "源ID",
+        "sourceName": "源名稱",
+        "table": {
+          "creationDate": "創建時間",
+          "operations": "操作",
+          "serialNumber": "序號",
+          "termId": "詞條ID",
+          "termName": "詞條名稱"
+        },
+        "title": "源配置屬性"
+      },
+      "operations": {
+        "config": "配寘",
+        "delete": "删除"
+      },
+      "source": "源",
+      "sourceName": "源名稱",
+      "table": {
+        "creationDate": "創建時間",
+        "operations": "操作",
+        "serialNumber": "序號",
+        "sourceName": "源名稱"
+      },
+      "title": "源清單"
+    },
+    "targetList": {
+      "add": "新增目標",
+      "config": {
+        "add": "添加屬性",
+        "configurationProperty": "目標配寘",
+        "form": {
+          "add": "添加屬性",
+          "catalogType": "編目類型",
+          "catalogTypeItems": {
+            "common": "普通",
+            "controlledWordOptionValue": "受控詞選項值",
+            "invisible": "不可見",
+            "readOnly": "只讀",
+            "required": "必填"
+          },
+          "chineseName": "中文名稱",
+          "controlledTerms": "受控詞",
+          "dataOpenPermission": "數據開放許可權",
+          "dataOpenPermissionItems": {
+            "open": "開放",
+            "underControl": "受控"
+          },
+          "englishName": "英文名稱",
+          "modify": "修改内容",
+          "multiValue": "是否多值",
+          "multiValueItems": {
+            "no": "否",
+            "yes": "是"
+          },
+          "placehold": {
+            "chineseName": "屬性名稱",
+            "englishName": "屬性英文名稱",
+            "propFieldName": "出版標記",
+            "sort": "屬性排列順序"
+          },
+          "propFieldName": "屬性字段名稱",
+          "propLen": "屬性長度",
+          "propType": "屬性類型",
+          "propTypeItems": {
+            "controlledTerms": "受控詞",
+            "date": "日期",
+            "decimal": "小數",
+            "integer": "整數",
+            "multiLineText": "多行文字",
+            "singleLineText": "單行文字",
+            "time": "時間"
+          },
+          "regExp": "正則表達式",
+          "sort": "排序",
+          "valid": {
+            "catalogType": "請選擇編目類型",
+            "chineseName": "請輸入中文名稱",
+            "controlledTerms": "請選擇受控詞",
+            "dataOpenPermission": "請選擇數據開放許可權",
+            "englishName": "請輸入英文名稱",
+            "multiValue": "請選擇是否多值",
+            "propFieldName": "請輸入屬性字段名稱",
+            "propFieldNameUnique": "屬性字段名稱已存在",
+            "propType": "請選擇内容類型",
+            "sort": "請輸入排序"
+          }
+        },
+        "operations": {
+          "delete": "删除",
+          "modify": "修改"
+        },
+        "table": {
+          "catalogType": "編目類型",
+          "creationDate": "創建時間",
+          "operations": "操作",
+          "proId": "屬性ID",
+          "proName": "屬性名稱",
+          "proType": "屬性類型",
+          "serialNumber": "序號"
+        },
+        "targetId": "目標ID",
+        "targetName": "目標名稱",
+        "title": "目標配置屬性"
+      },
+      "operations": {
+        "config": "配寘",
+        "delete": "删除"
+      },
+      "table": {
+        "creationDate": "創建時間",
+        "operations": "操作",
+        "serialNumber": "序號",
+        "targetName": "目標名稱"
+      },
+      "target": "目標",
+      "targetName": "目標名稱",
+      "title": "目標清單"
+    }
+  },
+  "serviceList": {
+    "form": {
+      "dialog": {
+        "service": "服务",
+        "tip1": "您已经成功创建了"
+      }
+    },
+    "push": {
+      "districtRowList": "区行列表"
+    },
+    "search": {
+      "associationType": "关联类型",
+      "createTime": "创建时间",
+      "serviceCode": "服务编码",
+      "services": "服务"
+    },
+    "table": {
+      "associationType": "关联类型",
+      "createTime": "创建时间",
+      "serialNumber": "序号",
+      "services": "服务"
+    }
+  },
+  "shared": {
+    "component": {
+      "calendar": {
+        "placehold": "請選擇時間"
+      }
+    }
+  },
+  "siteManager": {
+    "associates": {
+      "detail": {
+        "asStatus": "狀態",
+        "content": "內容",
+        "correlationCodingStructure": "關聯編碼結構",
+        "correlationCodingStructurePlaceholder": "請輸入關聯編碼結構",
+        "createTime": "發佈時間",
+        "serviceCode": "服務編碼",
+        "serviceCodePlaceholder": "請輸入服務編碼",
+        "sort": "排序",
+        "sortPlaceholder": "請輸入排序",
+        "thumbnailUrl": "縮略圖",
+        "title": "標題",
+        "titlePlaceholder": "請輸入新聞標題"
+      },
+      "list": {
+        "search": {
+          "asStatus": "狀態",
+          "asStatusTitle": "標題",
+          "create": "新增",
+          "searchDate": "編輯時間",
+          "title": "關聯服務管理",
+          "titlePlaceholder": "請輸入標題或者關鍵字"
+        },
+        "table": {
+          "asStatus": "狀態",
+          "editor": "編輯者",
+          "no": "序號",
+          "operat": "操作",
+          "sort": "排序",
+          "title": "標題",
+          "updateTime": "編輯時間"
+        }
+      },
+      "valid": {
+        "content": "内容不能不空",
+        "correlationCodingStructure": "關聯編碼結構不能为空",
+        "createTime": "时间不能为空",
+        "language": "請選擇語種",
+        "serviceCode": "服務編碼不能为空",
+        "serviceCodePattern": "服務編碼為6位數字",
+        "sort": "排序不能为空",
+        "title": "標題不能为空"
+      }
+    },
+    "common": {
+      "all": "- 全部 -",
+      "cancelContent": "确定要删除吗？",
+      "cancle": "取消",
+      "commit": "提交",
+      "delete": "删除",
+      "hide": "隱藏",
+      "langCode": "語種",
+      "modify": "修改",
+      "pleasePlaceholder": "-請選擇-",
+      "reply": "查看",
+      "return": "返回",
+      "save": "保存",
+      "search": "搜素",
+      "show": "顯示",
+      "sortTips": "輸入有誤排序優先順序為數位0-9",
+      "stick": "置顶",
+      "thumbnailUrlTip": "建議上傳尺寸為363*207的jpg/jpeg/png格式圖片，大小不超過100kb",
+      "uploadAffix": "添加附件",
+      "valid": {
+        "imageContentError": "请选择合法的图片",
+        "imageFileSizeError": "请选择2MB以内的图片",
+        "imageFileTypeError": "图片的格式不匹配",
+        "imageWidthHeightError": "图片的长宽不匹配",
+        "thumbnailUrl": "请上传縮略圖"
+      },
+      "view": "查看"
+    },
+    "consulting": {
+      "detail": {
+        "consultingContent": "內容",
+        "consultingStatus": "狀態",
+        "createTime": "發佈時間",
+        "sort": "排序",
+        "sortPlaceholder": "請輸入排序",
+        "source": "來源",
+        "sourcePlaceholder": "請輸入來源",
+        "summary": "摘要",
+        "summaryPlaceholder": "請輸入摘要，限200字",
+        "thumbnailUrl": "縮略圖",
+        "thumbnailUrlTip": "建議上傳尺寸為363*207的jpg/jpeg/png格式圖片，大小不超過100kb",
+        "title": "標題",
+        "titlePlaceholder": "請輸入新聞標題"
+      },
+      "list": {
+        "search": {
+          "consultingStatus": "狀態",
+          "consultingTitle": "標題",
+          "create": "新增",
+          "createDateTime": "編輯時間",
+          "title": "资讯管理",
+          "titlePlaceholder": "請輸入標題或者關鍵字"
+        },
+        "table": {
+          "editor": "編輯者",
+          "no": "序號",
+          "operat": "操作",
+          "sort": "排序",
+          "status": "狀態",
+          "title": "標題",
+          "updateTime": "編輯時間"
+        }
+      },
+      "valid": {
+        "consultingContent": "内容不能不空",
+        "createTime": "时间不能为空",
+        "language": "請選擇語種",
+        "sort": "排序不能为空",
+        "source": "來源不能为空",
+        "summary": "摘要不能为空",
+        "title": "標題不能为空"
+      }
+    },
+    "content": {
+      "detail": {
+        "contentDetail": "内容",
+        "title": "修改内容管理"
+      },
+      "list": {
+        "search": {
+          "keyWord": "内容標題",
+          "keyWordPlaceholder": "請輸入內容標題或者關鍵字",
+          "searchDate": "編輯時間",
+          "title": "内容管理"
+        },
+        "table": {
+          "navigationName": "内容標題",
+          "no": "序號",
+          "operat": "操作",
+          "updateDatetime": "更新時間"
+        }
+      }
+    },
+    "examples": {
+      "detail": {
+        "applicationExampleStatus": "狀態",
+        "exampleContent": "內容",
+        "sort": "排序",
+        "sortPlaceholder": "請輸入排序",
+        "summary": "摘要",
+        "summaryPlaceholder": "請輸入摘要，限200字",
+        "thumbnailUrl": "縮略圖",
+        "title": "標題",
+        "titlePlaceholder": "請輸入新聞標題"
+      },
+      "list": {
+        "search": {
+          "applicationExampleStatus": "狀態",
+          "create": "新增",
+          "examplesTitle": "標題",
+          "searchDate": "編輯時間",
+          "title": "應用示例管理",
+          "titlePlaceholder": "請輸入標題或者關鍵字"
+        },
+        "table": {
+          "applicationExampleStatus": "狀態",
+          "editor": "編輯者",
+          "no": "序號",
+          "operat": "操作",
+          "sort": "排序",
+          "title": "標題",
+          "updateTime": "編輯時間"
+        }
+      },
+      "valid": {
+        "exampleContent": "内容不能不空",
+        "language": "請選擇語種",
+        "sort": "排序不能为空",
+        "summary": "摘要不能为空",
+        "title": "標題不能为空"
+      }
+    },
+    "feedbacks": {
+      "detail": {
+        "attachment": "附件",
+        "basicInfo": "基本資訊",
+        "contactInformation": "連絡人資訊",
+        "email": "電子郵箱",
+        "feedbackContent": "内容",
+        "feedbackMessage": "反饋內容",
+        "feedbackName": "用戶名",
+        "feedbackTypeName": "類型",
+        "phone": "聯繫電話",
+        "replyDate": "處理時間",
+        "status": "處理狀態",
+        "title": "主題",
+        "updateDatetime": "反饋時間",
+        "userName": "姓名",
+        "view": "详情"
+      },
+      "dialog": {
+        "emailCheck": "發送郵件至用戶郵箱",
+        "submitReason": "處理結果",
+        "submitReasonPlaceholder": "請輸入處理結果，限200字",
+        "tip": "操作提示"
+      },
+      "list": {
+        "search": {
+          "excel": "匯出excel",
+          "feedbackStatus": "狀態",
+          "feedbackTitle": "標題",
+          "feedbackTypeId": "類型",
+          "searchDate": "反饋時間",
+          "title": "客户反馈管理",
+          "titlePlaceholder": "請輸入主題或者關鍵字"
+        },
+        "table": {
+          "feedbackContent": "内容",
+          "feedbackType": "類型",
+          "no": "序號",
+          "operat": "操作",
+          "status": "狀態",
+          "title": "主题",
+          "updateDatetime": "反饋時間"
+        }
+      }
+    },
+    "fqmanagers": {
+      "detail": {
+        "from": "來自",
+        "modify": "编辑",
+        "repliedMessage": "已有{{value}}條回復",
+        "reply": "回复",
+        "title": "自主問答管理"
+      },
+      "list": {
+        "search": {
+          "isShow": "狀態",
+          "keyWord": "關鍵字",
+          "keyWordPlaceholder": "请输入關鍵字",
+          "searchDate": "編輯時間",
+          "title": "自主问答管理"
+        },
+        "table": {
+          "createTime": "提問時間",
+          "isShow": "狀態",
+          "no": "序號",
+          "operat": "操作",
+          "questioner": "提問者",
+          "replayNum": "回復數量",
+          "title": "問題"
+        }
+      }
+    },
+    "leftNav": {
+      "InteractiveManagement": "互动管理",
+      "WebsiteManagement": "内容管理",
+      "WebsiteSettings": "网站设置",
+      "appExampleAdd": "新增",
+      "appExampleDetail": "編輯應用示例",
+      "appExamples": "應用示例管理",
+      "associates": "關聯服務管理",
+      "associatesAdd": "新增關聯服務",
+      "associatesDetail": "編輯關聯服務",
+      "consulting": "資訊管理",
+      "consultingAdd": "新增",
+      "consultingDetail": "編輯資訊",
+      "content": "内容管理",
+      "contentDetail": "修改",
+      "feedbacks": "客户反馈管理",
+      "feedbacksDetail": "查看",
+      "fqmanagers": "自主问答管理",
+      "fqmanagersDetail": "查看",
+      "info": "網站資訊管理",
+      "navs": "欄目管理",
+      "navsDetail": "修改欄目管理",
+      "news": "發布管理",
+      "newsAdd": "發佈新聞",
+      "newsDetail": "修改新聞",
+      "picture": "圖片管理",
+      "products": "服務商與產品管理",
+      "productsAdd": "新增服務商與產品管理",
+      "productsAddDetail": "編輯服務商與產品管理",
+      "questions": "常見問題管理",
+      "questionsAdd": "新增",
+      "questionsDetail": "編輯常見問題"
+    },
+    "navs": {
+      "detail": {
+        "navDescPlaceholder": "請輸入導航描述",
+        "navNamePlaceholder": "請輸入導航名稱",
+        "navigationType": "導航類型"
+      },
+      "dialog": {
+        "content": "您删除的菜单是“内容型”菜单，一旦删除，当前菜单关联的“内容”将同步删除，您确定删除当前菜单吗？"
+      },
+      "list": {
+        "title": "欄目管理"
+      }
+    },
+    "news": {
+      "detail": {
+        "authorName": "來源",
+        "authorNamePlaceholder": "請輸入來源",
+        "createDateTime": "時間",
+        "navigationId": "所屬欄目",
+        "newsDetail": "內容",
+        "newsSummary": "摘要",
+        "newsSummaryPlaceholder": "請輸入摘要，限200字",
+        "priorityLevel": "排序",
+        "priorityLevelPlaceholder": "請輸入0-9的整數",
+        "status": "狀態",
+        "title": "標題",
+        "titlePlaceholder": "請輸入新聞標題"
+      },
+      "list": {
+        "search": {
+          "create": "發佈新聞",
+          "navigationId": "所屬欄目",
+          "newsTitle": "新聞標題",
+          "newsTitlePlaceholder": "請輸入新聞標題或者關鍵字",
+          "searchDate": "發佈時間",
+          "title": "發佈管理"
+        },
+        "table": {
+          "createDateTime": "發佈時間",
+          "navigationId": "所屬欄目",
+          "newsTitle": "新聞標題",
+          "no": "序號",
+          "operat": "操作",
+          "priorityLevel": "排序",
+          "status": "狀態"
+        }
+      },
+      "valid": {
+        "authorName": "請輸入來源",
+        "createDateTime": "請輸入時間",
+        "language": "請選擇語種",
+        "navigationId": "'請選擇所屬欄目",
+        "newsDetail": "内容不能不空",
+        "newsSummary": "請輸入摘要",
+        "priorityLevel": "排序不能为空",
+        "title": "請輸入標題"
+      }
+    },
+    "picture": {
+      "list": {
+        "dialog": {
+          "content": "圖片上傳成功！"
+        },
+        "search": {
+          "title": "图片管理"
+        },
+        "table": {
+          "image": "图片名称",
+          "languageName": "页面语种",
+          "no": "序號",
+          "operat": "操作",
+          "upload": "上传"
+        }
+      }
+    },
+    "products": {
+      "detail": {
+        "applicationField": "應用領域",
+        "applicationFieldPlaceholder": "請輸入應用領域",
+        "applicationServiceDescPlaceholder": "請輸入應用服務說明，限200字",
+        "applicationServiceDescription": "應用服務說明",
+        "applicationServicePlan": "應用服務方案",
+        "applicationServicePlanPlaceholder": "請輸入應用服務方案",
+        "companyContent": "公司簡介",
+        "content": "內容",
+        "productContent": "產品介紹",
+        "sort": "排序",
+        "sortPlaceholder": "請輸入排序",
+        "sppStatus": "狀態",
+        "spplicationExampleContent": "應用案例",
+        "thumbnailUrl": "縮略圖",
+        "title": "標題",
+        "titlePlaceholder": "請輸入新聞標題"
+      },
+      "list": {
+        "search": {
+          "create": "新增",
+          "searchDate": "編輯時間",
+          "sppStatus": "狀態",
+          "sppTitle": "標題",
+          "title": "服務商與產品管理",
+          "titlePlaceholder": "請輸入主題或者關鍵字"
+        },
+        "table": {
+          "editor": "编辑者",
+          "no": "序號",
+          "operat": "操作",
+          "sort": "排序",
+          "sppStatussppStatus": "狀態",
+          "title": "標題",
+          "updateTime": "编辑時間"
+        }
+      },
+      "valid": {
+        "applicationField": "应用领域不能为空",
+        "applicationServiceDescription": "应用服务说明不能为空",
+        "applicationServicePlan": "应用服务方案不能为空",
+        "companyContent": "请输入公司簡介",
+        "content": "请输入產品介紹",
+        "language": "請選擇語種",
+        "sort": "排序不能为空",
+        "spplicationExampleContent": "请输入應用案例",
+        "title": "標題不能为空"
+      }
+    },
+    "question": {
+      "detail": {
+        "questionStatus": "狀態",
+        "replyContent": "內容",
+        "sort": "排序",
+        "sortPlaceholder": "請輸入排序",
+        "title": "標題",
+        "titlePlaceholder": "請輸入新聞標題"
+      },
+      "list": {
+        "search": {
+          "create": "新增",
+          "questionStatus": "狀態",
+          "questionTitle": "標題",
+          "searchDate": "編輯時間",
+          "title": "常見問題管理",
+          "titlePaceholder": "請輸入標題或者關鍵字"
+        },
+        "table": {
+          "editor": "編輯者",
+          "no": "序號",
+          "operat": "操作",
+          "sort": "排序",
+          "status": "狀態",
+          "title": "標題",
+          "updateTime": "編輯時間"
+        }
+      },
+      "valid": {
+        "language": "請選擇語種",
+        "replyContent": "内容不能不空",
+        "sort": "排序不能为空",
+        "title": "標題不能为空"
+      }
+    }
+  },
+  "statistic": {
+    "analysisTimes": "解析次數",
+    "area": "地區",
+    "checkNum": "檢索次數",
+    "checkNumThound": "檢索次數（單位：千）",
+    "common": {
+      "all": "- 全部 -",
+      "search": "搜索"
+    },
+    "country": "國家",
+    "dateDay": "日",
+    "dateMonth": "月",
+    "dateSelection": "日期篩選",
+    "dateYear": "年",
+    "day": "日期",
+    "internal": "國內",
+    "international": "國際",
+    "isliCode": "ISLI編碼",
+    "isliCodeAnalysisNum": "ISLI編碼解析數量",
+    "isliCodeNum": "ISLI編碼數量",
+    "isliCodeTotal": "ISLI編碼總量",
+    "isliCodeYAxisMillionName": "ISLI編碼數量（單位：百萬）",
+    "isliCodeYAxisName": "ISLI編碼數量（單位：千）",
+    "keyword": "關鍵字",
+    "lcRegisterNum": "LC登記者數量",
+    "million": "百萬",
+    "month": "月份",
+    "nav": {
+      "analysis": "解析統計",
+      "dataAnsys": "數據統計",
+      "islicodeAnsys": "ISLI編碼統計",
+      "lcAnsys": "LC登記者統計",
+      "searchAnsys": "檢索統計",
+      "serviceCodeAnsys": "服務登記統計",
+      "spAnsys": "SP統計"
+    },
+    "open": "展開",
+    "provinces": "省市",
+    "rank": "排名",
+    "retract": "收起",
+    "selectSpUser": "選擇SP用戶",
+    "selectTime": "選擇時間",
+    "service": "服務",
+    "serviceRegisterNum": "服務登記數量",
+    "sourceType": "源類型",
+    "sp": "SP",
+    "spUser": "SP用戶",
+    "spUserNum": "SP用戶數量",
+    "tabMenu": {
+      "area": "地區",
+      "exportExcel": "導出表格",
+      "exportImg": "導出視圖",
+      "service": "服務",
+      "sp": "SP",
+      "time": "時間",
+      "top10": "TOP10",
+      "top100": "TOP100"
+    },
+    "targetType": "目標類型",
+    "time": "時間",
+    "total": "合計",
+    "typeSelection": "類型篩選",
+    "year": "年份"
+  },
+  "systemAccount": {
+    "create": {
+      "create": "創建帳戶",
+      "edit": "修改帳戶",
+      "email": "联系邮箱",
+      "emailHolder": "请输入联系邮箱",
+      "jobNo": "工号",
+      "jobNoHolder": "工号可用于登录",
+      "mobile": "手机",
+      "mobileHolder": "请输入手机号码",
+      "name": "姓名",
+      "nameHolder": "请输入您的姓名",
+      "password": "密码",
+      "passwordConfirm": "确认密码",
+      "passwordHolder": "建议6~20位字母数字组合密码",
+      "systemAccount": "系统账户",
+      "telephone": "固话",
+      "username": "用户名",
+      "usernameHolder": "支持用户名/手机号/邮箱",
+      "valid": {
+        "emial": "联系邮箱不能为空",
+        "format": "请输入6~20位字母数字组合密码",
+        "jobNo": "工号不能为空",
+        "jobNoExist": "工号已經被使用",
+        "mobile": "手机号码不能为空",
+        "name": "姓名不能为空",
+        "noeEq": "两次密码不一致",
+        "password": "密码不能为空",
+        "passwordConfirm": "确认密码不能为空",
+        "uernameExist": "用戶名已經被使用",
+        "username": "用户名不能为空"
+      }
+    },
+    "list": {
+      "addTime": "新增時間",
+      "deleteMess": "確定要刪除嗎？",
+      "email": "聯系郵箱",
+      "jobNo": "工號",
+      "name": "姓名",
+      "no": "序號",
+      "normal": "正常",
+      "roleType": "角色類型",
+      "startMess": "您是否确定启用当前工作人员账户？",
+      "status": "狀態",
+      "stopMess": "您是否確定停用當前工作人員帳戶？",
+      "stopTime": "停用時間",
+      "telephone": "聯系電話",
+      "username": "用戶名"
+    },
+    "nav": {
+      "create": "創建帳戶",
+      "createRole": "創建角色",
+      "edit": "修改",
+      "enabled": "啟用",
+      "languageSetting": "語種配置",
+      "mailTemplate": "邮件模板",
+      "messageManagement": "消息管理",
+      "releaseTidings": "發布消息",
+      "roleManagement": "角色管理",
+      "systemAccount": "系統賬戶",
+      "systemLog": "系統日誌"
+    }
+  },
+  "systemEmail": {
+    "create": {
+      "close": "关闭",
+      "save": "提交",
+      "tips": "溫馨提示：",
+      "tipsOne": "1、新增邮件模板必须同时完成多语种邮件内容编辑。",
+      "tipsTwo": "2、邮件正文如需动态引用用户名，请参照引用格式{userName}。"
+    },
+    "list": {
+      "auth": "邮件拟定人",
+      "deleteMess": "您是否确定删除当前邮件模板？",
+      "emialTemp": "邮件模板",
+      "example": "查看示例",
+      "new": "新增邮件模板",
+      "no": "序号",
+      "theme": "邮件主题",
+      "time": "新增时间",
+      "type": "邮件类型"
+    }
+  },
+  "systemLanguage": {
+    "create": {
+      "background": "首页背景图",
+      "config": "语种配置",
+      "content": "单页内容",
+      "nav": "导航菜单",
+      "success": "成功启用"
+    },
+    "list": {
+      "addTime": "新增时间",
+      "config": "立即配置",
+      "desc": "描述",
+      "languageName": "语种名称",
+      "notStart": "未启用",
+      "start": "已启用",
+      "startMess": "您正在啟用當前語種，完成語種啟用，妳需要配置導航菜單和ISLI官網的相關內容。",
+      "startTime": "启用时间",
+      "status": "状态",
+      "stopMess": "确定要停用语种{{ langName }}吗？"
+    }
+  },
+  "systemLog": {
+    "list": {
+      "event": "事件",
+      "log": "系统日志",
+      "opTime": "操作时间",
+      "result": "处理结果",
+      "role": "角色",
+      "user": "用户名"
+    }
+  },
+  "systemMessage": {
+    "create": {
+      "create": "发布消息",
+      "return": "返回",
+      "select": "请选择",
+      "send": "立即发送",
+      "sendObj": "发送对象",
+      "spread": "展開",
+      "tips": "溫馨提示：",
+      "tipsOne": "1、發布系統消息必須同時完成多語種消息內容編輯。",
+      "tipsTwo": "2、如果消息發送對象為所有SP用戶，“發送對象”請留空。",
+      "up": "收起"
+    },
+    "list": {
+      "affix": "附件",
+      "mess": "消息管理"
+    }
+  },
+  "systemRole": {
+    "create": {
+      "create": "创建角色",
+      "edit": "修改角色"
+    },
+    "list": {
+      "accountNum": "账户数量",
+      "addTime": "新增时间",
+      "config": "配置权限",
+      "deleteMess": "您確定要刪除該角色嗎？",
+      "desc": "描述",
+      "manager": "角色管理",
+      "roleName": "角色名称",
+      "startMess": "您是否確定啟用當前角色，一旦啟用，該角色下的工作人員帳戶將重新獲得相關的權限。",
+      "stopMess": "您是否確定停用當前角色，一旦停用，該角色下的工作人員帳戶將失去相關的權限。"
+    }
+  },
+  "systemShared": {
+    "area": "区号",
+    "areaFormat": "区号格式不正确",
+    "areaRequired": "区号不能为空",
+    "columnName": "栏目名称",
+    "configTable": "角色權限配置表",
+    "editTips": "修改配置成功",
+    "ext": "分机号",
+    "extFormat": "分机号格式不正确",
+    "image": "图片",
+    "imgTips": "请选择jpg/jpeg/png/bmp格式的图片",
+    "input": "请填写所有导航信息",
+    "next": "下一步",
+    "noData": "无搜索结果",
+    "pre": "上一步",
+    "preview": "预览",
+    "pubTime": "发布时间",
+    "select": "- 请选择 -",
+    "selectImg": "选择图片",
+    "selectRole": "请选择角色",
+    "stepFirst": "参照一级菜单",
+    "stepSecond": "参照次级菜单",
+    "stepThird": "目标语种菜单",
+    "success": "恭喜您，已完成新语种启用相关配置",
+    "telFormat": "固定电话格式不正确",
+    "telNumber": "您的固定电话",
+    "telRequired": "固定电话不能为空",
+    "theme": "主题",
+    "to": "点击“完成”新语种启用成功，点击“取消”保存当前所有语种配置，但是不启用当前语种",
+    "updateTime": "更新时间"
+  },
+  "title": "ISLI後臺管理系統",
+  "user": {
+    "auth": {
+      "areaName": "区行名称：",
+      "info": "认证信息",
+      "uploadInfo": "上传认证信息："
+    },
+    "company": {
+      "business": "所在行业：",
+      "code": "统一社会信用代码",
+      "contactAddress": "联系地址：",
+      "info": "企业信息",
+      "name": "企业名称：",
+      "registerArea": "注册地区：",
+      "site": "官方网址："
+    },
+    "contact": {
+      "email": "电子邮箱",
+      "info": "联系信息",
+      "phone": "联系人电话（手机）：",
+      "userName": "姓名："
+    },
+    "dialog": {
+      "submitReason": "提交理由",
+      "submitReasonPlaceholder": "請輸入操作理由，限200字。",
+      "submitReasonRequired": "請輸入提交理由",
+      "sure": "確定"
+    },
+    "groups": {
+      "all": "- 全部 -",
+      "organization": "機構",
+      "personal": "個人"
+    },
+    "operation": {
+      "enable": "啟用",
+      "forzen": "凍結",
+      "stop": "禁用",
+      "viewDetail": "詳情"
+    },
+    "search": {
+      "checkIn": "登记时间：",
+      "companyName": "企业名称：",
+      "placehold": {
+        "name": "請輸入企業名稱",
+        "userName": "請輸入SP注冊使用的郵箱"
+      },
+      "region": "所属区域：",
+      "registerDate": "注册时间：",
+      "search": "搜素",
+      "state": "状态：",
+      "userGroup": "用户性质：",
+      "userName": "用户名："
+    },
+    "status": {
+      "all": "- 全部 -",
+      "disable": "禁用",
+      "forzen": "凍結",
+      "normal": "正常"
+    },
+    "table": {
+      "area": "地区",
+      "areaName": "区行名称",
+      "authDate": "认证时间",
+      "authInfo": "认证信息",
+      "business": "行业",
+      "companyName": "企业名称",
+      "contact": "联系方式",
+      "contactUser": "联系人",
+      "location": "所属区域",
+      "no": "序号",
+      "operat": "操作",
+      "region": "所属区域",
+      "registerDate": "注册时间",
+      "state": "状态",
+      "userGroup": "用户性质",
+      "userName": "用户名",
+      "userState": "状态"
+    }
+  },
+  "webName": "後臺管理系統"
+}

@@ -1,0 +1,17 @@
+<div class="date-wrap">
+  <div class="p-grid">
+    <div class="p-col">
+      <app-calendar
+        [calendarObj]="beginCalendarObj"
+        [(ngModel)]="beginDate"
+      ></app-calendar>
+    </div>
+    <div class="grap">-</div>
+    <div class="p-col">
+      <app-calendar
+        [calendarObj]="endCalendarObj"
+        [(ngModel)]="endDate"
+      ></app-calendar>
+    </div>
+  </div>
+</div>

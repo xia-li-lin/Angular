@@ -1,0 +1,45 @@
+<div class="language-box">
+    <div class="create">
+        <h6>{{ 'systemLanguage.create.config' | translate }}</h6>
+    </div>
+    <div class="table">
+        <p-table [value]="languageListData">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th width="14%">{{'systemEmail.list.no' | translate}}</th>
+                    <th width="15%">{{ 'systemLanguage.list.languageName' | translate }}</th>
+                    <th width="15%">{{ 'systemLanguage.list.desc' | translate }}</th>
+                    <th width="14%">{{ 'systemLanguage.list.addTime' | translate }}</th>
+                    <th width="14%">{{ 'systemLanguage.list.startTime' | translate }}</th>
+                    <th width="14%">{{ 'systemLanguage.list.status' | translate }}</th>
+                    <th width="14%">{{ 'common.operation' | translate }}</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                <tr>
+                    <td>
+                        {{rowIndex+1}}
+                    </td>
+                    <td title="{{rowData.langName}}">{{rowData.langName}}</td>
+                    <td title="{{rowData.langDesc}}">{{rowData.langDesc}}</td>
+                    <td title="{{rowData.createDateTime|date:'yyyy-MM-dd'}}">
+                        {{rowData.createDateTime |date:'yyyy-MM-dd'}}
+                    </td>
+                    <td title="{{rowData.startedDateTime|date:'yyyy-MM-dd'}}">
+                        {{rowData.startedDateTime|date:'yyyy-MM-dd'}}
+                    </td>
+                    <td title="{{rowData.isHided |languageStatus}}" [class.red]="rowData.isHided==1">
+                        {{rowData.isHided |languageStatus}}</td>
+                    <td class="operation">
+                        <a class="stop" (click)="handleStopClick(rowData)" *ngIf="rowData.isHided==0 " title="{{'common.stop' | translate }}"></a>
+                        <a class="enable" (click)="handleStartClick(rowData)" *ngIf="rowData.isHided==1 "
+                            title="{{'common.enable' | translate }}"></a>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <app-loaing-data [data]="languageListData"></app-loaing-data>
+        <p-confirmDialog acceptIcon="" rejectIcon="" acceptLabel="{{'common.sure' | translate }}" rejectLabel="{{'common.cancel' | translate }}">
+        </p-confirmDialog>
+    </div>
+</div>

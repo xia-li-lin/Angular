@@ -1,0 +1,78 @@
+.file-box {
+  min-height: 165px;
+
+  .file-list {
+    width: 570px;
+    height: 100px;
+    overflow: auto;
+    border: 1px solid #d5dce2;
+    padding: 10px;
+    background: #fff;
+    .item {
+      line-height: 22px;
+      height: 32px;
+      padding-bottom: 10px;
+    }
+
+    i,
+    span {
+      margin-right: 5px;
+      display: inline-block;
+    }
+
+    i {
+      width: 24px;
+      height: 22px;
+      background: url(/assets/images/affixGray.png) left center no-repeat;
+    }
+
+    span {
+      max-width: 460px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-family: SourceHanSansSC-Regular;
+      font-size: 14px;
+      color: #354754;
+    }
+
+    button {
+      background: url(/assets/images/deleteGray.png) left center no-repeat;
+      height: 22px;
+      width: 30px;
+      vertical-align: baseline;
+      border: 0;
+      display: inline-block;
+    }
+  }
+
+  label {
+    width: 120px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background: #007bd8;
+    border-radius: 4px;
+    font-family: SourceHanSansSC-Regular;
+    font-size: 14px;
+    color: #ffffff;
+    display: inline-block;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .tips {
+    font-family: SourceHanSansSC-Regular;
+    font-size: 12px;
+    color: #9ea6ac;
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  .errors {
+    font-family: SourceHanSansSC-Regular;
+    font-size: 12px;
+    color: #eb4d4d;
+    line-height: 18px;
+  }
+}

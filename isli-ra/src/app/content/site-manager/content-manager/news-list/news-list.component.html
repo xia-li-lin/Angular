@@ -1,0 +1,184 @@
+<div>
+  <div class="search-title">
+    <span>{{ "siteManager.news.list.search.title" | translate }}</span>
+    <button appPermission="WS.XW.FB" (click)="handleAddClick()">
+      {{ "siteManager.news.list.search.create" | translate }}
+    </button>
+  </div>
+  <div [class]="'search search-content' + lang">
+    <dl>
+      <dt>{{ "siteManager.news.list.search.navigationId" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="navigationId"
+          [options]="navNamesList"
+          [(ngModel)]="newsSearch.navigationId"
+          [autoDisplayFirst]="false"
+          placeholder="{{ 'siteManager.common.all' | translate }}"
+        >
+        </p-dropdown>
+      </dd>
+    </dl>
+    <dl>
+      <dt>{{ "siteManager.news.list.search.newsTitle" | translate }}：</dt>
+      <dd>
+        <input
+          pInputText
+          appTrim
+          [(ngModel)]="newsSearch.newsTitle"
+          placeholder="{{
+            'siteManager.news.list.search.newsTitlePlaceholder' | translate
+          }}"
+        />
+      </dd>
+    </dl>
+    <dl>
+      <dt>{{ "siteManager.common.langCode" | translate }}：</dt>
+      <dd>
+        <p-dropdown
+          name="langCode"
+          [options]="langList"
+          [(ngModel)]="newsSearch.langCode"
+          [autoDisplayFirst]="false"
+          placeholder="{{ 'siteManager.common.all' | translate }}"
+        >
+        </p-dropdown>
+      </dd>
+    </dl>
+    <dl class="time">
+      <dt>{{ "siteManager.news.list.search.searchDate" | translate }}：</dt>
+      <dd>
+        <app-begin-end-date
+          [(ngModel)]="searchDate"
+          (ngModelChange)="handleDateChange($event)"
+        ></app-begin-end-date>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <button (click)="handleSearch()">
+          {{ "siteManager.common.search" | translate }}
+        </button>
+      </dt>
+    </dl>
+  </div>
+  <div class="table">
+    <p-table [value]="newsListData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="10%">
+            {{ "siteManager.news.list.table.no" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.news.list.table.newsTitle" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.news.list.table.navigationId" | translate }}
+          </th>
+          <th width="10%">{{ "siteManager.common.langCode" | translate }}</th>
+          <th width="8%">
+            {{ "siteManager.news.list.table.priorityLevel" | translate }}
+          </th>
+          <th>
+            {{ "siteManager.news.list.table.createDateTime" | translate }}
+          </th>
+          <th width="8%">
+            {{ "siteManager.news.list.table.status" | translate }}
+          </th>
+          <th width="15%">
+            {{ "siteManager.news.list.table.operat" | translate }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>
+            {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+          </td>
+          <td title="{{ rowData.title }}">
+            {{ rowData.title }}
+          </td>
+          <td title="{{ rowData.navI18n.navigationName }}">
+            {{ rowData.navI18n.navigationName }}
+          </td>
+          <td title="{{ rowData.language.langDesc }}">
+            {{ rowData.language.langDesc }}
+          </td>
+          <td>
+            <input
+              #priorityLevel
+              type="text"
+              value="{{ rowData.priorityLevel }}"
+              maxlength="1"
+              appPatternInput="^\d+$"
+              (blur)="
+                handleSort(
+                  rowData.newsId,
+                  priorityLevel.value,
+                  rowData.priorityLevel
+                )
+              "
+            />
+          </td>
+          <td title="{{ rowData.createDateTime | date: 'yyyy-MM-dd' }}">
+            {{ rowData.createDateTime | date: "yyyy-MM-dd" }}
+          </td>
+          <td
+            [ngClass]="{
+              blue: rowData.isHided == 0,
+              green: rowData.isHided == 1
+            }"
+            title="{{ rowData.isHided | showHideTrans: 1 }}"
+          >
+            {{ rowData.isHided | showHideTrans: 1 }}
+          </td>
+          <td class="operation">
+            <a
+              appPermission="WS.XW.HS"
+              [ngClass]="{
+                exhibition: rowData.isHided == 1,
+                conceal: rowData.isHided == 0
+              }"
+              title="{{ rowData.isHided | showHideTrans }}"
+              (click)="handlehideOrShow(rowData.newsId)"
+            ></a>
+            <a
+              appPermission="WS.XW.XG"
+              class="modify"
+              title="{{ 'siteManager.common.modify' | translate }}"
+              (click)="handleModifyClick(rowData)"
+            ></a>
+            <a
+              appPermission="WS.XW.SC"
+              class="delete"
+              title="{{ 'siteManager.common.delete' | translate }}"
+              (click)="handleDeleteClick(rowData.newsId)"
+            ></a>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <app-paging-box
+      *ngIf="pageInfo.totalRecords"
+      [pagingBoxObj]="pageInfo"
+      (OnPageChange)="handlePageChange($event)"
+    >
+    </app-paging-box>
+    <app-loaing-data [data]="newsListData"></app-loaing-data>
+  </div>
+</div>
+<app-shared-dialog
+  *ngIf="dialogOnOff"
+  cancelTxt="{{ 'siteManager.common.cancle' | translate }}"
+  [validFunc]="validFunc"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <div>{{ "siteManager.common.cancelContent" | translate }}</div>
+</app-shared-dialog>
+
+<app-shared-dialog
+  *ngIf="sortOnOff"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <div>{{ "siteManager.common.sortTips" | translate }}</div>
+</app-shared-dialog>

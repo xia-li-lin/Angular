@@ -1,0 +1,31 @@
+<div class="create">
+  <div class="header">
+    <h5>{{ "systemEmail.list.emialTemp" | translate }}</h5>
+    <a (click)="handleCancelClick()">×</a>
+  </div>
+  <div class="scroll">
+    <div class="tips">
+      <p class="icon">{{ "systemEmail.create.tips" | translate }}</p>
+      <p>{{ "systemEmail.create.tipsOne" | translate }}</p>
+      <p>{{ "systemEmail.create.tipsTwo" | translate }}</p>
+    </div>
+
+    <div class="title">
+      <h5>繁体中文</h5>
+    </div>
+    <app-email-template-tw [info]="infoTw"></app-email-template-tw>
+    <div class="title">
+      <h5>English</h5>
+    </div>
+    <app-email-template-en [info]="infoEn"></app-email-template-en>
+  </div>
+  <div class="footer">
+    <button *ngIf="showSaveBtnFlag" (click)="handleSendClick()">
+      {{ "systemEmail.create.save" | translate }}
+    </button>
+    <button class="cancel" (click)="handleCancelClick()">
+      {{ "systemEmail.create.close" | translate }}
+    </button>
+  </div>
+</div>
+<div class="bg"></div>

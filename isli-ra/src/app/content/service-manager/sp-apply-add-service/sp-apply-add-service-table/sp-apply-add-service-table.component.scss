@@ -1,0 +1,10 @@
+.sp-apply-add-service-table {
+  .operation {
+    a.check {
+      cursor: pointer;
+    }
+    a.putGrayCheck {
+      cursor: not-allowed;
+    }
+  }
+}

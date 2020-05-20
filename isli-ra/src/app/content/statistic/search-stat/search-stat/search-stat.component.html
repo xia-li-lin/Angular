@@ -1,0 +1,71 @@
+<div class="search-stat statistic">
+  <h2 class="nav-name">{{ "statistic.nav.searchAnsys" | translate }}</h2>
+  <div class="clearfix statistic-content">
+    <app-search-stat-search
+      [searchStatisticSearchParams]="searchStatisticSearchParams"
+      (searchClick)="handleSearchClick($event)"
+      (selectButtonChange)="handleSelectButtonChange($event)"
+      (typeChange)="handleTypeChange($event)"
+    ></app-search-stat-search>
+    <app-search-stat-time
+      *ngIf="searchStatisticSearchParams.type == searchStatisticSearchType.YEAR"
+      [dateType]="dateType"
+      [timeAreaList]="timeAreaList"
+    ></app-search-stat-time>
+    <app-search-stat-area
+      *ngIf="searchStatisticSearchParams.type == searchStatisticSearchType.AREA"
+      [timeAreaList]="timeAreaList"
+    ></app-search-stat-area>
+    <app-excel
+      *ngIf="
+        searchStatisticSearchParams.type == searchStatisticSearchType.TOP10 &&
+        topList &&
+        topList.length
+      "
+      (exportTable)="handleExportTableClick('top10')"
+    ></app-excel>
+    <app-search-stat-top
+      *ngIf="
+        searchStatisticSearchParams.type == searchStatisticSearchType.TOP10
+      "
+      [pagingBoxObj]="pagingBoxObj"
+      [topList]="topList"
+    ></app-search-stat-top>
+    <div
+      class="clearfix toggle"
+      *ngIf="
+        searchStatisticSearchParams.type != searchStatisticSearchType.TOP10 &&
+        timeAreaList &&
+        timeAreaList.length
+      "
+    >
+      <button
+        class="toggleBtn"
+        [ngClass]="{ toggleBtnActive: onoff }"
+        (click)="handleToggleClick()"
+      ></button>
+    </div>
+    <app-excel
+      *ngIf="
+        onoff &&
+        searchStatisticSearchParams.type != searchStatisticSearchType.TOP10 &&
+        timeAreaList &&
+        timeAreaList.length
+      "
+      (exportTable)="handleExportTableClick()"
+    ></app-excel>
+    <app-search-stat-table
+      *ngIf="
+        onoff &&
+        searchStatisticSearchParams.type != searchStatisticSearchType.TOP10 &&
+        timeAreaList &&
+        timeAreaList.length
+      "
+      [pagingBoxObj]="pagingBoxObj"
+      [timeAreaList]="timeAreaList"
+      [searchStatTableTotal]="searchStatTableTotal"
+      [dateType]="dateType"
+      [type]="searchStatisticSearchParams.type"
+    ></app-search-stat-table>
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="content">
+  <nav class="content-hd">
+    <ul>
+      <li>
+        <a [routerLink]="['/content/index']" routerLinkActive="active">
+          {{ "content.nav.index" | translate }}
+        </a>
+      </li>
+      <li appPermission="SP">
+        <a [routerLink]="['/content/user']" routerLinkActive="active">
+          {{ "content.nav.userManager" | translate }}
+        </a>
+      </li>
+      <li appPermission="SC">
+        <a [routerLink]="['/content/service']" routerLinkActive="active">
+          {{ "content.nav.serverManager" | translate }}
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/content/area']" routerLinkActive="active">
+          {{ "content.nav.areaManager" | translate }}
+        </a>
+      </li>
+      <li appPermission="LC">
+        <a [routerLink]="['/content/lc']" routerLinkActive="active">
+          {{ "content.nav.lcManager" | translate }}
+        </a>
+      </li>
+      <li appPermission="SS">
+        <a [routerLink]="['/content/statistic']" routerLinkActive="active">
+          {{ "content.nav.dataAnsys" | translate }}
+        </a>
+      </li>
+      <li appPermission="WS">
+        <a [routerLink]="['/content/site']" routerLinkActive="active">
+          {{ "content.nav.siteManager" | translate }}
+        </a>
+      </li>
+      <li appPermission="MM">
+        <a [routerLink]="['/content/system']" routerLinkActive="active">
+          {{ "content.nav.sysManager" | translate }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="content-bd" [ngClass]="{ 'no-bread': navItems.length <= 1 }">
+    <div class="content-bread" *ngIf="navItems.length > 1">
+      <p>
+        {{ "content.nav.location" | translate }}
+      </p>
+      <p-breadcrumb [model]="navItems"></p-breadcrumb>
+    </div>
+
+    <div
+      class="left-nav"
+      [ngClass]="'left-nav' + language"
+      *ngIf="leftNav && !leftNav.length"
+    >
+      <div>
+        <label>{{ leftNav.title | translate }}</label>
+      </div>
+      <nav>
+        <ul *ngFor="let item of leftNav.navs">
+          <li>
+            <a
+              routerLinkActive="active"
+              [routerLink]="item.routerLink"
+              title="{{ item.navName | translate }}"
+            >
+              {{ item.navName | translate }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div
+      class="left-nav"
+      [ngClass]="'left-nav' + language"
+      *ngIf="leftNav && leftNav.length"
+    >
+      <div *ngFor="let nav of leftNav">
+        <div>
+          <label>{{ nav.title | translate }}</label>
+        </div>
+        <nav>
+          <ul *ngFor="let item of nav.navs">
+            <li>
+              <a
+                routerLinkActive="active"
+                [routerLink]="item.routerLink"
+                title="{{ item.navName | translate }}"
+              >
+                {{ item.navName | translate }}
+                <i
+                  *ngIf="
+                    item.navName == 'siteManager.leftNav.feedbacks' &&
+                    feedBackNumber
+                  "
+                  class="red-circle"
+                  >{{ feedBackNumber }}</i
+                >
+                <i
+                  *ngIf="
+                    item.navName == 'siteManager.leftNav.fqmanagers' &&
+                    fqManagerNumber
+                  "
+                  class="red-circle"
+                  >{{ fqManagerNumber }}</i
+                >
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="right-bd" [ngClass]="{ 'no-left': !leftNav }">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

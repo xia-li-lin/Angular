@@ -1,0 +1,38 @@
+<div class="analysis-stat-top statistic-top table">
+  <p-table [value]="analysisStatPageList">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 15%;">
+          {{ "statistic.rank" | translate }}
+        </th>
+        <th style="width: 25%;">
+          {{ "statistic.isliCode" | translate }}
+        </th>
+        <th style="width: 20%;">
+          {{ "statistic.sourceType" | translate }}
+        </th>
+        <th style="width: 20%;">
+          {{ "statistic.targetType" | translate }}
+        </th>
+        <th style="width: 20%;">
+          {{ "statistic.analysisTimes" | translate }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+      <tr class="table-tr">
+        <td>{{ rowData?.sort }}</td>
+        <td>{{ rowData?.islicode }}</td>
+        <td>{{ rowData?.sourceType }}</td>
+        <td>{{ rowData?.targetType }}</td>
+        <td>{{ rowData?.num }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <app-loaing-data [data]="analysisStatPageList"></app-loaing-data>
+  <app-paging-box
+    *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+    [pagingBoxObj]="pagingBoxObj"
+    (OnPageChange)="handlePageChange($event)"
+  ></app-paging-box>
+</div>

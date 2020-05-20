@@ -1,0 +1,135 @@
+<div class="service-detail content-container">
+  <div class="header">
+    <p class="title">{{ "service.serviceList.detail.title" | translate }}</p>
+  </div>
+  <div class="body">
+    <div class="item clearfix" *ngIf="languageEnable('ZH_TW')">
+      <h2>繁体中文</h2>
+      <div class="content">
+        <div class="list-style clearfix">
+          <!-- 服务 -->
+          <dl>
+            <dt>服務：</dt>
+            <dd>{{ serviceDetail?.serviceNameZh }}</dd>
+          </dl>
+          <!-- 服务编码 -->
+          <dl>
+            <dt>服務編碼：</dt>
+            <dd>{{ serviceDetail?.serviceCodeZh }}</dd>
+          </dl>
+          <!-- 关联字段长度 -->
+          <dl>
+            <dt>關聯字段長度：</dt>
+            <dd>{{ serviceDetail?.relevanceLengthZh }}</dd>
+          </dl>
+          <!-- 服务说明文件 -->
+          <dl>
+            <dt>服務說明文件：</dt>
+            <dd>
+              {{ serviceDetail?.serviceWordUrlFileName }}
+              <a
+                href="javascript:;"
+                (click)="handleDownloadClick(serviceDetail?.serviceWordUrlZh)"
+                >下载
+              </a>
+            </dd>
+          </dl>
+          <!-- 服务简介 -->
+          <dl>
+            <dt>服務簡介：</dt>
+            <dd>{{ serviceDetail?.descriptionZh }}</dd>
+          </dl>
+        </div>
+        <div
+          class="table-style clearfix"
+          *ngIf="relevanceList && relevanceList.length"
+        >
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th>關聯類型</th>
+                <th>源类型</th>
+                <th>目标类型</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let relevance of relevanceList">
+                <td>{{ relevance?.relevanceTypeNameZh }}</td>
+                <td>{{ relevance?.sourceTypeNameZh }}</td>
+                <td>{{ relevance?.targetTypeNameZh }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="item clearfix" *ngIf="languageEnable('EN_US')">
+      <h2>English</h2>
+      <div class="content">
+        <div class="list-style clearfix">
+          <!-- 服务 -->
+          <dl>
+            <dt>Service：</dt>
+            <dd>{{ serviceDetail?.serviceNameEn }}</dd>
+          </dl>
+          <!-- 服务编码 -->
+          <dl>
+            <dt>Service code：</dt>
+            <dd>{{ serviceDetail?.serviceCodeEn }}</dd>
+          </dl>
+          <!-- 关联字段长度 -->
+          <dl>
+            <dt>Link code length：</dt>
+            <dd>{{ serviceDetail?.relevanceLengthEn }}</dd>
+          </dl>
+          <!-- 服务说明文件 -->
+          <dl>
+            <dt>Service description file：</dt>
+            <dd>
+              {{ serviceDetail?.serviceWordUrlFileNameEn }}
+              <a
+                href="javascript:;"
+                (click)="handleDownloadClick(serviceDetail?.serviceWordUrlEn)"
+                >Download
+              </a>
+            </dd>
+          </dl>
+          <!-- 服务简介 -->
+          <dl>
+            <dt>Brief introduction：</dt>
+            <dd>{{ serviceDetail?.descriptionEn }}</dd>
+          </dl>
+        </div>
+        <div
+          class="table-style clearfix"
+          *ngIf="relevanceList && relevanceList.length"
+        >
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th>Link type</th>
+                <th>Source type</th>
+                <th>Target type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let relevance of relevanceList">
+                <td>{{ relevance?.relevanceTypeNameEn }}</td>
+                <td>{{ relevance?.sourceTypeNameEn }}</td>
+                <td>{{ relevance?.targetTypeNameEn }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="aBtn">
+      <button class="blue" (click)="handleModifyClick()">
+        {{ "service.common.modify" | translate }}
+      </button>
+      <button class="return" (click)="handleBackClick()">
+        {{ "service.common.back" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

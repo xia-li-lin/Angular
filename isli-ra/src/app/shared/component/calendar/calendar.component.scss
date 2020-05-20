@@ -1,0 +1,12 @@
+// ::ng-deep {
+//   .ui-calendar input.ui-inputtext {
+//     width: 171px;
+//     height: 32px;
+//     line-height: 32px;
+//   }
+// }
+
+:host ::ng-deep .ui-calendar .ui-datepicker.ui-widget-content {
+  min-width: 250px;
+  width: 100%;
+}

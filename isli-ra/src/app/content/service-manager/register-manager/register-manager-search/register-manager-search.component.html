@@ -1,0 +1,175 @@
+<div
+  class="register-manager-search bd-search"
+  [ngClass]="{
+    'search-en': language === 'EN_US',
+    'search-zh': language !== 'EN_US'
+  }"
+>
+  <div class="p-grid search-bd">
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-6': language === 'EN_US',
+        'P-col-4': language !== 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US',
+          'wid-70': language !== 'EN_US'
+        }"
+        >{{ "service.register.search.status" | translate }}：</label
+      >
+      <span class="item-bd">
+        <p-dropdown
+          [options]="statusList"
+          [(ngModel)]="status"
+          [autoDisplayFirst]="true"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-6': language === 'EN_US',
+        'P-col-4': language !== 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US',
+          'wid-84': language !== 'EN_US'
+        }"
+        >{{ "service.register.search.serviceProvider" | translate }}：</label
+      >
+      <span class="item-bd">
+        <p-dropdown
+          [options]="serviceProviderList"
+          [(ngModel)]="serviceProvider"
+          [autoDisplayFirst]="true"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-6': language === 'EN_US',
+        'P-col-4': language !== 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US',
+          'wid-55': language !== 'EN_US'
+        }"
+        >{{ "service.register.search.services" | translate }}：</label
+      >
+      <span class="item-bd">
+        <p-dropdown
+          [options]="servicesList"
+          [(ngModel)]="services"
+          [autoDisplayFirst]="true"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-6': language === 'EN_US',
+        'P-col-4': language !== 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US',
+          'wid-70': language !== 'EN_US'
+        }"
+        >{{ "service.register.search.serviceCode" | translate }}：</label
+      >
+      <span class="item-bd">
+        <p-dropdown
+          [options]="serviceCodeList"
+          [(ngModel)]="serviceCode"
+          [autoDisplayFirst]="true"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+      </span>
+    </div>
+    <div
+      class="item"
+      [ngClass]="{
+        'p-col-7': language === 'EN_US',
+        'P-col-6': language !== 'EN_US'
+      }"
+    >
+      <label
+        [ngClass]="{
+          'wid-130': language === 'EN_US',
+          'wid-84': language !== 'EN_US'
+        }"
+        >{{ "service.register.search.registerData" | translate }}：</label
+      >
+      <span class="item-bd date">
+        <app-begin-end-date [(ngModel)]="registerData"></app-begin-end-date>
+      </span>
+    </div>
+    <div
+      class="p-col-2 item item-search"
+      [ngClass]="{
+        'search-zh': language !== 'EN_US',
+        'search-en': language === 'EN_US'
+      }"
+    >
+      <span class="item-bd">
+        <button
+          pButton
+          label="{{ 'service.common.search' | translate }}"
+          (click)="handleSearchClick()"
+        ></button>
+      </span>
+    </div>
+  </div>
+</div>

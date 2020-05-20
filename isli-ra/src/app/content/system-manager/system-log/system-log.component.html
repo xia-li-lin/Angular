@@ -1,0 +1,49 @@
+<div class="system-box">
+  <div class="create">
+    <h6>{{ "systemLog.list.log" | translate }}</h6>
+  </div>
+  <app-system-log-search
+    [roleListData]="roleListData"
+    (OnQueryClick)="handleQueryClick($event)"
+  >
+  </app-system-log-search>
+  <div class="table">
+    <p-table [value]="systemListData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="8%">{{ "systemEmail.list.no" | translate }}</th>
+          <th width="12%">{{ "systemLog.list.user" | translate }}</th>
+          <th width="20%">{{ "systemLog.list.role" | translate }}</th>
+          <th width="10%">{{ "systemLog.list.event" | translate }}</th>
+          <th width="20%">{{ "systemLog.list.result" | translate }}</th>
+          <th width="15%">IP</th>
+          <th width="15%">{{ "systemLog.list.opTime" | translate }}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>
+            {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+          </td>
+          <td title="{{ rowData.employeeAccount }}">
+            {{ rowData.employeeAccount }}
+          </td>
+          <td title="{{ rowData.roleName }}">{{ rowData.roleName }}</td>
+          <td title="{{ rowData.action }}">{{ rowData.action }}</td>
+          <td title="{{ rowData.result }}">{{ rowData.result }}</td>
+          <td title="{{ rowData.accessIp }}">{{ rowData.accessIp }}</td>
+          <td title="{{ rowData.createDate | date: 'yyyy-MM-dd HH:mm:ss' }}">
+            {{ rowData.createDate | date: "yyyy-MM-dd HH:mm:ss" }}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <app-loaing-data [data]="systemListData"></app-loaing-data>
+    <app-paging-box
+      *ngIf="pageInfo.totalRecords"
+      [pagingBoxObj]="pageInfo"
+      (OnPageChange)="handlePageChange($event)"
+    >
+    </app-paging-box>
+  </div>
+</div>

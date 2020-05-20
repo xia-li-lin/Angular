@@ -1,0 +1,45 @@
+<div>
+  <div class="search-title">
+    <span>{{ "siteManager.navs.list.title" | translate }}</span>
+  </div>
+  <div class="wrapp-tree">
+    <p-tree
+      *ngIf="navTree && navTree.length"
+      [value]="navTree"
+      [selection]="selectedNodes"
+      (onNodeSelect)="handleNodeSelect($event)"
+      (onNodeUnselect)="handleNodeUnSelect($event)"
+      selectionMode="checkbox"
+    >
+      <ng-template let-node pTemplate="default">
+        <div class="wrap-node">
+          <span class="label">{{ node.label }}</span>
+          <span class="operation">
+            <a
+              class="add"
+              *ngIf="showAddBtn(node)"
+              (click)="handleAddClick(node, $event)"
+            ></a>
+            <a class="modify" (click)="handleEditorClick(node, $event)"></a>
+            <a
+              class="delete"
+              *ngIf="node.selectable && !node.data.canDelete"
+              (click)="handleDeleteClick(node, $event)"
+            ></a>
+          </span>
+        </div>
+      </ng-template>
+    </p-tree>
+  </div>
+</div>
+
+<app-shared-dialog
+  *ngIf="dialogOnOff"
+  cancelTxt="{{ 'siteManager.common.cancle' | translate }}"
+  [validFunc]="validFunc"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <div>
+    {{ "siteManager.navs.dialog.content" | translate }}
+  </div>
+</app-shared-dialog>

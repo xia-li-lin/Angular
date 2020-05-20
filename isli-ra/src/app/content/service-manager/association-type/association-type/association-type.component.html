@@ -1,0 +1,23 @@
+<div class="association-type content-container">
+  <div class="header">
+    <p class="title">{{ "service.associationType.title" | translate }}</p>
+    <button
+      pButton
+      label="{{ 'service.associationType.add' | translate }}"
+      (click)="handleAddAssociationTypeClick()"
+    ></button>
+  </div>
+  <div class="body">
+    <app-association-type-search
+      [sourceTypeList]="sourceTypeList"
+      [targetTypeList]="targetTypeList"
+      (search)="handleSearchClick($event)"
+    ></app-association-type-search>
+    <app-association-type-table
+      [associationTypeList]="associationTypeList"
+      [pagingBoxObj]="pagingBoxObj"
+      (OnPage)="handlePageChange($event)"
+      (OnUpdateAssociationList)="handleUpdateAssociationList()"
+    ></app-association-type-table>
+  </div>
+</div>

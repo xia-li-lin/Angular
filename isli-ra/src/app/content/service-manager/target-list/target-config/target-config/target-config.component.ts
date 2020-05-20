@@ -1,0 +1,213 @@
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { GlobalValidService } from 'mpr-form-valid';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { AppState, clickOnce, clickWaitHttp, CommonFuncService } from 'src/app/core';
+import { PagingBoxObj } from 'src/app/shared/component/paging-box';
+import { ATTR_TYPE, EntityField, PageParams, PERMISSION, PARAM_TYPE, SOURCE_TYPE } from 'src/app/service/model';
+import { SourceListService } from 'src/app/service/source-list.service';
+
+@Component({
+  selector: 'app-target-config',
+  templateUrl: './target-config.component.html',
+  styleUrls: [ './target-config.component.scss' ]
+})
+export class TargetConfigComponent implements OnInit, OnDestroy {
+  public controllWordList = [];
+  public currentParamId: number;
+  public dialogOnOff = false;
+  public entityField: EntityField;
+  public entityFields: Array<EntityField>;
+  public entityId: string;
+  public entityName: string;
+  public language: string;
+  public pagingBoxObj = new PagingBoxObj(1, 0, 10, 0);
+  public targetAttrOnOff = false;
+  public validFunc: () => boolean | Promise<boolean>;
+
+  private subscriptions: Subscription;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private globalValidServ: GlobalValidService,
+    private messageServ: MessageService,
+    private router: Router,
+    private sourceListServ: SourceListService,
+    private stateServ: AppState,
+    private translateServ: TranslateService
+  ) {
+    this.language = this.stateServ.get('language');
+
+    this.subscriptions = this.activatedRoute.queryParams.subscribe((queryParams) => {
+      this.entityId = queryParams && queryParams.entityId;
+      this.entityName = queryParams && queryParams.entityName;
+
+      if (this.entityId) {
+        this.getEntityAttrs();
+        this.getControllWordList();
+      }
+    });
+
+    this.validFunc = () => {
+      return new Promise<boolean>((resolve, reject) => {
+        this.sourceListServ
+          .deleteEntityAttr(this.currentParamId)
+          .success((success) => {
+            this.dialogOnOff = false;
+            this.getEntityAttrs();
+            resolve(true);
+          })
+          .error((error) => {
+            resolve(false);
+          });
+      });
+    };
+  }
+
+  ngOnInit() {}
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+  // 添加属性
+  addEntityAttr() {
+    this.sourceListServ
+      .addEntityAttr(this.entityField)
+      .success((success) => {
+        this.targetAttrOnOff = false;
+        this.messageServ.add({
+          severity: 'success',
+          summary: this.translateServ.instant('service.targetList.config.configurationProperty'),
+          detail: this.translateServ.instant('service.common.operaSuccess')
+        });
+        this.getEntityAttrs();
+      })
+      .error((error) => {
+        this.messageServ.add({
+          severity: 'error',
+          summary: this.translateServ.instant('service.targetList.config.configurationProperty'),
+          detail: this.translateServ.instant('service.common.operaFailed')
+        });
+      });
+  }
+
+  // 获取词条列表
+  getEntityAttrs() {
+    const pageSearch = new PageParams(this.pagingBoxObj.page, this.pagingBoxObj.rows);
+    this.sourceListServ
+      .getEntityAttrs(pageSearch, Number(this.entityId))
+      .translate(CommonFuncService.formatObjForLangCode(this.stateServ.get('language')))
+      .success((success) => {
+        const data = success && success.data;
+        this.entityFields = data && data.pageDataList;
+        this.pagingBoxObj.totalRecords = data && data.pageDataSize;
+      });
+  }
+
+  // 获取受控词列表
+  getControllWordList() {
+    const pageSearch = new PageParams(1, 1000000);
+    this.sourceListServ
+      .getControllWordList(null, pageSearch)
+      .translate(CommonFuncService.formatObjForLangCode(this.stateServ.get('language')))
+      .success((success) => {
+        const data = success && success.data;
+        const pageDataList = data && data.pageDataList;
+        this.controllWordList = (pageDataList || []).map((item) => {
+          return {
+            label: item.controlledName,
+            value: item.controlledId
+          };
+        });
+        console.log(data);
+      })
+      .error((error) => {
+        this.controllWordList = [];
+        console.log(error);
+      });
+  }
+
+  // 添加
+  @clickOnce()
+  handleAddClick() {
+    this.targetAttrOnOff = true;
+    this.initAttrForm();
+  }
+
+  // 关闭删除对话框
+  @clickOnce()
+  handleCancelDialogClick() {
+    this.dialogOnOff = false;
+  }
+
+  // 删除
+  @clickOnce()
+  handleDeleteClick(entityField: EntityField) {
+    this.currentParamId = entityField.paramId;
+    this.dialogOnOff = true;
+    console.log(this.currentParamId);
+  }
+
+  // 修改
+  @clickOnce()
+  handleModifyClick(entityField: EntityField) {
+    this.targetAttrOnOff = true;
+    this.entityField = entityField;
+    console.log(this.entityField);
+  }
+
+  // 分页切换
+  handlePageChange(pageInfo: PagingBoxObj) {
+    this.pagingBoxObj.page = pageInfo.page;
+    this.pagingBoxObj.rows = pageInfo.rows;
+    this.getEntityAttrs();
+  }
+
+  // 保存
+  @clickWaitHttp('handleSaveClick')
+  handleSaveClick(entityField: EntityField) {
+    console.log(entityField);
+    entityField.entityId = Number(this.entityId);
+    entityField.entityType = SOURCE_TYPE.TARGET;
+    if (this.globalValidServ.validAll()) {
+      const paramId = entityField.paramId;
+      return paramId ? this.updateEntityAttr() : this.addEntityAttr();
+    }
+  }
+
+  // 初始化属性表单数据
+  initAttrForm() {
+    this.entityField = new EntityField();
+    this.entityField.permission = PERMISSION.CONTROLLED;
+    this.entityField.dataId = ATTR_TYPE.SINGLE_LINE_TEXT;
+    this.entityField.paramType = PARAM_TYPE.MUST_READ;
+    this.entityField.multiValue = 1;
+    this.entityField.entityId = Number(this.entityId);
+  }
+
+  // 修改属性
+  updateEntityAttr() {
+    console.log(this.entityField);
+    this.sourceListServ
+      .updateEntityAttr(this.entityField)
+      .success((success) => {
+        this.targetAttrOnOff = false;
+        this.messageServ.add({
+          severity: 'success',
+          summary: this.translateServ.instant('service.targetList.config.configurationProperty'),
+          detail: this.translateServ.instant('service.common.operaSuccess')
+        });
+        this.getEntityAttrs();
+      })
+      .error((error) => {
+        this.messageServ.add({
+          severity: 'error',
+          summary: this.translateServ.instant('service.targetList.config.configurationProperty'),
+          detail: this.translateServ.instant('service.common.operaFailed')
+        });
+      });
+  }
+}

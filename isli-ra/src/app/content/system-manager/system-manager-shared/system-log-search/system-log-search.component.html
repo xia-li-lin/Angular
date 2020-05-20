@@ -1,0 +1,23 @@
+<div class="system-search clearfix">
+    <dl>
+        <dt>{{'systemLog.list.opTime'|translate}}：</dt>
+        <dd>
+            <app-begin-end-date [(ngModel)]="publishDate">
+            </app-begin-end-date>
+        </dd>
+    </dl>
+    <dl>
+        <dt>{{'systemLog.list.user'|translate}}：</dt>
+        <dd>
+            <input type="text" [(ngModel)]="employeeAccount" />
+        </dd>
+    </dl>
+    <dl>
+        <dt>{{'systemLog.list.role'|translate}}：</dt>
+        <dd>
+            <p-dropdown name="roleCode" [options]="roleListData" [(ngModel)]="roleCode" [filter]="roleListData&&roleListData.length>15?true:false"
+                emptyFilterMessage="{{ 'systemShared.noData' | translate }}"  placeholder="{{'systemShared.select'|translate}}">
+            </p-dropdown>
+        </dd>
+    </dl><button class="search-button" (click)="handleSearchClick()">{{'common.search'|translate}}</button>
+</div>

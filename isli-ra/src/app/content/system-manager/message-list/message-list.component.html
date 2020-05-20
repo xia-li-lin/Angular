@@ -1,0 +1,65 @@
+<div class="message-box">
+  <div class="create">
+    <h6>{{ "systemMessage.list.mess" | translate }}</h6>
+    <button appPermission="MM.XX.FB" (click)="handleCreateClick()">
+      {{ "systemMessage.create.create" | translate }}
+    </button>
+  </div>
+  <app-message-list-search
+    [spAccountData]="accountListData"
+    (OnQueryClick)="handleQueryClick($event)"
+  >
+  </app-message-list-search>
+  <div class="message-list">
+    <dl *ngFor="let item of messageListData">
+      <dt>
+        <h6>{{ item.tidingsTheme }}</h6>
+        <p>
+          <span>{{ "systemMessage.create.sendObj" | translate }}： </span>
+          <a title="{{ item.spNames }}">{{ item.spNames }}</a>
+          <i>{{ item.createDatetime | date: "yyyy-MM-dd" }}</i>
+        </p>
+      </dt>
+      <dd class="content" [class.showShort]="!item.spreadFlag">
+        {{ item.content }}
+      </dd>
+      <dd class="affix" *ngIf="item.fileList.length">
+        <span>{{ "systemMessage.list.affix" | translate }}：</span>
+        <p *ngFor="let list of item.fileList">
+          <i></i>
+          <a href="{{ list.fileUrl }}" title="{{ list.fileName }}">{{
+            list.fileName
+          }}</a>
+        </p>
+      </dd>
+      <dd
+        class="spread"
+        *ngIf="item.content.length > 145"
+        (click)="handleSpreadClick(item)"
+      >
+        <a *ngIf="!item.spreadFlag"
+          >{{ "systemMessage.create.spread" | translate }}<i class="spread"></i
+        ></a>
+        <a *ngIf="item.spreadFlag"
+          >{{ "systemMessage.create.up" | translate }}<i class="up"></i
+        ></a>
+      </dd>
+    </dl>
+    <div class="loading">
+      <app-loaing-data [data]="messageListData"></app-loaing-data>
+    </div>
+    <app-paging-box
+      *ngIf="pageInfo.totalRecords"
+      [pagingBoxObj]="pageInfo"
+      (OnPageChange)="handlePageChange($event)"
+    >
+    </app-paging-box>
+  </div>
+  <app-message
+    *ngIf="showCreateFlag"
+    [spAccountData]="accountListData"
+    (OnCancelClick)="handleCancelClick()"
+    (OnSureClick)="handleSureClick($event)"
+  >
+  </app-message>
+</div>

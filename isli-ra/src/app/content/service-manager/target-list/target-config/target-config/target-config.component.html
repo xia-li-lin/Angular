@@ -1,0 +1,155 @@
+<div
+  class="target-config content-container"
+  [ngClass]="{
+    'search-zh': language !== 'EN_US',
+    'search-en': language === 'EN_US'
+  }"
+>
+  <div class="header">
+    <p class="title">{{ "service.targetList.config.title" | translate }}</p>
+  </div>
+  <div class="body">
+    <!-- 搜索 -->
+    <div class="bd-search">
+      <div class="p-grid search-bd">
+        <div
+          class="item"
+          [ngClass]="{
+            'p-col-4': language !== 'EN_US',
+            'p-col-5': language === 'EN_US'
+          }"
+        >
+          <label class="wid-70"
+            >{{ "service.targetList.config.targetId" | translate }}：</label
+          >
+          <span class="item-bd">
+            <input
+              type="text"
+              name="entityId"
+              pInputText
+              [readonly]="true"
+              [(ngModel)]="entityId"
+            />
+          </span>
+        </div>
+        <div
+          class="item"
+          [ngClass]="{
+            'p-col-4': language !== 'EN_US',
+            'p-col-5': language === 'EN_US'
+          }"
+        >
+          <label class="wid-84"
+            >{{ "service.targetList.config.targetName" | translate }}：</label
+          >
+          <span class="item-bd">
+            <input
+              type="text"
+              name="entityName"
+              pInputText
+              [readonly]="true"
+              [(ngModel)]="entityName"
+            />
+          </span>
+        </div>
+        <div class="p-col-2 item item-search">
+          <span class="item-bd">
+            <button
+              pButton
+              label="{{ 'service.targetList.config.add' | translate }}"
+              (click)="handleAddClick()"
+            ></button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- 列表 -->
+    <div class="table">
+      <p-table [value]="entityFields">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 10%;">
+              {{ "service.targetList.config.table.serialNumber" | translate }}
+            </th>
+            <th style="width: 20%;">
+              {{ "service.targetList.config.table.proName" | translate }}
+            </th>
+            <th style="width: 15%;">
+              {{ "service.targetList.config.table.proId" | translate }}
+            </th>
+            <th style="width: 15%;">
+              {{ "service.targetList.config.table.proType" | translate }}
+            </th>
+            <th style="width: 15%;">
+              {{ "service.targetList.config.table.catalogType" | translate }}
+            </th>
+            <th style="width: 15%;">
+              {{ "service.targetList.config.table.creationDate" | translate }}
+            </th>
+            <th style="width: 10%;">
+              {{ "service.targetList.config.table.operations" | translate }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+          <tr class="table-tr">
+            <td>
+              {{ (pagingBoxObj.page - 1) * pagingBoxObj.rows + rowIndex + 1 }}
+            </td>
+            <td>
+              {{ rowData?.paramName }}
+            </td>
+            <td>{{ rowData?.paramId }}</td>
+            <td>{{ rowData?.dataId | attrType }}</td>
+            <td>{{ rowData?.paramType | catalogType }}</td>
+            <td>{{ rowData?.createTime | date: "yyyy-MM-dd" }}</td>
+            <td class="operation">
+              <a
+                class="delete"
+                href="javascript:;"
+                title="{{
+                  'service.targetList.config.operations.delete' | translate
+                }}"
+                (click)="handleDeleteClick(rowData)"
+              ></a>
+              <a
+                class="modify"
+                href="javascript:;"
+                title="{{
+                  'service.targetList.config.operations.modify' | translate
+                }}"
+                (click)="handleModifyClick(rowData)"
+              ></a>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-loaing-data [data]="entityFields"></app-loaing-data>
+      <app-paging-box
+        *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+        [pagingBoxObj]="pagingBoxObj"
+        (OnPageChange)="handlePageChange($event)"
+      ></app-paging-box>
+    </div>
+    <!--  -->
+  </div>
+</div>
+
+<!-- 删除 -->
+<app-shared-dialog
+  *ngIf="dialogOnOff"
+  cancelTxt="{{ 'service.common.cancel' | translate }}"
+  confirmTxt="{{ 'service.common.sure' | translate }}"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <div>{{ "service.common.deleteDialogTips" | translate }}</div>
+</app-shared-dialog>
+
+<!-- 添加属性 -->
+<app-target-attr-form
+  *ngIf="targetAttrOnOff"
+  [controllWordList]="controllWordList"
+  [entityField]="entityField"
+  (OnSaveClick)="handleSaveClick($event)"
+  (cancel)="targetAttrOnOff = false"
+></app-target-attr-form>

@@ -1,0 +1,246 @@
+<div class="service-form-cn form clearfix">
+  <form [ngFormOptions]="{ updateOn: 'blur' }" [isliFormValidMsg]="errorMsg">
+    <!-- 中文 -->
+    <div class="item item-cn clearfix">
+      <h2>繁体中文</h2>
+      <div class="content">
+        <!-- 服务 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            服務：
+          </dt>
+          <dd>
+            <input
+              type="text"
+              name="serviceNameZh"
+              pInputText
+              appTrim
+              required
+              maxlength="100"
+              minLength="1"
+              [(ngModel)]="serviceDetail.serviceNameZh"
+              [ngModelOptions]="{ updateOn: 'blur' }"
+              [mark]="'serviceNameZh'"
+              [oldName]="oldServiceDetail?.serviceNameZh"
+              appValidNameUnique
+            />
+            <mpr-form-control-valid
+              controlName="serviceNameZh"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 服务编码 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            服務編碼：
+          </dt>
+          <dd>
+            <input
+              type="text"
+              name="serviceCodeZh"
+              pInputText
+              required
+              maxlength="6"
+              pattern="^\d{6}$"
+              appPatternInput="^\d+$"
+              inputPattern="^\d+$"
+              style="width: 330px;"
+              [(ngModel)]="serviceDetail.serviceCodeZh"
+            />
+            <button class="return" (click)="handleAutoGetServiceCodeClick()">
+              自動獲取
+            </button>
+            <mpr-form-control-valid
+              controlName="serviceCodeZh"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 关联类型 -->
+        <dl style="height: 32px;">
+          <dt>
+            <span class="red">*</span>
+            關聯類型：
+          </dt>
+          <dd>
+            <p-multiSelect
+              [options]="associationTypeList"
+              name="relevanceTypeZh"
+              required
+              defaultLabel="&nbsp;"
+              [panelStyle]="{ width: '450px' }"
+              [selectedItemsLabel]=""
+              [showToggleAll]="true"
+              [(ngModel)]="relevanceTypeZh"
+              (onChange)="handleMultiSelectChange($event)"
+            ></p-multiSelect>
+            <mpr-form-control-valid
+              controlName="relevanceTypeZh"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 服务关联目标 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            服務關聯目標：
+          </dt>
+          <dd>
+            <p-dropdown
+              name="targetEntityTypeZh"
+              required
+              [autoDisplayFirst]="false"
+              [options]="serviceAssociationTargetList"
+              [(ngModel)]="serviceDetail.targetEntityType"
+              (onChange)="serviceAssociationTargetChange.emit($event)"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+            </p-dropdown>
+            <mpr-form-control-valid
+              controlName="targetEntityTypeZh"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 关联字段长度 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            關聯字段長度：
+          </dt>
+          <dd>
+            <input
+              type="text"
+              required
+              name="relevanceLengthZh"
+              pInputText
+              placeholder="請輸入不超過30的正整數"
+              maxlength="2"
+              pattern="^([12][0-9]|30|[1-9])$"
+              appPatternInput="^\d+$"
+              inputPattern="^\d+$"
+              [(ngModel)]="serviceDetail.relevanceLengthZh"
+              (blur)="
+                relevanceLengthUpdate.emit(serviceDetail.relevanceLengthZh)
+              "
+            />
+            <mpr-form-control-valid
+              controlName="relevanceLengthZh"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 关联字段分段 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            關聯字段分段：
+          </dt>
+          <dd>
+            <p-dropdown
+              name="relevanceNumZh"
+              required
+              [options]="associatedFieldSegmentsList"
+              [(ngModel)]="serviceDetail.relevanceNumZh"
+              (onChange)="associatedFieldSegmentsChange.emit($event)"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <span title="{{ item.label | translate }}">{{
+                  item.label | translate
+                }}</span>
+              </ng-template>
+            </p-dropdown>
+            <mpr-form-control-valid
+              controlName="relevanceNumZh"
+            ></mpr-form-control-valid>
+            <app-add-filed
+              *ngIf="serviceDetail.relevanceNumZh != 1"
+              [relevanceNum]="serviceDetail.relevanceNumZh"
+              name="relevanceSubsectionZh"
+              required="(serviceDetail.relevanceNumZh!=1)"
+              [(ngModel)]="serviceDetail.relevanceSubsectionZh"
+              (updataFildes)="updataFildes.emit($event)"
+              [relevanceLength]="serviceDetail.relevanceLengthZh"
+              appValidRelevanceNum
+            ></app-add-filed>
+            <mpr-form-control-valid
+              *ngIf="serviceDetail.relevanceNumZh != 1"
+              controlName="relevanceSubsectionZh"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 服务说明文件 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            服務說明文件：
+          </dt>
+          <dd>
+            <div class="upload">
+              <input
+                type="text"
+                required
+                pInputText
+                appTrim
+                name="serviceWordUrlFileName"
+                [readonly]="true"
+                [(ngModel)]="serviceDetail.serviceWordUrlFileName"
+              />
+              <button class="blue" (click)="handleInputFileClick(descDocCn)">
+                上傳
+              </button>
+            </div>
+            <input
+              type="file"
+              style="display: none;"
+              accept=".doc,.docx"
+              (change)="handleServiceDescDocChange($event)"
+              name="serviceWordUrlFileName"
+              #descDocCn
+            />
+            <mpr-form-control-valid
+              controlName="serviceWordUrlFileName"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+        <!-- 服务简介 -->
+        <dl>
+          <dt>
+            <span class="red">*</span>
+            服務簡介：
+          </dt>
+          <dd>
+            <textarea
+              name="descriptionZh"
+              id=""
+              cols="30"
+              rows="10"
+              required
+              maxlength="2000"
+              required
+              appInputTextarea
+              appTrim
+              [(ngModel)]="serviceDetail.descriptionZh"
+            ></textarea>
+            <mpr-form-control-valid
+              controlName="descriptionZh"
+            ></mpr-form-control-valid>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </form>
+</div>

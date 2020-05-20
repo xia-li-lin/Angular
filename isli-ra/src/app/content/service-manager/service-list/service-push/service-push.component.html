@@ -1,0 +1,40 @@
+<div class="service-push dialog-box">
+  <div
+    class="dialog"
+    [formGroup]="servicePushGroup"
+    [isliFormValidMsg]="formErrorMsg"
+  >
+    <div class="dialog-title">
+      <h5>{{ "service.register.operation.servicePush" | translate }}</h5>
+      <a (click)="cancelClick.emit($event)"></a>
+    </div>
+    <div class="dialog-content">
+      <dl class="item">
+        <dt class="itemL">
+          {{ "service.serviceList.push.districtRowList" | translate }}：
+        </dt>
+        <dd class="itemR">
+          <p-listbox
+            [options]="districtRowList"
+            formControlName="districtRows"
+            multiple="multiple"
+            checkbox="checkbox"
+            optionLabel="name"
+            [listStyle]="{ 'max-height': '250px' }"
+          ></p-listbox>
+          <mpr-form-control-valid
+            controlName="servicePushGroup"
+          ></mpr-form-control-valid>
+        </dd>
+      </dl>
+    </div>
+    <div class="dialog-footer">
+      <button class="blue" (click)="handleSureClick()">
+        {{ "service.common.sure" | translate }}
+      </button>
+      <button class="return" (click)="cancelClick.emit($event)">
+        {{ "service.common.cancel" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

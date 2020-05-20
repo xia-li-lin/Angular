@@ -1,0 +1,200 @@
+<div class="content-container">
+  <div class="header">
+    <p class="title">{{ "content.nav.account.spManager" | translate }}</p>
+  </div>
+  <div class="body">
+    <div class="bd-search">
+      <div class="p-grid search-bd">
+        <div class="p-col-8 item">
+          <label>{{ "user.search.registerDate" | translate }}</label>
+          <span class="item-bd">
+            <app-begin-end-date
+              [(ngModel)]="searchDate"
+              (ngModelChange)="handleSearchDateChange($event)"
+            ></app-begin-end-date>
+          </span>
+        </div>
+        <div class="p-col-4 item">
+          <label>{{ "user.search.userName" | translate }}</label>
+          <span class="item-bd">
+            <input
+              pInputText
+              [(ngModel)]="search.email"
+              placeholder="{{ 'user.search.placehold.userName' | translate }}"
+            />
+          </span>
+        </div>
+        <div class="p-col-5 item">
+          <label>{{ "user.search.userGroup" | translate }}</label>
+          <span class="item-bd">
+            <p-dropdown
+              [options]="userGroups"
+              [autoDisplayFirst]="false"
+              [(ngModel)]="search.organizationTypeId"
+              placeholder="{{ 'common.all' | translate }}"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span>{{ item.label | translate }}</span>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <span>{{ item.label | translate }}</span>
+              </ng-template>
+            </p-dropdown>
+          </span>
+        </div>
+        <div class="p-col-4 item">
+          <label>{{ "user.search.state" | translate }}</label>
+          <span class="item-bd">
+            <p-dropdown
+              [options]="userStatus"
+              [autoDisplayFirst]="false"
+              [(ngModel)]="search.status"
+              placeholder="{{ 'common.all' | translate }}"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span>{{ item.label | translate }}</span>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <span>{{ item.label | translate }}</span>
+              </ng-template>
+            </p-dropdown>
+          </span>
+        </div>
+        <div class="p-col-3 item item-search">
+          <span class="item-bd">
+            <button
+              pButton
+              label="{{ 'user.search.search' | translate }}"
+              (click)="handleSearchClick()"
+            ></button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table">
+      <p-table [value]="users">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 7%;">{{ "user.table.no" | translate }}</th>
+            <th>{{ "user.table.userName" | translate }}</th>
+            <th style="width: 10%;">{{ "user.table.location" | translate }}</th>
+            <th style="width: 8%;">{{ "user.table.userGroup" | translate }}</th>
+            <th style="width: 12%;">
+              {{ "user.table.contactUser" | translate }}
+            </th>
+            <th style="width: 12%;">{{ "user.table.contact" | translate }}</th>
+            <th style="width: 13%;">
+              {{ "user.table.registerDate" | translate }}
+            </th>
+            <th style="width: 8%;">{{ "user.table.userState" | translate }}</th>
+            <th style="width: 12%;">{{ "user.table.operat" | translate }}</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+          <tr>
+            <td>
+              {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+            </td>
+            <td title="{{ rowData.email }}">
+              {{ rowData.email }}
+            </td>
+            <td>
+              {{ rowData.areaName }}
+            </td>
+            <td>
+              {{ rowData.organizationTypeId | userGroup | translate }}
+            </td>
+            <td title="{{ rowData.linkman }}">
+              {{ rowData.linkman }}
+            </td>
+            <td>
+              {{ rowData.mobile }}
+            </td>
+            <td
+              title="{{
+                rowData.registerDateTime | date: 'yyyy-MM-dd HH:mm:ss'
+              }}"
+            >
+              {{ rowData.registerDateTime | date: "yyyy-MM-dd HH:mm:ss" }}
+            </td>
+            <td>
+              {{ rowData.status | userStatus | translate }}
+            </td>
+            <td class="operation">
+              <a
+                class="detail"
+                title="{{ 'user.operation.viewDetail' | translate }}"
+                (click)="handleDetailClick(rowData)"
+              ></a>
+              <a
+                *ngIf="rowData.status == 1"
+                class="forzen"
+                title="{{ 'user.operation.forzen' | translate }}"
+                (click)="handleFreezeClick(rowData)"
+              ></a>
+              <a
+                *ngIf="rowData.status == 2"
+                class="stop"
+                title="{{ 'user.operation.stop' | translate }}"
+                (click)="handleStopClick(rowData)"
+              ></a>
+              <a
+                *ngIf="rowData.status == 2 || rowData.status == 3"
+                class="enable"
+                title="{{ 'user.operation.enable' | translate }}"
+                (click)="handleUnFreezeClick(rowData)"
+              ></a>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-paging-box
+        *ngIf="pageInfo.totalRecords > pageInfo.rows"
+        [pagingBoxObj]="pageInfo"
+        (OnPageChange)="handlePageChange($event)"
+      ></app-paging-box>
+      <app-loaing-data [data]="users"></app-loaing-data>
+    </div>
+    <p-dialog
+      [(visible)]="dialogShow"
+      [style]="{ width: '500px' }"
+      [modal]="true"
+    >
+      <div
+        class="content"
+        ngForm
+        [isliFormValidMsg]="errMsg"
+        *ngIf="dialogShow"
+      >
+        <label class="required"
+          >{{ "user.dialog.submitReason" | translate }}：</label
+        >
+        <span class="input">
+          <textarea
+            name="reason"
+            [(ngModel)]="reason"
+            required
+            placeholder="{{
+              'user.dialog.submitReasonPlaceholder' | translate
+            }}"
+            maxlength="200"
+            pInputTextarea
+            [rows]="5"
+            [cols]="40"
+            autoResize="autoResize"
+          ></textarea>
+          <mpr-form-control-valid></mpr-form-control-valid>
+        </span>
+      </div>
+      <p-footer>
+        <div class="submit">
+          <button
+            label="{{ 'user.dialog.sure' | translate }}"
+            pButton
+            (click)="handleConfirmClick()"
+          ></button>
+        </div>
+      </p-footer>
+    </p-dialog>
+  </div>
+</div>

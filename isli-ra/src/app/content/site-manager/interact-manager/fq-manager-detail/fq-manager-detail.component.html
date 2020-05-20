@@ -1,0 +1,76 @@
+<div>
+  <div class="search-title">
+    <span>{{ "siteManager.fqmanagers.detail.title" | translate }}</span>
+  </div>
+  <div class="detail-wrap">
+    <div>
+      <div class="question" *ngIf="!questionEdit">
+        <div class="operation">
+          <a
+            [ngClass]="{
+              exhibition: fqManager.isShow == 0,
+              conceal: fqManager.isShow == 1
+            }"
+            title="{{ fqManager.isShow | showHideTrans: 1 }}"
+            (click)="handleHideShow()"
+          ></a>
+          <a
+            class="modify"
+            title="{{ 'siteManager.fqmanagers.detail.modify' | translate }}"
+            (click)="handleEditClick()"
+          ></a>
+          <a
+            class="delete"
+            title="{{ 'siteManager.common.delete' | translate }}"
+            (click)="handleDelete()"
+          ></a>
+          <a
+            class="add"
+            title="{{ 'siteManager.fqmanagers.detail.reply' | translate }}"
+            (click)="handleAddReplay()"
+          ></a>
+        </div>
+        <h2>{{ fqManager.title }}</h2>
+        <p class="questionDesc" [innerHtml]="fqManager.questionDesc"></p>
+        <img [src]="fqManager.imgUrl" />
+        <p class="question-footer">
+          <span class="create"
+            >{{ fqManager.createTime | date: "yyyy-MM-dd HH:mm:ss" }}
+            <span
+              >{{ "siteManager.fqmanagers.detail.from" | translate }} “{{
+                fqManager.questioner
+              }}”</span
+            ></span
+          >
+          <span
+            >{{
+              "siteManager.fqmanagers.detail.repliedMessage"
+                | translate: { value: fqManager.replayNum }
+            }}
+          </span>
+        </p>
+      </div>
+      <app-question-editor
+        *ngIf="questionReplay || questionEdit"
+        (save)="handleSave($event)"
+        (cancel)="handleCancel()"
+        [content]="editContent"
+      ></app-question-editor>
+    </div>
+    <div class="detail-list">
+      <app-fq-manager-replay
+        *ngFor="let item of fqManagerReplayList"
+        [fqManagerReplay]="item"
+        (hideShow)="handleReplayHideShow($event)"
+        (edit)="handleReplayEdit($event)"
+        (delete)="handleReplayDelete($event)"
+      ></app-fq-manager-replay>
+      <app-paging-box
+        *ngIf="pageInfo.totalRecords"
+        [pagingBoxObj]="pageInfo"
+        (OnPageChange)="handlePageChange($event)"
+      >
+      </app-paging-box>
+    </div>
+  </div>
+</div>

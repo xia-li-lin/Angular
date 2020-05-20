@@ -1,0 +1,53 @@
+.content-container {
+  .body {
+    .item {
+      border-bottom: 1px solid #f0f4f8;
+      padding-bottom: 30px;
+      overflow: hidden;
+      .title {
+        font-family: SourceHanSansSC-Medium;
+        font-size: 14px;
+        color: #354754;
+        letter-spacing: 0;
+        border-left: 4px solid #007bd8;
+        padding-left: 8px;
+        margin-bottom: 20px;
+        margin-top: 28px;
+      }
+      table {
+        font-family: SourceHanSansSC-Regular;
+        font-size: 14px;
+        line-height: 30px;
+        letter-spacing: 0;
+        overflow: hidden;
+        tr {
+          td {
+            &:nth-of-type(1) {
+              color: #9ea6ac;
+              text-align: right;
+              padding-left: 80px;
+              width: 248px;
+            }
+            &:nth-of-type(2) {
+              color: #354754;
+            }
+          }
+        }
+      }
+    }
+    .aBtn {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      button {
+        width: 120px;
+        text-align: center;
+        height: 32px;
+      }
+      .back {
+        height: 32px;
+        margin-left: 20px;
+      }
+    }
+  }
+}

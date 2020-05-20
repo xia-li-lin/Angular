@@ -1,0 +1,1536 @@
+{
+  "areaManager": {
+    "addBtn": "Add",
+    "detail": {
+      "applicationCase": "Application cases",
+      "blockDesc": "Introduction：",
+      "competentOrg": "Name of governing body：",
+      "contactsEmail": "Contact email：",
+      "contactsName": "Contact person：",
+      "contactsPhone": "Contact name：",
+      "industry": "Industry：",
+      "logo": "LOGO：",
+      "productDesc": "Product introduction",
+      "region": "Region",
+      "select": "please select",
+      "simpleDesc": "Brief introduction",
+      "website": "Official website："
+    },
+    "dialog": {
+      "enableFailed": "Service activate failed",
+      "enableSuccess": "Service activate successfully",
+      "freezeFailed": "Service freeze failed",
+      "freezeSuccess": "Service freeze successfully"
+    },
+    "search": {
+      "all": "- All -",
+      "blockName": "Name：",
+      "blockNamePlaceholder": "Please enter the name of Distict/Industry Agency",
+      "registerTime": "Registration time：",
+      "searchBtn": "Search",
+      "serviceCode": "Service code：",
+      "status": "Status："
+    },
+    "service": {
+      "common": {
+        "loading": "Loading..."
+      },
+      "servceName": "Service name：",
+      "status": "Service status："
+    },
+    "serviceConfigBtn": "Configuration service",
+    "serviceManager": "Service management",
+    "status": {
+      "all": "- All -",
+      "disabled": "Disabled",
+      "normal": "Normal"
+    },
+    "table": {
+      "blockName": "Name",
+      "createTime": "Creation time",
+      "no": "Number",
+      "operation": "Operation",
+      "registerTime": "Registration time",
+      "relevanceType": "Link type",
+      "serviceCode": "Service code",
+      "serviceName": "Service name",
+      "status": "Status"
+    },
+    "valid": {
+      "blcokName": {
+        "existError": "區行名稱已存在",
+        "required": "請輸入區行名稱"
+      },
+      "blockIndustryInfos": {
+        "required": "請選擇行業"
+      },
+      "logoUrl": {
+        "imageContentError": "請選擇合法的圖片",
+        "imageFileSizeError": "請選擇2MB以內的圖片",
+        "imageFileTypeError": "圖片的格式不匹配",
+        "imageWidthHeightError": "圖片的長寬不匹配",
+        "required": "請上傳Logo"
+      },
+      "region": {
+        "required": "請選擇地區"
+      },
+      "siteUrl": {
+        "pattern": "請輸入合法網址"
+      },
+      "ueditor": {
+        "applicationCase": {
+          "required": "請輸入應用案例"
+        },
+        "bockDesc": {
+          "required": "請輸入區行簡介"
+        },
+        "productDesc": {
+          "required": "請輸入産品簡介"
+        }
+      }
+    }
+  },
+  "common": {
+    "add": "Add",
+    "all": "- All -",
+    "allocation": "Allocated role",
+    "back": "Back",
+    "cancel": "Cancel",
+    "check": "Check",
+    "china": "Mainland China +86",
+    "continueCreate": "Continue to create",
+    "copy": "Copy",
+    "delete": "Delete",
+    "done": "Done",
+    "download": "Download",
+    "enable": "Activate",
+    "export": "Export",
+    "exportExcel": "Export an Excel",
+    "hongkong": "Hong Kong +852",
+    "loading": "Data loading",
+    "macao": "Macau +853",
+    "modify": "Modify",
+    "noData": "No data",
+    "operaFailed": "Operation failed",
+    "operaSuccess": "Operation succeed",
+    "operation": "Operations",
+    "pending": "Pending",
+    "preview": "Preview",
+    "replied": "Replied",
+    "save": "Save",
+    "saveAndContinue": "Save and continue",
+    "search": "Search",
+    "select": "-Select-",
+    "stop": "Stop",
+    "sure": "Sure",
+    "taiwan": "Taiwan +886",
+    "tips": "Tips",
+    "toExamine": "to Approve",
+    "upload": "Upload",
+    "uploadAffix": {
+      "buttonText": "Upload",
+      "fileSizeError": "Single document size should be less than 2m",
+      "fileTips": "（Single document size should be less than 2m, acceptable format include：doc, docx, xls, xlsx, ppt, pdf, zip）",
+      "fileTypeError": "Attachment format error",
+      "fileuploadError": "Upload failed"
+    }
+  },
+  "content": {
+    "header": {
+      "language": "Language"
+    },
+    "language": {
+      "EN": "English",
+      "zhCN": "Simplified Chinese",
+      "zhTW": "Traditional Chinese"
+    },
+    "nav": {
+      "account": {
+        "lcManager": "LC賬戶管理",
+        "manager": "統壹賬戶管理",
+        "spManager": "SP賬戶管理"
+      },
+      "area": {
+        "manager": "District/Industry"
+      },
+      "areaAdd": "新增區行",
+      "areaManager": "District/Industry",
+      "dataAnsys": "Statistics",
+      "index": "Home",
+      "lc": {
+        "allocated": "服務編碼分配",
+        "manager": "LC管理",
+        "thresthold": "服務編碼閥值"
+      },
+      "lcManager": "LC",
+      "location": "Your location：",
+      "logger": "System log",
+      "serverManager": "Service",
+      "siteManager": "Website management",
+      "sysManager": "System management",
+      "systemAccount": "System account",
+      "systemtManager": " System management",
+      "user": {
+        "spManager": "SP賬戶管理",
+        "spManagerCheck": "SP賬戶審核",
+        "userManager": "User"
+      },
+      "userManager": "User"
+    }
+  },
+  "footer": {
+    "nav": {
+      "Platform": " Platform",
+      "contact": "Contact",
+      "usISLIRAOpen": "ISLI RA"
+    },
+    "text": "International Information Content Industry Association  Address: 9/F, Austin International Tower, No. 28 Austin Avenue, Tsim Sha Tsui, Kowloon, Hong Kong.   Phone:+852 23990697"
+  },
+  "index": {
+    "accountInfo": "Account info",
+    "accountStatus": "Account status",
+    "btn": {
+      "back": "Return",
+      "changePassword": "Change password",
+      "edit": "Edit",
+      "sure": "OK"
+    },
+    "changePassword": {
+      "confirmPassword": "Confirm new password",
+      "currentPassword": "Current password",
+      "newPassword": "New Password",
+      "newPasswordTip": "Must include 6~20 characters with letters, numbers or symbols.",
+      "title": "Change password",
+      "valid": {
+        "confirmPassword": "Please re-enter new password",
+        "currentPassword": "Please enter current password",
+        "newPassword": "Please enter new password",
+        "patternConfirm": "Please enter the same password as above",
+        "patternLen": "Password cannot be empty, and the length of it must be between 6 and 20",
+        "patternStr": "Password shall be composed of English letter,number and mark."
+      }
+    },
+    "creationDate": "Creation date",
+    "dialog": {
+      "btn": "Change immediately",
+      "tip": "Your password has not been changed for a long time. For the safety of your account, please change your password in time!"
+    },
+    "email": "Email",
+    "employeeId": "Employee ID",
+    "name": "Name",
+    "phone": "Phone",
+    "phoneNo": "phone No.",
+    "placehold": {
+      "areaCode": "Area code",
+      "email": "Enter your frequently used email address",
+      "ext": "Extension",
+      "name": "Enter your real name",
+      "phone": "Enter your phone number",
+      "phoneNo": "Your phone No."
+    },
+    "roleType": "Role type",
+    "tips": "Please keep your account information up to date.",
+    "username": "Username",
+    "valid": {
+      "email": "Email cannot be empty",
+      "emialTip": "Important! Youll need it when you reset your password.",
+      "name": "Name cannot be empty",
+      "phone": "Phone cannot be empty",
+      "phoneNo": "Phone No.shant be empty",
+      "phoneNoFormat": "The format of phone No. is wrong"
+    }
+  },
+  "login": {
+    "accountLogin": "Account login",
+    "forgetPassword": "Forgot password?",
+    "login": "Login",
+    "placehold": {
+      "code": "Code",
+      "password": "Password",
+      "userName": "Username"
+    },
+    "resendCode": "Send code（{{restSecond}}）",
+    "sendCode": "Send code",
+    "valid": {
+      "code": {
+        "getError": "Verification code acquisition failed, please try again later",
+        "required": "Please enter the verification code.",
+        "validError": "Verification code error"
+      },
+      "password": {
+        "required": "Please enter password"
+      },
+      "userName": {
+        "loginError": "Account password error",
+        "required": "Username"
+      }
+    }
+  },
+  "service": {
+    "associationType": {
+      "add": "Add new link type",
+      "detail": "Link type details",
+      "dialog": {
+        "disabledTips": "Are you sure to disable",
+        "enableTips": "Are you sure to enable",
+        "linkType": "Link type"
+      },
+      "modify": "Modify new link type",
+      "operations": {
+        "disabled": "Disabled",
+        "enable": "Enable",
+        "modify": "Modify",
+        "view": "View"
+      },
+      "search": {
+        "creationDate": "Creation date",
+        "linkType": "Link Type",
+        "sourceType": "Source type",
+        "state": "State",
+        "targetType": "Target type"
+      },
+      "status": {
+        "all": "- All -",
+        "disabled": "Disabled",
+        "normal": "Normal"
+      },
+      "table": {
+        "creationDate": "Creation date",
+        "linkType": "Link Type",
+        "operations": "Operations",
+        "serialNumber": "No.",
+        "sourceType": "Source type",
+        "targetType": "Target type"
+      },
+      "title": "Link type"
+    },
+    "common": {
+      "all": "- All -",
+      "back": "Return",
+      "cancel": "Cancel",
+      "continueCreate": "Continue",
+      "copy": "Copy",
+      "copySuccess": "Copy successful",
+      "deleteDialogTips": "Are you sure to delete?",
+      "down": "Download",
+      "exportExcel": "Export",
+      "modify": "Modify",
+      "operaFailed": "Operation failed",
+      "operaSuccess": "Operation successful",
+      "operation": "Operations",
+      "preview": "Preview",
+      "save": "OK",
+      "saveAndContinue": "Continue",
+      "search": "Search",
+      "select": "-please choose-",
+      "sure": "Submit",
+      "tips": "Tips",
+      "view": "View"
+    },
+    "controlledWordManagement": {
+      "add": "New-added controlled term",
+      "config": {
+        "add": "Add (a) term",
+        "controlledId": "Controlled term ID",
+        "controlledName": "Controlled term name",
+        "form": {
+          "addControlled": "New-added controlled term",
+          "addTerm": "Add (a) term",
+          "chineseName": "Chinese name",
+          "englishName": "English name",
+          "modifyTerm": "Modify (a) term",
+          "propFieldName": "Property field name",
+          "sort": "Sorting"
+        },
+        "operations": {
+          "delete": "Delete",
+          "modify": "Modify"
+        },
+        "placehold": {
+          "chineseName": "property name (in Chinese)",
+          "englishName": "property name in English",
+          "propFieldName": "publishing mark",
+          "sort": "property sorting"
+        },
+        "table": {
+          "creationDate": "Creation date",
+          "operations": "Operations",
+          "serialNumber": "No.",
+          "termId": "Term ID",
+          "termName": "Term name"
+        },
+        "term": "Term",
+        "title": "Configuration Controlled term",
+        "valid": {
+          "chineseName": "Please enter the name in Chinese",
+          "englishName": "Please enter the name in English",
+          "propFieldName": "Please enter the name of property field",
+          "sort": "Please enter the sequence number"
+        }
+      },
+      "controlled": "Controlled term",
+      "controlledName": "Controlled term name",
+      "operations": {
+        "config": "Configuration",
+        "delete": "Delete"
+      },
+      "table": {
+        "controlledName": "Controlled term name",
+        "creationDate": "Creation date",
+        "operations": "Operations",
+        "serialNumber": "No."
+      },
+      "title": "Cotrolled terms management/ Terms management"
+    },
+    "nav": {
+      "associationType": "Link type",
+      "controlledWordManagement": "Cotrolled terms management/ Terms management",
+      "serverManager": "Service",
+      "service": "Service",
+      "serviceList": "Service list",
+      "serviceRegisterManager": "Service registration management",
+      "serviceRegisterManagerDetail": "Details of service registration management",
+      "sourceList": "Source list",
+      "spApplyNewService": "SP Service Add",
+      "targetList": "Target list"
+    },
+    "register": {
+      "detail": {
+        "serviceProviderInfo": {
+          "address": "Address",
+          "capacity": "Title",
+          "contactPerson": "Contact",
+          "email": "Email",
+          "fixedTel": "Tel.",
+          "mobilePhone": "Mobile",
+          "organizationName": "Organization name",
+          "postcode": "Postal code",
+          "title": "Service provider information",
+          "username": "User name"
+        },
+        "serviceRegisterInfo": {
+          "allotmentDate": "Allocation date",
+          "applyServicePlan": "Implementation plan",
+          "approvalOpera": "Approval status",
+          "approvalOpinion": "Comments",
+          "associateTargetResolutionAddress": "Resolution address (of linked target)",
+          "correlationField": "Link field",
+          "correlationFieldSegments": "Link field division",
+          "firstTrialDate": "Preliminary review date",
+          "freezeDate": "Freeze date",
+          "freezeReason": "Reason for freeze",
+          "preliminary": "Preliminary review comment",
+          "preliminaryResults": "Preliminary review result",
+          "registerData": "Registration date",
+          "reviewDate": "Final review date",
+          "reviewOpinion": "Final review comment",
+          "serviceCode": "Service code",
+          "serviceType": "Link type",
+          "services": "Service",
+          "singleSignApi": "Single Sign On API",
+          "sourceType": "Source type",
+          "status": "Status",
+          "stopDate": "Deactivating date",
+          "stopReason": "Reason for deactivating",
+          "targetType": "Target type",
+          "title": "Service registration information"
+        }
+      },
+      "dialog": {
+        "appeal": "Appeal",
+        "appealDate": "Appeal date",
+        "approvalOperation": "Approval status",
+        "approvalOpinion": "Comments",
+        "auditProcess": "Final review",
+        "freezeDate": "Frozen date",
+        "handleAppeal": "Handle appeal",
+        "leave": "Close",
+        "notPass": "Rejected",
+        "operationTip": "Operation Instructions",
+        "pass": "Approved",
+        "reasonsToAppeal": "Reasons to appeal",
+        "submit": "Submit",
+        "submitReason": "Reason",
+        "submitReasonPlaceholder": "Please enter the reason for operation, limited to 200 words",
+        "submitReasonRequired": "Submit reason can not be empty",
+        "sure": "OK"
+      },
+      "operation": {
+        "appealAudit": "Appeal against review result",
+        "enable": "Enable",
+        "forzen": "Freeze",
+        "pendReview": "Final review",
+        "pendTrial": "Preliminary review",
+        "servicePush": "Service delivery",
+        "stop": "Disabled",
+        "toExamine": "Review",
+        "viewDetail": "View",
+        "viewSystemData": "View system information"
+      },
+      "search": {
+        "registerData": "Registration date",
+        "serviceCode": "Service code",
+        "serviceProvider": "Service provider",
+        "services": "Service",
+        "status": "State"
+      },
+      "status": {
+        "all": "- All -",
+        "build": "Under construction",
+        "forzen": "Frozen",
+        "normal": "Normal",
+        "notPass": "Rejected",
+        "pendReview": "Final review",
+        "pendTrial": "Preliminary review",
+        "preTrial": "Precheck",
+        "stop": "Disabled"
+      },
+      "table": {
+        "checkSystemData": {
+          "isliCodeRegisterApi": "API of ISLI code registration",
+          "isliCodeResolutionApi": "API of ISLI code resolution",
+          "systemIdent": "System identification",
+          "systemKey": "System key",
+          "title": "Service registration information"
+        },
+        "registerData": "Registration date",
+        "serialNumber": "No.",
+        "serviceCode": "Service code",
+        "serviceProvider": "Service provider",
+        "services": "Service name",
+        "status": "State"
+      }
+    },
+    "sPServiceAdd": {
+      "search": {
+        "applicationDate": "Application date",
+        "service": "Service",
+        "serviceProvider": "Service provider"
+      },
+      "sendMessage": "Send message",
+      "table": {
+        "applicationDate": "Application date",
+        "preview": "Preview",
+        "previewedTemporary": "Can't be previewed temporary",
+        "sendMessage": "Send message",
+        "serialNumber": "No.",
+        "service": "Service",
+        "serviceProposal": "Service proposal",
+        "serviceProvider": "Service provider"
+      }
+    },
+    "serviceList": {
+      "add": "New (added) services",
+      "detail": {
+        "title": "Details of service list"
+      },
+      "form": {
+        "dialog": {
+          "service": "Service",
+          "tip1": "service has been created successfully"
+        }
+      },
+      "modify": "Modify services",
+      "push": {
+        "districtRowList": "List of district/industry",
+        "multiselect": "multiselect",
+        "placehold": {
+          "districtRowList": "Please select List of district/industry"
+        }
+      },
+      "search": {
+        "associationType": "Link type",
+        "createTime": "Creation date",
+        "serviceCode": "Service code",
+        "services": "Service"
+      },
+      "table": {
+        "associationType": "Link type",
+        "createTime": "Creation date",
+        "serialNumber": "No.",
+        "services": "Service"
+      }
+    },
+    "sourceList": {
+      "add": "New( addded) Source",
+      "config": {
+        "add": "Add property",
+        "configurationProperty": "Configuration property",
+        "form": {
+          "add": "Add property",
+          "catalogType": "Catalog type",
+          "catalogTypeItems": {
+            "common": "Normal",
+            "controlledWordOptionValue": "Controlled term options",
+            "invisible": "invisible",
+            "readOnly": "read-only",
+            "required": "Required"
+          },
+          "chineseName": "Chinese name",
+          "controlledTerms": "Controlled terms",
+          "dataOpenPermission": "Data opening permission",
+          "dataOpenPermissionItems": {
+            "open": "open",
+            "underControl": "under control"
+          },
+          "englishName": "English name",
+          "modify": "Modify the property",
+          "multiValue": "Multi-value",
+          "multiValueItems": {
+            "no": "No",
+            "yes": "Yes"
+          },
+          "placehold": {
+            "chineseName": "property name (in Chinese)",
+            "englishName": "property name in English",
+            "propFieldName": "publishing mark",
+            "sort": "property sorting"
+          },
+          "propFieldName": "Property field name",
+          "propLen": "Property length",
+          "propType": "Property type",
+          "propTypeItems": {
+            "controlledTerms": "Controlled terms",
+            "date": "date",
+            "decimal": "decimal",
+            "integer": "integer",
+            "multiLineText": "multi-line(text)",
+            "singleLineText": "single-line(text)",
+            "time": "time"
+          },
+          "regExp": "Regular expression",
+          "sort": "Sorting",
+          "valid": {
+            "catalogType": "Please select the catalog type",
+            "chineseName": "Please enter the name in Chinese",
+            "controlledTerms": "Please select the controlled term.",
+            "dataOpenPermission": "Please select the data opening permission",
+            "englishName": "Please enter the name in English",
+            "multiValue": "Please select Yes or No of multi-value.",
+            "propFieldName": "Please enter the name of property field",
+            "propFieldNameUnique": "Property field name already exists",
+            "propType": "Please select the property type",
+            "sort": "Please enter the sequence number"
+          }
+        },
+        "operations": {
+          "delete": "Delete",
+          "modify": "Modify"
+        },
+        "sourceId": "Source ID",
+        "sourceName": "Source name",
+        "table": {
+          "creationDate": "Creation date",
+          "operations": "Operations",
+          "serialNumber": "No.",
+          "termId": "Term ID",
+          "termName": "Term name"
+        },
+        "title": "Configuration property"
+      },
+      "operations": {
+        "config": "Configuration",
+        "delete": "Delete"
+      },
+      "source": "Source",
+      "sourceName": "Source name",
+      "table": {
+        "creationDate": "Creation date",
+        "operations": "Operations",
+        "serialNumber": "No.",
+        "sourceName": "Source name"
+      },
+      "title": "Source list"
+    },
+    "targetList": {
+      "add": "New-added target",
+      "config": {
+        "add": "Add property",
+        "configurationProperty": "Configuration property",
+        "form": {
+          "add": "Add property",
+          "catalogType": "Catalog type",
+          "catalogTypeItems": {
+            "common": "Normal",
+            "controlledWordOptionValue": "Controlled term options",
+            "invisible": "invisible",
+            "readOnly": "read-only",
+            "required": "Required"
+          },
+          "chineseName": "Chinese name",
+          "controlledTerms": "Controlled terms",
+          "dataOpenPermission": "Data opening permission",
+          "dataOpenPermissionItems": {
+            "open": "open",
+            "underControl": "under control"
+          },
+          "englishName": "English name",
+          "modify": "Modify the property",
+          "multiValue": "Multi-value",
+          "multiValueItems": {
+            "no": "No",
+            "yes": "Yes"
+          },
+          "placehold": {
+            "chineseName": "property name (in Chinese)",
+            "englishName": "property name in English",
+            "propFieldName": "publishing mark",
+            "sort": "property sorting"
+          },
+          "propFieldName": "Property field name",
+          "propLen": "Property length",
+          "propType": "Property type",
+          "propTypeItems": {
+            "controlledTerms": "Controlled terms",
+            "date": "date",
+            "decimal": "decimal",
+            "integer": "integer",
+            "multiLineText": "multi-line(text)",
+            "singleLineText": "single-line(text)",
+            "time": "time"
+          },
+          "regExp": "Regular expression",
+          "sort": "Sorting",
+          "valid": {
+            "catalogType": "Please select the catalog type",
+            "chineseName": "Please enter the name in Chinese",
+            "controlledTerms": "Please select the controlled term.",
+            "dataOpenPermission": "Please select the data opening permission",
+            "englishName": "Please enter the name in English",
+            "multiValue": "Please select Yes or No of multi-value.",
+            "propFieldName": "Please enter the name of property field",
+            "propFieldNameUnique": "Property field name already exists",
+            "propType": "Please select the property type",
+            "sort": "Please enter the sequence number"
+          }
+        },
+        "operations": {
+          "delete": "Delete",
+          "modify": "Modify"
+        },
+        "table": {
+          "catalogType": "Catalog type",
+          "creationDate": "Creation date",
+          "operations": "Operations",
+          "proId": "Property ID",
+          "proName": "Property name",
+          "proType": "Property type",
+          "serialNumber": "No."
+        },
+        "targetId": "Target ID",
+        "targetName": "Target name",
+        "title": "Configuration property"
+      },
+      "operations": {
+        "config": "Configuration",
+        "delete": "Delete"
+      },
+      "table": {
+        "creationDate": "Creation date",
+        "operations": "Operations",
+        "serialNumber": "No.",
+        "targetName": "Target name"
+      },
+      "target": "Target",
+      "targetName": "Target name",
+      "title": "Target list"
+    }
+  },
+  "serviceList": {
+    "form": {
+      "dialog": {
+        "service": "Service",
+        "tip1": "You have successfully created"
+      }
+    },
+    "search": {
+      "associationType": "Link type",
+      "createTime": "Creation date",
+      "serviceCode": "Service code",
+      "services": "Service"
+    },
+    "table": {
+      "associationType": "Link type",
+      "createTime": "Creation date",
+      "serialNumber": "No.",
+      "services": "Service"
+    }
+  },
+  "shared": {
+    "component": {
+      "calendar": {
+        "placehold": "Please select (date)"
+      }
+    }
+  },
+  "siteManager": {
+    "associates": {
+      "detail": {
+        "asStatus": "Status",
+        "content": "Content",
+        "correlationCodingStructure": "link code structure",
+        "correlationCodingStructurePlaceholder": "Please input link code structure",
+        "createTime": "Publication date",
+        "serviceCode": "Service code",
+        "serviceCodePlaceholder": "Please input  service code",
+        "sort": "Sort",
+        "sortPlaceholder": "Enter the sort order",
+        "thumbnailUrl": "Thumbnail：",
+        "title": "Title",
+        "titlePlaceholder": "Please input title"
+      },
+      "list": {
+        "search": {
+          "asStatus": "State",
+          "asStatusTitle": "Title",
+          "create": "Add",
+          "searchDate": "Editing session",
+          "title": "Link service management",
+          "titlePlaceholder": "The title or keywords"
+        },
+        "table": {
+          "asStatus": "State",
+          "editor": "Editor",
+          "no": "No.",
+          "operat": "Operations",
+          "sort": "Sort",
+          "title": "Title",
+          "updateTime": "Editing session"
+        }
+      },
+      "valid": {
+        "content": "Please input Content",
+        "correlationCodingStructure": "Please input link code structure",
+        "createTime": "Please input publication date",
+        "language": "Please select language",
+        "serviceCode": "Please input  service code",
+        "serviceCodePattern": "Service code is a six-digit number",
+        "sort": "Please input sort",
+        "title": "Please input title"
+      }
+    },
+    "common": {
+      "all": "- All -",
+      "cancelContent": "Sure you want to delete?",
+      "cancle": "Cancel",
+      "commit": "Submit",
+      "delete": "Delete",
+      "hide": "Hidden",
+      "langCode": "Language",
+      "modify": "Edit",
+      "pleasePlaceholder": "-Select-",
+      "reply": "Reply",
+      "return": "Return",
+      "save": "Save",
+      "search": "Search",
+      "show": "Shown",
+      "sortTips": "Input error Sorting order must be 0~9",
+      "stick": "Stick",
+      "thumbnailUrlTip": "1.Supported image formats are jpg, jpeg, and png. 2.The maximum supported file size is 100KB.  3.The Image size should be 363*207.",
+      "uploadAffix": "Add attachment",
+      "valid": {
+        "imageContentError": "Please select a legal picture",
+        "imageFileSizeError": "Please select an image within 2MB",
+        "imageFileTypeError": "Image format does not match",
+        "imageWidthHeightError": "The length and width of the picture do not match",
+        "thumbnailUrl": "Please upload thumbnail"
+      },
+      "view": "View"
+    },
+    "consulting": {
+      "detail": {
+        "consultingContent": "Content",
+        "consultingStatus": "Status",
+        "createTime": "Publication date",
+        "sort": "Sort",
+        "sortPlaceholder": "Enter the sort order",
+        "source": "Source",
+        "sourcePlaceholder": "Source of the news",
+        "summary": "Abstract",
+        "summaryPlaceholder": "An abstract in less than 200 characters.",
+        "thumbnailUrl": "Thumbnail",
+        "thumbnailUrlTip": "1.Supported image formats are jpg, jpeg, and png. 2.The maximum supported file size is 100KB.  3.The Image size should be 363*207.",
+        "title": "Title",
+        "titlePlaceholder": "Please input title"
+      },
+      "list": {
+        "search": {
+          "consultingStatus": "State",
+          "consultingTitle": "Title",
+          "create": "Add",
+          "createDateTime": "Editing session",
+          "title": "News management",
+          "titlePlaceholder": "The title or keywords"
+        },
+        "table": {
+          "editor": "Editor",
+          "no": "No.",
+          "operat": "Operations",
+          "sort": "Sort",
+          "status": "State",
+          "title": "Title",
+          "updateTime": "Editing session"
+        }
+      },
+      "valid": {
+        "consultingContent": "Please input Content",
+        "createTime": "Please input publication date",
+        "language": "Please select language",
+        "sort": "Please input sort",
+        "source": "Please input source",
+        "summary": "Please input abstract",
+        "title": "Please input title"
+      }
+    },
+    "content": {
+      "detail": {
+        "contentDetail": "Content",
+        "title": "Modified content management"
+      },
+      "list": {
+        "search": {
+          "keyWord": "Column name",
+          "keyWordPlaceholder": "Title or keywords",
+          "searchDate": "Update time",
+          "title": "Content management"
+        },
+        "table": {
+          "navigationName": "Menu",
+          "no": "No.",
+          "operat": "Operations",
+          "updateDatetime": "Update time"
+        }
+      }
+    },
+    "examples": {
+      "detail": {
+        "applicationExampleStatus": "Status",
+        "exampleContent": "Content",
+        "sort": "Sort",
+        "sortPlaceholder": "Enter the sort order",
+        "summary": "Abstract",
+        "summaryPlaceholder": "An abstract in less than 200 characters.",
+        "thumbnailUrl": "Thumbnail",
+        "title": "Title",
+        "titlePlaceholder": "Please input title"
+      },
+      "list": {
+        "search": {
+          "applicationExampleStatus": "State",
+          "create": "Add",
+          "examplesTitle": "Title",
+          "searchDate": "Editing session",
+          "title": "Application example management",
+          "titlePlaceholder": "The title or keywords"
+        },
+        "table": {
+          "applicationExampleStatus": "State",
+          "editor": "Editor",
+          "no": "No.",
+          "operat": "Operations",
+          "sort": "Sort",
+          "title": "Title",
+          "updateTime": "Editing session"
+        }
+      },
+      "valid": {
+        "exampleContent": "Please input Content",
+        "language": "Please select language",
+        "sort": "Please input sort",
+        "summary": "Please input abstract",
+        "title": "Please input title"
+      }
+    },
+    "feedbacks": {
+      "detail": {
+        "attachment": "Attachment",
+        "basicInfo": "Basic info",
+        "contactInformation": "Contact information",
+        "email": "Email",
+        "feedbackContent": "Message",
+        "feedbackMessage": "Feedback message",
+        "feedbackName": "Username",
+        "feedbackTypeName": "Type",
+        "phone": "Phone",
+        "replyDate": "Reply date",
+        "status": "Status",
+        "title": "Subject",
+        "updateDatetime": "Date",
+        "userName": "Name",
+        "view": "View"
+      },
+      "dialog": {
+        "emailCheck": "Send mail to user's mailbox",
+        "submitReason": "Message",
+        "submitReasonPlaceholder": "Enter your reply to the feedback in less than 200 characters.",
+        "tip": "Reply to feedback"
+      },
+      "list": {
+        "search": {
+          "excel": "Export",
+          "feedbackStatus": "State",
+          "feedbackTitle": "Subject",
+          "feedbackTypeId": "Type",
+          "searchDate": "Date",
+          "title": "Feedback management",
+          "titlePlaceholder": "Keywords"
+        },
+        "table": {
+          "feedbackContent": "Message",
+          "feedbackType": "Type",
+          "no": "No.",
+          "operat": "Operation",
+          "status": "State",
+          "title": "Subject",
+          "updateDatetime": "Date"
+        }
+      }
+    },
+    "fqmanagers": {
+      "detail": {
+        "from": "From",
+        "modify": "Edit",
+        "repliedMessage": "{{value}} replied message",
+        "reply": "Reply",
+        "title": "Q&A Management"
+      },
+      "list": {
+        "search": {
+          "isShow": "State",
+          "keyWord": "keyword",
+          "keyWordPlaceholder": "Please input keywords",
+          "searchDate": "Publication date",
+          "title": "Q&A Management"
+        },
+        "table": {
+          "createTime": "Raised time",
+          "isShow": "State",
+          "no": "No.",
+          "operat": "Operations",
+          "questioner": "Questioner",
+          "replayNum": "Response",
+          "title": "Question"
+        }
+      }
+    },
+    "leftNav": {
+      "InteractiveManagement": "Interactive management",
+      "WebsiteManagement": "Website management",
+      "WebsiteSettings": "Website management",
+      "appExampleAdd": "Add application example",
+      "appExampleDetail": "Edit application example",
+      "appExamples": "Application example management",
+      "associates": "Link service management",
+      "associatesAdd": "Add link service",
+      "associatesDetail": "Edit link service",
+      "consulting": "News management",
+      "consultingAdd": "Add news",
+      "consultingDetail": "Edit news",
+      "content": "Content management",
+      "contentDetail": "Edit Content",
+      "feedbacks": "Feedback management",
+      "feedbacksDetail": "View",
+      "fqmanagers": "Q&A Management",
+      "fqmanagersDetail": "View",
+      "info": "Website info management",
+      "navs": "Menu management",
+      "navsDetail": "Edit Menu management",
+      "news": "Publish management",
+      "newsAdd": "Publish news",
+      "newsDetail": "Edit news",
+      "picture": "Images management",
+      "products": "Management of service provider",
+      "productsAdd": "Add service provider and product",
+      "productsAddDetail": "Edit service provider and product",
+      "questions": "FAQ management",
+      "questionsAdd": "Add FAQ",
+      "questionsDetail": "Edit FAQ"
+    },
+    "navs": {
+      "detail": {
+        "navDescPlaceholder": "Enter navigation description.",
+        "navNamePlaceholder": "Enter navigation name.",
+        "navigationType": "Navigation type"
+      },
+      "dialog": {
+        "content": "The menu you are deleting is \"content type\" menu, once deleted, the \"content\" which current menu associated will be deleted synchronously, are you sure to delete the current menu?"
+      },
+      "list": {
+        "title": "Menu management"
+      }
+    },
+    "news": {
+      "detail": {
+        "authorName": "Source",
+        "authorNamePlaceholder": "Source of the news",
+        "createDateTime": "Time",
+        "navigationId": "Parent menu",
+        "newsDetail": "Content",
+        "newsSummary": "Abstract",
+        "newsSummaryPlaceholder": "An abstract in less than 200 characters.",
+        "priorityLevel": "Sort",
+        "priorityLevelPlaceholder": "Enter the sort order",
+        "status": "Status",
+        "title": "Title",
+        "titlePlaceholder": "Enter an article title"
+      },
+      "list": {
+        "search": {
+          "create": "Publish news",
+          "navigationId": "Parent menu",
+          "newsTitle": "Headline",
+          "newsTitlePlaceholder": "The news title or keywords",
+          "searchDate": "Publication date",
+          "title": "Publish management"
+        },
+        "table": {
+          "createDateTime": "Publication date",
+          "navigationId": "Parent menu",
+          "newsTitle": "Title",
+          "no": "No.",
+          "operat": "Operations",
+          "priorityLevel": "Sort",
+          "status": "State"
+        }
+      },
+      "valid": {
+        "authorName": "Please input source",
+        "createDateTime": "Please input time",
+        "language": "Please select language",
+        "navigationId": "Select parent menu",
+        "newsDetail": "Please input content",
+        "newsSummary": "Please input abstract",
+        "priorityLevel": "Please input priorityLevel",
+        "title": "Please input title"
+      }
+    },
+    "picture": {
+      "list": {
+        "dialog": {
+          "content": "Successfully upload the picture!"
+        },
+        "search": {
+          "title": "Images management"
+        },
+        "table": {
+          "image": "Picture name",
+          "languageName": "Language",
+          "no": "No.",
+          "operat": "Operations",
+          "upload": "Select"
+        }
+      }
+    },
+    "products": {
+      "detail": {
+        "applicationField": "Application field",
+        "applicationFieldPlaceholder": "Please input application field",
+        "applicationServiceDescPlaceholder": "An application service explanation in less than 200 characters.",
+        "applicationServiceDescription": "Application service explanation",
+        "applicationServicePlan": "Application service solution",
+        "applicationServicePlanPlaceholder": "Please input application service solution",
+        "companyContent": "Company Profile",
+        "content": "Content",
+        "productContent": "Product introduction",
+        "sort": "Sort",
+        "sortPlaceholder": "Enter the sort order",
+        "sppStatus": "Status",
+        "spplicationExampleContent": "Application case",
+        "thumbnailUrl": "Thumbnail",
+        "title": "Title",
+        "titlePlaceholder": "Please input title"
+      },
+      "list": {
+        "search": {
+          "create": "Add",
+          "searchDate": "Editing session",
+          "sppStatus": "State",
+          "sppTitle": "Title",
+          "title": "Management of service provider",
+          "titlePlaceholder": "The title or keywords"
+        },
+        "table": {
+          "editor": "Editor",
+          "no": "No.",
+          "operat": "Operations",
+          "sort": "Sort",
+          "sppStatussppStatus": "State",
+          "title": "Title",
+          "updateTime": "Editing session"
+        }
+      },
+      "valid": {
+        "applicationField": "Please input application field",
+        "applicationServiceDescription": "Please input application service explanation",
+        "applicationServicePlan": "Please input application service solution",
+        "companyContent": "Please input Company Profile",
+        "content": "Please input Product introduction",
+        "language": "Please select language",
+        "sort": "Please input sort",
+        "spplicationExampleContent": "Please input Application case",
+        "title": "Please input title"
+      }
+    },
+    "question": {
+      "detail": {
+        "questionStatus": "Status",
+        "replyContent": "Reply",
+        "sort": "Sort",
+        "sortPlaceholder": "Enter the sort order",
+        "title": "Title：",
+        "titlePlaceholder": "Please input title"
+      },
+      "list": {
+        "search": {
+          "create": "Add",
+          "questionStatus": "State",
+          "questionTitle": "Title",
+          "searchDate": "Editing session",
+          "title": "FAQ management",
+          "titlePaceholder": "The title or keywords"
+        },
+        "table": {
+          "editor": "Editor",
+          "no": "No.",
+          "operat": "Operations",
+          "sort": "Sort",
+          "status": "State",
+          "title": "Title",
+          "updateTime": "Editing session"
+        }
+      },
+      "valid": {
+        "language": "Please select language",
+        "replyContent": "Please input Reply",
+        "sort": "Please input sort",
+        "title": "Please input title"
+      }
+    }
+  },
+  "statistic": {
+    "analysisTimes": "Times of resolution",
+    "area": "District",
+    "checkNum": "Times of retrieval",
+    "checkNumThound": "Times of retrieval(unit:thousand)",
+    "common": {
+      "all": "- All -",
+      "search": "Search"
+    },
+    "country": "Country",
+    "dateDay": "Day",
+    "dateMonth": "Month",
+    "dateSelection": "Date",
+    "dateYear": "Year",
+    "day": "Date",
+    "internal": "Domestic",
+    "international": "International ",
+    "isliCode": "ISLI code",
+    "isliCodeAnalysisNum": "ISLI code resolution amount",
+    "isliCodeNum": "ISLI code amount",
+    "isliCodeTotal": "Total amount of ISLI code",
+    "isliCodeYAxisMillionName": "ISLI code amount(unit:million)",
+    "isliCodeYAxisName": "ISLI code amount(unit:thousand)",
+    "keyword": "Keywords",
+    "lcRegisterNum": "LC registrant amount",
+    "million": "million",
+    "month": "Month",
+    "nav": {
+      "analysis": "statistics of resolution",
+      "dataAnsys": "Statistics",
+      "islicodeAnsys": "statistics of ISLI code",
+      "lcAnsys": "statistics of LC registrants",
+      "lcManager": "LC Management",
+      "location": "My location：",
+      "searchAnsys": "Retrieval statistics",
+      "serviceCodeAnsys": "service registration statistics",
+      "spAnsys": "statistics of SP"
+    },
+    "open": "open",
+    "provinces": "Province",
+    "rank": "Rank",
+    "retract": "close",
+    "selectSpUser": "Select SP user",
+    "selectTime": "Select time",
+    "service": "Link",
+    "serviceRegisterNum": "SC code amount",
+    "sourceType": "Source type",
+    "sp": "SP",
+    "spUser": "SP user",
+    "spUserNum": "SP user amount",
+    "tabMenu": {
+      "area": "District",
+      "exportExcel": "Export list",
+      "exportImg": "Export view",
+      "service": "Link",
+      "sp": "SP",
+      "time": "Time",
+      "top10": "TOP10",
+      "top100": "TOP100"
+    },
+    "targetType": "Target type",
+    "time": "Time",
+    "total": "In total",
+    "typeSelection": "Type",
+    "year": "Year"
+  },
+  "systemAccount": {
+    "create": {
+      "create": "Create",
+      "edit": "Edit",
+      "email": "Email",
+      "emailHolder": "",
+      "jobNo": "Employee ID",
+      "jobNoHolder": "Your emloyee ID",
+      "mobile": "phone",
+      "mobileHolder": "Your mobile",
+      "name": "Name",
+      "nameHolder": "Your name",
+      "password": "Password",
+      "passwordConfirm": "Re-enter your new pas",
+      "passwordHolder": "6~20 alphanumeric characters",
+      "systemAccount": "System account",
+      "telephone": "phone No",
+      "username": "Username",
+      "usernameHolder": "Username/mobile number/email",
+      "valid": {
+        "emial": "Email cannot be empty",
+        "format": "Password shall be composed of English letter,number and mark",
+        "jobNo": "Employee ID cannot be empty",
+        "jobNoExist": "Employee ID you entered has already been used",
+        "mobile": "Phone No. cant be vacant.",
+        "name": "Name cannot be empty",
+        "noeEq": "Must match the password above",
+        "password": "Password cannot be empty",
+        "passwordConfirm": "Confirm password cannot be empty",
+        "uernameExist": "User name has been used",
+        "username": "User name cannot be empty"
+      }
+    },
+    "list": {
+      "addTime": "Creation date",
+      "deleteMess": "Are you sure to delete the account?",
+      "email": "Email",
+      "jobNo": "Employee ID",
+      "name": "Username",
+      "no": "No.",
+      "normal": "Normal",
+      "roleType": "Role type",
+      "startMess": "Are you sure to enable the emloyee account?",
+      "status": "State",
+      "stopMess": "Are you sure you want to disable the employee account?",
+      "stopTime": "Disabled date",
+      "telephone": "Phone",
+      "username": "Name"
+    },
+    "nav": {
+      "create": "Create",
+      "createRole": "Create role",
+      "edit": "Edit",
+      "enabled": "Enabled",
+      "languageSetting": "Language setting",
+      "mailTemplate": "Mail template",
+      "messageManagement": "Message management",
+      "releaseTidings": "Release tidings",
+      "roleManagement": "Role management",
+      "systemAccount": "System account",
+      "systemLog": "System log"
+    }
+  },
+  "systemEmail": {
+    "create": {
+      "close": "Close",
+      "save": "Send",
+      "tips": "Reminder：",
+      "tipsOne": "1. When adding mail template,finishing multi-language content compilation is necessary.",
+      "tipsTwo": "2. When the mail needs to dynamically cite user name, please refer to cited format {UserName}."
+    },
+    "list": {
+      "auth": "Email-maker",
+      "deleteMess": "Are you sure to delete the current mail template?",
+      "emialTemp": " ail template",
+      "example": "View sample",
+      "new": "Add mail",
+      "no": "No.",
+      "theme": "Email subject",
+      "time": "Add time",
+      "type": "Email genre"
+    }
+  },
+  "systemLanguage": {
+    "create": {
+      "background": "Homepage background",
+      "config": "Language setting",
+      "content": "Content configuration",
+      "nav": "Navigation bar",
+      "success": "Enabled successfully"
+    },
+    "list": {
+      "addTime": "Add date",
+      "config": "Configure",
+      "desc": "Description",
+      "languageName": "Language",
+      "notStart": "Not enabled",
+      "start": "Enabled",
+      "startMess": "You are going to enable the current language. To finish the setting, you will need to configure the navigation menu and add content to be displayed on the website.",
+      "startTime": "Enabled date",
+      "status": "Enabled date",
+      "stopMess": "Confirm to stop traditional {{ langName }}?"
+    }
+  },
+  "systemLog": {
+    "list": {
+      "event": "event",
+      "log": "System log",
+      "opTime": "Operating time",
+      "result": "The processing results",
+      "role": "role",
+      "user": "user name"
+    }
+  },
+  "systemMessage": {
+    "create": {
+      "create": "Release tidings",
+      "return": "Close",
+      "select": "please choose",
+      "send": "Send",
+      "sendObj": "Send object",
+      "spread": "Unfold",
+      "tips": "Warm prompt：",
+      "tipsOne": "1.the release of system information must be completed at the same time multilingual news content editing.",
+      "tipsTwo": "2. if the message object for all SP users, 'send' please leave blank.",
+      "up": "Fold"
+    },
+    "list": {
+      "affix": "Attachment",
+      "mess": "Message management"
+    }
+  },
+  "systemRole": {
+    "create": {
+      "create": "Create role",
+      "edit": "Edit role"
+    },
+    "list": {
+      "accountNum": "Number of accounts",
+      "addTime": "Creation date",
+      "config": "Configure authorization",
+      "deleteMess": "Are you sure you want to delete the role?",
+      "desc": "Description",
+      "manager": "Role management",
+      "roleName": "Role name",
+      "startMess": "Are your sure to enable the role? Once the role is enabled, employee accounts of that role will regain relevant rights.",
+      "stopMess": "Are you sure you want to disable the role? Once the role is disabled, employee accounts of that role will lose relevant rights."
+    }
+  },
+  "systemShared": {
+    "area": "Area code",
+    "areaFormat": "Wrong area code format.",
+    "areaRequired": "Area code cant be vacant.",
+    "columnName": "Menu name",
+    "configTable": "Role assignment",
+    "editTips": "Configuration modified successfully.",
+    "ext": "Extension",
+    "extFormat": "Wrong extension format.",
+    "image": "Image",
+    "imgTips": "Upload jpg/jpeg/png/bmp image",
+    "input": "Please",
+    "next": "Next",
+    "noData": "undefind",
+    "pre": "Previous",
+    "preview": "Preview",
+    "pubTime": "Release time",
+    "select": "- please choose -",
+    "selectImg": "Select",
+    "selectRole": "Select a role",
+    "stepFirst": "Reference menu",
+    "stepSecond": "Reference menu",
+    "stepThird": "Menu in target language",
+    "success": "Congratulations You have finished setting up a new language.",
+    "telFormat": "Wrong phone number format.",
+    "telNumber": "Your phone No.",
+    "telRequired": "Phone No. cant be vacant.",
+    "theme": "theme",
+    "to": "Click 'Finish' to enable the language,Click 'Cancel' to save the language setting without enabling the language.",
+    "updateTime": "Update time"
+  },
+  "title": "ISLI RA Management System",
+  "user": {
+    "auth": {
+      "areaName": "Name of District/Industry Agency：",
+      "info": "Certification information",
+      "uploadInfo": "Upload certification information："
+    },
+    "company": {
+      "business": "Industry：",
+      "code": "Unified Social Credit Code",
+      "contactAddress": "Contact address：",
+      "info": "Company information",
+      "name": "Company name：",
+      "registerArea": "Registration area：",
+      "site": "Official website："
+    },
+    "contact": {
+      "email": "Email",
+      "info": "Contact information",
+      "phone": "Contact number(mobile phone)：",
+      "userName": "Name："
+    },
+    "dialog": {
+      "submitReason": "Reason",
+      "submitReasonPlaceholder": "Please enter the reason for operation, limited to 200 words",
+      "submitReasonRequired": "Submit reason can not be empty",
+      "sure": "OK"
+    },
+    "groups": {
+      "all": "- All -",
+      "organization": "機構",
+      "personal": "個人"
+    },
+    "operation": {
+      "enable": "Enable",
+      "forzen": "Freeze",
+      "stop": "Disabled",
+      "viewDetail": "View"
+    },
+    "search": {
+      "checkIn": "Registration time：",
+      "companyName": "Company name：",
+      "placehold": {
+        "name": "請輸入企業名稱",
+        "userName": "請輸入SP注冊使用的郵箱"
+      },
+      "region": "Region：",
+      "registerDate": "Registration time：",
+      "search": "Search",
+      "state": "Status：",
+      "userGroup": "User character：",
+      "userName": "User name："
+    },
+    "status": {
+      "all": "- All -",
+      "disable": "Disabled",
+      "forzen": "Frozen",
+      "normal": "Normal"
+    },
+    "table": {
+      "area": "Area",
+      "areaName": "Name of District/Industry Agency",
+      "authDate": "Certification time",
+      "authInfo": "Certification information",
+      "business": "Industry",
+      "companyName": "Company name",
+      "contact": "Contact",
+      "contactUser": "Contact person",
+      "location": "Region",
+      "no": "Number",
+      "operat": "Operation",
+      "region": "Region",
+      "registerDate": "Registration time",
+      "state": "Status",
+      "userGroup": "User character",
+      "userName": "User name",
+      "userState": "Status"
+    }
+  },
+  "webName": "Management System"
+}

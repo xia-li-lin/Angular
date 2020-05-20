@@ -1,0 +1,109 @@
+<div class="association-type-form-en form clearfix">
+  <form [isliFormValidMsg]="errorMsg">
+    <dl>
+      <dt>
+        <span class="red">*</span>
+        Link type name：
+      </dt>
+      <dd>
+        <input
+          type="text"
+          name="associationTypeName"
+          [oldName]="oldAssociationTypeEn?.associationTypeName"
+          [mark]="'associationTypeNameEn'"
+          required
+          maxlength="300"
+          pInputText
+          appTrim
+          appValidNameUnique
+          [(ngModel)]="associationTypeEn.associationTypeName"
+          [ngModelOptions]="{ updateOn: 'blur' }"
+        />
+        <mpr-form-control-valid
+          controlName="associationTypeName"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span class="red">*</span>
+        Source type：
+      </dt>
+      <dd>
+        <p-dropdown
+          name="sourceTypeEn"
+          required
+          placeholder="- Please select the source type -"
+          [autoDisplayFirst]="false"
+          [options]="sourceTypeList"
+          [(ngModel)]="associationTypeEn.sourceTypeEn"
+          (ngModelChange)="sourceType.emit($event)"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+        <mpr-form-control-valid
+          controlName="sourceTypeEn"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span class="red">*</span>
+        Target type：
+      </dt>
+      <dd>
+        <p-dropdown
+          name="targetTypeEn"
+          required
+          placeholder="- Please select the target type -"
+          [autoDisplayFirst]="false"
+          [options]="targetTypeList"
+          [(ngModel)]="associationTypeEn.targetTypeEn"
+          (ngModelChange)="targetType.emit($event)"
+        >
+          <ng-template let-item pTemplate="selectedItem">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span title="{{ item.label | translate }}">{{
+              item.label | translate
+            }}</span>
+          </ng-template>
+        </p-dropdown>
+        <mpr-form-control-valid
+          controlName="targetTypeEn"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span class="red">*</span>
+        Description：
+      </dt>
+      <dd class="textarea">
+        <textarea
+          required
+          type="text"
+          name="description"
+          maxlength="2000"
+          appTrim
+          [(ngModel)]="associationTypeEn.description"
+        ></textarea>
+        <mpr-form-control-valid
+          controlName="description"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+  </form>
+</div>

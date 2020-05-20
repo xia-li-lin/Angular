@@ -1,0 +1,206 @@
+.dialog-box {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba($color: #fff, $alpha: 0);
+  left: 0;
+  top: 0;
+  z-index: 999;
+  .dialog {
+    // height: 610px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    border: 1px solid #e0e1e8;
+    box-shadow: 0 8px 18px 0 rgba(50, 82, 106, 0.10);
+    .dialog-title {
+      background: #007bd8;
+      h5 {
+        height: 40px;
+        line-height: 40px;
+        padding-left: 13px;
+        font-family: SourceHanSansSC-Medium;
+        font-size: 14px;
+        color: #ffffff;
+        font-weight: normal;
+      }
+      a {
+        position: absolute;
+        right: 13px;
+        top: 12px;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        background: url(/assets/images/close.png) no-repeat;
+        background-position: 0 0;
+        &:hover {
+          background-position: 0 -16px;
+        }
+      }
+    }
+    .dialog-content {
+      padding: 0 20px;
+      dl {
+        margin-top: 20px;
+        width: 100%;
+        dt {
+          font-family: SourceHanSansSC-Medium;
+          font-size: 14px;
+          line-height: 14px;
+          color: #354754;
+          letter-spacing: 0;
+          padding-left: 8px;
+          border-left: 4px solid #007bd8;
+        }
+        dd {
+          margin-top: 10px;
+          font-family: SourceHanSansSC-Regular;
+          font-size: 14px;
+          color: #677d8d;
+          p {
+            margin-bottom: 10px;
+            padding-left: 12px;
+            clear: both;
+            overflow: hidden;
+            span {
+              padding-right: 10px;
+              float: left;
+              display: block;
+              &.reason {
+                display: inline-block;
+                min-height: 100px;
+                line-height: 16px;
+                word-break: break-all;
+              }
+              &:first {
+                color: #354754;
+              }
+            }
+          }
+        }
+      }
+      .item {
+        margin-bottom: 10px;
+        clear: both;
+        overflow: hidden;
+        .itemL {
+          float: left;
+          font-family: SourceHanSansSC-Regular;
+          font-size: 14px;
+          color: #354754;
+          letter-spacing: 0;
+          text-align: right;
+          padding-left: 12px;
+          margin-right: 10px;
+        }
+        .itemR {
+          float: left;
+          p-radioButton {
+            padding-right: 20px;
+          }
+          textarea {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #d5dce2;
+            box-sizing: border-box;
+          }
+        }
+      }
+    }
+    .dialog-footer {
+      clear: both;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      button {
+        width: 120px;
+        height: 32px;
+        cursor: pointer;
+        &:nth-of-type(1) {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+
+  &.dialog-box-zh {
+    .dialog {
+      width: 540px;
+      .dialog-content {
+        dl {
+          dd {
+            p {
+              span {
+                &:nth-of-type(1) {
+                  width: 82px;
+                  text-align: right;
+                }
+                &:nth-of-type(2) {
+                  width: 400px;
+                }
+                &.reason {
+                  max-width: 400px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .item {
+        .itemL {
+          width: 82px;
+        }
+        .itemR {
+          width: 400px;
+        }
+      }
+    }
+  }
+  &.dialog-box-en {
+    .dialog {
+      width: 604px;
+      .dialog-content {
+        dl {
+          dd {
+            p {
+              span {
+                &:nth-of-type(1) {
+                  width: 150px;
+                  text-align: right;
+                }
+                &:nth-of-type(2) {
+                  width: 400px;
+                }
+                &.reason {
+                  max-width: 400px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .item {
+        .itemL {
+          width: 150px;
+          text-align: right;
+        }
+        .itemR {
+          width: 400px;
+        }
+      }
+    }
+  }
+}
+
+.submitReason ::ng-deep {
+  .error {
+    p {
+      color: #eb4d4d;
+      height: 14px;
+      line-height: 14px;
+      font-size: 12px;
+    }
+  }
+}

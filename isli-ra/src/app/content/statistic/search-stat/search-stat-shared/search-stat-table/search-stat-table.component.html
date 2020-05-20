@@ -1,0 +1,60 @@
+<div class="search-stat-table list-box">
+  <div class="list-header clearfix">
+    <div>{{ dateType | textTransform: "searchStat":type }}</div>
+    <div>{{ "statistic.checkNum" | translate }}</div>
+    <div>{{ "statistic.total" | translate }}:</div>
+  </div>
+  <ul
+    class="list-body clearfix"
+    *ngIf="timeAreaPageList && timeAreaPageList.length"
+  >
+    <li *ngFor="let statistic of timeAreaPageList">
+      <div class="row first-row">
+        <span
+          *ngIf="type == searchType.YEAR && dateType != 'day'"
+          title="{{ statistic?.time }}"
+        >
+          {{ statistic?.time }}
+        </span>
+        <span
+          *ngIf="type == searchType.YEAR && dateType == 'day'"
+          title="{{
+            (statistic?.time?.split('-'))[
+              statistic?.time?.split('-')?.length - 1
+            ]
+          }}"
+        >
+          {{
+            (statistic?.time?.split("-"))[
+              statistic?.time?.split("-")?.length - 1
+            ]
+          }}
+        </span>
+        <span *ngIf="type != searchType.YEAR" title="{{ statistic?.country }}">
+          {{ statistic?.country }}
+        </span>
+      </div>
+      <div class="row second-row">
+        {{ statistic?.num }}
+      </div>
+    </li>
+  </ul>
+  <div
+    *ngIf="timeAreaPageList && timeAreaPageList.length"
+    class="list-num-total"
+    [ngStyle]="{ width: totalWidth }"
+  >
+    {{ searchStatTableTotal }}
+  </div>
+  <div
+    class="no-data clearfix"
+    *ngIf="!(timeAreaPageList && timeAreaPageList.length)"
+  >
+    {{ "common.noData" | translate }}
+  </div>
+  <app-paging-box
+    *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+    [pagingBoxObj]="pagingBoxObj"
+    (OnPageChange)="handlePageChange($event)"
+  ></app-paging-box>
+</div>

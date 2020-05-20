@@ -1,0 +1,61 @@
+<div class="sp-apply-add-service-table table">
+  <p-table [value]="applyServiceList">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 10%;">
+          {{ "service.sPServiceAdd.table.serialNumber" | translate }}
+        </th>
+        <th style="width: 25%;">
+          {{ "service.sPServiceAdd.table.service" | translate }}
+        </th>
+        <th style="width: 25%;">
+          {{ "service.sPServiceAdd.table.serviceProvider" | translate }}
+        </th>
+        <th style="width: 15%;">
+          {{ "service.sPServiceAdd.table.serviceProposal" | translate }}
+        </th>
+        <th style="width: 15%;">
+          {{ "service.sPServiceAdd.table.applicationDate" | translate }}
+        </th>
+        <th style="width: 10%;">
+          {{ "service.common.operation" | translate }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+      <tr class="table-tr">
+        <td>
+          {{ (pagingBoxObj.page - 1) * pagingBoxObj.rows + rowIndex + 1 }}
+        </td>
+        <td title="{{ rowData?.serviceName }}">{{ rowData?.serviceName }}</td>
+        <td title="{{ rowData?.spName }}">{{ rowData?.spName }}</td>
+        <td class="operation">
+          <a
+            [ngClass]="{
+              check: rowData?.serviceNameSwf,
+              putGrayCheck: !rowData?.serviceNameSwf
+            }"
+            href="javascript:;"
+            title="{{ rowData?.title | translate }}"
+            (click)="handleCheckClick(rowData)"
+          ></a>
+        </td>
+        <td>{{ rowData?.createDatetime | date: "yyyy-MM-dd" }}</td>
+        <td class="operation">
+          <a
+            class="sendMessage"
+            href="javascript:;"
+            title="{{ 'service.sPServiceAdd.table.sendMessage' | translate }}"
+            (click)="handleSendMessageClick(rowData)"
+          ></a>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <app-loaing-data [data]="applyServiceList"></app-loaing-data>
+  <app-paging-box
+    *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+    [pagingBoxObj]="pagingBoxObj"
+    (OnPageChange)="pageChange.emit($event)"
+  ></app-paging-box>
+</div>

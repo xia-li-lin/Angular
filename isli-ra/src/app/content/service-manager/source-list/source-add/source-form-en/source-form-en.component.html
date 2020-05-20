@@ -1,0 +1,47 @@
+<div class="source-form-en source-form form clearfix">
+  <form [isliFormValidMsg]="errorMsg">
+    <dl>
+      <dt>
+        <span class="red">*</span>
+        Source name：
+      </dt>
+      <dd>
+        <input
+          type="text"
+          name="entityNameEn"
+          required
+          maxlength="300"
+          pInputText
+          appTrim
+          [(ngModel)]="entityType.entityNameEn"
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          [mark]="'entityName'"
+          [entityType]="entityType"
+          appValidNameUnique
+        />
+        <mpr-form-control-valid
+          controlName="entityNameEn"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <span class="red">*</span>
+        Source description：
+      </dt>
+      <dd>
+        <textarea
+          required
+          type="text"
+          name="entityDescEn"
+          maxlength="2000"
+          appTrim
+          [(ngModel)]="entityType.entityDescEn"
+        ></textarea>
+        <mpr-form-control-valid
+          controlName="entityDescEn"
+        ></mpr-form-control-valid>
+      </dd>
+    </dl>
+  </form>
+</div>

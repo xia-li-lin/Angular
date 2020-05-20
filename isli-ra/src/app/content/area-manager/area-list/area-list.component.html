@@ -1,0 +1,143 @@
+<div class="content-container">
+  <div class="header">
+    <p class="title">{{ "content.nav.areaManager" | translate }}</p>
+    <button
+      pButton
+      label="{{ 'areaManager.addBtn' | translate }}"
+      (click)="handleAddClick()"
+    ></button>
+  </div>
+  <div class="body">
+    <div class="bd-search">
+      <div class="p-grid search-bd">
+        <div class="p-col-4 item">
+          <label>{{ "areaManager.search.blockName" | translate }}</label>
+          <span class="item-bd">
+            <input
+              pInputText
+              [(ngModel)]="search.blockName"
+              placeholder="{{
+                'areaManager.search.blockNamePlaceholder' | translate
+              }}"
+            />
+          </span>
+        </div>
+        <div class="p-col-4 item">
+          <label>{{ "areaManager.search.status" | translate }}</label>
+          <span class="item-bd">
+            <p-dropdown
+              name="status"
+              [(ngModel)]="search.status"
+              [options]="blockStatus"
+              [autoDisplayFirst]="false"
+              placeholder="{{ 'areaManager.search.all' | translate }}"
+            >
+              <ng-template let-item pTemplate="selectedItem">
+                <span>{{ item.label | translate }}</span>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <span>{{ item.label | translate }}</span>
+              </ng-template>
+            </p-dropdown>
+          </span>
+        </div>
+        <div class="p-col-4 item">
+          <label>{{ "areaManager.search.serviceCode" | translate }}</label>
+          <span class="item-bd">
+            <p-dropdown
+              name="serviceCode"
+              [(ngModel)]="search.serviceCode"
+              [options]="serviceCodeList"
+              [autoDisplayFirst]="false"
+              placeholder="{{ 'areaManager.search.all' | translate }}"
+            ></p-dropdown>
+          </span>
+        </div>
+        <div class="p-col-8 item">
+          <label>{{ "areaManager.search.registerTime" | translate }}</label>
+          <span class="item-bd">
+            <!-- <app-calendar
+              name="startTime"
+              [(ngModel)]="search.startTime"
+            ></app-calendar> -->
+            <app-begin-end-date
+              [(ngModel)]="searchDate"
+              (ngModelChange)="handleDateChange($event)"
+            ></app-begin-end-date>
+          </span>
+        </div>
+        <div class="p-col-4 item item-search">
+          <span class="item-bd">
+            <button
+              pButton
+              label="{{ 'areaManager.search.searchBtn' | translate }}"
+              (click)="handleSearchClick()"
+            ></button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table">
+      <p-table [value]="areaBlockList">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 10%;">
+              {{ "areaManager.table.no" | translate }}
+            </th>
+            <th style="width: 30%;">
+              {{ "areaManager.table.blockName" | translate }}
+            </th>
+            <th style="width: 25%;">
+              {{ "areaManager.table.registerTime" | translate }}
+            </th>
+            <th style="width: 15%;">
+              {{ "areaManager.table.status" | translate }}
+            </th>
+            <th>{{ "areaManager.table.operation" | translate }}</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+          <tr>
+            <td>
+              {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+            </td>
+            <td>
+              {{ rowData.blockName }}
+            </td>
+            <td>
+              {{ rowData.createTime | date: "yyyy-MM-dd HH:mm:ss" }}
+            </td>
+            <td>
+              {{ rowData.status | blockStatus | translate }}
+            </td>
+            <td class="operation">
+              <a
+                class="item detail"
+                title="{{
+                  'service.nav.serviceRegisterManagerDetail' | translate
+                }}"
+                (click)="handleDetailClick(rowData)"
+              ></a>
+              <a
+                class="item modify"
+                title="{{ 'common.modify' | translate }}"
+                (click)="handleModifyClick(rowData)"
+              ></a>
+              <a
+                class="item configService"
+                title="{{ 'service.nav.service' | translate }}"
+                (click)="handleServiceClick(rowData)"
+              ></a>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-paging-box
+        *ngIf="pageInfo.totalRecords > pageInfo.rows"
+        [pagingBoxObj]="pageInfo"
+        (OnPageChange)="handlePageChange($event)"
+      ></app-paging-box>
+      <app-loaing-data [data]="areaBlockList"></app-loaing-data>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<app-paging-box-children
+  *ngIf="
+    pagingBoxObj &&
+    pagingBoxObj.totalRecords &&
+    pagingBoxObj.totalRecords > pagingBoxObj.rows
+  "
+  [page]="pagingBoxObj.page"
+  [totalRecords]="pagingBoxObj.totalRecords"
+  [rows]="pagingBoxObj.rows"
+  [first]="pagingBoxObj.first"
+  [pageLinkSize]="pagingBoxObj.pageLinkSize"
+  (OnPageChange)="pageChange($event)"
+></app-paging-box-children>

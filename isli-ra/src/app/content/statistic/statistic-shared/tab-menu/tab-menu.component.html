@@ -1,0 +1,32 @@
+<div class="tab-menu" *ngIf="tabMenu && tabMenu.length">
+  <ul [ngStyle]="{ 'width.px': tabMenu.length * 136 + 2 }">
+    <li
+      *ngFor="let tab of tabMenu"
+      [ngClass]="{ active: tab.index == currentIndex }"
+      (click)="handleTabMenuClick(tab)"
+    >
+      <a href="javascript:;">{{ tab.name | translate }}</a>
+      <i
+        *ngIf="tab.index == currentIndex"
+        (click)="handleShowChildrenTabMenuClick(tab, $event)"
+      ></i>
+      <ol *ngIf="tab.showChildren">
+        <li *ngFor="let children of tab.children">
+          <a
+            *ngIf="children.index != 1"
+            href="javascript:;"
+            (click)="handleChildrenTabMenuClick(tab, children, $event)"
+          >
+            {{ children.name | translate }}
+          </a>
+          <!-- <app-excel
+            *ngIf="children.index == 1"
+            [sheetItems]="sheetItems"
+            [name]="children.name"
+            (exportTable)="handleChildrenTabMenuClick(tab, children)"
+          ></app-excel> -->
+        </li>
+      </ol>
+    </li>
+  </ul>
+</div>

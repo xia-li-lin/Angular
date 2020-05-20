@@ -1,0 +1,230 @@
+<div class="content-container">
+  <div class="header">
+    <p class="title">{{ "index.accountInfo" | translate }}</p>
+    <!-- <p class="tip-content">請根據需要維護您的帳戶信息，或修改帳戶密碼。</p> -->
+  </div>
+  <div class="user">
+    <div class="user-warp">
+      <p>
+        <label>{{ "index.username" | translate }}：</label>
+        <span class="info-warp">{{ userInfo?.username }}</span>
+      </p>
+      <p>
+        <label>{{ "index.employeeId" | translate }}：</label
+        ><span class="info-warp">{{ userInfo?.jobNo }}</span>
+      </p>
+      <p>
+        <label>{{ "index.accountStatus" | translate }}：</label
+        ><span class="info-warp">{{
+          userInfo?.status | userStatus | translate
+        }}</span>
+      </p>
+      <p>
+        <label>{{ "index.creationDate" | translate }}：</label
+        ><span class="info-warp">{{
+          userInfo?.createTime | date: "yyyy-MM-dd HH:mm:ss"
+        }}</span>
+      </p>
+      <p>
+        <label>{{ "index.roleType" | translate }}：</label
+        ><span class="info-warp">{{ roleNames }}</span>
+      </p>
+      <div class="user-modify" ngForm>
+        <p>
+          <label
+            ><span class="required">*</span
+            >{{ "index.name" | translate }}：</label
+          ><span class="info-warp">
+            <input
+              type="text"
+              name="name"
+              pInputText
+              required
+              [(ngModel)]="userInfo.name"
+              maxlength="25"
+              appTrim
+              [readonly]="readonly"
+            />
+            <mpr-form-control-valid></mpr-form-control-valid>
+          </span>
+        </p>
+
+        <p>
+          <label
+            ><span class="required">*</span
+            >{{ "index.phoneNo" | translate }}：</label
+          >
+          <span class="info-warp" ngModelGroup="tel">
+            <span class="item">
+              <p-dropdown
+                [style]="{ 'min-width': '130px' }"
+                [options]="telephonePres"
+                [(ngModel)]="userInfo.telType"
+                name="telType"
+                [disabled]="readonly"
+              >
+                <ng-template let-item pTemplate="selectedItem">
+                  <span>{{ item.label | translate }}</span>
+                </ng-template>
+                <ng-template let-item pTemplate="item">
+                  <span>{{ item.label | translate }}</span>
+                </ng-template>
+              </p-dropdown>
+            </span>
+            <span class="item">
+              <input
+                type="text"
+                pInputText
+                style="width: 64px;"
+                maxlength="4"
+                appPatternInput="^\d+$"
+                inputPattern="^\d+$"
+                name="telArea"
+                [(ngModel)]="userInfo.telArea"
+                [readonly]="readonly"
+              />
+            </span>
+            <span class="item">
+              <input
+                type="text"
+                pInputText
+                style="width: 86px;"
+                maxlength="11"
+                appPatternInput="^\d+$"
+                inputPattern="^\d+$"
+                name="telNumber"
+                [(ngModel)]="userInfo.telNumber"
+                [readonly]="readonly"
+              />
+            </span>
+            <span class="item">
+              <input
+                type="text"
+                pInputText
+                style="width: 64px;"
+                maxlength="6"
+                appPatternInput="^\d+$"
+                inputPattern="^\d+$"
+                name="telExt"
+                [(ngModel)]="userInfo.telExt"
+                [readonly]="readonly"
+              />
+            </span>
+            <mpr-form-control-valid controlName="tel"></mpr-form-control-valid>
+          </span>
+        </p>
+
+        <p>
+          <label
+            ><span class="required">*</span
+            >{{ "index.phone" | translate }}：</label
+          >
+          <span class="info-warp">
+            <span class="item">
+              <p-dropdown
+                [style]="{ 'min-width': '130px' }"
+                [options]="telephonePres"
+                [(ngModel)]="userInfo.mobileType"
+                name="mobileType"
+                [disabled]="readonly"
+              >
+                <ng-template let-item pTemplate="selectedItem">
+                  <span>{{ item.label | translate }}</span>
+                </ng-template>
+                <ng-template let-item pTemplate="item">
+                  <span>{{ item.label | translate }}</span>
+                </ng-template>
+              </p-dropdown>
+            </span>
+            <span class="item">
+              <input
+                type="text"
+                pInputText
+                style="width: 234px;"
+                maxlength="6"
+                appPatternInput="^\d+$"
+                inputPattern="^\d+$"
+                name="mobile"
+                [(ngModel)]="userInfo.mobile"
+                [readonly]="readonly"
+                appVaileMobile
+              />
+              <mpr-form-control-valid
+                controlName="mobile"
+              ></mpr-form-control-valid>
+            </span>
+          </span>
+        </p>
+        <p>
+          <label
+            ><span class="required">*</span
+            >{{ "index.email" | translate }}：</label
+          >
+          <span class="info-warp">
+            <span class="item">
+              <input
+                type="text"
+                name="email"
+                pInputText
+                [(ngModel)]="userInfo.email"
+                [readonly]="readonly"
+                appValidEmail
+              />
+            </span>
+            <span class="item warn" *ngIf="!readonly">
+              {{ "index.valid.emialTip" | translate }}
+            </span>
+          </span>
+        </p>
+      </div>
+      <p class="submit" *ngIf="readonly">
+        <button
+          pButton
+          label="{{ 'index.btn.edit' | translate }}"
+          (click)="handleModifyClick()"
+        ></button>
+        <button
+          pButton
+          label="{{ 'index.btn.changePassword' | translate }}"
+          (click)="handleModifyPwdClick()"
+        ></button>
+      </p>
+      <p class="submit" *ngIf="!readonly">
+        <button
+          pButton
+          label="{{ 'index.btn.sure' | translate }}"
+          (click)="handleSaveClick()"
+        ></button>
+        <button
+          pButton
+          label="{{ 'index.btn.back' | translate }}"
+          (click)="handleCancelClick()"
+        ></button>
+        <br />
+        <span>
+          <i class="tip-icon"></i>
+          <span class="tip-warn">{{ "index.tips" | translate }}</span>
+        </span>
+      </p>
+    </div>
+  </div>
+  <p-dialog
+    [(visible)]="userInfo.passwordExpiredRemind"
+    [modal]="true"
+    [style]="{ width: '380px' }"
+  >
+    <div class="warn-pwd">
+      <i class="warn-icon"></i>
+      <span class="warn-tip">{{ "index.dialog.tip" | translate }}</span>
+    </div>
+    <p-footer>
+      <p class="submit">
+        <button
+          pButton
+          label="{{ 'index.dialog.btn' | translate }}"
+          (click)="handleModifyPwdClick()"
+        ></button>
+      </p>
+    </p-footer>
+  </p-dialog>
+</div>

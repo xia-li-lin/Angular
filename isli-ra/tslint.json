@@ -88,5 +88,8 @@
   },
   "rulesDirectory": [
     "codelyzer"
-  ]
+  ],
+  "linterOptions": {
+    "exclude": ["node_modules/**", "**/assets/**", "**/mock/**"]
+  }
 }

@@ -1,0 +1,84 @@
+<div class="content-container">
+  <div class="header">
+    <p class="title">{{ "content.nav.lc.allocated" | translate }}</p>
+  </div>
+  <div class="body">
+    <div class="bd-search">
+      <div class="p-grid search-bd">
+        <div class="p-col-4 item">
+          <label>{{ "lcManager.search.serviceCode" | translate }}</label>
+          <span class="item-bd">
+            <input pInputText [(ngModel)]="search.serviceCode" />
+          </span>
+        </div>
+        <div class="p-col-4 item">
+          <label>{{ "lcManager.search.serviceName" | translate }}</label>
+          <span class="item-bd">
+            <input pInputText [(ngModel)]="search.serviceName" />
+          </span>
+        </div>
+        <div class="p-col-8 item">
+          <label>{{ "lcManager.search.allocatedDate" | translate }}</label>
+          <span class="item-bd date-warp">
+            <app-begin-end-date
+              [(ngModel)]="searchDate"
+              (ngModelChange)="handleDateChange($event)"
+            ></app-begin-end-date>
+          </span>
+        </div>
+        <div class="p-col-4 item item-search">
+          <span class="item-bd">
+            <button
+              pButton
+              label="{{ 'common.search' | translate }}"
+              (click)="handleSearchClick()"
+            ></button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table">
+      <p-table [value]="alloctList">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 10%;">{{ "user.table.no" | translate }}</th>
+            <th>{{ "lcManager.table.service" | translate }}</th>
+            <th style="width: 20%;">
+              {{ "lcManager.table.serviceCode" | translate }}
+            </th>
+            <th style="width: 20%;">
+              {{ "lcManager.table.allocatedCount" | translate }}
+            </th>
+            <th style="width: 25%;">
+              {{ "lcManager.table.allocatedDate" | translate }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+          <tr>
+            <td>
+              {{ (pageInfo.page - 1) * pageInfo.rows + rowIndex + 1 }}
+            </td>
+            <td>
+              {{ rowData.serviceName }}
+            </td>
+            <td>
+              {{ rowData.serviceCode }}
+            </td>
+            <td>
+              {{ rowData.linkCodeCardinality }}
+            </td>
+            <td>
+              {{ rowData.allocateDatetime | date: "yyyy-MM-dd HH:mm:ss" }}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-paging-box
+        *ngIf="pageInfo.totalRecords > pageInfo.rows"
+        [pagingBoxObj]="pageInfo"
+        (OnPageChange)="handlePageChange($event)"
+      ></app-paging-box>
+    </div>
+  </div>
+</div>

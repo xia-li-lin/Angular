@@ -1,0 +1,150 @@
+<div
+  class="source-config content-container"
+  [ngClass]="{
+    'search-zh': language !== 'EN_US',
+    'search-en': language === 'EN_US'
+  }"
+>
+  <div class="header">
+    <p class="title">{{ "service.sourceList.config.title" | translate }}</p>
+  </div>
+  <div class="body">
+    <!-- 搜索 -->
+    <div class="bd-search">
+      <div class="p-grid search-bd">
+        <div
+          class="item"
+          [ngClass]="{
+            'p-col-4': language !== 'EN_US',
+            'p-col-5': language === 'EN_US'
+          }"
+        >
+          <label
+            >{{ "service.sourceList.config.sourceId" | translate }}：</label
+          >
+          <span class="item-bd">
+            <input
+              type="text"
+              name="entityId"
+              pInputText
+              appTrim
+              [readonly]="true"
+              [(ngModel)]="entityId"
+            />
+          </span>
+        </div>
+        <div
+          class="item"
+          [ngClass]="{
+            'p-col-4': language !== 'EN_US',
+            'p-col-5': language === 'EN_US'
+          }"
+        >
+          <label
+            >{{ "service.sourceList.config.sourceName" | translate }}：</label
+          >
+          <span class="item-bd">
+            <input
+              type="text"
+              name="entityName"
+              pInputText
+              appTrim
+              [readonly]="true"
+              [(ngModel)]="entityName"
+            />
+          </span>
+        </div>
+        <div class="p-col-2 item item-search">
+          <span class="item-bd">
+            <button
+              pButton
+              label="{{ 'service.sourceList.config.add' | translate }}"
+              (click)="handleAddClick()"
+            ></button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- 列表 -->
+    <div class="table">
+      <p-table [value]="entityFields">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 15%;">
+              {{ "service.sourceList.config.table.serialNumber" | translate }}
+            </th>
+            <th style="width: 25%;">
+              {{ "service.sourceList.config.table.termName" | translate }}
+            </th>
+            <th style="width: 20%;">
+              {{ "service.sourceList.config.table.termId" | translate }}
+            </th>
+            <th style="width: 15%;">
+              {{ "service.sourceList.config.table.creationDate" | translate }}
+            </th>
+            <th style="width: 15%;">
+              {{ "service.sourceList.config.table.operations" | translate }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+          <tr class="table-tr">
+            <td>
+              {{ (pagingBoxObj.page - 1) * pagingBoxObj.rows + rowIndex + 1 }}
+            </td>
+            <td>
+              {{ rowData?.paramName }}
+            </td>
+            <td>{{ rowData?.paramId }}</td>
+            <td>{{ rowData?.createTime | date: "yyyy-MM-dd" }}</td>
+            <td class="operation">
+              <a
+                class="delete"
+                href="javascript:;"
+                title="{{
+                  'service.sourceList.config.operations.delete' | translate
+                }}"
+                (click)="handleDeleteClick(rowData)"
+              ></a>
+              <a
+                class="modify"
+                href="javascript:;"
+                title="{{
+                  'service.sourceList.config.operations.modify' | translate
+                }}"
+                (click)="handleModifyClick(rowData)"
+              ></a>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <app-loaing-data [data]="entityFields"></app-loaing-data>
+      <app-paging-box
+        *ngIf="pagingBoxObj && pagingBoxObj.totalRecords"
+        [pagingBoxObj]="pagingBoxObj"
+        (OnPageChange)="handlePageChange($event)"
+      ></app-paging-box>
+    </div>
+    <!--  -->
+  </div>
+</div>
+
+<!-- 删除 -->
+<app-shared-dialog
+  *ngIf="dialogOnOff"
+  cancelTxt="{{ 'service.common.cancel' | translate }}"
+  confirmTxt="{{ 'service.common.sure' | translate }}"
+  [validFunc]="validFunc"
+  (OnCancelClick)="handleCancelDialogClick()"
+>
+  <div>{{ "service.common.deleteDialogTips" | translate }}</div>
+</app-shared-dialog>
+
+<!-- 添加属性 -->
+<app-source-attr-form
+  *ngIf="sourceAttrOnOff"
+  [controllWordList]="controllWordList"
+  [entityField]="entityField"
+  (save)="handleSaveClick($event)"
+  (cancel)="sourceAttrOnOff = false"
+></app-source-attr-form>
