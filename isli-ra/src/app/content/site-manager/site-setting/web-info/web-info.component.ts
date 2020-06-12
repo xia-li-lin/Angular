@@ -1,8 +1,25 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { GlobalValidService } from 'mpr-form-valid';
 
 import { WebInfoService, Contact, languageEnable } from 'src/app/service';
 import { clickWaitHttp, clickOnce } from '../../../../core';
+
+const REG_TEXT = '^((https?)://)?[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]';
+const ERROR_MSG = {
+  linksEn: {
+    pattern: 'siteManager.webInfo.valid.url'
+  },
+  copyrightsEn: {
+    pattern: 'siteManager.webInfo.valid.url'
+  },
+  links: {
+    pattern: 'siteManager.webInfo.valid.url'
+  },
+  copyrights: {
+    pattern: 'siteManager.webInfo.valid.url'
+  }
+};
 
 @Component({
   selector: 'app-web-info',
@@ -14,16 +31,18 @@ export class WebInfoComponent implements OnInit {
   public copyrightsClone: Array<Contact>;
   public copyrightsEn: Array<Contact>;
   public copyrightsEnClone: Array<Contact>;
+  public errorMsg = ERROR_MSG;
   public links: Array<Contact>;
   public linksClone: Array<Contact>;
   public linksEn: Array<Contact>;
   public linksEnClone: Array<Contact>;
   public readonly = true;
+  public regText = REG_TEXT;
 
   @ViewChild(NgForm, { read: NgForm, static: true })
   form: NgForm;
 
-  constructor(private webInfoService: WebInfoService) {}
+  constructor(private globalValidService: GlobalValidService, private webInfoService: WebInfoService) {}
 
   ngOnInit() {
     this.getWebInfo();
@@ -99,17 +118,19 @@ export class WebInfoComponent implements OnInit {
   // 保存
   @clickWaitHttp('handleSave')
   public handleSave() {
-    return this.webInfoService
-      .updateWebInfoList(
-        this.linksClone.concat(this.linksEnClone).concat(this.copyrightsClone).concat(this.copyrightsEnClone)
-      )
-      .success((res) => {
-        this.getWebInfo();
-        this.readonly = true;
-      })
-      .error((res) => {
-        console.log(res);
-      });
+    if (this.globalValidService.validAll()) {
+      return this.webInfoService
+        .updateWebInfoList(
+          this.linksClone.concat(this.linksEnClone).concat(this.copyrightsClone).concat(this.copyrightsEnClone)
+        )
+        .success((res) => {
+          this.getWebInfo();
+          this.readonly = true;
+        })
+        .error((res) => {
+          console.log(res);
+        });
+    }
   }
 
   private getWebInfo() {

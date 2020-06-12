@@ -26,6 +26,7 @@ export class ValidNameUniqueDirective implements AsyncValidator {
    * entityName 源列表表单 新增 校验源名称唯一性
    * targetName 目标列表表单 新增 检验
    * paramCode 校验编目的唯一性
+   * serviceCode 服务编码的唯一性
    */
   @Input() entityType?: EntityType;
   @Input() mark: string;
@@ -69,11 +70,20 @@ export class ValidNameUniqueDirective implements AsyncValidator {
       );
       console.log(this.entityField);
       req = this.sourceListServ.checkParamCodeExist(paramCodeQueryParams);
+    } else if (this.mark === 'serviceCode') {
+      req = this.serviceListServ.generateServiceCode(name);
     }
     console.log(req, this.mark);
 
     return req
       .success((success) => {
+        const code = success && success.code;
+        console.log(success);
+        console.log(code);
+
+        if (this.mark === 'serviceCode' && code === '10000002') {
+          return { unique: true };
+        }
         return null;
       })
       .error((error) => {

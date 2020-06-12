@@ -48,6 +48,10 @@
               inputPattern="^\d+$"
               style="width: 330px;"
               [(ngModel)]="serviceDetail.serviceCodeZh"
+              appValidNameUnique
+              [mark]="'serviceCode'"
+              [oldName]="oldServiceDetail.serviceCodeZh"
+              (ngModelChange)="handleServiceCodeChange($event)"
             />
             <button class="return" (click)="handleAutoGetServiceCodeClick()">
               自動獲取
@@ -72,6 +76,9 @@
               [panelStyle]="{ width: '450px' }"
               [selectedItemsLabel]=""
               [showToggleAll]="true"
+              [maxSelectedLabels]="
+                associationTypeList && associationTypeList.length
+              "
               [(ngModel)]="relevanceTypeZh"
               (onChange)="handleMultiSelectChange($event)"
             ></p-multiSelect>

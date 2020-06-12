@@ -467,9 +467,9 @@ body .ui-radiobutton .ui-radiobutton-box.ui-state-active:not(.ui-state-disabled)
       color: #fff;
       text-align: center;
       line-height: 14px;
-      min-width: 100px;
       height: 32px;
       margin-right: 20px;
+      padding: 0 20px;
 
       .ui-button-text {
         padding: 0;
@@ -477,6 +477,7 @@ body .ui-radiobutton .ui-radiobutton-box.ui-state-active:not(.ui-state-disabled)
 
       &:hover {
         background: #32a7ff;
+        border: 1px solid #32a7ff;
       }
 
       &:last-child {

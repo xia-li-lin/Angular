@@ -47,6 +47,10 @@
               inputPattern="^\d+$"
               style="width: 330px;"
               [(ngModel)]="serviceDetail.serviceCodeEn"
+              appValidNameUnique
+              [mark]="'serviceCode'"
+              [oldName]="oldServiceDetail.serviceCodeEn"
+              (ngModelChange)="handleServiceCodeChange($event)"
             />
             <button class="return" (click)="handleAutoGetServiceCodeClick()">
               Acquire
@@ -68,6 +72,10 @@
               name="relevanceTypeEn"
               required
               defaultLabel="&nbsp;"
+              [showToggleAll]="true"
+              [maxSelectedLabels]="
+                associationTypeList && associationTypeList.length
+              "
               [panelStyle]="{ width: '450px' }"
               [(ngModel)]="relevanceTypeEn"
               (onChange)="handleMultiSelectChange($event)"

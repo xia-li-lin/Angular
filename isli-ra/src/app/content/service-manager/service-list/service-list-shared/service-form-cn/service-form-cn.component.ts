@@ -25,7 +25,8 @@ const ERROR_MSG = {
   },
   serviceCodeZh: {
     required: '請獲取服務編碼',
-    pattern: '请输入6位数字'
+    pattern: '请输入6位数字',
+    unique: '服務編碼已存在'
   },
   relevanceTypeZh: {
     required: '請選擇關聯類型',
@@ -62,7 +63,6 @@ const ERROR_MSG = {
 })
 export class ServiceFormCnComponent implements OnInit, OnChanges, OnDestroy {
   @Output() associatedFieldSegmentsChange = new EventEmitter();
-  @Output() autoGetServiceCode = new EventEmitter();
   @Output() multiSelectChange = new EventEmitter();
   @Output() relevanceLengthUpdate = new EventEmitter();
   @Output() serviceAssociationTargetChange = new EventEmitter();
@@ -112,7 +112,10 @@ export class ServiceFormCnComponent implements OnInit, OnChanges, OnDestroy {
 
   // 自动获取服务编码
   handleAutoGetServiceCodeClick() {
-    this.autoGetServiceCode.emit();
+    this.serviceListServ.generateServiceCode().success((success) => {
+      const data = success && success.data;
+      this.serviceDetail.serviceCodeZh = this.serviceDetail.serviceCodeEn = data;
+    });
   }
 
   // 点击服务说明文件
@@ -141,6 +144,11 @@ export class ServiceFormCnComponent implements OnInit, OnChanges, OnDestroy {
       .error((error) => {
         this.form.form.get('relevanceTypeZh').setErrors({ unique: true });
       });
+  }
+
+  // 手动改变服务编码
+  handleServiceCodeChange(serviceCode: string) {
+    this.serviceDetail.serviceCodeZh = this.serviceDetail.serviceCodeEn = serviceCode;
   }
 
   // 上传服务说明文件

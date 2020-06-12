@@ -25,7 +25,8 @@ const ERROR_MSG = {
   },
   serviceCodeEn: {
     required: 'Please input service code',
-    pattern: 'Please enter 6 digits'
+    pattern: 'Please enter 6 digits',
+    unique: 'Service code already exists'
   },
   relevanceTypeEn: {
     required: 'Please select link type',
@@ -65,7 +66,6 @@ export class ServiceFormEnComponent implements OnInit, OnChanges, OnDestroy {
   form: NgForm;
 
   @Output() multiSelectChange = new EventEmitter();
-  @Output() autoGetServiceCode = new EventEmitter();
   @Output() relevanceLengthUpdate = new EventEmitter();
   @Output() associatedFieldSegmentsChange = new EventEmitter();
   @Output() updataFildes = new EventEmitter();
@@ -85,7 +85,7 @@ export class ServiceFormEnComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(
     private commonServ: CommonService,
-    private serviceListService: ServiceListService,
+    private serviceListServ: ServiceListService,
     private stateServ: AppState,
     private subjectServ: SubjectService,
     private translateService: TranslateService
@@ -110,7 +110,10 @@ export class ServiceFormEnComponent implements OnInit, OnChanges, OnDestroy {
 
   // 自动获取服务编码
   handleAutoGetServiceCodeClick() {
-    this.autoGetServiceCode.emit();
+    this.serviceListServ.generateServiceCode().success((success) => {
+      const data = success && success.data;
+      this.serviceDetail.serviceCodeZh = this.serviceDetail.serviceCodeEn = data;
+    });
   }
 
   // 点击服务说明文件
@@ -131,7 +134,7 @@ export class ServiceFormEnComponent implements OnInit, OnChanges, OnDestroy {
     if (!relevanceType) {
       return;
     }
-    this.serviceListService
+    this.serviceListServ
       .checkRelevanceTypeIdExist(relevanceType)
       .success((success) => {
         this.form.form.get('relevanceTypeEn').setErrors(null);
@@ -139,6 +142,11 @@ export class ServiceFormEnComponent implements OnInit, OnChanges, OnDestroy {
       .error((error) => {
         this.form.form.get('relevanceTypeEn').setErrors({ unique: true });
       });
+  }
+
+  // 手动改变服务编码
+  handleServiceCodeChange(serviceCode: string) {
+    this.serviceDetail.serviceCodeZh = this.serviceDetail.serviceCodeEn = serviceCode;
   }
 
   // 上传服务说明文件 --- 英文版

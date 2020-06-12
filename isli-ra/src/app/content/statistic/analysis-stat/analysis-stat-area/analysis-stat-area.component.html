@@ -1,4 +1,4 @@
-<div class="analysis-stat-area">
+<div class="analysis-stat-area chart-box">
   <div *ngIf="analysisStatList && analysisStatList.length">
     <app-export-view (exportView)="handleExportViewClick()"></app-export-view>
     <!-- 国际地图 -->
@@ -6,7 +6,7 @@
       *ngIf="dateType == searchType.AREA"
       echarts
       [options]="chartInternationalOptions"
-      class="area chart-box"
+      class="area"
       (chartInit)="handleChartInit($event)"
     >
       <div class="data-loading"></div>
@@ -16,7 +16,7 @@
       *ngIf="dateType == searchType.CHINA"
       echarts
       [options]="chartInternalOptions"
-      class="area chart-box"
+      class="area"
       (chartInit)="handleChartInit($event)"
     >
       <div class="data-loading"></div>

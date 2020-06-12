@@ -1,11 +1,4 @@
-.chart-box{
-  position: relative;
-  app-export-view{
-    position: absolute;
-    right: 20px;
-    top: 40px;
-    z-index: 99999999;
-  }
+.chart-box {
   .demo-chart {
     height: 380px;
   }

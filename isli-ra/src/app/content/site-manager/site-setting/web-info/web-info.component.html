@@ -2,7 +2,7 @@
   <div class="search-title">
     <span>網站資訊管理</span>
   </div>
-  <div ngForm class="table">
+  <form class="table" [isliFormValidMsg]="errorMsg">
     <div *ngIf="languageEnable('EN_US')">
       <h1>English</h1>
       <h2>Friendship link management</h2>
@@ -36,10 +36,13 @@
               <input
                 #contactValue
                 type="text"
-                pInputText
                 maxlength="250"
-                [value]="item.contactValue"
+                [name]="'linksEn[' + rowIndex + ']'"
+                [(ngModel)]="linksEn[rowIndex].contactValue"
                 [readonly]="readonly"
+                pattern="{{ regText }}"
+                appTrim
+                pInputText
                 (keyup)="
                   handleContactValue(
                     item.contactId,
@@ -47,8 +50,10 @@
                     'linksEn'
                   )
                 "
-                appTrim
               />
+              <mpr-form-control-valid
+                [controlName]="'linksEn[' + rowIndex + ']'"
+              ></mpr-form-control-valid>
             </td>
             <td *ngIf="readonly">
               {{ item.updateDatetime | date: "yyyy-MM-dd  HH:mm:ss" }}
@@ -92,10 +97,13 @@
               <input
                 #contactValue
                 type="text"
-                pInputText
                 maxlength="250"
-                [value]="item.contactValue"
+                [name]="'copyrightsEn[' + rowIndex + ']'"
+                [(ngModel)]="copyrightsEn[rowIndex].contactValue"
                 [readonly]="readonly"
+                pattern="{{ regText }}"
+                appTrim
+                pInputText
                 (keyup)="
                   handleContactValue(
                     item.contactId,
@@ -103,8 +111,10 @@
                     'copyrightsEn'
                   )
                 "
-                appTrim
               />
+              <mpr-form-control-valid
+                [controlName]="'copyrightsEn[' + rowIndex + ']'"
+              ></mpr-form-control-valid>
             </td>
             <td *ngIf="readonly">
               {{ item.updateDatetime | date: "yyyy-MM-dd  HH:mm:ss" }}
@@ -133,24 +143,27 @@
               <input
                 #contactKey
                 type="text"
-                pInputText
                 maxlength="250"
                 [value]="item.contactKey"
                 [readonly]="readonly"
+                appTrim
+                pInputText
                 (keyup)="
                   handleContactKey(item.contactId, contactKey.value, 'links')
                 "
-                appTrim
               />
             </td>
             <td [title]="item.contactValue">
               <input
                 #contactValue
                 type="text"
-                pInputText
                 maxlength="250"
-                [value]="item.contactValue"
+                [name]="'links[' + rowIndex + ']'"
+                [(ngModel)]="links[rowIndex].contactValue"
                 [readonly]="readonly"
+                pattern="{{ regText }}"
+                appTrim
+                pInputText
                 (keyup)="
                   handleContactValue(
                     item.contactId,
@@ -158,8 +171,10 @@
                     'links'
                   )
                 "
-                appTrim
               />
+              <mpr-form-control-valid
+                [controlName]="'links[' + rowIndex + ']'"
+              ></mpr-form-control-valid>
             </td>
             <td *ngIf="readonly">
               {{ item.updateDatetime | date: "yyyy-MM-dd  HH:mm:ss" }}
@@ -205,8 +220,12 @@
                 type="text"
                 pInputText
                 maxlength="250"
-                [value]="item.contactValue"
+                [name]="'copyrights[' + rowIndex + ']'"
+                [(ngModel)]="copyrights[rowIndex].contactValue"
                 [readonly]="readonly"
+                pattern="{{ regText }}"
+                appTrim
+                pInputText
                 (keyup)="
                   handleContactValue(
                     item.contactId,
@@ -214,8 +233,10 @@
                     'copyrights'
                   )
                 "
-                appTrim
               />
+              <mpr-form-control-valid
+                [controlName]="'copyrights[' + rowIndex + ']'"
+              ></mpr-form-control-valid>
             </td>
             <td *ngIf="readonly">
               {{ item.updateDatetime | date: "yyyy-MM-dd HH:mm:ss" }}
@@ -226,10 +247,12 @@
       <app-loaing-data [data]="copyrights"></app-loaing-data>
     </div>
     <div class="btn">
-      <button *ngIf="!readonly" (click)="handleSave()">保存</button>
+      <button *ngIf="!readonly" (click)="handleSave()">
+        {{ "siteManager.common.save" | translate }}
+      </button>
       <button appPermission="WS.WZ.XG" *ngIf="readonly" (click)="handleEdit()">
-        修改
+        {{ "siteManager.common.modify" | translate }}
       </button>
     </div>
-  </div>
+  </form>
 </div>

@@ -12,7 +12,7 @@ const ERROR_MSG = {
     required: '請輸入內容，限2000字'
   },
   textLinkName: {},
-  linkUrl: {},
+  linkUrl: { pattern: '請輸入合法的網址' },
   fileList: {}
 };
 

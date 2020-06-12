@@ -20,7 +20,7 @@ import {
   ParamTypeList,
   PermissionList
 } from 'src/app/service/model';
-import { AppState } from 'src/app/core';
+import { AppState, CommonFuncService } from 'src/app/core';
 import calculateNodeHeight from 'src/app/shared/directive/calculateNodeHeight';
 
 const ERROR_MSG = {
@@ -75,6 +75,7 @@ export class TargetAttrFormComponent implements OnInit, OnChanges, AfterViewInit
   public attrTypeList = AttrTypeList;
   public errorMsg = ERROR_MSG;
   public language: string;
+  public oldEntityField: EntityField;
   public paramTypeList = ParamTypeList;
   public permissionList = PermissionList;
   public title: string;
@@ -85,6 +86,7 @@ export class TargetAttrFormComponent implements OnInit, OnChanges, AfterViewInit
 
   ngOnChanges(changes: SimpleChanges) {
     const entityField = changes && changes.entityField && changes.entityField.currentValue;
+    this.oldEntityField = CommonFuncService.clone(entityField);
     if (entityField && entityField.paramId) {
       this.title = 'service.targetList.config.form.modify';
     } else {

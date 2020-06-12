@@ -25,7 +25,7 @@
     "search": {
       "all": "- All -",
       "blockName": "Name：",
-      "blockNamePlaceholder": "Please enter the name of Distict/Industry registration agency",
+      "blockNamePlaceholder": "Please enter the name of Distict/Industry Agency",
       "registerTime": "Registration time：",
       "searchBtn": "Search",
       "serviceCode": "Service code：",
@@ -58,34 +58,34 @@
     },
     "valid": {
       "blcokName": {
-        "existError": "The name of the District/Industry registration agency already exists",
-        "required": "Please enter the name of the District/Industry registration agency"
+        "existError": "區行名稱已存在",
+        "required": "請輸入區行名稱"
       },
       "blockIndustryInfos": {
-        "required": "Please select industry"
+        "required": "請選擇行業"
       },
       "logoUrl": {
-        "imageContentError": "Please select a valid image",
-        "imageFileSizeError": "Please select an image within 2MB",
-        "imageFileTypeError": "Image format does not match",
-        "imageWidthHeightError": "The length and width of the image do not match",
-        "required": "Please upload the Logo"
+        "imageContentError": "請選擇合法的圖片",
+        "imageFileSizeError": "請選擇2MB以內的圖片",
+        "imageFileTypeError": "圖片的格式不匹配",
+        "imageWidthHeightError": "圖片的長寬不匹配",
+        "required": "請上傳Logo"
       },
       "region": {
-        "required": "Please select region"
+        "required": "請選擇地區"
       },
       "siteUrl": {
-        "pattern": "Please enter a valid URL"
+        "pattern": "請輸入合法網址"
       },
       "ueditor": {
         "applicationCase": {
-          "required": "Please enter application case"
+          "required": "請輸入應用案例"
         },
         "bockDesc": {
-          "required": "Please enter introduction of the District/Industry registration agency"
+          "required": "請輸入區行簡介"
         },
         "productDesc": {
-          "required": "Please enter product introduction"
+          "required": "請輸入産品簡介"
         }
       }
     }
@@ -146,21 +146,21 @@
     },
     "nav": {
       "account": {
-        "lcManager": "LC account management",
-        "manager": "Unified account management",
-        "spManager": "SP Account management"
+        "lcManager": "LC賬戶管理",
+        "manager": "統壹賬戶管理",
+        "spManager": "SP賬戶管理"
       },
       "area": {
         "manager": "District/Industry"
       },
-      "areaAdd": "New District/Industry registration agency",
+      "areaAdd": "新增區行",
       "areaManager": "District/Industry",
       "dataAnsys": "Statistics",
       "index": "Home",
       "lc": {
-        "allocated": "Service code allocation",
-        "manager": "LC management",
-        "thresthold": "Service code thresthold"
+        "allocated": "服務編碼分配",
+        "manager": "LC管理",
+        "thresthold": "服務編碼閥值"
       },
       "lcManager": "LC",
       "location": "Your location：",
@@ -171,8 +171,8 @@
       "systemAccount": "System account",
       "systemtManager": " System management",
       "user": {
-        "spManager": "SP account management",
-        "spManagerCheck": "SP account examination",
+        "spManager": "SP賬戶管理",
+        "spManagerCheck": "SP賬戶審核",
         "userManager": "User"
       },
       "userManager": "User"
@@ -238,49 +238,6 @@
       "phone": "Phone cannot be empty",
       "phoneNo": "Phone No.shant be empty",
       "phoneNoFormat": "The format of phone No. is wrong"
-    }
-  },
-  "lcManager": {
-    "nav": {
-      "alloct": "Allocation list",
-      "threshold": "Threshold list",
-      "thresholdDetail": "Threshold detail"
-    },
-    "search": {
-      "allocatedDate": "Allocation date：",
-      "lcWarning": "LC code warning value：",
-      "modifyDate": "Modification date：",
-      "service": "Service：",
-      "serviceCode": "Service code：",
-      "serviceCodeSu": "Affiliated service code：",
-      "serviceCodeSuPlaceholder": "Please enter service coce",
-      "serviceName": "Service name：",
-      "servicePlaceholder": "Please enter service name"
-    },
-    "table": {
-      "allocatedCount": "LC code allocated number",
-      "allocatedDate": "Allocation date",
-      "isliOrg": "ISLI District/Industry registration agency",
-      "lcWarningBegin": "LC code warning value",
-      "lcWarningEnd": "LC code Threshold",
-      "service": "Service",
-      "serviceCode": "Service code"
-    },
-    "threshold": {
-      "isliOrg": "ISLI District/Industry registration agency：",
-      "lcWarningBegin": "LC code warning value：",
-      "lcWarningEnd": "Target LC code Threshold：",
-      "lcWarningEndTip": "A positive integer multiple of the unit code capacity. For example, ISLI/MPR(number) is an integer multiple of 100,000",
-      "lcWarningTip": "Please enter a two-digit positive integer between 10-99",
-      "serviceCode": "Service code："
-    },
-    "valid": {
-      "prewarningValue": {
-        "requred": "Please enter a two-digit positive integer between 10-99"
-      },
-      "thresholdValue": {
-        "required": "Please enter the target threshold"
-      }
     }
   },
   "login": {
@@ -788,13 +745,13 @@
     },
     "search": {
       "associationType": "Link type",
-      "createTime": "Creation time",
+      "createTime": "Creation date",
       "serviceCode": "Service code",
       "services": "Service"
     },
     "table": {
       "associationType": "Link type",
-      "createTime": "Creation time",
+      "createTime": "Creation date",
       "serialNumber": "No.",
       "services": "Service"
     }
@@ -1248,6 +1205,11 @@
         "sort": "Please input sort",
         "title": "Please input title"
       }
+    },
+    "webInfo": {
+      "valid": {
+        "url": "The Link/address you entere"
+      }
     }
   },
   "statistic": {
@@ -1499,7 +1461,7 @@
   "title": "ISLI RA Management System",
   "user": {
     "auth": {
-      "areaName": "Name of District/Industry registration agency：",
+      "areaName": "Name of District/Industry Agency：",
       "info": "Certification information",
       "uploadInfo": "Upload certification information："
     },
@@ -1526,8 +1488,8 @@
     },
     "groups": {
       "all": "- All -",
-      "organization": "Organization",
-      "personal": "Personal"
+      "organization": "機構",
+      "personal": "個人"
     },
     "operation": {
       "enable": "Enable",
@@ -1539,8 +1501,8 @@
       "checkIn": "Registration time：",
       "companyName": "Company name：",
       "placehold": {
-        "name": "Please enter the company name",
-        "userName": "Please enter email for SP registration"
+        "name": "請輸入企業名稱",
+        "userName": "請輸入SP注冊使用的郵箱"
       },
       "region": "Region：",
       "registerDate": "Registration time：",
@@ -1557,7 +1519,7 @@
     },
     "table": {
       "area": "Area",
-      "areaName": "Name of District/Industry registration agency",
+      "areaName": "Name of District/Industry Agency",
       "authDate": "Certification time",
       "authInfo": "Certification information",
       "business": "Industry",

@@ -13,7 +13,9 @@ const ERROR_MSG = {
     required: 'Please enter the message, 2000 characters limit.'
   },
   textLinkName: {},
-  linkUrl: {},
+  linkUrl: {
+    pattern: 'Please enter a valid URL'
+  },
   fileList: {}
 };
 

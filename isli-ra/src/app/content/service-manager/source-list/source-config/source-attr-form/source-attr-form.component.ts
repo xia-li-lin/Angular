@@ -12,13 +12,12 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { GlobalValidService } from 'mpr-form-valid';
-import { AppState } from 'src/app/core';
+import { AppState, CommonFuncService } from 'src/app/core';
 import {
   ATTR_TYPE,
   AttrTypeList,
   DropDownOption,
   EntityField,
-  ParamCodeQueryParams,
   ParamTypeList,
   PermissionList
 } from 'src/app/service/model';
@@ -76,6 +75,7 @@ export class SourceAttrFormComponent implements OnInit, OnChanges, AfterViewInit
   public attrTypeList = AttrTypeList;
   public errorMsg = ERROR_MSG;
   public language: string;
+  public oldEntityField: EntityField;
   public paramTypeList = ParamTypeList;
   public permissionList = PermissionList;
   public title: string;
@@ -86,6 +86,7 @@ export class SourceAttrFormComponent implements OnInit, OnChanges, AfterViewInit
 
   ngOnChanges(changes: SimpleChanges) {
     const entityField = changes && changes.entityField && changes.entityField.currentValue;
+    this.oldEntityField = CommonFuncService.clone(entityField);
     if (entityField && entityField.paramId) {
       this.title = 'service.sourceList.config.form.modify';
     } else {

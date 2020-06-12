@@ -76,13 +76,15 @@
 .warn-pwd {
   padding: 20px 40px;
   .warn-icon {
-    display: inline-block;
+    float: left;
+    display: block;
     width: 36px;
     height: 36px;
-    background: url(/assets/images/tip.png) no-repeat center;
+    background: url(/assets/images/tip.png) top center no-repeat;
   }
   .warn-tip {
-    display: inline-block;
+    float: left;
+    display: block;
     margin-left: 10px;
     font-size: 15px;
     color: #354754;

@@ -165,16 +165,6 @@ export class ServiceFormComponent implements OnInit, OnDestroy {
       });
   }
 
-  // 自动获取服务编码
-  @clickWaitHttp('handleAutoGetServiceCodeClick')
-  handleAutoGetServiceCodeClick() {
-    return this.serviceListServ.generateServiceCode().success((success) => {
-      const data = success && success.data;
-      this.serviceDetail.serviceCodeZh = this.serviceDetail.serviceCodeEn = data;
-      // console.log(data);
-    });
-  }
-
   // 改变关联字段分段
   handleAssociatedFieldSegmentsChange(e) {
     const value = e && e.value;

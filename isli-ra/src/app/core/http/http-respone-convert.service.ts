@@ -16,9 +16,9 @@ export class HttpResponseCovert extends IHttpResponseConvert {
     }
     if (response instanceof Array) {
       return new ResponseModel('00000000', '', response);
-    } else if ('errorCode' in response || 'resultCode' in response) {
+    } else if ('returnCode' in response || 'errorCode' in response || 'resultCode' in response) {
       return new ResponseModel(
-        response.errorCode || response.resultCode,
+        response.returnCode || response.errorCode || response.resultCode,
         response.errorMessage || response.resultMsg,
         response.data === undefined ? {} : response.data
       );
